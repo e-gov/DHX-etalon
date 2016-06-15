@@ -1,0 +1,7 @@
+ee\bpw\dhx\ws\DhxEndpoint.class
+ee\bpw\dhx\ws\service\DocumentService$SoapRequestHeaderModifier.class
+ee\bpw\dhx\ws\service\RepresentationService.class
+ee\bpw\dhx\ws\service\DocumentService.class
+ee\bpw\dhx\ws\config\SoapConfig.class
+ee\bpw\dhx\ws\config\DhxConfig.class
+ee\bpw\dhx\ws\config\DhxWebServiceConfig.class

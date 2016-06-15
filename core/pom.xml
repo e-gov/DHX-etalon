@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ee.bpw.dhx</groupId>
+    <artifactId>DHX</artifactId>
+    <version>0.3.1</version>
+  </parent>
+  <groupId>ee.bpw.dhx</groupId>
+  <artifactId>core</artifactId>
+  <version>0.3.1</version>
+  <name>core</name>
+  <packaging>jar</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <java.version>1.7</java.version>
+  </properties>
+  <dependencies>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>axis</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.codehaus.woodstox/stax2-api -->
+		<dependency>
+		    <groupId>org.codehaus.woodstox</groupId>
+		    <artifactId>stax2-api</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.apache.axis/axis-jaxrpc -->
+		<dependency>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>axis-jaxrpc</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.codehaus.woodstox/woodstox-core-lgpl -->
+		<dependency>
+		    <groupId>org.codehaus.woodstox</groupId>
+		    <artifactId>woodstox-core-lgpl</artifactId>
+		    <version>4.4.1</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/msv/msv -->
+		<!-- http://mvnrepository.com/artifact/net.java.dev.msv/msv-core -->
+		<dependency>
+		    <groupId>net.java.dev.msv</groupId>
+		    <artifactId>msv-core</artifactId>
+		    <version>2013.6.1</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.github.relaxng/relaxngDatatype -->
+		<dependency>
+		    <groupId>com.github.relaxng</groupId>
+		    <artifactId>relaxngDatatype</artifactId>
+		    <version>2011.1</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/xsdlib/xsdlib -->
+		<dependency>
+		    <groupId>xsdlib</groupId>
+		    <artifactId>xsdlib</artifactId>
+		    <version>20030225</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/isorelax/isorelax -->
+		<dependency>
+		    <groupId>isorelax</groupId>
+		    <artifactId>isorelax</artifactId>
+		    <version>20030108</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+		<dependency>
+		    <groupId>commons-discovery</groupId>
+		    <artifactId>commons-discovery</artifactId>
+		    <version>0.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		</dependency>		
+  </dependencies>
+    <build>
+        <plugins>
+		    <plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>jaxb2-maven-plugin</artifactId>
+			<version>1.6</version>
+			<configuration>
+				<schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
+				<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+				<clearOutputDir>false</clearOutputDir>
+			</configuration>
+		</plugin>
+        </plugins>
+    </build>
+</project>
