@@ -1,58 +1,122 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>ee.bpw.dhx</groupId>
-    <artifactId>DHX</artifactId>
-    <version>0.3.1</version>
-  </parent>
-  <groupId>ee.bpw.dhx</groupId>
-  <artifactId>client</artifactId>
-  <version>0.3.1</version>
-  <name>client</name>
-  <packaging>war</packaging>
-  <repositories>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>ee.bpw.dhx</groupId>
+		<artifactId>DHX</artifactId>
+		<version>0.3.1</version>
+	</parent>
+	<groupId>ee.bpw.dhx</groupId>
+	<artifactId>client</artifactId>
+	<version>0.3.1</version>
+	<name>client</name>
+	<packaging>war</packaging>
+	<repositories>
 		<repository>
-		   <id>vaadin-addons</id>
-		   <url>http://maven.vaadin.com/vaadin-addons</url>
+			<id>vaadin-addons</id>
+			<url>http://maven.vaadin.com/vaadin-addons</url>
 		</repository>
 	</repositories>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.7</java.version>
-	<dvkCoreDir>..\core\target</dvkCoreDir>
-  </properties>
-  <dependencies>
-  		<dependency>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<packageName>dhx</packageName>
+	</properties>
+	<dependencies>
+		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
 			<version>0.3.1</version>
 			<scope>compile</scope>
 		</dependency>
-    <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-			    <exclusion>
-			      <groupId>org.springframework.boot</groupId>
-			      <artifactId>spring-boot-starter-logging</artifactId>
-			    </exclusion>
-			  </exclusions>
-        </dependency>
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-log4j2</artifactId>
-		</dependency>
-				<dependency>
-		    <groupId>com.vaadin</groupId>
-		    <artifactId>vaadin-spring-boot-starter</artifactId>
-		    <version>1.0.0</version>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
-		   <groupId>org.vaadin.addon</groupId>
-		   <artifactId>easyuploads</artifactId>
-		   <version>7.4.3</version>
-		</dependency>	
-  </dependencies>
+			<groupId>org.vaadin.addon</groupId>
+			<artifactId>easyuploads</artifactId>
+			<version>7.4.3</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${packageName}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources/${resourceDir}</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat6-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url></url>
+					<server>TomcatServer</server>
+					<path>/dhx</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<!-- <configuration> <url>http://localhost:8086/manager/text</url> <server>TomcatServer</server> 
+					<path>/dhx</path> </configuration> -->
+				<configuration>
+					<server>devbpw</server>
+					<url>${tomcat.manager}</url>
+					<username>${tomcat.manager.username}</username>
+					<password>${tomcat.manager.password}</password>
+					<path>/dhx</path>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>arendus-bpw</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<conf>arendus-bpw</conf>
+			</properties>
+		</profile>
+		<profile>
+			<id>arendus-tomcat</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>arendus-tomcat</value>
+				</property>
+			</activation>
+			<properties>
+				<conf>arendus-tomcat</conf>
+				<tomcat.manager>http://localhost:8086/manager/text</tomcat.manager>
+				<tomcat.manager.username>admin</tomcat.manager.username>
+				<tomcat.manager.password>admin</tomcat.manager.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>dhs-maket1</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>dhs-maket1</value>
+				</property>
+			</activation>
+			<properties>
+				<conf>dhs-maket1</conf>
+				<tomcat.manager>http://10.0.13.51:8080/manager/text</tomcat.manager>
+				<tomcat.manager.username>admin</tomcat.manager.username>
+				<tomcat.manager.password>admin</tomcat.manager.password>
+			</properties>
+		</profile>
+	</profiles>
 </project>

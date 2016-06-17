@@ -2,6 +2,7 @@ package ee.bpw.dhx.client.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,7 +28,9 @@ import ee.bpw.dhx.client.config.DhxClientConfig;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.util.XsdUtil;
 import ee.bpw.dhx.ws.service.DocumentService;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
 @SpringUI
@@ -64,15 +67,18 @@ public class DhxUI extends UI {
 		/******************/
 		
 		/******text field*****/
-		final TextField field = new TextField();
-		field.setCaption("Aadressaadi kood");
+		/*final TextField field = new TextField();
+		field.setCaption("Aadressaadi kood");*/
+		final TextField consignmentId = new TextField();
+		consignmentId.setCaption("Consignment id");
 		/***************/
 		
 		/*******form*********/
 		final Form form = new Form();
 		form.setCaption("Dokumendi saatmine");
-		form.addField("recipient", field);
+		//form.addField("recipient", field);
 		form.addField("file", uploadField);
+		form.addField("file", consignmentId);
 		/*****************/
 		
 		
@@ -81,15 +87,19 @@ public class DhxUI extends UI {
 		buttonSubmit.addListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		        form.commit();
-		    	Object value = uploadField.getValue();
-                log.error("Value:" + value);
+		        log.debug("recipient>>>" + form.getField("recipient").getValue());
+		       // log.debug("recipient>>>" + field.getValue());
+		    	/*Object value = uploadField.getValue();
+                log.error("Value:" + value);*/
 		    	log.error("SUBMITED!!!!");
 		    	//text.setEnabled(false);
-		    	log.error(value.getClass().getCanonicalName());
+		    	//log.error(value.getClass().getCanonicalName());
 		    	try {
-		    		SendDocumentResponse response = documentService.sendDocument(new DhxDocument(field.getValue(), uploadField.getContentAsStream()));
+		    		List<SendDocumentResponse> responses = documentService.sendDocument(uploadField.getContentAsStream(), consignmentId.getValue());
+		    		for(SendDocumentResponse response : responses) {
 		    		showNotification("Dokument saadetud. Status:" + response.getReceiptId()
 						+ (response.getFault()==null?"":" faultCode:" + response.getFault().getFaultCode() + " faultString:" + response.getFault().getFaultString()));
+		    		}
 		    	}catch(DhxException ex) {
 		    		log.error("Error while sending document." + ex.getMessage(), ex);
 		    		showNotification("Viga documendi saatmisel!" + ex.getMessage());

@@ -27,13 +27,14 @@ public class ScheduledClient {
 	DhxClientConfig config;
 
 	
-    @Scheduled(fixedDelayString = "${auto.send.frequency}")
+    @Scheduled(fixedDelayString = "${dhx.client.auto-send-frequency}")
     public void sendValidDocument() throws DhxException, IOException, FileNotFoundException{
     	InputStream stream = null;
     	try{
     		stream = FileUtil.getFileAsStream(config.getCapsuleTestFile());
-	    	 DhxDocument document = new DhxDocument(stream);
-	    	 documentService.sendDocument(document);
+    		log.debug("sending document automatically");
+	    	// DhxDocument document = new DhxDocument(config.getJobRecipient(), stream, false);
+	    	 documentService.sendDocument(stream, null);
     	}catch (DhxException e) {
     		log.error(e.getMessage(), e);
     	}finally {

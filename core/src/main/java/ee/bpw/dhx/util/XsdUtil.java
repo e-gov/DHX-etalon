@@ -1,11 +1,14 @@
 package ee.bpw.dhx.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.transform.Source;
@@ -109,30 +112,5 @@ public class XsdUtil {
 		}
 	}
 	
-	/**
-	 * Parses capsule
-	 * @param capsuleFile
-	 * @return
-	 * @throws DhxException
-	 */
-	public static DecContainer parseCapsule (File capsuleFile, Unmarshaller unmarshaller) throws DhxException{
-		try{
-			if (log.isDebugEnabled()) {
-				log.debug("unmarshalling file" );
-			}
-			/*JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1");
-			Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();	*/
-			Object obj = (Object) unmarshaller.unmarshal(capsuleFile);
-			if (obj instanceof DecContainer) {
-				return (DecContainer)obj;
-			} else {
-				log.info("Got unknown unmarshalled object");
-				return null;
-			}
-		}catch(JAXBException ex) {
-			log.error(ex.getMessage(), ex);
-			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
-		}
-	}
 
 }

@@ -48,18 +48,13 @@ public final class CustomAppender extends AbstractAppender {
     public void append(LogEvent event) {
         readLock.lock();
         try {
-            final byte[] bytes = getLayout().toByteArray(event);
+           // final byte[] bytes = getLayout().toByteArray(event);
             if(queue.size()>=maxQueueSize) {
             	queue.remove();
             	queue.add(new String(getLayout().toByteArray(event)));
             }else {
-            	String str = new String(getLayout().toByteArray(event));
-            	System.out.println(String.valueOf(getLayout().toByteArray(event)));
-            	System.out.println(str);
             	queue.add(new String(getLayout().toByteArray(event)));
             }
-            System.out.println("HERE WER ARE!!!");
-            System.out.write(bytes);
         } catch (Exception ex) {
             if (!ignoreExceptions()) {
                 throw new AppenderLoggingException(ex);

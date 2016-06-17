@@ -1,19 +1,21 @@
 package ee.bpw.dhx.ws.service;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
-import java.security.Security;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -26,19 +28,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.client.core.WebServiceMessageCallback;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
+import org.springframework.ws.context.MessageContext;
 import org.springframework.ws.soap.SoapHeader;
+import org.springframework.ws.soap.SoapHeaderElement;
 import org.springframework.ws.soap.SoapMessage;
-import org.springframework.xml.transform.StringResult;
+import org.springframework.ws.soap.saaj.SaajSoapMessage;
 import org.springframework.xml.transform.StringSource;
 
 import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
+import ee.bpw.dhx.model.XroadClient;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.XsdUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
+import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 import eu.x_road.xsd.identifiers.ObjectFactory;
@@ -129,7 +136,7 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 	}
 	
 	/**
-	 * Function must receive document and return unique id of it. extractAndValidateDocument might be part of the receive document process
+	 * Function must receive document and return unique id of it. Id will be sent as receipt is response
 	 * @param document - document to receive
 	 * @return - unique id of the document that was saved. 
 	 * @throws DhxException
@@ -137,12 +144,19 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 	public abstract String recieveDocument (DhxDocument document) throws DhxException;
 	
 	
-	public SendDocumentResponse receiveDocumentFromEndpoint (SendDocument document) throws DhxException{
-		DhxDocument dhxDocument = extractAndValidateDocument(document);
-		String id = recieveDocument(dhxDocument);
-		SendDocumentResponse response = new SendDocumentResponse();
-		response.setReceiptId(id);
-		return response;
+	public SendDocumentResponse receiveDocumentFromEndpoint (SendDocument document, MessageContext messageContext) throws DhxException{
+		XroadClient client = getXroadCLientAndSetRersponseHeader(messageContext);
+		
+		if (isDuplicatePackage(client, document.getConsignmentId())) {
+			throw new DhxException(DHXExceptionEnum.DUPLICATE_PACKAGE, "Already got package with this consignmentID. from:" + client.toString() + " consignmentId:" + document.getConsignmentId());
+		} else {
+			DhxDocument dhxDocument = extractAndValidateDocument(document);
+			dhxDocument.setClient(client);
+			String id = recieveDocument(dhxDocument);
+			SendDocumentResponse response = new SendDocumentResponse();
+			response.setReceiptId(id);
+			return response;
+		}
 	}
 	
 	/**
@@ -161,7 +175,7 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 			if(config.getCapsuleValidate()) {
 				log.debug("Validating capsule is enabled");
 				XsdUtil.validate(unpacked, FileUtil.getFileAsStream(config.getCapsuleXsdFile()));
-				container = XsdUtil.parseCapsule(unpacked, unmarshaller);
+				container = unmarshallCapsule(unpacked);
 				log.info( "Document data from capsule: recipient organisationCode:" + container.getTransport().getDecRecipient().get(0).getOrganisationCode()
 						+ " sender organisationCode:" + container.getTransport().getDecSender().getOrganisationCode());	
 				checkRecipient(document.getRecipient());
@@ -179,13 +193,65 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 		}
 	}
 	
+	public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId) throws DhxException{
+		DecContainer container = unmarshallCapsule(capsuleFile);
+		return sendDocument(container, consignmentId);
+	}
+	
+	public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId) throws DhxException{
+		DecContainer container = unmarshallCapsule(capsuleStream);
+		return sendDocument(container, consignmentId);
+	}
+	
+	/**
+	 * 
+	 * @param container - container which needs to be sent
+	 * @param consignmentId - id of the sending package. not id of the document. if null, then random consignmentID will be generated
+	 * @return
+	 * @throws DhxException - throws error if it occured while reading container. if error occured while sending to one of the recipients, then error returned in reponse fault
+	 */
+	public List<SendDocumentResponse> sendDocument(DecContainer container, String consignmentId) throws DhxException{
+		List<SendDocumentResponse> responses  = new ArrayList<SendDocumentResponse>();
+		if(container != null && container.getTransport() != null 
+				&& container.getTransport().getDecRecipient() != null 
+				&& container.getTransport().getDecRecipient().size()>0) {
+			File capsuleFile = null;
+		    capsuleFile = marshallCapsule(container);
+	        for (DecRecipient recipient : container.getTransport().getDecRecipient()) {	
+	        	DhxDocument document = new DhxDocument(recipient.getOrganisationCode(), container, capsuleFile, true);
+	        	try{
+		        	SendDocumentResponse response  = sendDocument(document);
+		        	responses.add(response);
+	        	} catch (Exception ex) {
+	        		log.error("Error occured while sending docuemnt. " + ex.getMessage(), ex);
+	        		DHXExceptionEnum faultCode = DHXExceptionEnum.TECHNICAL_ERROR;
+	        		if(ex instanceof DhxException) {
+	        			if (((DhxException)ex).getExceptionCode() != null) {
+	        				faultCode = ((DhxException)ex).getExceptionCode();
+	        			}
+	        		}
+	        		SendDocumentResponse response = new SendDocumentResponse();
+        			Fault fault = new Fault();
+        			fault.setFaultCode(faultCode.getCodeForService());
+        			fault.setFaultString(ex.getMessage());
+        			response.setFault(fault);
+	        	}
+	        }
+	        return responses;
+
+		} else {
+			throw new DhxException("Container or recipient is empty. Unable to send document");
+		}
+		
+	}
+	
 	/**
 	 * Function send document using SOAP service.
 	 * @param document
 	 * @return
 	 * @throws DhxException
 	 */
-	public SendDocumentResponse sendDocument(DhxDocument document) throws DhxException{
+	protected SendDocumentResponse sendDocument(DhxDocument document) throws DhxException{
 		SendDocumentResponse response = null;
 			log.info( "Sending document to recipient:" + document.getRecipient());
 			try{
@@ -193,13 +259,13 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 				SendDocument request = new SendDocument();
 				request.setRecipient(document.getRecipient());
 				request.setDocumentAttachment(document.getDocumentFile());
-				if(document.getId() != null) {
-					request.setConsignmentId(document.getId());
+				if(document.getInternalConsignmentId() != null && !document.getInternalConsignmentId().isEmpty()) {
+					request.setConsignmentId(document.getInternalConsignmentId());
 				} else {
 					//TODO: is that ok to generat UUID? or is it ok to send document id as consigment id at all?? 
 					request.setConsignmentId(UUID.randomUUID().toString());
 				}
-				log.info("Sending document for " + document.getRecipient() + " sec server:" + soapConfig.getSecurityServer() + " with setConsignmentId:" + request.getConsignmentId());
+				log.info("Sending document for " + document.getRecipient() + " sec server:" + soapConfig.getSecurityServer() + " with consignmentId:" + request.getConsignmentId());
 				if(getMarshaller() == null) {
 					setMarshaller(marshaller);
 				}
@@ -234,4 +300,114 @@ public abstract class DocumentService extends WebServiceGatewaySupport {
 			throw new DhxException(DHXExceptionEnum.WRONG_RECIPIENT, "Recipient not found in representativesList and own member code. recipient:" + recipient);
 		}
 	}
+	
+	public Object unmarshall (Source source, Class classToUnmarshall) throws DhxException{
+		try {
+			Object obj = (Object) unmarshaller.unmarshal(source);
+			log.debug("declared type" + ((JAXBElement)obj).getValue());
+			if (classToUnmarshall.isInstance(obj)) {
+				return obj;
+			}else if(obj instanceof JAXBElement && classToUnmarshall.isInstance(((JAXBElement)obj).getValue())) {
+				return ((JAXBElement)obj).getValue();
+			}
+			else {
+				log.info("Got unknown unmarshalled object. class:" + obj.getClass().getCanonicalName());
+				return null;
+			}
+		} catch (JAXBException ex) {
+			throw new DhxException("Unable to unmrashall object. Obj desired class:" + classToUnmarshall.getCanonicalName() + ex.getMessage(), ex);
+		}
+	}
+	
+	public XroadClient getXroadCLientAndSetRersponseHeader (MessageContext messageContext) throws DhxException{
+		try{
+		XroadClient client = null;
+		SaajSoapMessage soapRequest = (SaajSoapMessage) messageContext
+                .getRequest();
+        SoapHeader reqheader = soapRequest.getSoapHeader();
+        SaajSoapMessage soapResponse = (SaajSoapMessage) messageContext
+                .getResponse();
+        SoapHeader respheader = soapResponse.getSoapHeader();
+        TransformerFactory transformerFactory = TransformerFactory
+                .newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        Iterator<SoapHeaderElement> itr = reqheader.examineAllHeaderElements();
+        while (itr.hasNext()) {
+            SoapHeaderElement ele = itr.next();
+            if(ele.getName().getLocalPart().endsWith("client")) {
+            	XRoadClientIdentifierType xrdClient = (XRoadClientIdentifierType)unmarshall(ele.getSource(), XRoadClientIdentifierType.class);
+            	if(xrdClient != null) {
+            		client = new XroadClient(xrdClient);
+            	} else {
+            		throw new DhxException("Unable to find xroad client in header.");
+            	}
+            	
+            }
+            transformer.transform(ele.getSource(), respheader.getResult());
+        }
+        log.debug("xrd client" + client.getMemberCode());
+		return client;
+		}catch(TransformerException e) {
+			throw new DhxException("Error occured while reading info form soap header." + e.getMessage(), e);
+		}
+	}
+	
+	public DecContainer unmarshallCapsule (File capsuleFile) throws DhxException{
+		try{
+			return unmarshallCapsule(new FileInputStream(capsuleFile));	
+		}catch(FileNotFoundException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+	/**
+	 * Parses capsule
+	 * @param capsuleFile
+	 * @return
+	 * @throws DhxException
+	 */
+	public DecContainer unmarshallCapsule (InputStream capsuleStream) throws DhxException{
+		try{
+			if (log.isDebugEnabled()) {
+				log.debug("unmarshalling file" );
+			}
+			/*JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1");
+			Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();	*/
+			Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
+			if (obj instanceof DecContainer) {
+				return (DecContainer)obj;
+			} else {
+				log.info("Got unknown unmarshalled object");
+				return null;
+			}
+		}catch(JAXBException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+	
+	/**
+	 * Parses capsule
+	 * @param capsuleFile
+	 * @return
+	 * @throws DhxException
+	 */
+	public File marshallCapsule (DecContainer container) throws DhxException{
+		try{
+			Marshaller marshallerHeader = marshaller.getJaxbContext().createMarshaller();
+			if (log.isDebugEnabled()) {
+				log.debug("marshalling container" );
+			}
+			File outputFile = FileUtil.createPipelineFile(0, "");
+			marshallerHeader.marshal(container, outputFile);
+			return outputFile;
+		}catch(IOException|JAXBException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+
+	//abstract public List<String> getSendingOptions();
+	
+	abstract public boolean isDuplicatePackage (XroadClient from, String consignmentId);
 }

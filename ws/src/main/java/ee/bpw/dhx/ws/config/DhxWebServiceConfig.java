@@ -2,6 +2,7 @@ package ee.bpw.dhx.ws.config;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Properties;
 
@@ -22,12 +23,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.util.ClassUtils;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurationSupport;
 import org.springframework.ws.server.endpoint.adapter.DefaultMethodEndpointAdapter;
 import org.springframework.ws.server.endpoint.adapter.method.MarshallingPayloadMethodProcessor;
+import org.springframework.ws.server.endpoint.adapter.method.MessageContextMethodArgumentResolver;
 import org.springframework.ws.server.endpoint.adapter.method.MethodArgumentResolver;
 import org.springframework.ws.server.endpoint.adapter.method.MethodReturnValueHandler;
+import org.springframework.ws.server.endpoint.adapter.method.SourcePayloadMethodProcessor;
+import org.springframework.ws.server.endpoint.adapter.method.XPathParamMethodArgumentResolver;
+import org.springframework.ws.server.endpoint.adapter.method.dom.DomPayloadMethodProcessor;
 import org.springframework.ws.soap.server.endpoint.SoapFaultDefinition;
 import org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
@@ -56,22 +62,25 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 		SimpleWsdl11Definition wsdlDef = new SimpleWsdl11Definition(wsdlResource);
 		return wsdlDef;
 	}
-	
+
 	@Bean
     @Override
     public DefaultMethodEndpointAdapter defaultMethodEndpointAdapter() {
-		
-        List<MethodArgumentResolver> argumentResolvers = new ArrayList<MethodArgumentResolver>();
-        argumentResolvers.addAll(methodProcessors());
-
         List<MethodReturnValueHandler> returnValueHandlers = new ArrayList<MethodReturnValueHandler>();
         returnValueHandlers.addAll(methodProcessors());
 
         DefaultMethodEndpointAdapter adapter = new DefaultMethodEndpointAdapter();
+        List<MethodArgumentResolver> argumentResolvers = adapter.getMethodArgumentResolvers();
+        if( argumentResolvers == null) {
+        	argumentResolvers = new ArrayList<MethodArgumentResolver>();
+        }
+        argumentResolvers.addAll(methodProcessors());
+        argumentResolvers.add(new MessageContextMethodArgumentResolver());
         adapter.setMethodArgumentResolvers(argumentResolvers);
         adapter.setMethodReturnValueHandlers(returnValueHandlers);
         return adapter;
     }
+
 
     @Bean
     public List<MarshallingPayloadMethodProcessor> methodProcessors() {
@@ -86,14 +95,14 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 	public Jaxb2Marshaller marshaller() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		marshaller.setMtomEnabled(true);
-		marshaller.setContextPaths("eu.x_road.dhx.producer", "eu.x_road.xsd.identifiers", "eu.x_road.xsd.xroad");
+		marshaller.setContextPaths("ee.riik.schemas.deccontainer.vers_2_1", "eu.x_road.dhx.producer", "eu.x_road.xsd.identifiers", "eu.x_road.xsd.xroad");
 		return marshaller;
 	}
     
     @Bean
 	public Unmarshaller getUnmarshaller() {
     	try {
-	    	JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1");
+	    	JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.xroad");
 			Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();
 			return unmarshaller;
     	} catch(JAXBException ex) {

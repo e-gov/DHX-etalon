@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,22 +20,16 @@ import ee.bpw.dhx.ws.service.RepresentationService;
 @Configuration
 @Getter
 @Setter
+@ConfigurationProperties(prefix="dhx.client")
 @Slf4j
 public class DhxClientConfig {
 	
-	
-	@Value("${dhx.representatives}")
-	private String representatives;
-	
-	@Value("${log.max.size}")
+	private String  representatives;
 	private Integer logMaxSize;
-	
-	@Value("${log.refresh}")
 	private Integer logRefresh;
-	
-	
-	@Value("${capsule.test.file}")
-	private String capsuleTestFile;
+	private String  capsuleTestFile;
+	//private String  jobRecipient;
+	private Integer binaryBufferSize;
 		
 	
 	List<String> representativesList = null;
@@ -45,16 +40,6 @@ public class DhxClientConfig {
 		}
 		return representativesList;
 	}
-	
-	/*@Bean
-	DhxConfig getDhxConfig(){
-		return new DhxConfig();
-	}
-	
-	@Bean
-	DhxWebServiceConfig getDhxWebServiceConfig(){
-		return new DhxWebServiceConfig();
-	}*/
 	
 	@Bean
 	RepresentationService representationService()

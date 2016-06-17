@@ -33,7 +33,10 @@
       <AppenderRef ref="RollingFile"/>
       <AppenderRef ref="CUSTOM"/>
     </Logger>
-    <Logger name="org.springframework.ws.client.MessageTracing" level="trace" additivity="false">
+     <Logger name="org.springframework.ws.client.MessageTracing" level="trace" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger> 
+    <Logger name="org.springframework.ws.server.MessageTracing" level="trace" additivity="false">
       <AppenderRef ref="Console"/>
     </Logger>
     

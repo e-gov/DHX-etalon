@@ -2,8 +2,8 @@ package ee.bpw.dhx.exception;
 
 public enum DHXExceptionEnum {
 	
-	EXCTRACTION_ERROR("EXCTRACTION_ERROR"), CAPSULE_VALIDATION_ERROR("CAPSULE_VALIDATION_ERROR"),
-	FILE_ERROR("FILE_ERROR"), WRONG_RECIPIENT("WRONG_RECIPIENT"), WS_ERROR("WS_ERROR");
+	CAPSULE_VALIDATION_ERROR("Client.Validation"), DUPLICATE_PACKAGE("Client.Duplicate"),WRONG_RECIPIENT("Client.InvalidAddressee"),
+	FILE_ERROR("FILE_ERROR"), WS_ERROR("WS_ERROR"), EXCTRACTION_ERROR("EXCTRACTION_ERROR"), TECHNICAL_ERROR("Client.TechnicalError");
 	//error code which is returned is services
 	private String codeForService;
 	

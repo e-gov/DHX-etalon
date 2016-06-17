@@ -13,13 +13,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
 
+import org.apache.axis.encoding.Base64;
 import org.springframework.core.io.ClassPathResource;
 
 import lombok.extern.slf4j.Slf4j;
@@ -204,6 +208,91 @@ public class FileUtil {
 	            md = null;
 	    }
 	 
+	 public static File gzipPackXML(File fileToZip) {
+		 	if (!fileToZip.exists()) {
+	            log.debug("Input file \""+ fileToZip.getPath() +"\" does not exist!");
+	            throw new IllegalArgumentException("Data file does not exist!");
+	        }
+	        long time = Calendar.getInstance().getTimeInMillis();
+	        try {
+	        	log.debug("Starting packing file. path:" + fileToZip.getPath());
+	        	InputStream stream = new FileInputStream(fileToZip);
+	            return gzipPackXML(stream, String.valueOf(time), String.valueOf(time + 1));
+	        } catch (IOException e) {
+	            log.error("Unable to gzip and encode to base64", e);
+	            throw new RuntimeException(e);
+	        }
+	    }
+	 
+	 
+	 public static File gzipPackXML(InputStream streamtoZip) {
+	        long time = Calendar.getInstance().getTimeInMillis();
+	        try {
+	        	log.debug("Starting packing inputstream.");
+	            return gzipPackXML(streamtoZip, String.valueOf(time), String.valueOf(time + 1));
+	        } catch (IOException e) {
+	            log.error("Unable to gzip and encode to base64", e);
+	            throw new RuntimeException(e);
+	        }
+	    }
+	 
+	 public static File gzipPackXML(InputStream streamtoZip, String orgCode, String requestName) throws IllegalArgumentException, IOException {
+		 	File zipOutFile = gzipFile(streamtoZip);
+	        String tmpDir = System.getProperty("java.io.tmpdir", "");
+
+	        // Kodeerime pakitud andmed base64 kujule
+	        String base64OutFileName = tmpDir + File.separator + "dhl_" + requestName + "_" + orgCode + "_" + String.valueOf((new Date()).getTime()) + "_base64OutBuffer.dat";
+	        File base64File = new File(base64OutFileName); 
+	        InputStream in = new BufferedInputStream(new FileInputStream(zipOutFile));
+	        OutputStream b64out = new BufferedOutputStream(new FileOutputStream(base64File, false));
+	        byte[] buf = new byte[66000];  // Puhvri pikkus peaks jaguma 3-ga
+	        int len;
+	        try {
+		        while ((len = in.read(buf)) > 0) {
+		            b64out.write(Base64.encode(buf, 0, len).getBytes());
+		        }
+	        } finally {
+		        in.close();
+		        b64out.close();
+	        }
+
+	        // Kustutame vaheproduktideks olnud failid ära
+	        (zipOutFile).delete();
+
+	        return base64File;
+	    }
+	 
+	 public static File gzipFile(InputStream streamToZip) {
+	        /*if (!fileToZip.exists()) {
+	            log.debug("Input file \""+ fileToZip.getPath() +"\" does not exist!");
+	            throw new IllegalArgumentException("Data file does not exist!");
+	        }*/
+		 log.debug("Starting gziping inputstream.");  
+	        String tmpDir = System.getProperty("java.io.tmpdir", "");
+	        try {
+	            // Pakime andmed kokku
+	            String zipOutFileName = tmpDir + File.separator + "dhl_" + UUID.randomUUID().toString() + "_" + String.valueOf((new Date()).getTime()) + "_zipOutBuffer.dat";
+	            File zipFile = new File(zipOutFileName);
+	            InputStream in = new BufferedInputStream(streamToZip);
+	            OutputStream zipOutFile = new BufferedOutputStream(new FileOutputStream(zipFile));
+	            GZIPOutputStream out = new GZIPOutputStream(zipOutFile);
+	            byte[] buf = new byte[binaryBuffeSize];
+	            int len;
+	            try {
+	                while ((len = in.read(buf)) > 0) {
+	                    out.write(buf, 0, len);
+	                }
+	            } finally {
+	                in.close();
+	                out.finish();
+	                out.close();
+	            }
+
+	            return zipFile;
+	        } catch (Exception e) {
+	            throw new RuntimeException(e);
+	        }
+	    }
 	 public static void gzipUnpackXML(File sourceFile, boolean appendDocumentHeader) throws FileNotFoundException, IOException, DhxException{
 	        if (sourceFile == null ) {
 	        	throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting gzipped XML file failed because file was not supplied!");
