@@ -25,7 +25,7 @@ public class DhxDocument {
 	
 	//public DhxDocument(){}
 	
-	public DhxDocument(String recipient, DecContainer container, File file, Boolean packFile)throws DhxException{
+	public DhxDocument(/*String recipient, */XroadMember service, DecContainer container, File file, Boolean packFile)throws DhxException{
 		try{
 			File realFile;
 			if(packFile) {
@@ -36,12 +36,13 @@ public class DhxDocument {
 			InputStream stream = new FileInputStream(realFile);
 			DataSource source = new ByteArrayDataSource(stream, "application/octet-stream");
 			documentFile = new DataHandler(source);
-			this.recipient = recipient;
+			//this.representativeCode = recipient;
 			this.container = container;
+			this.service = service;
 		} catch(FileNotFoundException ex) {
-			throw new DhxException(DHXExceptionEnum.FILE_ERROR + ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
 		} catch(IOException ex) {
-			throw new DhxException(DHXExceptionEnum.FILE_ERROR + ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
 		}
 		
 	}
@@ -57,27 +58,32 @@ public class DhxDocument {
 			DataSource source = new ByteArrayDataSource(realStream, "application/octet-stream");
 			documentFile = new DataHandler(source);	
 		} catch(IOException ex) {
-			throw new DhxException(DHXExceptionEnum.FILE_ERROR + ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
 		}
 	}
 	
-	public DhxDocument(String recipient, InputStream stream, DecContainer container, Boolean packFile) throws DhxException{
+	public DhxDocument(/*String recipient, */XroadMember service, InputStream stream, DecContainer container, Boolean packFile) throws DhxException{
 		this(stream, packFile);
-		this.recipient = recipient;
+		//this.representativeCode = recipient;
 		this.container = container;
+		this.service = service;
 	}
 	
-	public DhxDocument (SendDocument document) {
-		this.recipient = document.getRecipient();
+	public DhxDocument (XroadMember client, SendDocument document) {
+		//this.representativeCode = document.getRecipient();
 		this.documentFile = document.getDocumentAttachment();
 		this.externalConsignmentId = document.getConsignmentId();
+		this.client = client;
 	}
 	
 	private DataHandler documentFile;
-	private String recipient;
+//	private String representativeCode;
 	private DecContainer container;
-	//if it is inbound document, then client is set
-	private XroadClient client;
+	//if it is inbound docuemnt, then client is the one who sent the document
+	private XroadMember client;
+	
+	//it it is outbound document, then the one to whom the document is being sent
+	private XroadMember service;
 	/**
 	 * external ID of the package.(for package receiving)
 	 */

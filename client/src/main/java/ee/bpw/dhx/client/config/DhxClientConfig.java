@@ -30,6 +30,7 @@ public class DhxClientConfig {
 	private String  capsuleTestFile;
 	//private String  jobRecipient;
 	private Integer binaryBufferSize;
+	private String name;
 		
 	
 	List<String> representativesList = null;

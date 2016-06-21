@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" packages="ee.bpw.dhx">
 <CustomLevels>
-    <CustomLevel name="EVENT" intLevel="0" />
+    <CustomLevel name="EVENT" intLevel="250" />
   </CustomLevels>
   <Appenders>
     <CustomAppender name="CUSTOM">
     	<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
     	 <filters>
-            <LevelRangeFilter minLevel="EVENT" maxLevel="EVENT" onMatch="ACCEPT" onMismatch="DENY" />
+            <LevelRangeFilter minLevel="FATAL" maxLevel="EVENT" onMatch="ACCEPT" onMismatch="DENY" />
 		</filters>
     </CustomAppender>
     <Console name="Console" target="SYSTEM_OUT">

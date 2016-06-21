@@ -91,4 +91,8 @@ public final class CustomAppender extends AbstractAppender {
     	}
     	return lastLog;
     }
+    
+    public static void deleteLastEvents () {
+    	queue = new LinkedList<String>();
+    }
 }

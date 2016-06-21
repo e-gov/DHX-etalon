@@ -108,5 +108,20 @@
 				<tomcat.manager.password>admin</tomcat.manager.password>
 			</properties>
 		</profile>
+		<profile>
+			<id>dhs-maket2</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>dhs-maket2</value>
+				</property>
+			</activation>
+			<properties>
+				<conf>dhs-maket2</conf>
+				<tomcat.manager>http://10.0.13.52:8080/manager/text</tomcat.manager>
+				<tomcat.manager.username>admin</tomcat.manager.username>
+				<tomcat.manager.password>admin</tomcat.manager.password>
+			</properties>
+		</profile>
 	</profiles>
 </project>

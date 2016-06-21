@@ -22,9 +22,9 @@ public class DhxException extends Exception {
 		this.setExceptionCode(exceptionCode);
 	}
 	
-	public DhxException (String message, Exception cause) {
+/*	public DhxException (String message, Exception cause) {
 		super(message, cause);
-	}
+	}*/
 	
 	public DhxException (DHXExceptionEnum exceptionCode, String message, Exception cause) {
 		super(message, cause);
@@ -34,7 +34,7 @@ public class DhxException extends Exception {
 	@Override
 	public String getMessage(){
 		String message = super.getMessage();
-		return "DHXException code: " + exceptionCode + " " + message;
+		return "DHXException code: " + exceptionCode.getCodeForService() + " " + message;
 	}
 
 }

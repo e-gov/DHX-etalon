@@ -110,6 +110,17 @@ public class FileUtil {
     	}
 
     }
+    
+    public static InputStream getFileAsStream(File file) throws DhxException{
+    	try{
+
+	    	return new FileInputStream(file);
+    	}
+    	catch(IOException ex) {
+    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error while reading file. path:" + file.getPath() + " " + ex.getMessage(), ex);
+    	}
+
+    }
 	 
 	 public static boolean writeToFile(InputStream inStream, File targetFile) {
 	    	long totalBytesExtracted = 0;

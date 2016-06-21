@@ -90,27 +90,7 @@ public class XsdUtil {
 			}
 		}
 	}
-	
-	/**
-	 * Function validates file against XSD schema
-	 * @param file - file to validate
-	 * @param schemaFileStream - stream containing schema against which to validate
-	 * @throws DhxException
-	 */
-	public static void validate (File file, InputStream schemaStream) throws DhxException{
-		try {
-			Source schemaSource = new StreamSource(schemaStream);
-			Source xmlFile = new StreamSource(file);
-			SchemaFactory schemaFactory = SchemaFactory
-			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-			Schema schema = schemaFactory.newSchema(schemaSource);
-			Validator validator = schema.newValidator();
-		    validator.validate(xmlFile);
-		  log.info( "Document capsule is validated.");
-		} catch (Exception e) {
-			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while validating capsule. " + e.getMessage(), e);
-		}
-	}
+
 	
 
 }
