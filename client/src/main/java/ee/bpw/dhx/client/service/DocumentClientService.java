@@ -1,5 +1,6 @@
 package ee.bpw.dhx.client.service;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +14,28 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ee.bpw.dhx.container_2_1.DhxDocument2_1;
+import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.util.XsdUtil;
+import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.container_2_1.DocumentService2_1;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
+import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
 
 @Service
 @Slf4j
-public class DocumentClientService extends DocumentService{
+public class DocumentClientService extends DocumentService2_1{
 
+	@Autowired
+	DhxGateway dhxGateway;
 	
 	//get log4j logger to log events on custom level.
 	final Logger logger = LogManager.getLogger();
@@ -46,7 +56,7 @@ public class DocumentClientService extends DocumentService{
 	}
 	
 	@Override
-	public String recieveDocument (DhxDocument dhxDocument) throws DhxException{
+	public String recieveDocument2_1 (DhxDocument2_1 dhxDocument) throws DhxException{
 		//try {
 			String receiptId = UUID.randomUUID().toString();
 			logger.log(Level.getLevel("EVENT"), "Document recieved. for: "
@@ -63,29 +73,7 @@ public class DocumentClientService extends DocumentService{
 			throw ex;
 		}*/
 	}
-	
-	@Override
-	public SendDocumentResponse sendDocument(DhxDocument document) throws DhxException{
-			if(document.getInternalConsignmentId() == null) {
-				String consignmentId = UUID.randomUUID().toString();
-				document.setInternalConsignmentId(consignmentId);
-			}
-			logger.log(Level.getLevel("EVENT"), "Sending document to:" + document.getService().toString() + " internalConsignmentId:" + document.getInternalConsignmentId());
-			SendDocumentResponse response = null;
-			try{
-				log.info("Sending document to " + document.getService().toString());
-				response = super.sendDocument(document);
-				log.info("Sending document done");
-				logger.log(Level.getLevel("EVENT"), "Document sent to :" + document.getService().toString() + " ReceiptId:" + response.getReceiptId()
-						+ (response.getFault()==null?"":" faultCode:" + response.getFault().getFaultCode() + " faultString:" + response.getFault().getFaultString()));
-			} catch(DhxException e) {
-				log.error("Error occured while sending document. :" + document.getService().toString() + ". " + e.getMessage(), e);
-				logger.log(Level.getLevel("EVENT"),"Error occured while sending document. recipient:" + document.getService().toString() + ". " + e.getMessage());
-				throw e;
-			}
-		return response;
 
-	}
 	
 	/*@Override
 	public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId) throws DhxException{
@@ -110,6 +98,43 @@ public class DocumentClientService extends DocumentService{
 		return false;
 	}
 	
+	//override just to catch error
+	@Override
+	protected List<SendDocumentResponse> sendDocument(DecContainer container, String consignmentId) throws DhxException{
+		try {
+			return super.sendDocument(container, consignmentId);
+		} catch(DhxException ex) {
+			logger.log(Level.getLevel("EVENT"),"Error occured while sending document. " + ex.getMessage(), ex);
+			throw ex;
+		}		
+	}
+	
+	/**
+	 * Tries to send document and if error occurs, then returns response with fault, not raises exception
+	 * @return
+	 */
+	@Override
+	protected SendDocumentResponse sendDocumentTry(DhxDocument document){
+		SendDocumentResponse response = null;
+		try{
+        	response  = dhxGateway.sendDocument(document);
+    	} catch (Exception ex) {
+    		log.error("Error occured while sending docuemnt. " + ex.getMessage(), ex);
+    		logger.log(Level.getLevel("EVENT"),"Error occured while sending document. " + ex.getMessage(), ex);
+    		DHXExceptionEnum faultCode = DHXExceptionEnum.TECHNICAL_ERROR;
+    		if(ex instanceof DhxException) {
+    			if (((DhxException)ex).getExceptionCode() != null) {
+    				faultCode = ((DhxException)ex).getExceptionCode();
+    			}
+    		}
+    		response = new SendDocumentResponse();
+			Fault fault = new Fault();
+			fault.setFaultCode(faultCode.getCodeForService());
+			fault.setFaultString(ex.getMessage());
+			response.setFault(fault);
+    	}
+		return response;
+	}
 
 	
 }

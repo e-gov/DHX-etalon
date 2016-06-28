@@ -90,7 +90,96 @@ public class XsdUtil {
 			}
 		}
 	}
-
 	
+	
+	public static <T> T unmarshallCapsule (File capsuleFile, Unmarshaller unmarshaller) throws DhxException{
+		try{
+			return (T)unmarshallCapsule(new FileInputStream(capsuleFile), unmarshaller);	
+		}catch(FileNotFoundException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+	/**
+	 * Parses capsule
+	 * @param capsuleFile
+	 * @return
+	 * @throws DhxException
+	 */
+	public static <T> T unmarshallCapsule (InputStream capsuleStream, Unmarshaller unmarshaller) throws DhxException{
+		try{
+			if (log.isDebugEnabled()) {
+				log.debug("unmarshalling file" );
+			}
+			/*JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1");
+			Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();	*/
+			Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
+				return (T)obj;
+			/*} else {
+				log.info("Got unknown unmarshalled object");
+				return null;
+			}*/
+		}catch(JAXBException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+	
+	/**
+	 * Parses capsule
+	 * @param capsuleFile
+	 * @return
+	 * @throws DhxException
+	 */
+	public static File marshallCapsule (Object container, Marshaller marshaller) throws DhxException{
+		try{
+			if (log.isDebugEnabled()) {
+				log.debug("marshalling container" );
+			}
+			File outputFile = FileUtil.createPipelineFile(0, "");
+			marshaller.marshal(container, outputFile);
+			return outputFile;
+		}catch(IOException|JAXBException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
+	
+	public static void validate (File file, InputStream schemaStream) throws DhxException{
+		validate(FileUtil.getFileAsStream(file), schemaStream);
+	}
+	/**
+	 * Function validates file against XSD schema
+	 * @param file - file to validate
+	 * @param schemaFileStream - stream containing schema against which to validate
+	 * @throws DhxException
+	 */
+	public static void validate (InputStream fileStream, InputStream schemaStream) throws DhxException{
+		try {
+			Source schemaSource = new StreamSource(schemaStream);
+			Source xmlFile = new StreamSource(fileStream);
+			SchemaFactory schemaFactory = SchemaFactory
+			    .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			Schema schema = schemaFactory.newSchema(schemaSource);
+			Validator validator = schema.newValidator();
+		    validator.validate(xmlFile);
+		  log.info( "Document capsule is validated.");
+		} catch (Exception e) {
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while validating capsule. " + e.getMessage(), e);
+		}
+	}
+
+	public static <T>T unmarshall (Source source, Unmarshaller unmarshaller) throws DhxException{
+		try{
+			if (log.isDebugEnabled()) {
+				log.debug("unmarshalling file" );
+			}
+			Object obj = (Object) unmarshaller.unmarshal(source);
+				return (T)obj;
+		}catch(JAXBException ex) {
+			log.error(ex.getMessage(), ex);
+			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+		}
+	}
 
 }

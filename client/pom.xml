@@ -49,6 +49,10 @@
 				<directory>src/main/resources/${resourceDir}</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
 			</resource>
+			<resource>
+				<directory>src/main/resources/images</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>

@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import ee.bpw.dhx.client.service.DocumentClientService;
+import ee.bpw.dhx.client.service.DocumentGateWayClient;
 import ee.bpw.dhx.client.service.RepresentationServiceImpl;
+import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DocumentService;
 import ee.bpw.dhx.ws.service.RepresentationService;
 
@@ -31,6 +33,7 @@ public class DhxClientConfig {
 	//private String  jobRecipient;
 	private Integer binaryBufferSize;
 	private String name;
+	private String info;
 		
 	
 	List<String> representativesList = null;
@@ -53,6 +56,11 @@ public class DhxClientConfig {
 	{
 		DocumentService service = new DocumentClientService();
 	    return service;
+	}
+	
+	@Bean 
+	DhxGateway dhxGateway() {
+		return new DocumentGateWayClient();
 	}
 
 }

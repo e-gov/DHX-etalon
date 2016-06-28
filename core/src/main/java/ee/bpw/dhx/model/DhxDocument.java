@@ -25,7 +25,7 @@ public class DhxDocument {
 	
 	//public DhxDocument(){}
 	
-	public DhxDocument(/*String recipient, */XroadMember service, DecContainer container, File file, Boolean packFile)throws DhxException{
+	public DhxDocument(/*String recipient, */XroadMember service, File file, Boolean packFile)throws DhxException{
 		try{
 			File realFile;
 			if(packFile) {
@@ -37,7 +37,7 @@ public class DhxDocument {
 			DataSource source = new ByteArrayDataSource(stream, "application/octet-stream");
 			documentFile = new DataHandler(source);
 			//this.representativeCode = recipient;
-			this.container = container;
+			//this.container = container;
 			this.service = service;
 		} catch(FileNotFoundException ex) {
 			throw new DhxException(DHXExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
@@ -62,10 +62,10 @@ public class DhxDocument {
 		}
 	}
 	
-	public DhxDocument(/*String recipient, */XroadMember service, InputStream stream, DecContainer container, Boolean packFile) throws DhxException{
+	public DhxDocument(/*String recipient, */XroadMember service, InputStream stream, Boolean packFile) throws DhxException{
 		this(stream, packFile);
 		//this.representativeCode = recipient;
-		this.container = container;
+		//this.container = container;
 		this.service = service;
 	}
 	
@@ -78,7 +78,7 @@ public class DhxDocument {
 	
 	private DataHandler documentFile;
 //	private String representativeCode;
-	private DecContainer container;
+	//private DecContainer container;
 	//if it is inbound docuemnt, then client is the one who sent the document
 	private XroadMember client;
 	

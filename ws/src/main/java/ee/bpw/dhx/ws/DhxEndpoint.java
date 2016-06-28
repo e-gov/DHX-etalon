@@ -44,6 +44,11 @@ import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
 
 @Slf4j
 @Endpoint
+/**
+ * Endpoint class which offers SOAP services.
+ * @author Aleksei Kokarev
+ *
+ */
 public class DhxEndpoint {
 	
 	public static final String NAMESPACE_URI = "http://dhx.x-road.eu/producer";
@@ -57,30 +62,17 @@ public class DhxEndpoint {
 
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "sendDocument")
 	@ResponsePayload
+	/**
+	 * X-road SOAP service sendDocument. 
+	 * @param request 
+	 * @param messageContext
+	 * @return
+	 * @throws Exception
+	 */
 	public SendDocumentResponse sendDocument(
 			@RequestPayload SendDocument request,
            MessageContext messageContext) throws Exception {
 		SendDocumentResponse response = new SendDocumentResponse();
-		SaajSoapMessage soapRequest = (SaajSoapMessage) messageContext
-	                .getRequest();
-	        SoapHeader reqheader = soapRequest.getSoapHeader();
-	        SaajSoapMessage soapResponse = (SaajSoapMessage) messageContext
-	                .getResponse();
-	        SoapHeader respheader = soapResponse.getSoapHeader();
-	        TransformerFactory transformerFactory = TransformerFactory
-	                .newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        Iterator<SoapHeaderElement> itr = reqheader.examineAllHeaderElements();
-	        while (itr.hasNext()) {
-	            SoapHeaderElement ele = itr.next();
-	            
-	            log.debug("heade element" +ele.getName().getLocalPart());
-	            if(ele.getName().getLocalPart().endsWith("client")) {
-	            	XRoadClientIdentifierType client = (XRoadClientIdentifierType)documentService.unmarshall(ele.getSource(), XRoadClientIdentifierType.class);
-	            	 log.debug("mem code" +client.getMemberCode());
-	            }
-	            transformer.transform(ele.getSource(), respheader.getResult());
-	        }
 		try {
 			response = documentService.receiveDocumentFromEndpoint(request, messageContext);
 			//response.setStatus(StatusEnum.ACCEPTED.getName());
@@ -97,11 +89,18 @@ public class DhxEndpoint {
 	
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "representationList")
 	@ResponsePayload
+	/**
+	 * X-road SOAP service representationList.
+	 * @param request
+	 * @param messageContext
+	 * @return
+	 * @throws Exception
+	 */
 	public RepresentationListResponse representationList(
-			@RequestPayload RepresentationList request) throws Exception {
+			@RequestPayload RepresentationList request, MessageContext messageContext) throws Exception {
 		try {
 			RepresentationListResponse response = new RepresentationListResponse();
-			List<String> representatives = representationService.getRepresentationList();
+			List<String> representatives = representationService.getRepresentationListForEndpoint(messageContext);
 			if(representatives != null) {
 				MemberCodes memberCodes = new MemberCodes();
 				response.setMemberCodes(memberCodes);

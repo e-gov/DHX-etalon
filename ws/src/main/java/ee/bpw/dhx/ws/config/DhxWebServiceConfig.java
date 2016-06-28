@@ -43,6 +43,11 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 @Getter
 @Slf4j
 @Configuration
+/**
+ * Creates beans needed for DHX werservices
+ * @author Aleksei Kokarev
+ *
+ */
 public class DhxWebServiceConfig extends WsConfigurationSupport {
 
 	@Autowired
@@ -95,15 +100,17 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 	public Jaxb2Marshaller marshaller() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 		marshaller.setMtomEnabled(true);
-		marshaller.setContextPaths("ee.riik.schemas.deccontainer.vers_2_1", "eu.x_road.dhx.producer", "eu.x_road.xsd.identifiers", "eu.x_road.xsd.xroad");
+		marshaller.setContextPaths(config.getMarshallContextAsList());
+		//marshaller.setContextPaths("ee.riik.schemas.deccontainer.vers_2_1", "eu.x_road.dhx.producer", "eu.x_road.xsd.identifiers", "eu.x_road.xsd.xroad");
 		return marshaller;
 	}
     
     @Bean
 	public Unmarshaller getUnmarshaller() {
     	try {
-	    	JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.xroad");
-			Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();
+	    	//JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.xroad");
+    		JAXBContext unmarshalContext = JAXBContext.newInstance(config.getMarshallContext());			
+    		Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();
 			return unmarshaller;
     	} catch(JAXBException ex) {
     		log.error(ex.getMessage(), ex);

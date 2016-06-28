@@ -10,10 +10,16 @@ import org.springframework.context.annotation.Configuration;
 @Setter
 @ConfigurationProperties(prefix="soap")
 @Configuration
+/**
+ * Configuration parameters needed for SOAP services.
+ * @author Aleksei Kokarev
+ *
+ */
 public class SoapConfig {
 		
 	String targetnamespace;
 	String securityServer;
+	String securityServerAppender;
 	String xroadInstance;
 	String memberClass;
 	String memberCode;
@@ -21,11 +27,28 @@ public class SoapConfig {
 	String userId;
 	String protocolVersion;
 	
+	String globalConfLocation;
+	String globalConfFilename;
+	String dhxRepresentationGroupName;
+	
 	
 	String serviceXroadInstance;
 	String serviceMemberClass;
 	String serviceSubsystem;
-	String serviceCode;
-	String serviceVersion;
+	
+	
+	String sendDocumentServiceCode;
+	String sendDocumentServiceVersion;
+	String representativesServiceCode;
+	String representativesServiceVersion;
+	
+	Integer connectionTimeout;
+	Integer readTimeout;
+
+	
+	
+	public String getSecurityServerWithAppender() {
+		return securityServer+securityServerAppender;
+	}
 
 }

@@ -14,7 +14,7 @@ import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.ws.service.RepresentationService;
 
 @Slf4j
-public class RepresentationServiceImpl implements RepresentationService{
+public class RepresentationServiceImpl extends RepresentationService{
 
 	@Autowired
 	private DhxClientConfig dhxConfig;

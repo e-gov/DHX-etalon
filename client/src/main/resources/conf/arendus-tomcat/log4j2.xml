@@ -30,12 +30,14 @@
       <AppenderRef ref="RollingFile"/>
       <AppenderRef ref="CUSTOM"/>
     </Logger>
-    <Logger name="org.springframework.ws.client.MessageTracing" level="trace" additivity="false">
-      <AppenderRef ref="Console"/>
+     <Logger name="org.springframework.web.servlet.resource" level="trace" additivity="false">
+      <AppenderRef ref="RollingFile"/>
     </Logger>
     
-    <Root level="info" additivity="false">
-      <AppenderRef ref="Console"/>
+    
+    
+    <Root level="debug" additivity="false">
+      <AppenderRef ref="RollingFile"/>
     </Root>
   </Loggers>
 </Configuration>

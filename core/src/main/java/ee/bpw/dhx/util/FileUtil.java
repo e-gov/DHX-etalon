@@ -18,10 +18,13 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.axis.encoding.Base64;
 import org.springframework.core.io.ClassPathResource;
@@ -29,6 +32,7 @@ import org.springframework.core.io.ClassPathResource;
 import lombok.extern.slf4j.Slf4j;
 import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
+import eu.x_road.xsd.xroad.SharedParametersType;
 
 @Slf4j
 public class FileUtil {
@@ -372,6 +376,7 @@ public class FileUtil {
 	        }
 	    }
 	 
+	 
 	 /**
 	     * Determines if given String is null or empty (zero length).
 	     * Whitespace is not treated as empty string.
@@ -406,5 +411,39 @@ public class FileUtil {
 	            }
 	        }
 	    }
+	 
+	/* private void extractFile(ZipInputStream zipIn, String filePath) throws IOException { 
+		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+		byte[] bytesIn = new byte[binaryBuffeSize];
+		int read = 0;
+		while ((read = zipIn.read(bytesIn)) != -1) {
+		bos.write(bytesIn, 0, read);
+		}
+		bos.close();
+	}*/
+	 
+	public static InputStream zipUnpack (InputStream zipStream, String fileToFindInZip) throws DhxException{
+		try {
+		log.debug("Strating zip unpack. Searching for file:"  + fileToFindInZip);
+        ZipInputStream zis = 
+        		new ZipInputStream(zipStream);
+        ZipEntry ze;
+        log.debug("Zip inputstream created" );
+        ze = zis.getNextEntry();
+        while((ze = zis.getNextEntry()) != null) {
+        	log.debug("Zip entry:"  + ze.getName());
+        	if(ze.getName().equals(fileToFindInZip)) {
+        		return zis;
+        	//	extractFile(zis, globalConf);
+        		//SharedParametersType sharedParameters = XsdUtil.unmarshallCapsule(zis, unmarshaller);
+        		//return sharedParameters;
+        	} 
+        }
+        throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Not found expected file in ZIP archive. FILE:" + fileToFindInZip);
+		} catch(IOException e) {
+			throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting zipped XML file failed!" + e.getMessage(), e);
+		}
+        
+	}
 
 }
