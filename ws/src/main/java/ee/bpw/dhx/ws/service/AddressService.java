@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 
 
 /**
- * Class for creating and storing of address list. Stores address list in memory at the moment;
+ * Class for creating and storing of address list.
  * 
  * @author Aleksei Kokarev
  *
