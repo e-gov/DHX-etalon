@@ -1,18 +1,5 @@
 package ee.bpw.dhx.client.ui;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.List;
-
-import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.vaadin.easyuploads.FileFactory;
-import org.vaadin.easyuploads.UploadField;
-import org.vaadin.easyuploads.UploadField.FieldType;
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.event.UIEvents;
 import com.vaadin.server.ExternalResource;
@@ -50,14 +37,28 @@ import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DocumentService;
+
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.easyuploads.FileFactory;
+import org.vaadin.easyuploads.UploadField;
+import org.vaadin.easyuploads.UploadField.FieldType;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 @SpringUI
 @Theme("valo")
 @Slf4j
-public class DhxUI extends UI {
+public class DhxUi extends UI {
 
   @Autowired
   DocumentService documentService;
@@ -95,8 +96,8 @@ public class DhxUI extends UI {
     public InputStream getStream() {
       try {
         return FileUtil.getFileAsStream(filePath);
-      } catch (DhxException e) {
-        log.error(e.getMessage(), e);
+      } catch (DhxException ex) {
+        log.error(ex.getMessage(), ex);
       }
       return null;
     }
@@ -138,24 +139,24 @@ public class DhxUI extends UI {
   }
 
   private Layout getConfAsTab() {
-    VerticalLayout layout = new VerticalLayout();
     Label settingsLabel = new Label("Seadistused");
     settingsLabel.setStyleName("h2");
     TabSheet settings = new TabSheet();
     settings.addTab(getConf(), "Rakenduse konf");
     settings.addTab(getAdresseeList(), "Lokaalne aadressiraamat");
+    VerticalLayout layout = new VerticalLayout();
     layout.addComponent(settingsLabel);
     layout.addComponent(settings);
     return layout;
   }
 
   private Layout getActivityAsTab() {
-    VerticalLayout layout = new VerticalLayout();
     Label activityLabel = new Label("Tegevused");
     activityLabel.setStyleName("h2");
     TabSheet activity = new TabSheet();
     activity.addTab(getSendDocumentLayout(), "Dokumendi saatmine");
     activity.addTab(getRepresentationListLayout(), "Vahendatavate nimekiri");
+    VerticalLayout layout = new VerticalLayout();
     layout.addComponent(activityLabel);
     layout.addComponent(activity);
     return layout;
@@ -218,30 +219,6 @@ public class DhxUI extends UI {
 
   private Layout getLog() {
     try {
-      VerticalLayout layout = new VerticalLayout();
-      /*
-       * ClassResource res = new ClassResource("try.jpg"); //ClassPathResource res2 = new
-       * ClassPathResource("try.jpg"); InputStream is = res.getStream().getStream(); //InputStream
-       * is2 = res2.getInputStream(); Image image = new Image("", res); FileResource ff = new
-       * FileResource(new File("")); ThemeResource res3 = new ThemeResource("../dhx/try.jpg"); Image
-       * image2 = new Image("", res3);
-       */
-      /****** button *****/
-      /*
-       * StreamResource reee = new StreamResource(new DhxStreamSource("jar://try.jpg") , "try.jpg");
-       * Image image3 = new Image("", reee);
-       * 
-       * StreamResource reee3 = new StreamResource(new DhxStreamSource("/resources/quest.png") ,
-       * "try2.png"); Image image33 = new Image("", reee3);
-       */
-      /*
-       * buttonClear .setDescription(
-       * "<h2><img src=\"../VAADIN/themes/sampler/icons/comment_yellow.gif\"/>A richtext tooltip</h2>"
-       * + "<ul>" + "<li>HTML formatting</li><li>Images<br/>" + "</li><li>etc...</li></ul>");
-       */
-      /*************/
-
-      /******* text area ******/
       final TextArea text = new TextArea();
       text.setSizeFull();
       text.setValue(CustomAppender.getLastEvents());
@@ -263,6 +240,7 @@ public class DhxUI extends UI {
       });
       Label label = new Label("Viimased sündmused");
       label.setStyleName("h2");
+      VerticalLayout layout = new VerticalLayout();
       layout.addComponent(label);
       layout.addComponent(buttonClear);
       layout.addComponent(text);
@@ -272,8 +250,8 @@ public class DhxUI extends UI {
        * layout.addComponent(image3); layout.addComponent(image33);
        */
       return layout;
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
+    } catch (Exception ex) {
+      log.error(ex.getMessage(), ex);
     }
     return null;
   }
@@ -323,7 +301,6 @@ public class DhxUI extends UI {
     // Label formLabel = new Label("Dokumendi saatmine");
     // formLabel.setStyleName("h3");
     final Label chosenFile = new Label();
-    /****** upload field *****/
     final UploadField uploadField = new UploadField();
     uploadField.setBuffered(true);
     uploadField.setFieldType(FieldType.BYTE_ARRAY);
@@ -335,10 +312,10 @@ public class DhxUI extends UI {
       public File createFile(String fileName, String mimeType) {
         try {
           log.debug("creating file for uploaded file.");
-          File f = FileUtil.createPipelineFile();
+          File file = FileUtil.createPipelineFile();
           chosenFile.setValue("valitud fail: " + fileName);
-          return f;
-        } catch (IOException e) {
+          return file;
+        } catch (IOException ex) {
           return null;
         }
       }
@@ -420,7 +397,8 @@ public class DhxUI extends UI {
                 endDateStr = sdf.format(representee.getEndDate());
               }
               reprStr =
-                  reprStr + (reprStr.equals("") ? "" : ", ")
+                  reprStr
+                      + (reprStr.equals("") ? "" : ", ")
                       + (repr.getMemberCode() + " algus: " + startDateStr + " lõpp:" + endDateStr);
             }
           }

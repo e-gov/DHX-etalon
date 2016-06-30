@@ -1,21 +1,8 @@
 package ee.bpw.dhx.client.service;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import lombok.extern.slf4j.Slf4j;
-
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import ee.bpw.dhx.container21.DhxDocument21;
-import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
@@ -25,6 +12,19 @@ import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 
 @Service
@@ -40,7 +40,7 @@ public class DocumentClientService extends DocumentServiceImpl21 {
   private static List<DhxDocument> receevedDocuments = new ArrayList<DhxDocument>();
 
   /**
-   * overriden just to log events
+   * overriden just to log events.
    */
   @Override
   public DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client)
@@ -51,8 +51,10 @@ public class DocumentClientService extends DocumentServiceImpl21 {
       return super.extractAndValidateDocument(document, client);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
-      logger.log(Level.getLevel("EVENT"), "Document is not recieved. code:" + ex.getExceptionCode()
-          + " message:" + ex.getMessage());
+      logger.log(
+          Level.getLevel("EVENT"),
+          "Document is not recieved. code:" + ex.getExceptionCode() + " message:"
+              + ex.getMessage());
       throw ex;
     }
   }
@@ -66,10 +68,11 @@ public class DocumentClientService extends DocumentServiceImpl21 {
     logger.log(Level.getLevel("EVENT"), "Document recieved. for: "
         + dhxDocument.getClient().toString() + " receipt:" + receiptId);
     if (dhxDocument.getContainer() != null) {
-      logger.log(Level.getLevel("EVENT"), "Document data from capsule: recipient organisationCode:"
-          + dhxDocument.getContainer().getTransport().getDecRecipient().get(0)
-              .getOrganisationCode() + " sender organisationCode:"
-          + dhxDocument.getContainer().getTransport().getDecSender().getOrganisationCode());
+      logger.log(Level.getLevel("EVENT"),
+          "Document data from capsule: recipient organisationCode:"
+              + dhxDocument.getContainer().getTransport().getDecRecipient().get(0)
+                  .getOrganisationCode() + " sender organisationCode:"
+              + dhxDocument.getContainer().getTransport().getDecSender().getOrganisationCode());
     }
     dhxDocument.setContainer(null);
     dhxDocument.setDocumentFile(null);
@@ -78,8 +81,8 @@ public class DocumentClientService extends DocumentServiceImpl21 {
   }
 
 
-  /***
-   * Implementation of abtract method. Searches if that consignment id and that member are in the
+  /**
+   * Implementation of abtract method. Searches if that consignment id and that member are in the.
    * list of saved documents
    */
   @Override
@@ -96,7 +99,7 @@ public class DocumentClientService extends DocumentServiceImpl21 {
   }
 
   /**
-   * override just to log events
+   * override just to log events.
    */
   @Override
   protected List<SendDocumentResponse> sendDocument(DecContainer container, String consignmentId)
@@ -111,7 +114,7 @@ public class DocumentClientService extends DocumentServiceImpl21 {
   }
 
   /**
-   * overriden to log events
+   * overriden to log events.
    */
   @Override
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
@@ -126,9 +129,7 @@ public class DocumentClientService extends DocumentServiceImpl21 {
   }
 
   /**
-   * Overriden to log events
-   * 
-   * @return
+   * Overriden to log events.
    */
   @Override
   protected SendDocumentResponse sendDocumentTry(DhxDocument document) {

@@ -1,7 +1,11 @@
 package ee.bpw.dhx.client.config;
 
-import java.util.Arrays;
-import java.util.List;
+import ee.bpw.dhx.client.service.DocumentClientService;
+import ee.bpw.dhx.client.service.DocumentGateWayClient;
+import ee.bpw.dhx.client.service.RepresentationServiceImpl;
+import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.RepresentationService;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,12 +15,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ee.bpw.dhx.client.service.DocumentClientService;
-import ee.bpw.dhx.client.service.DocumentGateWayClient;
-import ee.bpw.dhx.client.service.RepresentationServiceImpl;
-import ee.bpw.dhx.ws.service.DhxGateway;
-import ee.bpw.dhx.ws.service.DocumentService;
-import ee.bpw.dhx.ws.service.RepresentationService;
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @Getter
@@ -49,6 +49,10 @@ public class DhxClientConfig {
 
   List<String> representativesList = null;
 
+  /**
+   * Returns list of representatives from configuration.
+   * @return - list of representatives
+   */
   public List<String> getRepresentativesList() {
     if (representativesList == null) {
       representativesList = Arrays.asList(representatives.split(","));

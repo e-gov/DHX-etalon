@@ -1,9 +1,8 @@
 package ee.bpw.dhx.client.service;
 
-import java.util.ArrayList;
-
-import java.util.Date;
-import java.util.List;
+import ee.bpw.dhx.client.config.DhxClientConfig;
+import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.ws.service.RepresentationService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -12,10 +11,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ee.bpw.dhx.client.config.DhxClientConfig;
-import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.Representee;
-import ee.bpw.dhx.ws.service.RepresentationService;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Slf4j
 public class RepresentationServiceImpl implements RepresentationService {
@@ -28,7 +26,7 @@ public class RepresentationServiceImpl implements RepresentationService {
 
 
   @Override
-  public List<Representee> getRepresentationList(){
+  public List<Representee> getRepresentationList() {
     String memberCodesStr = "";
     logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
     List<String> list = dhxConfig.getRepresentativesList();

@@ -2,13 +2,6 @@ package ee.bpw.dhx.client;
 
 
 
-import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
@@ -19,6 +12,13 @@ import org.apache.logging.log4j.core.config.plugins.PluginAttribute;
 import org.apache.logging.log4j.core.config.plugins.PluginElement;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.layout.PatternLayout;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
 
@@ -62,10 +62,9 @@ public final class CustomAppender extends AbstractAppender {
     }
   }
 
-  // Your custom appender needs to declare a factory method
-  // annotated with `@PluginFactory`. Log4j will parse the configuration
-  // and call this factory method to construct an appender instance with
-  // the configured attributes.
+  /**
+   * Pluginfactory.
+   */
   @PluginFactory
   public static CustomAppender createAppender(@PluginAttribute("name") String name,
       @PluginElement("Layout") Layout<? extends Serializable> layout,
@@ -81,6 +80,11 @@ public final class CustomAppender extends AbstractAppender {
     return new CustomAppender(name, filter, layout, true);
   }
 
+  /**
+   * Returns last logged events.
+   * 
+   * @return - last logged events
+   */
   public static String getLastEvents() {
     String lastLog = "";
     for (String event : queue) {
@@ -89,6 +93,9 @@ public final class CustomAppender extends AbstractAppender {
     return lastLog;
   }
 
+  /**
+   * deletes log events.
+   */
   public static void deleteLastEvents() {
     queue = new LinkedList<String>();
   }

@@ -1,6 +1,14 @@
 package ee.bpw.dhx.client.service;
 
-import java.util.UUID;
+import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.DhxDocument;
+import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.ws.service.DhxGateway;
+
+import eu.x_road.dhx.producer.Member;
+import eu.x_road.dhx.producer.RepresentationListResponse;
+import eu.x_road.dhx.producer.SendDocumentResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -8,14 +16,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.Representee;
-import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.ws.service.DhxGateway;
-import eu.x_road.dhx.producer.Member;
-import eu.x_road.dhx.producer.RepresentationListResponse;
-import eu.x_road.dhx.producer.SendDocumentResponse;
+import java.util.UUID;
 
 @Slf4j
 public class DocumentGateWayClient extends DhxGateway {
@@ -40,14 +41,15 @@ public class DocumentGateWayClient extends DhxGateway {
           + document.getService().toString()
           + " ReceiptId:"
           + response.getReceiptId()
-          + (response.getFault() == null ? "" : " faultCode:" + response.getFault().getFaultCode()
-              + " faultString:" + response.getFault().getFaultString()));
-    } catch (DhxException e) {
-      log.error("Error occured while sending document. :" + document.getService().toString() + ". "
-          + e.getMessage(), e);
+          + (response.getFault() == null ? "" : " faultCode:"
+              + response.getFault().getFaultCode() + " faultString:"
+              + response.getFault().getFaultString()));
+    } catch (DhxException ex) {
+      log.error("Error occured while sending document. :" + document.getService().toString()
+          + ". " + ex.getMessage(), ex);
       logger.log(Level.getLevel("EVENT"), "Error occured while sending document. recipient:"
-          + document.getService().toString() + ". " + e.getMessage());
-      throw e;
+          + document.getService().toString() + ". " + ex.getMessage());
+      throw ex;
     }
     return response;
 
@@ -65,16 +67,17 @@ public class DocumentGateWayClient extends DhxGateway {
         String representatives = "";
         for (Member memberResponse : response.getMembers().getMember()) {
           representatives +=
-              (representatives.equals("") ? "" : ", ") + new Representee(memberResponse).toString();
+              (representatives.equals("") ? "" : ", ")
+                  + new Representee(memberResponse).toString();
         }
         logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
       } else {
         logger.log(Level.getLevel("EVENT"), "Representation list received: empty list");
       }
-    } catch (DhxException e) {
+    } catch (DhxException ex) {
       logger.log(Level.getLevel("EVENT"), "Error occured while getting representation list for:"
-          + member.toString() + ". " + e.getMessage());
-      throw e;
+          + member.toString() + ". " + ex.getMessage());
+      throw ex;
     }
     return response;
   }
