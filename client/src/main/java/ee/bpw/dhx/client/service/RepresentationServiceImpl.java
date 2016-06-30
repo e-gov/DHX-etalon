@@ -18,29 +18,29 @@ import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.ws.service.RepresentationService;
 
 @Slf4j
-public class RepresentationServiceImpl implements RepresentationService{
+public class RepresentationServiceImpl implements RepresentationService {
 
-	@Autowired
-	private DhxClientConfig dhxConfig;
-	
-	//get log4j logger to log events on custom level.
-	final Logger logger = LogManager.getLogger();
-	
+  @Autowired
+  private DhxClientConfig dhxConfig;
 
-	@Override
-	public List<Representee> getRepresentationList() throws DhxException {
-		String memberCodesStr ="";
-		logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
-		List<String> list = dhxConfig.getRepresentativesList();
-		List<Representee> representees = new ArrayList<Representee>();
-		for(String representative : list) {	
-			memberCodesStr += (memberCodesStr==""?"":", ") + representative;
-			Representee representee = new Representee(representative, new Date(), null);
-			representees.add(representee);
-		}
-		logger.log(Level.getLevel("EVENT"), "Returning representationList. " + memberCodesStr);
-		return representees;
-	}
+  // get log4j logger to log events on custom level.
+  final Logger logger = LogManager.getLogger();
+
+
+  @Override
+  public List<Representee> getRepresentationList(){
+    String memberCodesStr = "";
+    logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
+    List<String> list = dhxConfig.getRepresentativesList();
+    List<Representee> representees = new ArrayList<Representee>();
+    for (String representative : list) {
+      memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representative;
+      Representee representee = new Representee(representative, new Date(), null);
+      representees.add(representee);
+    }
+    logger.log(Level.getLevel("EVENT"), "Returning representationList. " + memberCodesStr);
+    return representees;
+  }
 
 
 }

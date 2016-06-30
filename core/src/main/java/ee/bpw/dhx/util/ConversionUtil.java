@@ -1,5 +1,8 @@
 package ee.bpw.dhx.util;
 
+import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -7,25 +10,40 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import ee.bpw.dhx.exception.DHXExceptionEnum;
-import ee.bpw.dhx.exception.DhxException;
-
+/**
+ * Utility methods for convertation.
+ * @author Aleksei Kokarev
+ *
+ */
 public class ConversionUtil {
-	
-	public static XMLGregorianCalendar toGregorianCalendar(Date date) throws DhxException{
-		try {
-			GregorianCalendar gcalendar = new GregorianCalendar();
-			gcalendar.setTime(date);
-			XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcalendar);
-			return xmlDate;
-		} catch(DatatypeConfigurationException ex) {
-			throw new DhxException(DHXExceptionEnum.TECHNICAL_ERROR, "Error occured while converting date. " + ex.getMessage(), ex);
-		}
-	}
-	
-	public static Date toDate(XMLGregorianCalendar xmlDate) {
-		return xmlDate.toGregorianCalendar().getTime();
 
-	}
+  /**
+   * Converts Date to XML date.
+   * @param date - date to convert
+   * @return - converted date
+   * @throws DhxException - thrown if error occurs
+   */
+  public static XMLGregorianCalendar toGregorianCalendar(Date date) throws DhxException {
+    try {
+      GregorianCalendar gcalendar = new GregorianCalendar();
+      gcalendar.setTime(date);
+      XMLGregorianCalendar xmlDate =
+          DatatypeFactory.newInstance().newXMLGregorianCalendar(gcalendar);
+      return xmlDate;
+    } catch (DatatypeConfigurationException ex) {
+      throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
+          "Error occured while converting date. " + ex.getMessage(), ex);
+    }
+  }
+
+  /**
+   * Converts XML date to Date.
+   * @param xmlDate - XML date to convert
+   * @return - converted Date
+   */
+  public static Date toDate(XMLGregorianCalendar xmlDate) {
+    return xmlDate.toGregorianCalendar().getTime();
+
+  }
 
 }

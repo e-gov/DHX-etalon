@@ -20,23 +20,23 @@ import ee.bpw.dhx.ws.service.DocumentService;
 @Slf4j
 public class ScheduledClient {
 
-	@Autowired
-	DocumentService documentService;
-	
-	@Autowired
-	DhxClientConfig config;
+  @Autowired
+  DocumentService documentService;
 
-	
-    @Scheduled(fixedDelayString = "${dhx.client.auto-send-frequency}")
-    public void sendValidDocument() throws DhxException, IOException, FileNotFoundException{
-    	File file = null;
-    	try{
-    		file = FileUtil.getFile(config.getCapsuleTestFile());
-    		log.debug("sending document automatically");
-	    	// DhxDocument document = new DhxDocument(config.getJobRecipient(), stream, false);
-	    	 documentService.sendDocument(file, null);
-    	}catch (DhxException e) {
-    		log.error(e.getMessage(), e);
-    	}
+  @Autowired
+  DhxClientConfig config;
+
+
+  @Scheduled(fixedDelayString = "${dhx.client.auto-send-frequency}")
+  public void sendValidDocument() throws DhxException, IOException, FileNotFoundException {
+    File file = null;
+    try {
+      file = FileUtil.getFile(config.getCapsuleTestFile());
+      log.debug("sending document automatically");
+      // DhxDocument document = new DhxDocument(config.getJobRecipient(), stream, false);
+      documentService.sendDocument(file, null);
+    } catch (DhxException e) {
+      log.error(e.getMessage(), e);
     }
+  }
 }

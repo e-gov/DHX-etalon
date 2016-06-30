@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix="soap")
+@ConfigurationProperties(prefix = "soap")
 @Configuration
 /**
  * Configuration parameters needed for SOAP services.
@@ -16,39 +16,39 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 public class SoapConfig {
-		
-	String targetnamespace;
-	String securityServer;
-	String securityServerAppender;
-	String xroadInstance;
-	String memberClass;
-	String memberCode;
-	String subsystem;
-	String userId;
-	String protocolVersion;
-	
-	String globalConfLocation;
-	String globalConfFilename;
-	String dhxRepresentationGroupName;
-	
-	
-	String serviceXroadInstance;
-	String serviceMemberClass;
-	String serviceSubsystem;
-	
-	
-	String sendDocumentServiceCode;
-	String sendDocumentServiceVersion;
-	String representativesServiceCode;
-	String representativesServiceVersion;
-	
-	Integer connectionTimeout;
-	Integer readTimeout;
 
-	
-	
-	public String getSecurityServerWithAppender() {
-		return securityServer+securityServerAppender;
-	}
+  String targetnamespace;
+  String securityServer;
+  String securityServerAppender;
+  String xroadInstance;
+  String memberClass;
+  String memberCode;
+  String subsystem;
+  String userId;
+  String protocolVersion;
+
+  String globalConfLocation;
+  String globalConfFilename;
+  String dhxRepresentationGroupName;
+
+
+  String serviceXroadInstance;
+  String serviceMemberClass;
+  String serviceSubsystem;
+
+
+  String sendDocumentServiceCode;
+  String sendDocumentServiceVersion;
+  String representativesServiceCode;
+  String representativesServiceVersion;
+
+  Integer connectionTimeout;
+  Integer readTimeout;
+
+
+
+  public String getSecurityServerWithAppender() {
+    return securityServer + securityServerAppender;
+  }
 
 }

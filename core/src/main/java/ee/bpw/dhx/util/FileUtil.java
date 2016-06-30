@@ -1,5 +1,13 @@
 package ee.bpw.dhx.util;
 
+import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.apache.axis.encoding.Base64;
+import org.springframework.core.io.ClassPathResource;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -24,447 +32,484 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
 
-import lombok.extern.slf4j.Slf4j;
 
-import org.apache.axis.encoding.Base64;
-import org.springframework.core.io.ClassPathResource;
-
-import ee.bpw.dhx.exception.DHXExceptionEnum;
-import ee.bpw.dhx.exception.DhxException;
-
+/**
+ * Utility methods related to files.
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @Slf4j
 public class FileUtil {
-	
-	private static final Integer binaryBuffeSize = 100000;
-	
-	public static File extractAndUnpackAttachment (DataHandler attachment) throws DhxException{
-		try{
-			File file = createPipelineFile(0, "");
-			getDataFromDataSource(attachment.getDataSource(), "", file, false);
-			gzipUnpackXML(file, false);
-			return file;
-		}catch(Exception e) {
-			throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR,  "Error while extracting and unpacking attachment. " + e.getMessage(), e);
-		}
-	}
-	
-	/**
-	 * Genereerib operatsioonisüsteemi ajutiste failide kataloogi uue unikaalse nimega ajutise faili.
-	 *
-	 * @param itemIndex		Faili järjekorranumber. Võimaldab vajadusel eristada näiteks tsüklis loodud ajutisi faile.
-	 * @param extension		Faililaiend. Võimaldab ajutisele failile vajadusel ka faililaiendi anda.
-	 * @return				Faili nimi (absolute path)
-	 */
-    public static File createPipelineFile(int itemIndex, String extension) throws IOException{
-            if (extension == null) {
-            	extension = "";
-            }
-            if ((extension.length() > 0) && !extension.startsWith(".")) {
-            	extension = "." + extension;
-            }
 
-        	String tmpDir = System.getProperty("java.io.tmpdir", "");
+  private static final Integer binaryBuffeSize = 100000;
 
-            String result = tmpDir + File.separator + "dhl_" + String.valueOf((new Date()).getTime()) + ((itemIndex > 0) ? "_item" + String.valueOf(itemIndex) : "") + extension;
-            int uniqueCounter = 0;
-            while ((new File(result)).exists()) {
-                ++uniqueCounter;
-                result = tmpDir + File.separator + "dhl_" + String.valueOf((new Date()).getTime()) + ((itemIndex > 0) ? "_item" + String.valueOf(itemIndex) : "") + "_" + String.valueOf(uniqueCounter) + extension;
-            }
-            File file = new File(result);
-            file.createNewFile();
-            return file;
+  /**
+   * Method extract attachment and unpacks attachment from datahandler and returns as file.
+   * Internally base64 decode and gzip unzip is done.
+   * 
+   * @param attachment - datahandler of the attachment
+   * @return unpacked attachment file
+   * @throws DhxException - throws if error occurs while unpacking attachment
+   */
+  public static File extractAndUnpackAttachment(DataHandler attachment) throws DhxException {
+    try {
+      File file = createPipelineFile();
+      getDataFromDataSource(attachment.getDataSource(), "", file, false);
+      gzipUnpackXml(file, false);
+      return file;
+    } catch (Exception ex) {
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Error while extracting and unpacking attachment. " + ex.getMessage(), ex);
     }
-    
-    public static File getClassPathFile (String path) {
-    	File file = null;
-    	try {
-    		InputStream stream = new ClassPathResource(path).getInputStream();
-    		file = createPipelineFile(0, "");
-    		writeToFile(stream, file);
-		}catch(IOException ex) {
-			log.error("Error occured while reading dvk capsule XSD." + ex.getMessage(), ex);
-			file = null;
-		}
-		return file;
+  }
+
+  /**
+   * Generates operationsystem temporary file with unique name. File is written to java.io.tmpdir
+   * 
+   * @return created file
+   */
+  public static File createPipelineFile() throws IOException {
+    /*
+     * if (extension == null) { extension = ""; } if ((extension.length() > 0) &&
+     * !extension.startsWith(".")) { extension = "." + extension; }
+     */
+
+    String tmpDir = System.getProperty("java.io.tmpdir", "");
+
+    String result = tmpDir + File.separator + "dhx_" + String.valueOf((new Date()).getTime());
+    int uniqueCounter = 0;
+    while ((new File(result)).exists()) {
+      ++uniqueCounter;
+      result =
+          tmpDir + File.separator + "dhl_" + String.valueOf((new Date()).getTime())
+              + String.valueOf(uniqueCounter);
     }
-    
-    public static InputStream getClassPathFileStream (String path) throws IOException{
-    	return new ClassPathResource(path).getInputStream();
+    File file = new File(result);
+    file.createNewFile();
+    return file;
+  }
+
+  /*
+   * public static File getClassPathFile(String path) { File file = null; try { InputStream stream =
+   * new ClassPathResource(path).getInputStream(); file = createPipelineFile(0, "");
+   * writeToFile(stream, file); } catch (IOException ex) {
+   * log.error("Error occured while reading dvk capsule XSD." + ex.getMessage(), ex); file = null; }
+   * return file; }
+   * 
+   * public static InputStream getClassPathFileStream(String path) throws IOException { return new
+   * ClassPathResource(path).getInputStream(); }
+   */
+
+  /**
+   * Gets file from classpath or from filesystem by files path.
+   * 
+   * @param path - path of the file. if start with jar://, then searches from classpath
+   * @return - file
+   * @throws DhxException - throws if error occurs while getting file
+   */
+  public static File getFile(String path) throws DhxException {
+    File file = null;
+    try {
+
+      if (path.startsWith("jar://")) {
+        file = new ClassPathResource(path.substring(6)).getFile();
+      } else {
+        file = new File(path);
+      }
+      return file;
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error while reading file. path:"
+          + path + " " + ex.getMessage(), ex);
     }
-    
-    public static File getFile(String path) throws DhxException{
-    	File file = null;
-    	try{
-	    	
-	    	if/*(path.startsWith("http")) {
-	            URL url = new URL(path);
-	            stream = url.openStream();
-	        } else if*/(path.startsWith("jar://")) {
-	    		file = new ClassPathResource(path.substring(6)).getFile();
-	        } else {
-	        	file = new File(path);
-	        }
-	    	return file;
-    	}
-    	catch(IOException ex) {
-    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error while reading file. path:" + path + " " + ex.getMessage(), ex);
-    	}
 
+  }
+
+
+  /**
+   * Gets file from classpath or from filesystem by files path and returns files stream
+   * 
+   * @param path - path of the file. if start with jar://, then searches from classpath
+   * @return - files stream
+   * @throws DhxException - throws if error occurs while getting file
+   */
+  public static InputStream getFileAsStream(String path) throws DhxException {
+    InputStream stream = null;
+    try {
+
+      if (path.startsWith("http")) {
+        URL url = new URL(path);
+        stream = url.openStream();
+      } else if (path.startsWith("jar://")) {
+        stream = new ClassPathResource(path.substring(6)).getInputStream();
+      } else {
+        stream = new FileInputStream(path);
+      }
+      return stream;
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error while reading file. path:"
+          + path + " " + ex.getMessage(), ex);
     }
-    
-    
-    public static InputStream getFileAsStream(String path) throws DhxException{
-    	InputStream stream = null;
-    	try{
-	    	
-	    	if(path.startsWith("http")) {
-	            URL url = new URL(path);
-	            stream = url.openStream();
-	        } else if(path.startsWith("jar://")) {
-	        	stream = new ClassPathResource(path.substring(6)).getInputStream();
-	        } else {
-	        	stream = new FileInputStream(path);
-	        }
-	    	return stream;
-    	}
-    	catch(IOException ex) {
-    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error while reading file. path:" + path + " " + ex.getMessage(), ex);
-    	}
 
+  }
+
+  /**
+   * Returns files stream.
+   * 
+   * @param file - file to get its stream
+   * @return - files stream
+   * @throws DhxException - throws if error occcurs while getting files stream
+   */
+  protected static InputStream getFileAsStream(File file) throws DhxException {
+    try {
+      return new FileInputStream(file);
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error while reading file. path:"
+          + file.getPath() + " " + ex.getMessage(), ex);
     }
-    
-    protected static InputStream getFileAsStream(File file) throws DhxException{
-    	try{
 
-	    	return new FileInputStream(file);
-    	}
-    	catch(IOException ex) {
-    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error while reading file. path:" + file.getPath() + " " + ex.getMessage(), ex);
-    	}
+  }
 
+  /**
+   * Creates file in temporary directory and writes stream to that file.
+   * 
+   * @param stream - stream to write to file
+   * @return - file containing data from stream
+   * @throws DhxException - thrown if error occured while creating or writing file
+   */
+  public static File createFileAndWrite(InputStream stream) throws DhxException {
+    try {
+      File file = createPipelineFile();
+      writeToFile(stream, file);
+      return file;
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error occured while creating file. "
+          + ex.getMessage(), ex);
     }
-	 
-    public static File createFileAndWrite (InputStream stream) throws DhxException{
-    	try{
-	    	File file = createPipelineFile(0, "");
-	    	writeToFile(stream, file);
-	    	return file;
-    	} catch(IOException ex) {
-    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error occured while creating file. " + ex.getMessage(), ex);
-    	}
+  }
+
+  /**
+   * Writes stream to file.
+   * 
+   * @param inStream - stream to write to file
+   * @param targetFile - file into which write the stream
+   * @throws DhxException - thrown if error occured while writing to file
+   */
+  private static void writeToFile(InputStream inStream, File targetFile) throws DhxException {
+    long totalBytesExtracted = 0;
+    byte[] buf = new byte[binaryBuffeSize];
+    int len;
+    BufferedInputStream sourceBuffered = null;
+    FileOutputStream out = null;
+
+    try {
+      sourceBuffered = new BufferedInputStream(inStream);
+      out = new FileOutputStream(targetFile, false);
+      // Uncompress data in input stream
+      while ((len = sourceBuffered.read(buf)) > 0) {
+        out.write(buf, 0, len);
+        totalBytesExtracted += len;
+      }
+      // Paneme failid kinni, et saaks ülearuse faili maha kustutada ja
+      // vajaliku ümber nimetada.
+      safeCloseStream(inStream);
+      safeCloseStream(sourceBuffered);
+      safeCloseStream(out);
+    } catch (IOException ex) {
+      log.error(ex.getMessage(), ex);
+      log.error("Initial file length: " + 0 + ", total bytes extracted before error: "
+          + totalBytesExtracted);
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error occured while writing to file. "
+          + ex.getMessage(), ex);
+    } finally {
+      safeCloseStream(inStream);
+      safeCloseStream(sourceBuffered);
+      safeCloseStream(out);
+      out = null;
+      buf = null;
     }
-    
-	 public static boolean writeToFile(InputStream inStream, File targetFile) {
-	    	long totalBytesExtracted = 0;
-	        byte[] buf = new byte[binaryBuffeSize];
-	        int len;
-	       // FileInputStream sourceStream = null;
-	        BufferedInputStream sourceBuffered = null;
-	       // GZIPInputStream in = null;
-	        FileOutputStream out = null;
+  }
 
-	        try {
-	            // Init streams needed for uncompressing data
-	            //sourceStream = attachmentStream;
-	            sourceBuffered = new BufferedInputStream(inStream);
-	          //  in = new GZIPInputStream(sourceBuffered);
-	           // String targetFile = "try" + ".out";
-	            out = new FileOutputStream(targetFile, false);
-	           /* if (appendDocumentHeader) {
-	                out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?><root>".getBytes("UTF-8"));
-	            }*/
+  private static void getDataFromDataSource(DataSource source, String transferEncoding,
+      File targetFile, boolean append) throws IOException, MessagingException,
+      NoSuchAlgorithmException {
+    // We dont want to read data several times, to do everything on the first read(including md5).
+    MessageDigest md = MessageDigest.getInstance("MD5");
+    InputStream dataStream = new BufferedInputStream(source.getInputStream());
 
-	            // Uncompress data in input stream
-	            while ((len = sourceBuffered.read(buf)) > 0) {
-	                out.write(buf, 0, len);
-	                totalBytesExtracted += len;
-	            }
-	           
+    OutputStream outStream = new BufferedOutputStream(new FileOutputStream(targetFile, append));
+    InputStream base64DecoderStream = null;
 
-	            // Paneme failid kinni, et saaks ülearuse faili maha kustutada ja
-	            // vajaliku ümber nimetada.
-	            safeCloseStream(inStream);
-	            safeCloseStream(sourceBuffered);
-	            safeCloseStream(out);
-
-	            // Kustutame esialgse faili ja nimetame uue ümber nii,
-	            // et see saaks vana asemele
-	          /*  (new File(sourceFile)).delete();
-	            (new File(targetFile)).renameTo(new File(sourceFile));*/
-
-	            return true;
-	        } catch (Exception ex) {
-	        	log.error(ex.getMessage(), ex);
-	        	log.error("Initial file length: "+ 0 +", total bytes extracted before error: "+ totalBytesExtracted);
-	            return false;
-	        } finally {
-	            safeCloseStream(inStream);
-	            safeCloseStream(sourceBuffered);
-	           // safeCloseStream(attachmentStream);
-	            safeCloseStream(out);
-
-	          //  attachmentStream = null;
-	          //  in = null;
-	            out = null;
-	            buf = null;
-	        }
-	    }
-	 
-	 public static void getDataFromDataSource(DataSource source, String transferEncoding, File targetFile, boolean append) throws IOException, MessagingException, NoSuchAlgorithmException{
-	            // Väldime andmete korduvat lugemist ja arvutame andmete esmakordsel
-	            // lugemisel ühtlasi ka andmete MD5 kontrollsumma
-	            MessageDigest md = MessageDigest.getInstance("MD5");
-	            InputStream dataStream = new BufferedInputStream(source.getInputStream());
-
-	            OutputStream outStream = new BufferedOutputStream(new FileOutputStream(targetFile, append));
-	            InputStream base64DecoderStream = null;
-
-	            // Puhvri pikkus peab jaguma 4-ga, kuna meil on potentsiaalselt
-	            // tegemist Base64 kodeeringus andmetega, mille me tahame kohe
-	            // ka dekodeerida.
-	            byte[] buf = new byte[65536];
-	            int len = 0;
-	            try {
-	                if (transferEncoding.equalsIgnoreCase("base64")) {
-	                    while ((len = dataStream.read(buf, 0, buf.length)) > 0) {
-	                        md.update(buf, 0, len);
-	                        outStream.write(buf, 0, len);
-	                    }
-	                } else {
-	                	base64DecoderStream = javax.mail.internet.MimeUtility.decode(dataStream, "base64");
-	                    while ((len = base64DecoderStream.read(buf, 0, buf.length)) > 0) {
-	                        md.update(buf, 0, len);
-	                        outStream.write(buf, 0, len);
-	                    }
-	                }
-	            } finally {
-	                buf = null;
-	                safeCloseStream(base64DecoderStream);
-	                safeCloseStream(dataStream);
-	                safeCloseStream(outStream);
-	                base64DecoderStream = null;
-	                dataStream = null;
-	                outStream = null;
-	            }
-
-	            byte[] digest = md.digest();
-	            md = null;
-	    }
-	 
-	 public static File gzipPackXML(File fileToZip) {
-		 	if (!fileToZip.exists()) {
-	            log.debug("Input file \""+ fileToZip.getPath() +"\" does not exist!");
-	            throw new IllegalArgumentException("Data file does not exist!");
-	        }
-	        long time = Calendar.getInstance().getTimeInMillis();
-	        try {
-	        	log.debug("Starting packing file. path:" + fileToZip.getPath());
-	        	InputStream stream = new FileInputStream(fileToZip);
-	            return gzipPackXML(stream, String.valueOf(time), String.valueOf(time + 1));
-	        } catch (IOException e) {
-	            log.error("Unable to gzip and encode to base64", e);
-	            throw new RuntimeException(e);
-	        }
-	    }
-	 
-	 
-	 public static File gzipPackXML(InputStream streamtoZip) {
-	        long time = Calendar.getInstance().getTimeInMillis();
-	        try {
-	        	log.debug("Starting packing inputstream.");
-	            return gzipPackXML(streamtoZip, String.valueOf(time), String.valueOf(time + 1));
-	        } catch (IOException e) {
-	            log.error("Unable to gzip and encode to base64", e);
-	            throw new RuntimeException(e);
-	        }
-	    }
-	 
-	 public static File gzipPackXML(InputStream streamtoZip, String orgCode, String requestName) throws IllegalArgumentException, IOException {
-		 	File zipOutFile = gzipFile(streamtoZip);
-	        String tmpDir = System.getProperty("java.io.tmpdir", "");
-
-	        // Kodeerime pakitud andmed base64 kujule
-	        String base64OutFileName = tmpDir + File.separator + "dhl_" + requestName + "_" + orgCode + "_" + String.valueOf((new Date()).getTime()) + "_base64OutBuffer.dat";
-	        File base64File = new File(base64OutFileName); 
-	        InputStream in = new BufferedInputStream(new FileInputStream(zipOutFile));
-	        OutputStream b64out = new BufferedOutputStream(new FileOutputStream(base64File, false));
-	        byte[] buf = new byte[66000];  // Puhvri pikkus peaks jaguma 3-ga
-	        int len;
-	        try {
-		        while ((len = in.read(buf)) > 0) {
-		            b64out.write(Base64.encode(buf, 0, len).getBytes());
-		        }
-	        } finally {
-		        in.close();
-		        b64out.close();
-	        }
-
-	        // Kustutame vaheproduktideks olnud failid ära
-	        (zipOutFile).delete();
-
-	        return base64File;
-	    }
-	 
-	 public static File gzipFile(InputStream streamToZip) {
-	        /*if (!fileToZip.exists()) {
-	            log.debug("Input file \""+ fileToZip.getPath() +"\" does not exist!");
-	            throw new IllegalArgumentException("Data file does not exist!");
-	        }*/
-		 log.debug("Starting gziping inputstream.");  
-	        String tmpDir = System.getProperty("java.io.tmpdir", "");
-	        try {
-	            // Pakime andmed kokku
-	            String zipOutFileName = tmpDir + File.separator + "dhl_" + UUID.randomUUID().toString() + "_" + String.valueOf((new Date()).getTime()) + "_zipOutBuffer.dat";
-	            File zipFile = new File(zipOutFileName);
-	            InputStream in = new BufferedInputStream(streamToZip);
-	            OutputStream zipOutFile = new BufferedOutputStream(new FileOutputStream(zipFile));
-	            GZIPOutputStream out = new GZIPOutputStream(zipOutFile);
-	            byte[] buf = new byte[binaryBuffeSize];
-	            int len;
-	            try {
-	                while ((len = in.read(buf)) > 0) {
-	                    out.write(buf, 0, len);
-	                }
-	            } finally {
-	                in.close();
-	                out.finish();
-	                out.close();
-	            }
-
-	            return zipFile;
-	        } catch (Exception e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
-	 
-	 public static void gzipUnpackXML(File sourceFile, boolean appendDocumentHeader) throws FileNotFoundException, IOException, DhxException{
-	        if (sourceFile == null ) {
-	        	throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting gzipped XML file failed because file was not supplied!");
-	        	
-	        }
-
-	        File sourceFileAsObject = sourceFile;
-	        if (!sourceFileAsObject.exists()) {
-	        	throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting gzipped XML file failed because file "+ sourceFile +" does not exist!");
-	        }
-	        if (sourceFileAsObject.length() < 1) {
-	        	throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting gzipped XML file failed because file "+ sourceFile +" is empty!");
-	        }
-
-	    	long totalBytesExtracted = 0;
-	        byte[] buf = new byte[binaryBuffeSize];
-	        int len;
-	        FileInputStream sourceStream = null;
-	        BufferedInputStream sourceBuffered = null;
-	        GZIPInputStream in = null;
-	        FileOutputStream out = null;
-
-	        try {
-	            // Init streams needed for uncompressing data
-	            sourceStream = new FileInputStream(sourceFile);
-	            sourceBuffered = new BufferedInputStream(sourceStream);
-	            in = new GZIPInputStream(sourceBuffered);
-	            String targetFile = sourceFile + ".out";
-	            out = new FileOutputStream(targetFile, false);
-	            if (appendDocumentHeader) {
-	                out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?><root>".getBytes("UTF-8"));
-	            }
-
-	            // Uncompress data in input stream
-	            while ((len = in.read(buf)) > 0) {
-	                out.write(buf, 0, len);
-	                totalBytesExtracted += len;
-	            }
-	            if (appendDocumentHeader) {
-	                out.write("</root>".getBytes("UTF-8"));
-	            }
-
-	            // Paneme failid kinni, et saaks ülearuse faili maha kustutada ja
-	            // vajaliku ümber nimetada.
-	            safeCloseStream(in);
-	            safeCloseStream(sourceBuffered);
-	            safeCloseStream(sourceStream);
-	            safeCloseStream(out);
-
-	            // Kustutame esialgse faili ja nimetame uue ümber nii,
-	            // et see saaks vana asemele
-	            sourceFile.delete();
-	            File target  = new File(targetFile);
-	            target.renameTo(sourceFile);
-	            sourceFile = target;
-	        } finally {
-	            safeCloseStream(in);
-	            safeCloseStream(sourceBuffered);
-	            safeCloseStream(sourceStream);
-	            safeCloseStream(out);
-
-	            sourceStream = null;
-	            in = null;
-	            out = null;
-	            buf = null;
-	        }
-	    }
-	 
-	 
-	 /**
-	     * Determines if given String is null or empty (zero length).
-	     * Whitespace is not treated as empty string.
-	     *
-	     * @param stringToEvaluate
-	     * 		String that will be checked for having NULL or empty value
-	     * @return
-	     * 		true, if input String is NULL or has zero length
-	     */
-	    public static boolean isNullOrEmpty(final String stringToEvaluate) {
-	    	return ((stringToEvaluate == null) || stringToEvaluate.isEmpty());
-	    }
-	 
-	 public static void safeCloseStream(InputStream s) {
-	        if (s != null) {
-	            try {
-	                s.close();
-	            } catch (Exception ex) {
-	            } finally {
-	                s = null;
-	            }
-	        }
-	    }
-	 
-	 public static void safeCloseStream(OutputStream s) {
-	        if (s != null) {
-	            try {
-	                s.close();
-	            } catch (Exception ex) {
-	            } finally {
-	                s = null;
-	            }
-	        }
-	    }
-	 
-	 
-	public static InputStream zipUnpack (InputStream zipStream, String fileToFindInZip) throws DhxException{
-		try {
-		log.debug("Strating zip unpack. Searching for file:"  + fileToFindInZip);
-        ZipInputStream zis = 
-        		new ZipInputStream(zipStream);
-        ZipEntry ze;
-        log.debug("Zip inputstream created" );
-        ze = zis.getNextEntry();
-        while((ze = zis.getNextEntry()) != null) {
-        	log.debug("Zip entry:"  + ze.getName());
-        	if(ze.getName().equals(fileToFindInZip)) {
-        		return zis;
-        	//	extractFile(zis, globalConf);
-        		//SharedParametersType sharedParameters = XsdUtil.unmarshallCapsule(zis, unmarshaller);
-        		//return sharedParameters;
-        	} 
+    // Buffer must be divisible to 4,
+    // because we potentially have base 64 data, which we want to
+    // decode
+    byte[] buf = new byte[65536];
+    int len = 0;
+    try {
+      if (transferEncoding.equalsIgnoreCase("base64")) {
+        while ((len = dataStream.read(buf, 0, buf.length)) > 0) {
+          md.update(buf, 0, len);
+          outStream.write(buf, 0, len);
         }
-        throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Not found expected file in ZIP archive. FILE:" + fileToFindInZip);
-		} catch(IOException e) {
-			throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting zipped XML file failed!" + e.getMessage(), e);
-		}
-        
-	}
+      } else {
+        base64DecoderStream = javax.mail.internet.MimeUtility.decode(dataStream, "base64");
+        while ((len = base64DecoderStream.read(buf, 0, buf.length)) > 0) {
+          md.update(buf, 0, len);
+          outStream.write(buf, 0, len);
+        }
+      }
+    } finally {
+      buf = null;
+      safeCloseStream(base64DecoderStream);
+      safeCloseStream(dataStream);
+      safeCloseStream(outStream);
+      base64DecoderStream = null;
+      dataStream = null;
+      outStream = null;
+    }
+
+    // byte[] digest = md.digest();
+    md = null;
+  }
+
+  /**
+   * Packs the file with gzip. Internally replaces original file with new one(base64 encoded and
+   * gzipped)
+   * 
+   * @param fileToZip - file which needs to be gzipped and base64 encoded
+   */
+  public static void gzipPackXml(File fileToZip) throws DhxException {
+    if (!fileToZip.exists()) {
+      log.debug("Input file \"" + fileToZip.getPath() + "\" does not exist!");
+      throw new IllegalArgumentException("Data file does not exist!");
+    }
+    long time = Calendar.getInstance().getTimeInMillis();
+    try {
+      log.debug("Starting packing file. path:" + fileToZip.getPath());
+      InputStream stream = new FileInputStream(fileToZip);
+      File zipPackedFile = gzipPackXml(stream, String.valueOf(time), String.valueOf(time + 1));
+      fileToZip.delete();
+      zipPackedFile.renameTo(fileToZip);
+      fileToZip = zipPackedFile;
+    } catch (IOException ex) {
+      log.error("Unable to gzip and encode to base64", ex);
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR,
+          "Error occured while gzip and packing fail. " + ex.getMessage(), ex);
+    }
+  }
+
+  /**
+   * Packs the file with gzip.
+   * 
+   * @param fileToZip - file which need to be gzipped
+   * @return - gzipped file
+   */
+  /*
+   * public static File gzipPackXml(InputStream streamtoZip) { long time =
+   * Calendar.getInstance().getTimeInMillis(); try { log.debug("Starting packing inputstream.");
+   * return gzipPackXml(streamtoZip, String.valueOf(time), String.valueOf(time + 1)); } catch
+   * (IOException ex) { log.error("Unable to gzip and encode to base64", ex); throw new
+   * RuntimeException(ex); } }
+   */
+
+  private static File gzipPackXml(InputStream streamtoZip, String orgCode, String requestName)
+      throws IllegalArgumentException, IOException {
+    File zipOutFile = gzipFile(streamtoZip);
+    File base64File = createPipelineFile();
+    InputStream in = new BufferedInputStream(new FileInputStream(zipOutFile));
+    OutputStream b64out = new BufferedOutputStream(new FileOutputStream(base64File, false));
+    byte[] buf = new byte[66000]; // buffer must be divisible by 3
+    int len;
+    try {
+      while ((len = in.read(buf)) > 0) {
+        b64out.write(Base64.encode(buf, 0, len).getBytes());
+      }
+    } finally {
+      in.close();
+      b64out.close();
+    }
+    // delete temporary unneeded files
+    (zipOutFile).delete();
+
+    return base64File;
+  }
+
+  private static File gzipFile(InputStream streamToZip) {
+    log.debug("Starting gziping inputstream.");
+    try {
+      // pack the data
+      File zipFile = createPipelineFile();
+      InputStream in = new BufferedInputStream(streamToZip);
+      OutputStream zipOutFile = new BufferedOutputStream(new FileOutputStream(zipFile));
+      GZIPOutputStream out = new GZIPOutputStream(zipOutFile);
+      byte[] buf = new byte[binaryBuffeSize];
+      int len;
+      try {
+        while ((len = in.read(buf)) > 0) {
+          out.write(buf, 0, len);
+        }
+      } finally {
+        in.close();
+        out.finish();
+        out.close();
+      }
+
+      return zipFile;
+    } catch (Exception ex) {
+      throw new RuntimeException(ex);
+    }
+  }
+
+
+  private static void gzipUnpackXml(File sourceFile, boolean appendDocumentHeader)
+      throws FileNotFoundException, IOException, DhxException {
+    if (sourceFile == null) {
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Extracting gzipped XML file failed because file was not supplied!");
+
+    }
+
+    File sourceFileAsObject = sourceFile;
+    if (!sourceFileAsObject.exists()) {
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Extracting gzipped XML file failed because file " + sourceFile + " does not exist!");
+    }
+    if (sourceFileAsObject.length() < 1) {
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Extracting gzipped XML file failed because file " + sourceFile + " is empty!");
+    }
+
+    long totalBytesExtracted = 0;
+    byte[] buf = new byte[binaryBuffeSize];
+    int len;
+    FileInputStream sourceStream = null;
+    BufferedInputStream sourceBuffered = null;
+    GZIPInputStream in = null;
+    FileOutputStream out = null;
+
+    try {
+      // Init streams needed for uncompressing data
+      sourceStream = new FileInputStream(sourceFile);
+      sourceBuffered = new BufferedInputStream(sourceStream);
+      in = new GZIPInputStream(sourceBuffered);
+      String targetFile = sourceFile + ".out";
+      out = new FileOutputStream(targetFile, false);
+      if (appendDocumentHeader) {
+        out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?><root>".getBytes("UTF-8"));
+      }
+
+      // Uncompress data in input stream
+      while ((len = in.read(buf)) > 0) {
+        out.write(buf, 0, len);
+        totalBytesExtracted += len;
+      }
+      if (appendDocumentHeader) {
+        out.write("</root>".getBytes("UTF-8"));
+      }
+
+      // close stream, so we can delete unnecessary file and rename
+      safeCloseStream(in);
+      safeCloseStream(sourceBuffered);
+      safeCloseStream(sourceStream);
+      safeCloseStream(out);
+
+      // delete file and rename so new file is like old one
+      sourceFile.delete();
+      File target = new File(targetFile);
+      target.renameTo(sourceFile);
+      sourceFile = target;
+    } finally {
+      safeCloseStream(in);
+      safeCloseStream(sourceBuffered);
+      safeCloseStream(sourceStream);
+      safeCloseStream(out);
+
+      sourceStream = null;
+      in = null;
+      out = null;
+      buf = null;
+    }
+  }
+
+
+  /**
+   * Determines if given String is null or empty (zero length). Whitespace is not treated as empty
+   * string.
+   *
+   * @param stringToEvaluate String that will be checked for having NULL or empty value
+   * @return true, if input String is NULL or has zero length
+   */
+  public static boolean isNullOrEmpty(final String stringToEvaluate) {
+    return ((stringToEvaluate == null) || stringToEvaluate.isEmpty());
+  }
+
+  /**
+   * Safely closes inputstream.
+   * 
+   * @param stream - stream to close
+   */
+  public static void safeCloseStream(InputStream stream) {
+    if (stream != null) {
+      try {
+        stream.close();
+      } catch (Exception ex) {
+        log.error("Error occured while closing stream." + ex.getMessage(), ex);
+      } finally {
+        stream = null;
+      }
+    }
+  }
+
+  /**
+   * Safely closes outputstream.
+   * 
+   * @param stream - stream to close
+   */
+  public static void safeCloseStream(OutputStream stream) {
+    if (stream != null) {
+      try {
+        stream.close();
+      } catch (Exception ex) {
+        log.error("Error occured while closing stream." + ex.getMessage(), ex);
+      } finally {
+        stream = null;
+      }
+    }
+  }
+
+
+  /**
+   * Unpacks ZIP file and find file provided in input.
+   * 
+   * @param zipStream - stream of ZIP file
+   * @param fileToFindInZip - file to find inside ZIP file
+   * @return - stream of file found
+   * @throws DhxException - throws if error occurs while unzipping of during file search
+   */
+  public static InputStream zipUnpack(InputStream zipStream, String fileToFindInZip)
+      throws DhxException {
+    try {
+      log.debug("Strating zip unpack. Searching for file:" + fileToFindInZip);
+      ZipInputStream zis = new ZipInputStream(zipStream);
+      ZipEntry ze;
+      log.debug("Zip inputstream created");
+      ze = zis.getNextEntry();
+      while ((ze = zis.getNextEntry()) != null) {
+        log.debug("Zip entry:" + ze.getName());
+        if (ze.getName().equals(fileToFindInZip)) {
+          return zis;
+          // extractFile(zis, globalConf);
+          // SharedParametersType sharedParameters = XsdUtil.unmarshallCapsule(zis, unmarshaller);
+          // return sharedParameters;
+        }
+      }
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Not found expected file in ZIP archive. FILE:" + fileToFindInZip);
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+          "Extracting zipped XML file failed!" + ex.getMessage(), ex);
+    }
+
+  }
 
 }

@@ -25,51 +25,51 @@ import ee.bpw.dhx.ws.service.RepresentationService;
 @Slf4j
 public class DhxClientConfig {
 
-	private String representatives;
-	private Integer logMaxSize;
-	private Integer logRefresh;
-	private String capsuleTestFile;
-	// private String jobRecipient;
-	private Integer binaryBufferSize;
-	private String name;
-	private String info;
+  private String representatives;
+  private Integer logMaxSize;
+  private Integer logRefresh;
+  private String capsuleTestFile;
+  // private String jobRecipient;
+  private Integer binaryBufferSize;
+  private String name;
+  private String info;
 
-	private String testFile1;
-	private String testFile2;
+  private String testFile1;
+  private String testFile2;
 
-	private String sendDocumentHelp;
-	private String representationListHelp;
-	private String logEventsHelp;
-	private String logRefreshHelp;
-	private String representativesHelp;
-	private String validateCapsuleHelp;
-	private String securityServerHelp;
-	private String xroadMemberHelp;
-	private String maxFileSizeHelp;
+  private String sendDocumentHelp;
+  private String representationListHelp;
+  private String logEventsHelp;
+  private String logRefreshHelp;
+  private String representativesHelp;
+  private String validateCapsuleHelp;
+  private String securityServerHelp;
+  private String xroadMemberHelp;
+  private String maxFileSizeHelp;
 
-	List<String> representativesList = null;
+  List<String> representativesList = null;
 
-	public List<String> getRepresentativesList() {
-		if (representativesList == null) {
-			representativesList = Arrays.asList(representatives.split(","));
-		}
-		return representativesList;
-	}
+  public List<String> getRepresentativesList() {
+    if (representativesList == null) {
+      representativesList = Arrays.asList(representatives.split(","));
+    }
+    return representativesList;
+  }
 
-	@Bean
-	RepresentationService representationService() {
-		return new RepresentationServiceImpl();
-	}
+  @Bean
+  RepresentationService representationService() {
+    return new RepresentationServiceImpl();
+  }
 
-	@Bean
-	DocumentService documentService() {
-		DocumentService service = new DocumentClientService();
-		return service;
-	}
+  @Bean
+  DocumentService documentService() {
+    DocumentService service = new DocumentClientService();
+    return service;
+  }
 
-	@Bean
-	DhxGateway dhxGateway() {
-		return new DocumentGateWayClient();
-	}
+  @Bean
+  DhxGateway dhxGateway() {
+    return new DocumentGateWayClient();
+  }
 
 }

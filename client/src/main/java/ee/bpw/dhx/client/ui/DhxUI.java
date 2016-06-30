@@ -59,406 +59,455 @@ import eu.x_road.dhx.producer.SendDocumentResponse;
 @Slf4j
 public class DhxUI extends UI {
 
-	@Autowired
-	DocumentService documentService;
-	
+  @Autowired
+  DocumentService documentService;
 
-	@Autowired
-	DhxClientConfig config;
-	
-	@Autowired
-	DhxConfig dhxConfig;
-	
-	@Autowired
-	SoapConfig soapConfig;
-	
-	@Autowired
-	AddressService addressService;
-	
-	@Autowired
-	DhxGateway dhxGateway;
-	
-	private final String mainAppLabel = "Dokumendivahetusprotokolli DHX etalonteostus.";
-	private final String description = "Dokumendivahetustaristu hajusarhitektuurile üleviimise väljatöötamine" 
-				 + "<ul><li>Riigi Infosüsteemi Amet, 2016</li></ul>";
-	private class DhxStreamSource implements StreamSource {
-		
-		String filePath;
-		
-		public DhxStreamSource(String filePath) {
-			this.filePath =  filePath;
-		}
-		
-		@Override
-		public InputStream getStream() {
-			try{
-				return FileUtil.getFileAsStream(filePath);
-			}catch(DhxException e) {
-				log.error(e.getMessage(), e);
-			}
-			return null;
-		}
-		
-	}
-	
-	@Override
-	protected void init(VaadinRequest request) {
-		setPollInterval(config.getLogRefresh());
-		getTooltipConfiguration().setOpenDelay(5);
-		Label mainLabel = new Label(mainAppLabel);
-		mainLabel.setStyleName("h1");
-		StreamResource source = new StreamResource(new DhxStreamSource("jar://EL_struktuuri-_ja_investeerimisfondid_horisontaalne.jpg") , "help.png");
-		Image image = new Image("", source);
-		image.setStyleName("v-table-footer-container");
-		GridLayout headerLayout = new GridLayout(2, 2);
-		headerLayout.setWidth(100, Unit.PERCENTAGE);
-		//headerLayout.setMargin(true);
-		headerLayout.addComponent(mainLabel);
-		headerLayout.addComponent(image, 1, 0, 1, 1);
-		headerLayout.addComponent(getInfo());
-		headerLayout.setColumnExpandRatio(0, 0.85f);
-		headerLayout.setColumnExpandRatio(1, 0.15f);
-		//Layout info = getInfo();
-		GridLayout formKonfLayout = new GridLayout(2, 1);
-		//formKonfLayout.setMargin(true);
-		formKonfLayout.setSpacing(true);
-		formKonfLayout.setWidth(100, Unit.PERCENTAGE);
-		formKonfLayout.addComponent(getActivityAsTab());	
-		formKonfLayout.addComponent(getConfAsTab());	
-		VerticalLayout mainLayout = new VerticalLayout(headerLayout, /*info,*/ formKonfLayout, getLog());
-		setContent(mainLayout);
-		mainLayout.setMargin(true);
-		mainLayout.setSpacing(true);
 
-	}
-	
-	private Layout getConfAsTab () {
-		VerticalLayout layout = new VerticalLayout();
-		Label settingsLabel = new Label("Seadistused");
-		settingsLabel.setStyleName("h2");
-		TabSheet settings = new TabSheet();
-		settings.addTab(getConf(), "Rakenduse konf");
-		settings.addTab(getAdresseeList(), "Lokaalne aadressiraamat");
-		layout.addComponent(settingsLabel);
-		layout.addComponent(settings);
-		return layout;
-	}
-	
-	private Layout getActivityAsTab () {
-		VerticalLayout layout = new VerticalLayout();
-		Label activityLabel = new Label("Tegevused");
-		activityLabel.setStyleName("h2");
-		TabSheet activity = new TabSheet();
-		activity.addTab(getSendDocumentLayout(), "Dokumendi saatmine");
-		activity.addTab(getRepresentationListLayout(), "Vahendatavate nimekiri");
-		layout.addComponent(activityLabel);
-		layout.addComponent(activity);
-		return layout;
-	}
-	
-	private Layout getInfo(){
-		VerticalLayout layout = new VerticalLayout();
-		Label mainLabel2 = new Label();
-		mainLabel2.setCaptionAsHtml(true);
-		mainLabel2.setCaption("<span style=\"white-space:normal;\">" + description + config.getInfo() + "</span>");
-		//mainLabel2.setStyleName("h2");
-		layout.addComponent(mainLabel2);
-		Label info  = new Label("");
-		info.setWidth(100, Unit.PERCENTAGE); 
-		info.setCaptionAsHtml(true);
-		//info.setValue(config.getInfo());
-		layout.addComponent(info);
-		StreamResource source = new StreamResource(new DhxStreamSource(config.getTestFile1()) , "DVKkapsel1.xml");
-		FileDownloader fileDownloader = new FileDownloader(source);
-		Link link = new Link("Lae alla näidiskapsel DVKkapsel1.xml", null);
-		fileDownloader.extend(link);
-		//link.setTargetName("_blank");
-		layout.addComponent(link);
-		
-		StreamResource source2 = new StreamResource(new DhxStreamSource(config.getTestFile2()) , "DVKkapsel2.xml");
-		FileDownloader fileDownloader2 = new FileDownloader(source2);
-		Link link2 = new Link("Lae alla näidiskapsel DVKkapsel2.xml", null);
-		fileDownloader2.extend(link2);
-		//link.setTargetName("_blank");
-		layout.addComponent(link2);
-		ExternalResource wsdlResource = new ExternalResource("/dhx/ws/dhx.wsdl");
-		Link linkwsdl = new Link("Pakutavate teenuste wsdl ", wsdlResource);
-		linkwsdl.setTargetName("_blank");
-		layout.addComponent(linkwsdl);
-		return layout;
-	}
-	
-	private Component addTooltip (Label component, String header, String description) {
-		//GridLayout layout = new GridLayout(2, 1);
-		HorizontalLayout layout = new HorizontalLayout();
-		layout.setMargin(false);
-		layout.setSpacing(false);
-		//layout.setMargin(true);
-		//StreamResource source = new StreamResource(new DhxStreamSource("jar://help.png") , "help.png");
-		//Image image = new Image("", source);
-		//image.setHeight(15, Unit.PIXELS);
-		//.setWidth(15, Unit.PIXELS);
-		component.setDescription("<div>" + description + "</div");
-		//image.setStyleName("v-gridlayout-spacing");
-		//layout.addComponent(component);
-		//layout.addComponent(image);
-		//component.setIcon(source);
-		//new Label().setContentMode(ContentMode.HTML);
-		return component;
-	}
-	
-	private Layout getLog() { 
-		try {
-		VerticalLayout layout = new VerticalLayout();
-		/*ClassResource res = new ClassResource("try.jpg");
-		//ClassPathResource res2 =  new ClassPathResource("try.jpg");
-		InputStream is = res.getStream().getStream();
-		//InputStream is2 = res2.getInputStream();
-		Image image = new Image("", res);
-		FileResource ff = new FileResource(new File(""));
-		ThemeResource res3 = new ThemeResource("../dhx/try.jpg");
-		Image image2 = new Image("", res3);*/
-		/******button*****/
-		/*StreamResource reee = new StreamResource(new DhxStreamSource("jar://try.jpg") , "try.jpg");
-		Image image3 = new Image("", reee);
-		
-		StreamResource reee3 = new StreamResource(new DhxStreamSource("/resources/quest.png") , "try2.png");
-		Image image33 = new Image("", reee3);*/
-		/*buttonClear
-         .setDescription("<h2><img src=\"../VAADIN/themes/sampler/icons/comment_yellow.gif\"/>A richtext tooltip</h2>"
-                 + "<ul>"
-                 + "<li>HTML formatting</li><li>Images<br/>"
-                 + "</li><li>etc...</li></ul>");*/
-		/*************/
-		
-		/*******text area******/
-		final TextArea text = new TextArea();
-		text.setSizeFull();
-		text.setValue(CustomAppender.getLastEvents());
-		text.setEnabled(false);
-		text.setHeight(500, Unit.PIXELS);
-		Button buttonClear = new Button("Tühista logi");
-		buttonClear.addListener(new Button.ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		      CustomAppender.deleteLastEvents();
-		      text.setValue("");
-		    }
-		});
-		addPollListener(new UIEvents.PollListener() {
-	        @Override
-	        public void poll(UIEvents.PollEvent event) {
-	           // log.error("Polling");
-	            text.setValue(CustomAppender.getLastEvents());
-	        }
-	    });
-		Label label = new Label("Viimased sündmused");
-		label.setStyleName("h2");
-		layout.addComponent(label);
-		layout.addComponent(buttonClear);
-		layout.addComponent(text);
-		//layout.addComponent(image);
-		//layout.addComponent(image2);
-		/*layout.addComponent(image3);
-		layout.addComponent(image33);*/
-		return layout;
-		}catch(Exception e) {
-			log.error(e.getMessage(), e);
-		}
-		return null;
-	}
-	 private Layout getConf () {		
-		GridLayout gridLayout = new GridLayout(2, 6);
-		gridLayout.setMargin(true);
-		gridLayout.setSpacing(true);
-		gridLayout.addComponent(addTooltip(new Label("Sündmusi logitakse:"), "Sündmusi logitakse", config.getLogEventsHelp()));
-		gridLayout.addComponent(new Label(config.getLogMaxSize().toString()));
-		gridLayout.addComponent(addTooltip(new Label("Logi uuendatakse(millisekundites): "), "Logi uuendatakse(millisekundites)", config.getLogRefreshHelp()));
-		gridLayout.addComponent(new Label(config.getLogRefresh().toString()));
-		gridLayout.addComponent(addTooltip(new Label("Vahendatavate nimekiri: "), "Vahendatavate nimekiri", config.getRepresentativesHelp()));
-		gridLayout.addComponent(new Label(config.getRepresentatives()));
+  @Autowired
+  DhxClientConfig config;
 
-		
-		gridLayout.addComponent(addTooltip(new Label("Kapsel valideeritakse: "), "Kapsel valideeritakse", config.getValidateCapsuleHelp()));
-		gridLayout.addComponent(new Label( dhxConfig.getCapsuleValidate().toString()));
+  @Autowired
+  DhxConfig dhxConfig;
 
-		
-		gridLayout.addComponent(addTooltip(new Label("Turvaserver: "), "Turvaserver", config.getSecurityServerHelp()));
-		gridLayout.addComponent(new Label(soapConfig.getSecurityServer()));
-		gridLayout.addComponent(addTooltip(new Label("Xtee liige: "), "Xtee liige", config.getXroadMemberHelp()));
-		gridLayout.addComponent(new Label(soapConfig.getXroadInstance() + "/" + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/" + soapConfig.getSubsystem()));
-		
-		gridLayout.addComponent(addTooltip(new Label("Maksimaalne faili suurus: "), "Maksimaalne faili suurus", config.getMaxFileSizeHelp()));
-		gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));
-		
-		//Label label = new Label("Rakenduse konf: ");
-		//label.setStyleName("h3");	
-		VerticalLayout layout = new VerticalLayout();
-		//layout.addComponent(label);
-		layout.addComponent(gridLayout);
-		return layout;
-	 }
-	 	
-	private Layout getSendDocumentLayout () {
-	//	Label formLabel = new Label("Dokumendi saatmine");
-	//	formLabel.setStyleName("h3");
-		final Label chosenFile = new Label();
-		/******upload field*****/
-		final UploadField uploadField = new UploadField();
-		uploadField.setBuffered(true);
-		uploadField.setFieldType(FieldType.BYTE_ARRAY);
-		uploadField.setDisplayUpload(false);
-		uploadField.setCaption("Dokumendi kapsel");
-		uploadField.setButtonCaption("Vali fail");
-		uploadField.setFieldType(FieldType.FILE);
-		uploadField.setFileFactory(new FileFactory() {
-            public File createFile(String fileName, String mimeType) {
-            	try{
-            		log.debug("creating file for uploaded file.");
-            		File f = FileUtil.createPipelineFile(0, "");
-            		chosenFile.setValue("valitud fail: " + fileName);
-	                return f;
-            	} catch(IOException e) {
-            		return null;
-            	}
+  @Autowired
+  SoapConfig soapConfig;
+
+  @Autowired
+  AddressService addressService;
+
+  @Autowired
+  DhxGateway dhxGateway;
+
+  private final String mainAppLabel = "Dokumendivahetusprotokolli DHX etalonteostus.";
+  private final String description =
+      "Dokumendivahetustaristu hajusarhitektuurile üleviimise väljatöötamine"
+          + "<ul><li>Riigi Infosüsteemi Amet, 2016</li></ul>";
+
+  private class DhxStreamSource implements StreamSource {
+
+    String filePath;
+
+    public DhxStreamSource(String filePath) {
+      this.filePath = filePath;
+    }
+
+    @Override
+    public InputStream getStream() {
+      try {
+        return FileUtil.getFileAsStream(filePath);
+      } catch (DhxException e) {
+        log.error(e.getMessage(), e);
+      }
+      return null;
+    }
+
+  }
+
+  @Override
+  protected void init(VaadinRequest request) {
+    setPollInterval(config.getLogRefresh());
+    getTooltipConfiguration().setOpenDelay(5);
+    Label mainLabel = new Label(mainAppLabel);
+    mainLabel.setStyleName("h1");
+    StreamResource source =
+        new StreamResource(new DhxStreamSource(
+            "jar://EL_struktuuri-_ja_investeerimisfondid_horisontaalne.jpg"), "help.png");
+    Image image = new Image("", source);
+    image.setStyleName("v-table-footer-container");
+    GridLayout headerLayout = new GridLayout(2, 2);
+    headerLayout.setWidth(100, Unit.PERCENTAGE);
+    // headerLayout.setMargin(true);
+    headerLayout.addComponent(mainLabel);
+    headerLayout.addComponent(image, 1, 0, 1, 1);
+    headerLayout.addComponent(getInfo());
+    headerLayout.setColumnExpandRatio(0, 0.85f);
+    headerLayout.setColumnExpandRatio(1, 0.15f);
+    // Layout info = getInfo();
+    GridLayout formKonfLayout = new GridLayout(2, 1);
+    // formKonfLayout.setMargin(true);
+    formKonfLayout.setSpacing(true);
+    formKonfLayout.setWidth(100, Unit.PERCENTAGE);
+    formKonfLayout.addComponent(getActivityAsTab());
+    formKonfLayout.addComponent(getConfAsTab());
+    VerticalLayout mainLayout =
+        new VerticalLayout(headerLayout, /* info, */formKonfLayout, getLog());
+    setContent(mainLayout);
+    mainLayout.setMargin(true);
+    mainLayout.setSpacing(true);
+
+  }
+
+  private Layout getConfAsTab() {
+    VerticalLayout layout = new VerticalLayout();
+    Label settingsLabel = new Label("Seadistused");
+    settingsLabel.setStyleName("h2");
+    TabSheet settings = new TabSheet();
+    settings.addTab(getConf(), "Rakenduse konf");
+    settings.addTab(getAdresseeList(), "Lokaalne aadressiraamat");
+    layout.addComponent(settingsLabel);
+    layout.addComponent(settings);
+    return layout;
+  }
+
+  private Layout getActivityAsTab() {
+    VerticalLayout layout = new VerticalLayout();
+    Label activityLabel = new Label("Tegevused");
+    activityLabel.setStyleName("h2");
+    TabSheet activity = new TabSheet();
+    activity.addTab(getSendDocumentLayout(), "Dokumendi saatmine");
+    activity.addTab(getRepresentationListLayout(), "Vahendatavate nimekiri");
+    layout.addComponent(activityLabel);
+    layout.addComponent(activity);
+    return layout;
+  }
+
+  private Layout getInfo() {
+    VerticalLayout layout = new VerticalLayout();
+    Label mainLabel2 = new Label();
+    mainLabel2.setCaptionAsHtml(true);
+    mainLabel2.setCaption("<span style=\"white-space:normal;\">" + description + config.getInfo()
+        + "</span>");
+    // mainLabel2.setStyleName("h2");
+    layout.addComponent(mainLabel2);
+    Label info = new Label("");
+    info.setWidth(100, Unit.PERCENTAGE);
+    info.setCaptionAsHtml(true);
+    // info.setValue(config.getInfo());
+    layout.addComponent(info);
+    StreamResource source =
+        new StreamResource(new DhxStreamSource(config.getTestFile1()), "DVKkapsel1.xml");
+    FileDownloader fileDownloader = new FileDownloader(source);
+    Link link = new Link("Lae alla näidiskapsel DVKkapsel1.xml", null);
+    fileDownloader.extend(link);
+    // link.setTargetName("_blank");
+    layout.addComponent(link);
+
+    StreamResource source2 =
+        new StreamResource(new DhxStreamSource(config.getTestFile2()), "DVKkapsel2.xml");
+    FileDownloader fileDownloader2 = new FileDownloader(source2);
+    Link link2 = new Link("Lae alla näidiskapsel DVKkapsel2.xml", null);
+    fileDownloader2.extend(link2);
+    // link.setTargetName("_blank");
+    layout.addComponent(link2);
+    ExternalResource wsdlResource = new ExternalResource("/dhx/ws/dhx.wsdl");
+    Link linkwsdl = new Link("Pakutavate teenuste wsdl ", wsdlResource);
+    linkwsdl.setTargetName("_blank");
+    layout.addComponent(linkwsdl);
+    return layout;
+  }
+
+  private Component addTooltip(Label component, String header, String description) {
+    // GridLayout layout = new GridLayout(2, 1);
+    HorizontalLayout layout = new HorizontalLayout();
+    layout.setMargin(false);
+    layout.setSpacing(false);
+    // layout.setMargin(true);
+    // StreamResource source = new StreamResource(new DhxStreamSource("jar://help.png") ,
+    // "help.png");
+    // Image image = new Image("", source);
+    // image.setHeight(15, Unit.PIXELS);
+    // .setWidth(15, Unit.PIXELS);
+    component.setDescription("<div>" + description + "</div");
+    // image.setStyleName("v-gridlayout-spacing");
+    // layout.addComponent(component);
+    // layout.addComponent(image);
+    // component.setIcon(source);
+    // new Label().setContentMode(ContentMode.HTML);
+    return component;
+  }
+
+  private Layout getLog() {
+    try {
+      VerticalLayout layout = new VerticalLayout();
+      /*
+       * ClassResource res = new ClassResource("try.jpg"); //ClassPathResource res2 = new
+       * ClassPathResource("try.jpg"); InputStream is = res.getStream().getStream(); //InputStream
+       * is2 = res2.getInputStream(); Image image = new Image("", res); FileResource ff = new
+       * FileResource(new File("")); ThemeResource res3 = new ThemeResource("../dhx/try.jpg"); Image
+       * image2 = new Image("", res3);
+       */
+      /****** button *****/
+      /*
+       * StreamResource reee = new StreamResource(new DhxStreamSource("jar://try.jpg") , "try.jpg");
+       * Image image3 = new Image("", reee);
+       * 
+       * StreamResource reee3 = new StreamResource(new DhxStreamSource("/resources/quest.png") ,
+       * "try2.png"); Image image33 = new Image("", reee3);
+       */
+      /*
+       * buttonClear .setDescription(
+       * "<h2><img src=\"../VAADIN/themes/sampler/icons/comment_yellow.gif\"/>A richtext tooltip</h2>"
+       * + "<ul>" + "<li>HTML formatting</li><li>Images<br/>" + "</li><li>etc...</li></ul>");
+       */
+      /*************/
+
+      /******* text area ******/
+      final TextArea text = new TextArea();
+      text.setSizeFull();
+      text.setValue(CustomAppender.getLastEvents());
+      text.setEnabled(false);
+      text.setHeight(500, Unit.PIXELS);
+      Button buttonClear = new Button("Tühista logi");
+      buttonClear.addListener(new Button.ClickListener() {
+        public void buttonClick(ClickEvent event) {
+          CustomAppender.deleteLastEvents();
+          text.setValue("");
+        }
+      });
+      addPollListener(new UIEvents.PollListener() {
+        @Override
+        public void poll(UIEvents.PollEvent event) {
+          // log.error("Polling");
+          text.setValue(CustomAppender.getLastEvents());
+        }
+      });
+      Label label = new Label("Viimased sündmused");
+      label.setStyleName("h2");
+      layout.addComponent(label);
+      layout.addComponent(buttonClear);
+      layout.addComponent(text);
+      // layout.addComponent(image);
+      // layout.addComponent(image2);
+      /*
+       * layout.addComponent(image3); layout.addComponent(image33);
+       */
+      return layout;
+    } catch (Exception e) {
+      log.error(e.getMessage(), e);
+    }
+    return null;
+  }
+
+  private Layout getConf() {
+    GridLayout gridLayout = new GridLayout(2, 6);
+    gridLayout.setMargin(true);
+    gridLayout.setSpacing(true);
+    gridLayout.addComponent(addTooltip(new Label("Sündmusi logitakse:"), "Sündmusi logitakse",
+        config.getLogEventsHelp()));
+    gridLayout.addComponent(new Label(config.getLogMaxSize().toString()));
+    gridLayout.addComponent(addTooltip(new Label("Logi uuendatakse(millisekundites): "),
+        "Logi uuendatakse(millisekundites)", config.getLogRefreshHelp()));
+    gridLayout.addComponent(new Label(config.getLogRefresh().toString()));
+    gridLayout.addComponent(addTooltip(new Label("Vahendatavate nimekiri: "),
+        "Vahendatavate nimekiri", config.getRepresentativesHelp()));
+    gridLayout.addComponent(new Label(config.getRepresentatives()));
+
+
+    gridLayout.addComponent(addTooltip(new Label("Kapsel valideeritakse: "),
+        "Kapsel valideeritakse", config.getValidateCapsuleHelp()));
+    gridLayout.addComponent(new Label(dhxConfig.getCapsuleValidate().toString()));
+
+
+    gridLayout.addComponent(addTooltip(new Label("Turvaserver: "), "Turvaserver",
+        config.getSecurityServerHelp()));
+    gridLayout.addComponent(new Label(soapConfig.getSecurityServer()));
+    gridLayout.addComponent(addTooltip(new Label("Xtee liige: "), "Xtee liige",
+        config.getXroadMemberHelp()));
+    gridLayout.addComponent(new Label(soapConfig.getXroadInstance() + "/"
+        + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/"
+        + soapConfig.getSubsystem()));
+
+    gridLayout.addComponent(addTooltip(new Label("Maksimaalne faili suurus: "),
+        "Maksimaalne faili suurus", config.getMaxFileSizeHelp()));
+    gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));
+
+    // Label label = new Label("Rakenduse konf: ");
+    // label.setStyleName("h3");
+    VerticalLayout layout = new VerticalLayout();
+    // layout.addComponent(label);
+    layout.addComponent(gridLayout);
+    return layout;
+  }
+
+  private Layout getSendDocumentLayout() {
+    // Label formLabel = new Label("Dokumendi saatmine");
+    // formLabel.setStyleName("h3");
+    final Label chosenFile = new Label();
+    /****** upload field *****/
+    final UploadField uploadField = new UploadField();
+    uploadField.setBuffered(true);
+    uploadField.setFieldType(FieldType.BYTE_ARRAY);
+    uploadField.setDisplayUpload(false);
+    uploadField.setCaption("Dokumendi kapsel");
+    uploadField.setButtonCaption("Vali fail");
+    uploadField.setFieldType(FieldType.FILE);
+    uploadField.setFileFactory(new FileFactory() {
+      public File createFile(String fileName, String mimeType) {
+        try {
+          log.debug("creating file for uploaded file.");
+          File f = FileUtil.createPipelineFile();
+          chosenFile.setValue("valitud fail: " + fileName);
+          return f;
+        } catch (IOException e) {
+          return null;
+        }
+      }
+    });
+    final TextField consignmentId = new TextField();
+    consignmentId.setCaption("Saadetise id");
+    Button buttonSubmit = new Button("Saada document");
+    buttonSubmit.addListener(new Button.ClickListener() {
+      public void buttonClick(ClickEvent event) {
+        try {
+          File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
+          List<SendDocumentResponse> responses =
+              documentService.sendDocument(attachment, consignmentId.getValue());
+          String statuses = "";
+          for (SendDocumentResponse response : responses) {
+            statuses +=
+                "Dokument saadetud. Status:"
+                    + response.getReceiptId()
+                    + (response.getFault() == null ? "" : " faultCode:"
+                        + response.getFault().getFaultCode() + " faultString:"
+                        + response.getFault().getFaultString() + "\n'");
+            // showNotification();
+          }
+          Notification notification =
+              new Notification("Dokuemndi saatmise staatused:" + statuses,
+                  Notification.Type.HUMANIZED_MESSAGE);
+          notification.setDelayMsec(-1);
+          notification.show(Page.getCurrent());
+        } catch (DhxException ex) {
+          log.error("Error while sending document." + ex.getMessage(), ex);
+          Notification notification =
+              new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                  Notification.Type.WARNING_MESSAGE);
+          notification.setDelayMsec(-1);
+          notification.show(Page.getCurrent());
+          // showNotification("Viga documendi saatmisel!" + ex.getMessage());
+        }
+      }
+    });
+    Label help = new Label();
+    help.setCaptionAsHtml(true);
+    help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp()
+        + "</span>");
+    FormLayout formLayout =
+        new FormLayout(/* formLabel, */help, consignmentId, uploadField, buttonSubmit, chosenFile);
+    formLayout.setMargin(false);
+    VerticalLayout vertLayout = new VerticalLayout();
+    vertLayout.addComponent(help);
+    vertLayout.addComponent(formLayout);
+    return vertLayout;
+  }
+
+  private Layout getRepresentationListLayout() {
+    final TextField regClass = new TextField();
+    regClass.setCaption("Asutuse klass");
+    final TextField regCode = new TextField();
+    regCode.setCaption("Asutuse kood");
+    Button button = new Button("Saada päring");
+    button.addListener(new Button.ClickListener() {
+      public void buttonClick(ClickEvent event) {
+        try {
+          log.debug("getting representation List");
+          XroadMember member =
+              new XroadMember(soapConfig.getXroadInstance(), regClass.getValue(), regCode
+                  .getValue(), soapConfig.getSubsystem(), null);
+          RepresentationListResponse response = dhxGateway.getRepresentationList(member);
+          String reprStr = "";
+          if (response.getMembers() != null && response.getMembers().getMember() != null
+              && response.getMembers().getMember().size() > 0) {
+            for (Member repr : response.getMembers().getMember()) {
+              SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+              String startDateStr = "";
+              String endDateStr = "";
+              Representee representee = new Representee(repr);
+              if (representee.getStartDate() != null) {
+                startDateStr = sdf.format(representee.getStartDate());
+              }
+              if (representee.getEndDate() != null) {
+                endDateStr = sdf.format(representee.getEndDate());
+              }
+              reprStr =
+                  reprStr + (reprStr.equals("") ? "" : ", ")
+                      + (repr.getMemberCode() + " algus: " + startDateStr + " lõpp:" + endDateStr);
             }
-        });
-		final TextField consignmentId = new TextField();
-		consignmentId.setCaption("Saadetise id");
-		Button buttonSubmit = new Button("Saada document");
-		buttonSubmit.addListener(new Button.ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		    	try {
-		    		File attachment =  FileUtil.createFileAndWrite(uploadField.getContentAsStream());
-		    		List<SendDocumentResponse> responses = documentService.sendDocument(attachment, consignmentId.getValue());
-		    		String statuses = "";
-		    		for(SendDocumentResponse response : responses) {
-		    			statuses += "Dokument saadetud. Status:" + response.getReceiptId()
-								+ (response.getFault()==null?"":" faultCode:" + response.getFault().getFaultCode() + " faultString:" + response.getFault().getFaultString() + "\n'");
-		    		//showNotification();
-		    		}
-		    		Notification notification = new Notification("Dokuemndi saatmise staatused:" + statuses, Notification.Type.HUMANIZED_MESSAGE);
-		    		notification.setDelayMsec(-1);
-		    		notification.show(Page.getCurrent());
-		    	}catch(DhxException ex) {
-		    		log.error("Error while sending document." + ex.getMessage(), ex);
-		    		Notification notification = new Notification("Viga documendi saatmisel!" + ex.getMessage(), Notification.Type.WARNING_MESSAGE);
-		    		notification.setDelayMsec(-1);
-		    		notification.show(Page.getCurrent());
-		    		//showNotification("Viga documendi saatmisel!" + ex.getMessage());
-		    	}
-		    }
-		});
-		Label help = new Label();
-		help.setCaptionAsHtml(true);
-		help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp() + "</span>");
-		FormLayout formLayout = new FormLayout(/*formLabel,*/ help, consignmentId, uploadField, buttonSubmit, chosenFile);
-		formLayout.setMargin(false);
-		VerticalLayout vertLayout = new VerticalLayout();
-		vertLayout.addComponent(help);
-		vertLayout.addComponent(formLayout);
-		return vertLayout;
-	}
-	
-	private Layout getRepresentationListLayout () {
-		final TextField regClass= new TextField();
-		regClass.setCaption("Asutuse klass");
-		final TextField regCode = new TextField();
-		regCode.setCaption("Asutuse kood");
-		Button button = new Button("Saada päring");
-		button.addListener(new Button.ClickListener() {
-		    public void buttonClick(ClickEvent event) {
-		    	try {
-		    		log.debug("getting representation List");
-		    		XroadMember member = new XroadMember(soapConfig.getXroadInstance(), regClass.getValue(), regCode.getValue(), soapConfig.getSubsystem(), null);
-		    		RepresentationListResponse response = dhxGateway.getRepresentationList(member);
-		    		String reprStr = "";
-		    		if(response.getMembers() != null && response.getMembers().getMember() != null && response.getMembers().getMember().size()>0) {
-			    		for(Member repr : response.getMembers().getMember()) {
-			    			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-			    			String startDateStr = "";
-			    			String endDateStr = "";
-			    			Representee representee = new Representee(repr);
-			    			if(representee.getStartDate() != null) {
-			    				startDateStr = sdf.format(representee.getStartDate());
-			    			}
-			    			if(representee.getEndDate() != null) {
-			    				endDateStr = sdf.format(representee.getEndDate());
-			    			}
-			    			reprStr = reprStr + (reprStr.equals("")?"":", ") + (repr.getMemberCode() + " algus: " +startDateStr + " lõpp:" + endDateStr);
-			    		}
-		    		}
-		    		Notification notification = new Notification("Representatives:" + reprStr, Notification.Type.HUMANIZED_MESSAGE);
-		    		notification.setDelayMsec(-1);
-		    		notification.show(Page.getCurrent());
-		    	}catch(DhxException ex) {
-		    		log.error("Error while sending document." + ex.getMessage(), ex);
-		    		Notification notification = new Notification("Viga documendi saatmisel!" + ex.getMessage(), Notification.Type.HUMANIZED_MESSAGE);
-		    		notification.setDelayMsec(-1);
-		    		notification.show(Page.getCurrent());
-		    	}
-		    }
-		});
-		//Label label = new Label("Vahendatavate nimekiri");
-		//label.setStyleName("h3");
-		FormLayout formLayout = new FormLayout(/*label,*/ regClass, regCode, button);
-		formLayout.setMargin(false);
-		Label help = new Label();
-		help.setCaptionAsHtml(true);
-		help.setCaption("<span style=\"white-space:normal;\">" + config.getRepresentationListHelp() + "</span>");
-		VerticalLayout vertLayout = new VerticalLayout();
-		vertLayout.addComponent(help);
-		vertLayout.addComponent(formLayout);
-		return vertLayout;
-	}
+          }
+          Notification notification =
+              new Notification("Representatives:" + reprStr, Notification.Type.HUMANIZED_MESSAGE);
+          notification.setDelayMsec(-1);
+          notification.show(Page.getCurrent());
+        } catch (DhxException ex) {
+          log.error("Error while sending document." + ex.getMessage(), ex);
+          Notification notification =
+              new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                  Notification.Type.HUMANIZED_MESSAGE);
+          notification.setDelayMsec(-1);
+          notification.show(Page.getCurrent());
+        }
+      }
+    });
+    // Label label = new Label("Vahendatavate nimekiri");
+    // label.setStyleName("h3");
+    FormLayout formLayout = new FormLayout(/* label, */regClass, regCode, button);
+    formLayout.setMargin(false);
+    Label help = new Label();
+    help.setCaptionAsHtml(true);
+    help.setCaption("<span style=\"white-space:normal;\">" + config.getRepresentationListHelp()
+        + "</span>");
+    VerticalLayout vertLayout = new VerticalLayout();
+    vertLayout.addComponent(help);
+    vertLayout.addComponent(formLayout);
+    return vertLayout;
+  }
 
-	
-	 private Layout getAdresseeList(){
-		 VerticalLayout adresseeLayout = new VerticalLayout();
-		 // Label label = new Label("Lokaalne aadressiraamat: \n");
-		 //label.setStyleName("h3");
-			//adresseeLayout.addComponent(label);
-			List<XroadMember> members = addressService.getAdresseeList();
-			final Label adrLabel = new Label("");
-			adrLabel.setCaptionAsHtml(true);
-			adrLabel.setCaption(getAdresseeString(members));
-			adresseeLayout.addComponent(adrLabel);
-			Button button = new Button("Uuenda");
-			button.addListener(new Button.ClickListener() {
-			    public void buttonClick(ClickEvent event) {
-			    	
-			    		log.debug("renewing address list");
-			    		addressService.renewAddressList();
-			    		List<XroadMember> members = addressService.getAdresseeList();
-			    		adrLabel.setCaption("<span style=\"white-space:normal;\">" + getAdresseeString(members) + "</span>");
-			    		Notification notification = new Notification("Lokaalne aadressiraamat uuendatud", Notification.Type.HUMANIZED_MESSAGE);
-			    		notification.setDelayMsec(-1);
-			    		notification.show(Page.getCurrent());
-			    	
-			    }
-			});
-			adresseeLayout.addComponent(button);
-			return adresseeLayout;		 
-	 }
-	 
-	 private String getAdresseeString (List<XroadMember> members) {
-		 String labelAdr = "";
-			for(XroadMember member : members) {
-				SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-    			String startDateStr = "";
-    			String endDateStr = "";
-    			if(member.getRepresentee() != null ){
-	    			if(member.getRepresentee().getStartDate() != null) {
-	    				startDateStr = sdf.format(member.getRepresentee().getStartDate());
-	    			}
-	    			if(member.getRepresentee().getEndDate() != null) {
-	    				endDateStr = sdf.format(member.getRepresentee().getEndDate());
-	    			}
-    			}
-				labelAdr += "</br>" + member.toString().replace("addressee", "adressaat").replace("X-road member", "X-tee liige").replace("is representee", "kas vahendatav") 
-						+(member.getRepresentee()==null?"":" vahendamise algus: " + startDateStr + " lõpp:" + endDateStr) + "\n";
-			}
-		return labelAdr;
-	 }
 
-	
+  private Layout getAdresseeList() {
+    VerticalLayout adresseeLayout = new VerticalLayout();
+    // Label label = new Label("Lokaalne aadressiraamat: \n");
+    // label.setStyleName("h3");
+    // adresseeLayout.addComponent(label);
+    List<XroadMember> members = addressService.getAdresseeList();
+    final Label adrLabel = new Label("");
+    adrLabel.setCaptionAsHtml(true);
+    adrLabel.setCaption(getAdresseeString(members));
+    adresseeLayout.addComponent(adrLabel);
+    Button button = new Button("Uuenda");
+    button.addListener(new Button.ClickListener() {
+      public void buttonClick(ClickEvent event) {
+
+        log.debug("renewing address list");
+        addressService.renewAddressList();
+        List<XroadMember> members = addressService.getAdresseeList();
+        adrLabel.setCaption("<span style=\"white-space:normal;\">" + getAdresseeString(members)
+            + "</span>");
+        Notification notification =
+            new Notification("Lokaalne aadressiraamat uuendatud",
+                Notification.Type.HUMANIZED_MESSAGE);
+        notification.setDelayMsec(-1);
+        notification.show(Page.getCurrent());
+
+      }
+    });
+    adresseeLayout.addComponent(button);
+    return adresseeLayout;
+  }
+
+  private String getAdresseeString(List<XroadMember> members) {
+    String labelAdr = "";
+    for (XroadMember member : members) {
+      SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+      String startDateStr = "";
+      String endDateStr = "";
+      if (member.getRepresentee() != null) {
+        if (member.getRepresentee().getStartDate() != null) {
+          startDateStr = sdf.format(member.getRepresentee().getStartDate());
+        }
+        if (member.getRepresentee().getEndDate() != null) {
+          endDateStr = sdf.format(member.getRepresentee().getEndDate());
+        }
+      }
+      labelAdr +=
+          "</br>"
+              + member.toString().replace("addressee", "adressaat")
+                  .replace("X-road member", "X-tee liige")
+                  .replace("is representee", "kas vahendatav")
+              + (member.getRepresentee() == null ? "" : " vahendamise algus: " + startDateStr
+                  + " lõpp:" + endDateStr) + "\n";
+    }
+    return labelAdr;
+  }
+
+
 }

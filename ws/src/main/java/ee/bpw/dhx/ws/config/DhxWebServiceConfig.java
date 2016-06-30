@@ -1,13 +1,6 @@
 package ee.bpw.dhx.ws.config;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,6 +22,13 @@ import org.springframework.ws.server.endpoint.adapter.method.MethodReturnValueHa
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
 @EnableWs
 @Getter
 @Slf4j
@@ -40,73 +40,94 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
  */
 public class DhxWebServiceConfig extends WsConfigurationSupport {
 
-	@Autowired
-	DhxConfig config;
-	
-	@Bean
-	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
-		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-		servlet.setApplicationContext(applicationContext);
-		servlet.setTransformWsdlLocations(true);
-		return new ServletRegistrationBean(servlet, "/" + config.getEndpointPath() + "/*");
-	}
+  @Autowired
+  DhxConfig config;
 
-	@Bean(name = "dhx")
-	public SimpleWsdl11Definition defaultWsdl11Definition() {
-		Resource wsdlResource = new ClassPathResource(config.getWsdlFile());
-		SimpleWsdl11Definition wsdlDef = new SimpleWsdl11Definition(wsdlResource);
-		return wsdlDef;
-	}
+  /**
+   * Sets servlet registration bean.
+   * @param applicationContext - context of the application
+   * @return ServletRegistrationBean
+   */
+  @Bean
+  public ServletRegistrationBean messageDispatcherServlet(ApplicationContext applicationContext) {
+    MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+    servlet.setApplicationContext(applicationContext);
+    servlet.setTransformWsdlLocations(true);
+    return new ServletRegistrationBean(servlet, "/" + config.getEndpointPath() + "/*");
+  }
 
-	@Bean
-    @Override
-    public DefaultMethodEndpointAdapter defaultMethodEndpointAdapter() {
-        List<MethodReturnValueHandler> returnValueHandlers = new ArrayList<MethodReturnValueHandler>();
-        returnValueHandlers.addAll(methodProcessors());
+  /**
+   * Defines WSDL.
+   * @return SimpleWsdl11Definition
+   */
+  @Bean(name = "dhx")
+  public SimpleWsdl11Definition defaultWsdl11Definition() {
+    Resource wsdlResource = new ClassPathResource(config.getWsdlFile());
+    SimpleWsdl11Definition wsdlDef = new SimpleWsdl11Definition(wsdlResource);
+    return wsdlDef;
+  }
 
-        DefaultMethodEndpointAdapter adapter = new DefaultMethodEndpointAdapter();
-        List<MethodArgumentResolver> argumentResolvers = adapter.getMethodArgumentResolvers();
-        if( argumentResolvers == null) {
-        	argumentResolvers = new ArrayList<MethodArgumentResolver>();
-        }
-        argumentResolvers.addAll(methodProcessors());
-        argumentResolvers.add(new MessageContextMethodArgumentResolver());
-        adapter.setMethodArgumentResolvers(argumentResolvers);
-        adapter.setMethodReturnValueHandlers(returnValueHandlers);
-        return adapter;
+  @Bean
+  @Override
+  public DefaultMethodEndpointAdapter defaultMethodEndpointAdapter() {
+    List<MethodReturnValueHandler> returnValueHandlers =
+        new ArrayList<MethodReturnValueHandler>();
+    returnValueHandlers.addAll(methodProcessors());
+
+    DefaultMethodEndpointAdapter adapter = new DefaultMethodEndpointAdapter();
+    List<MethodArgumentResolver> argumentResolvers = adapter.getMethodArgumentResolvers();
+    if (argumentResolvers == null) {
+      argumentResolvers = new ArrayList<MethodArgumentResolver>();
     }
+    argumentResolvers.addAll(methodProcessors());
+    argumentResolvers.add(new MessageContextMethodArgumentResolver());
+    adapter.setMethodArgumentResolvers(argumentResolvers);
+    adapter.setMethodReturnValueHandlers(returnValueHandlers);
+    return adapter;
+  }
 
 
-    @Bean
-    public List<MarshallingPayloadMethodProcessor> methodProcessors() {
-        List<MarshallingPayloadMethodProcessor> retVal = new ArrayList<MarshallingPayloadMethodProcessor>();
-        Jaxb2Marshaller marshallerMTOM =marshaller();
-        retVal.add(new MarshallingPayloadMethodProcessor(marshallerMTOM));
+  /**
+   * Method returns bean List of MarshallingPayloadMethodProcessors.
+   * @return bean List of MarshallingPayloadMethodProcessors
+   */
+  @Bean
+  public List<MarshallingPayloadMethodProcessor> methodProcessors() {
+    List<MarshallingPayloadMethodProcessor> retVal =
+        new ArrayList<MarshallingPayloadMethodProcessor>();
+    Jaxb2Marshaller marshallerMtom = marshaller();
+    retVal.add(new MarshallingPayloadMethodProcessor(marshallerMtom));
 
-        return retVal;
+    return retVal;
+  }
+
+  /**
+   * Sets marshaller bean.
+   * @return marshaller
+   */
+  @Bean
+  public Jaxb2Marshaller marshaller() {
+    Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+    marshaller.setMtomEnabled(true);
+    marshaller.setContextPaths(config.getMarshallContextAsList());
+    return marshaller;
+  }
+
+  /**
+   * sets unmarshaller bean.
+   * @return unmarshaller
+   */
+  @Bean
+  public Unmarshaller getUnmarshaller() {
+    try {
+      JAXBContext unmarshalContext = JAXBContext.newInstance(config.getMarshallContext());
+      Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();
+      return unmarshaller;
+    } catch (JAXBException ex) {
+      log.error(ex.getMessage(), ex);
     }
-    
-	@Bean
-	public Jaxb2Marshaller marshaller() {
-		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-		marshaller.setMtomEnabled(true);
-		marshaller.setContextPaths(config.getMarshallContextAsList());
-		//marshaller.setContextPaths("ee.riik.schemas.deccontainer.vers_2_1", "eu.x_road.dhx.producer", "eu.x_road.xsd.identifiers", "eu.x_road.xsd.xroad");
-		return marshaller;
-	}
-    
-    @Bean
-	public Unmarshaller getUnmarshaller() {
-    	try {
-	    	//JAXBContext unmarshalContext = JAXBContext.newInstance("ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.xroad");
-    		JAXBContext unmarshalContext = JAXBContext.newInstance(config.getMarshallContext());			
-    		Unmarshaller unmarshaller = unmarshalContext.createUnmarshaller();
-			return unmarshaller;
-    	} catch(JAXBException ex) {
-    		log.error(ex.getMessage(), ex);
-    	}
-    	return null;
-	}
-    
+    return null;
+  }
+
 
 }
