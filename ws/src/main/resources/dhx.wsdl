@@ -66,13 +66,23 @@
 	<element name="representationListResponse">
 		<complexType>
 			<sequence>
-				<element name="memberCodes" type="tns:memberCodes" />
+				<element name="members" type="tns:members" />
 			</sequence>
 		</complexType>
 	</element>
-	<complexType name="memberCodes">
+	<complexType name="members">
 		<sequence>
-			<element name="memberCode" type="string" maxOccurs="unbounded"
+			<element name="member" type="tns:member" maxOccurs="unbounded"
+				minOccurs="0" />
+		</sequence>
+	</complexType>
+	<complexType name="member">
+		<sequence>
+			<element name="memberCode" type="string" maxOccurs="1"
+				minOccurs="1" />
+			<element name="startDate" type="dateTime" maxOccurs="1"
+				minOccurs="1" />
+			<element name="endDate" type="dateTime" maxOccurs="1"
 				minOccurs="0" />
 		</sequence>
 	</complexType>

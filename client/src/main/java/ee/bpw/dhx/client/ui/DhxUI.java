@@ -3,6 +3,7 @@ package ee.bpw.dhx.client.ui;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
@@ -373,7 +374,17 @@ public class DhxUI extends UI {
 		    		String reprStr = "";
 		    		if(response.getMembers() != null && response.getMembers().getMember() != null && response.getMembers().getMember().size()>0) {
 			    		for(Member repr : response.getMembers().getMember()) {
-			    			reprStr = reprStr + (reprStr.equals("")?"":", ") + (new Representee(repr).toString());
+			    			SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+			    			String startDateStr = "";
+			    			String endDateStr = "";
+			    			Representee representee = new Representee(repr);
+			    			if(representee.getStartDate() != null) {
+			    				startDateStr = sdf.format(representee.getStartDate());
+			    			}
+			    			if(representee.getEndDate() != null) {
+			    				endDateStr = sdf.format(representee.getEndDate());
+			    			}
+			    			reprStr = reprStr + (reprStr.equals("")?"":", ") + (repr.getMemberCode() + " algus: " +startDateStr + " lõpp:" + endDateStr);
 			    		}
 		    		}
 		    		Notification notification = new Notification("Representatives:" + reprStr, Notification.Type.HUMANIZED_MESSAGE);
@@ -418,7 +429,7 @@ public class DhxUI extends UI {
 			    		log.debug("renewing address list");
 			    		addressService.renewAddressList();
 			    		List<XroadMember> members = addressService.getAdresseeList();
-			    		adrLabel.setCaption(getAdresseeString(members));
+			    		adrLabel.setCaption("<span style=\"white-space:normal;\">" + getAdresseeString(members) + "</span>");
 			    		Notification notification = new Notification("Lokaalne aadressiraamat uuendatud", Notification.Type.HUMANIZED_MESSAGE);
 			    		notification.setDelayMsec(-1);
 			    		notification.show(Page.getCurrent());
@@ -432,7 +443,19 @@ public class DhxUI extends UI {
 	 private String getAdresseeString (List<XroadMember> members) {
 		 String labelAdr = "";
 			for(XroadMember member : members) {
-				labelAdr += "</br>" + member.toString().replace("addressee", "adressaat").replace("X-road member", "X-tee liige").replace("is representee", "kas vahendatav") +"\n";
+				SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    			String startDateStr = "";
+    			String endDateStr = "";
+    			if(member.getRepresentee() != null ){
+	    			if(member.getRepresentee().getStartDate() != null) {
+	    				startDateStr = sdf.format(member.getRepresentee().getStartDate());
+	    			}
+	    			if(member.getRepresentee().getEndDate() != null) {
+	    				endDateStr = sdf.format(member.getRepresentee().getEndDate());
+	    			}
+    			}
+				labelAdr += "</br>" + member.toString().replace("addressee", "adressaat").replace("X-road member", "X-tee liige").replace("is representee", "kas vahendatav") 
+						+(member.getRepresentee()==null?"":" vahendamise algus: " + startDateStr + " lõpp:" + endDateStr) + "\n";
 			}
 		return labelAdr;
 	 }

@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
+import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import eu.x_road.dhx.producer.Member;
@@ -55,9 +56,9 @@ public class DocumentGateWayClient  extends DhxGateway{
 				if(response.getMembers() != null && response.getMembers().getMember() != null && response.getMembers().getMember().size()>0) {
 					String representatives = "";
 					for(Member memberResponse : response.getMembers().getMember()) {
-						representatives += (representatives.equals("")?"":",") + memberResponse.getMemberCode();
-						logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
+						representatives += (representatives.equals("")?"":", ") + new Representee(memberResponse).toString();
 					}
+					logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
 				} else {
 					logger.log(Level.getLevel("EVENT"), "Representation list received: empty list");
 				}

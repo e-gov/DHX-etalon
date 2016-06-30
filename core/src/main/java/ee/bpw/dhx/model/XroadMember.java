@@ -49,7 +49,7 @@ public class XroadMember {
 	   
 	 @Override
 	 public String toString() {
-		 return "addressee: " + (representee==null?memberCode:representee.toString()) + ", X-road member: " + xRoadInstance + "/" + memberClass + "/" + memberCode + "/" + subsystemCode + ", is representee: " + (representee==null?false:true);
+		 return "addressee: " + (representee==null?memberCode:representee.getMemberCode()) + ", X-road member: " + xRoadInstance + "/" + memberClass + "/" + memberCode + "/" + subsystemCode + ", is representee: " + (representee==null?false:true);
 	 }
 
 }

@@ -1,8 +1,10 @@
 package ee.bpw.dhx.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.util.ConversionUtil;
 import ee.bpw.dhx.util.XsdUtil;
 import eu.x_road.dhx.producer.Member;
 import lombok.Getter;
@@ -19,8 +21,12 @@ public class Representee {
 	
 	public Representee (Member member) {
 		this.memberCode = member.getMemberCode();
-		this.startDate = XsdUtil.toDate(member.getStartDate());
-		this.endDate = XsdUtil.toDate(member.getEndDate());
+		if(member.getStartDate() != null) {
+			this.startDate = ConversionUtil.toDate(member.getStartDate());
+		}
+		if(member.getEndDate() != null) {
+			this.endDate = ConversionUtil.toDate(member.getEndDate());
+		}
 	}
 	
 	public Representee (String memberCode, Date startDate, Date endDate) {
@@ -37,8 +43,12 @@ public class Representee {
 	public Member convertToMember () throws DhxException{
 		Member member = new Member();
 		member.setMemberCode(memberCode);
-		member.setStartDate(XsdUtil.toGregorianCalendar(startDate));
-		member.setEndDate(XsdUtil.toGregorianCalendar(endDate));
+		if(this.getStartDate() != null) {
+			member.setStartDate(ConversionUtil.toGregorianCalendar(startDate));
+		}
+		if(this.getEndDate() != null) {
+			member.setEndDate(ConversionUtil.toGregorianCalendar(endDate));
+		}
 		return member;
 	}
 	

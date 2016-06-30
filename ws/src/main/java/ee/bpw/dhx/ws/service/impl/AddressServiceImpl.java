@@ -61,6 +61,7 @@ public class AddressServiceImpl implements AddressService{
 	@Autowired
 	Unmarshaller unmarshaller;
 	
+	@Autowired
 	private RepresentationService representationService;
 	
 	
@@ -122,7 +123,7 @@ public class AddressServiceImpl implements AddressService{
 								log.debug("getting representatives for member:" + member.toString());
 								try {
 									List<XroadMember> representeeMembers = getRepresentees(member);
-									if(members != null && members.size()>0) {
+									if(representeeMembers != null && representeeMembers.size()>0) {
 										members.addAll(representeeMembers);
 									}
 								}catch(DhxException ex) {

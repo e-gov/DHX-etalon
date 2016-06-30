@@ -183,21 +183,5 @@ public class XsdUtil {
 			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
 		}
 	}
-	
-	public static XMLGregorianCalendar toGregorianCalendar(Date date) throws DhxException{
-		try {
-			GregorianCalendar gcalendar = new GregorianCalendar();
-			gcalendar.setTime(date);
-			XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcalendar);
-			return xmlDate;
-		} catch(DatatypeConfigurationException ex) {
-			throw new DhxException(DHXExceptionEnum.TECHNICAL_ERROR, "Error occured while converting date. " + ex.getMessage(), ex);
-		}
-	}
-	
-	public static Date toDate(XMLGregorianCalendar xmlDate) {
-		return xmlDate.toGregorianCalendar().getTime();
-
-	}
 
 }

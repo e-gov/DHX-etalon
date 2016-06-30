@@ -1,5 +1,8 @@
 package ee.bpw.dhx.ws.config;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +30,7 @@ public class DhxConfig {
 	private String sendRetryCount;
 	private String marshallContext;
 	private Integer maxFileSize;
+	private String dateFormat;
 	
 	private String [] marshallContextAsList;
 	
@@ -40,6 +44,11 @@ public class DhxConfig {
 	
 	public Integer getMaxFileSizeInBytes () {
 		return maxFileSize*1024*1024;
+	}
+	
+	public String format(Date date){
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		return sdf.format(date);
 	}
 
 }

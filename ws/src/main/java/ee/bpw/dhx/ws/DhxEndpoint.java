@@ -95,6 +95,7 @@ public class DhxEndpoint {
 				for(Representee representee : representees) {	
 					members.getMember().add(representee.convertToMember());
 				}
+				response.setMembers(members);
 			}
 			return response;
 		} catch (Exception e) {
