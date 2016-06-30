@@ -2,21 +2,17 @@ package ee.bpw.dhx.client.service;
 
 import java.util.UUID;
 
-
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.ws.client.WebServiceFaultException;
-import org.springframework.ws.client.core.SimpleFaultMessageResolver;
 
-import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
-import eu.x_road.dhx.producer.RepresentationList;
+import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
@@ -55,7 +51,16 @@ public class DocumentGateWayClient  extends DhxGateway{
 		logger.log(Level.getLevel("EVENT"), "Getting representation list from:" + member.toString());
 			try{
 				response = super.getRepresentationList(member);
-				logger.log(Level.getLevel("EVENT"), "Representation list received:" + response.getMemberCodes().getMemberCode().size());
+				
+				if(response.getMembers() != null && response.getMembers().getMember() != null && response.getMembers().getMember().size()>0) {
+					String representatives = "";
+					for(Member memberResponse : response.getMembers().getMember()) {
+						representatives += (representatives.equals("")?"":",") + memberResponse.getMemberCode();
+						logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
+					}
+				} else {
+					logger.log(Level.getLevel("EVENT"), "Representation list received: empty list");
+				}
 			} 
 			catch(DhxException e) {
 				logger.log(Level.getLevel("EVENT"),"Error occured while getting representation list for:" + member.toString() + ". " + e.getMessage());

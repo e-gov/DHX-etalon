@@ -20,8 +20,6 @@ import com.vaadin.server.Page;
 import com.vaadin.server.StreamResource;
 import com.vaadin.server.StreamResource.StreamSource;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.shared.ui.BorderStyle;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -43,6 +41,7 @@ import com.vaadin.ui.VerticalLayout;
 import ee.bpw.dhx.client.CustomAppender;
 import ee.bpw.dhx.client.config.DhxClientConfig;
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
@@ -50,10 +49,11 @@ import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DocumentService;
+import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
-@SpringUI(path = "ui")
+@SpringUI
 @Theme("valo")
 @Slf4j
 public class DhxUI extends UI {
@@ -78,19 +78,6 @@ public class DhxUI extends UI {
 	DhxGateway dhxGateway;
 	
 	private final String mainAppLabel = "Dokumendivahetusprotokolli DHX etalonteostus.";
-	private final String sendDocumentHelp = "<span style=\"white-space:normal;\"><ul>"
-			+ "<li>Dokumendi saadetakse kapsli sees olevatele adressaatidele. "
-					+ "Enne saatmist kontrollitakse saajat(kas on lokaalses aadressinimistus olemas) ja valideeritakse kapsel(konfitav). "
-					+ "Saatmiseks kasutatakse sendDocument xtee teenust.</li>"
-			+ "<li>Saadetise id võib tühjaks jääda, siis rakendus paneb automaatselt juhusliku stringi saadetise ID-na. "
-					+ "Kui on vaja testida ntks dublikaatide kontrolli, "
-					+ "siis tuleb saadetise ID käsitsi panna ja mitu korda ütirada saata sama saadetise ID-ga.</li>"
-			+ "<li>Dokumendi kapsel peab olema XML fail mis vastab Elektroonilise andmevahetuse metaandmete loendile 2.1</li>"
-			+ "</ul></span>";
-	private final String representationListHelp = "<ul>"
-			+ "<li><span style=\"white-space:normal;\">Leitakse sisestatud X-tee liikme poolt vahendatavate asutuste nimekirja."
-				+ " Kasutatakse xtee teenust representationList </span>"
-			+ "</li></ul>";
 	private final String description = "Dokumendivahetustaristu hajusarhitektuurile üleviimise väljatöötamine" 
 				 + "<ul><li>Riigi Infosüsteemi Amet, 2016</li></ul>";
 	private class DhxStreamSource implements StreamSource {
@@ -180,14 +167,22 @@ public class DhxUI extends UI {
 		info.setCaptionAsHtml(true);
 		//info.setValue(config.getInfo());
 		layout.addComponent(info);
-		StreamResource source = new StreamResource(new DhxStreamSource(config.getCapsuleTestFile()) , "capsule.xml");
+		StreamResource source = new StreamResource(new DhxStreamSource(config.getTestFile1()) , "DVKkapsel1.xml");
 		FileDownloader fileDownloader = new FileDownloader(source);
-		Link link = new Link("Lae alla näidiskapsel testimiseks", null);
+		Link link = new Link("Lae alla näidiskapsel DVKkapsel1.xml", null);
 		fileDownloader.extend(link);
 		//link.setTargetName("_blank");
 		layout.addComponent(link);
-		ExternalResource wsdlResource = new ExternalResource("/ws/dhx.wsdl");
+		
+		StreamResource source2 = new StreamResource(new DhxStreamSource(config.getTestFile2()) , "DVKkapsel2.xml");
+		FileDownloader fileDownloader2 = new FileDownloader(source2);
+		Link link2 = new Link("Lae alla näidiskapsel DVKkapsel2.xml", null);
+		fileDownloader2.extend(link2);
+		//link.setTargetName("_blank");
+		layout.addComponent(link2);
+		ExternalResource wsdlResource = new ExternalResource("/dhx/ws/dhx.wsdl");
 		Link linkwsdl = new Link("Pakutavate teenuste wsdl ", wsdlResource);
+		linkwsdl.setTargetName("_blank");
 		layout.addComponent(linkwsdl);
 		return layout;
 	}
@@ -274,22 +269,25 @@ public class DhxUI extends UI {
 		GridLayout gridLayout = new GridLayout(2, 6);
 		gridLayout.setMargin(true);
 		gridLayout.setSpacing(true);
-		gridLayout.addComponent(addTooltip(new Label("Sündmusi logitakse:"), "Sündmusi logitakse", "Mitu sündmust kuvatakse 'Viimased sündmused' regioonis"));
+		gridLayout.addComponent(addTooltip(new Label("Sündmusi logitakse:"), "Sündmusi logitakse", config.getLogEventsHelp()));
 		gridLayout.addComponent(new Label(config.getLogMaxSize().toString()));
-		gridLayout.addComponent(addTooltip(new Label("Logi uuendatakse(millisekundites): "), "Logi uuendatakse(millisekundites)", "Kui tihti uuendatakse regioon 'Viimased sündmused'"));
+		gridLayout.addComponent(addTooltip(new Label("Logi uuendatakse(millisekundites): "), "Logi uuendatakse(millisekundites)", config.getLogRefreshHelp()));
 		gridLayout.addComponent(new Label(config.getLogRefresh().toString()));
-		gridLayout.addComponent(addTooltip(new Label("Vahendatavate nimekiri: "), "Vahendatavate nimekir", "Nimekiri asutustest keda vahendab antud xtee liige"));
+		gridLayout.addComponent(addTooltip(new Label("Vahendatavate nimekiri: "), "Vahendatavate nimekiri", config.getRepresentativesHelp()));
 		gridLayout.addComponent(new Label(config.getRepresentatives()));
 
 		
-		gridLayout.addComponent(addTooltip(new Label("Kapsel valideeritakse: "), "Kapsel valideeritakse", "Kas kaspli on vaja valideerida vastu XSD skeema"));
+		gridLayout.addComponent(addTooltip(new Label("Kapsel valideeritakse: "), "Kapsel valideeritakse", config.getValidateCapsuleHelp()));
 		gridLayout.addComponent(new Label( dhxConfig.getCapsuleValidate().toString()));
 
 		
-		gridLayout.addComponent(addTooltip(new Label("Turvaserver: "), "Turvaserver", "Turvaserveri asukoht"));
+		gridLayout.addComponent(addTooltip(new Label("Turvaserver: "), "Turvaserver", config.getSecurityServerHelp()));
 		gridLayout.addComponent(new Label(soapConfig.getSecurityServer()));
-		gridLayout.addComponent(addTooltip(new Label("Xtee liige: "), "Xtee liige", "Xtee liikme andmed"));
+		gridLayout.addComponent(addTooltip(new Label("Xtee liige: "), "Xtee liige", config.getXroadMemberHelp()));
 		gridLayout.addComponent(new Label(soapConfig.getXroadInstance() + "/" + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/" + soapConfig.getSubsystem()));
+		
+		gridLayout.addComponent(addTooltip(new Label("Maksimaalne faili suurus: "), "Maksimaalne faili suurus", config.getMaxFileSizeHelp()));
+		gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));
 		
 		//Label label = new Label("Rakenduse konf: ");
 		//label.setStyleName("h3");	
@@ -329,7 +327,8 @@ public class DhxUI extends UI {
 		buttonSubmit.addListener(new Button.ClickListener() {
 		    public void buttonClick(ClickEvent event) {
 		    	try {
-		    		List<SendDocumentResponse> responses = documentService.sendDocument(uploadField.getContentAsStream(), consignmentId.getValue());
+		    		File attachment =  FileUtil.createFileAndWrite(uploadField.getContentAsStream());
+		    		List<SendDocumentResponse> responses = documentService.sendDocument(attachment, consignmentId.getValue());
 		    		String statuses = "";
 		    		for(SendDocumentResponse response : responses) {
 		    			statuses += "Dokument saadetud. Status:" + response.getReceiptId()
@@ -341,7 +340,7 @@ public class DhxUI extends UI {
 		    		notification.show(Page.getCurrent());
 		    	}catch(DhxException ex) {
 		    		log.error("Error while sending document." + ex.getMessage(), ex);
-		    		Notification notification = new Notification("Viga documendi saatmisel!" + ex.getMessage(), Notification.Type.HUMANIZED_MESSAGE);
+		    		Notification notification = new Notification("Viga documendi saatmisel!" + ex.getMessage(), Notification.Type.WARNING_MESSAGE);
 		    		notification.setDelayMsec(-1);
 		    		notification.show(Page.getCurrent());
 		    		//showNotification("Viga documendi saatmisel!" + ex.getMessage());
@@ -350,7 +349,7 @@ public class DhxUI extends UI {
 		});
 		Label help = new Label();
 		help.setCaptionAsHtml(true);
-		help.setCaption(sendDocumentHelp);
+		help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp() + "</span>");
 		FormLayout formLayout = new FormLayout(/*formLabel,*/ help, consignmentId, uploadField, buttonSubmit, chosenFile);
 		formLayout.setMargin(false);
 		VerticalLayout vertLayout = new VerticalLayout();
@@ -372,8 +371,10 @@ public class DhxUI extends UI {
 		    		XroadMember member = new XroadMember(soapConfig.getXroadInstance(), regClass.getValue(), regCode.getValue(), soapConfig.getSubsystem(), null);
 		    		RepresentationListResponse response = dhxGateway.getRepresentationList(member);
 		    		String reprStr = "";
-		    		for(String repr : response.getMemberCodes().getMemberCode()) {
-		    			reprStr = reprStr + (reprStr.equals("")?"":", ") + repr;
+		    		if(response.getMembers() != null && response.getMembers().getMember() != null && response.getMembers().getMember().size()>0) {
+			    		for(Member repr : response.getMembers().getMember()) {
+			    			reprStr = reprStr + (reprStr.equals("")?"":", ") + (new Representee(repr).toString());
+			    		}
 		    		}
 		    		Notification notification = new Notification("Representatives:" + reprStr, Notification.Type.HUMANIZED_MESSAGE);
 		    		notification.setDelayMsec(-1);
@@ -392,7 +393,7 @@ public class DhxUI extends UI {
 		formLayout.setMargin(false);
 		Label help = new Label();
 		help.setCaptionAsHtml(true);
-		help.setCaption(representationListHelp);
+		help.setCaption("<span style=\"white-space:normal;\">" + config.getRepresentationListHelp() + "</span>");
 		VerticalLayout vertLayout = new VerticalLayout();
 		vertLayout.addComponent(help);
 		vertLayout.addComponent(formLayout);

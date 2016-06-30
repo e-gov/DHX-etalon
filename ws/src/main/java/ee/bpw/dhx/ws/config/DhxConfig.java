@@ -1,12 +1,8 @@
 package ee.bpw.dhx.ws.config;
 
-import java.util.Arrays;
-import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,6 +26,7 @@ public class DhxConfig {
 	private String endpointPath;
 	private String sendRetryCount;
 	private String marshallContext;
+	private Integer maxFileSize;
 	
 	private String [] marshallContextAsList;
 	
@@ -39,6 +36,10 @@ public class DhxConfig {
 			marshallContextAsList =  contextArray;
 		}
 		return marshallContextAsList;
+	}
+	
+	public Integer getMaxFileSizeInBytes () {
+		return maxFileSize*1024*1024;
 	}
 
 }

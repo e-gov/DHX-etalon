@@ -10,13 +10,12 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.util.ByteArrayDataSource;
 
+import lombok.Getter;
+import lombok.Setter;
 import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.util.FileUtil;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import eu.x_road.dhx.producer.SendDocument;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @Getter

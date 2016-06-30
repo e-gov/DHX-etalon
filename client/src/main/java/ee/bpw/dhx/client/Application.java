@@ -9,8 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.vaadin.ui.TextArea;
-
 @SpringBootApplication
 @EnableScheduling
 @EnableAutoConfiguration

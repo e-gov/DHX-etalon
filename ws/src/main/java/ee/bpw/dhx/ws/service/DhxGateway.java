@@ -178,7 +178,7 @@ public class DhxGateway  extends WebServiceGatewaySupport {
 			log.info( "Sending document to recipient:" + document.getService().toString());
 			try{
 				SendDocument request = new SendDocument();
-				request.setRecipient(document.getService().getRepresentativeCode());
+				request.setRecipient(document.getService().getRepresentee().getMemberCode());
 				request.setDocumentAttachment(document.getDocumentFile());
 				if(document.getInternalConsignmentId() != null && !document.getInternalConsignmentId().isEmpty()) {
 					request.setConsignmentId(document.getInternalConsignmentId());
@@ -241,7 +241,7 @@ public class DhxGateway  extends WebServiceGatewaySupport {
 								soapConfig.getSecurityServerWithAppender(),
 								new RepresentationList(),
 								new SoapRequestHeaderModifier(member, soapConfig.getRepresentativesServiceCode(), xroadServiceVersion));
-				log.info( "Representation list received:" + response.getMemberCodes().getMemberCode().size());
+				log.info( "Representation list received");
 			} 
 			catch(WebServiceFaultException ex) {
 				throw new DhxException(DHXExceptionEnum.WS_ERROR, "Error occured while sending document. SOAP-fault:" + ex.getWebServiceMessage().getFaultCode().getLocalPart()

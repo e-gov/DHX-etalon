@@ -30,13 +30,13 @@
       <AppenderRef ref="RollingFile"/>
       <AppenderRef ref="CUSTOM"/>
     </Logger>
-     <Logger name="org.springframework.web.servlet.resource" level="trace" additivity="false">
+     <Logger name="org.springframework.web.servlet.resource" level="info" additivity="false">
       <AppenderRef ref="RollingFile"/>
     </Logger>
     
     
     
-    <Root level="debug" additivity="false">
+    <Root level="info" additivity="false">
       <AppenderRef ref="RollingFile"/>
     </Root>
   </Loggers>

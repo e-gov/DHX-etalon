@@ -20,8 +20,6 @@ import org.apache.logging.log4j.core.config.plugins.PluginElement;
 import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 
-import com.vaadin.ui.TextArea;
-
 
 
 @Plugin(name="CustomAppender", category="Core", elementType="appender", printObject=true)

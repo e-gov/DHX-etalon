@@ -9,7 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -24,15 +23,14 @@ import java.util.zip.ZipInputStream;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.MessagingException;
-import javax.xml.bind.Unmarshaller;
+
+import lombok.extern.slf4j.Slf4j;
 
 import org.apache.axis.encoding.Base64;
 import org.springframework.core.io.ClassPathResource;
 
-import lombok.extern.slf4j.Slf4j;
 import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
-import eu.x_road.xsd.xroad.SharedParametersType;
 
 @Slf4j
 public class FileUtil {
@@ -95,6 +93,27 @@ public class FileUtil {
     	return new ClassPathResource(path).getInputStream();
     }
     
+    public static File getFile(String path) throws DhxException{
+    	File file = null;
+    	try{
+	    	
+	    	if/*(path.startsWith("http")) {
+	            URL url = new URL(path);
+	            stream = url.openStream();
+	        } else if*/(path.startsWith("jar://")) {
+	    		file = new ClassPathResource(path.substring(6)).getFile();
+	        } else {
+	        	file = new File(path);
+	        }
+	    	return file;
+    	}
+    	catch(IOException ex) {
+    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error while reading file. path:" + path + " " + ex.getMessage(), ex);
+    	}
+
+    }
+    
+    
     public static InputStream getFileAsStream(String path) throws DhxException{
     	InputStream stream = null;
     	try{
@@ -115,7 +134,7 @@ public class FileUtil {
 
     }
     
-    public static InputStream getFileAsStream(File file) throws DhxException{
+    protected static InputStream getFileAsStream(File file) throws DhxException{
     	try{
 
 	    	return new FileInputStream(file);
@@ -126,6 +145,15 @@ public class FileUtil {
 
     }
 	 
+    public static File createFileAndWrite (InputStream stream) throws DhxException{
+    	try{
+	    	File file = createPipelineFile(0, "");
+	    	writeToFile(stream, file);
+	    	return file;
+    	} catch(IOException ex) {
+    		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error occured while creating file. " + ex.getMessage(), ex);
+    	}
+    }
 	 public static boolean writeToFile(InputStream inStream, File targetFile) {
 	    	long totalBytesExtracted = 0;
 	        byte[] buf = new byte[binaryBuffeSize];
@@ -412,15 +440,6 @@ public class FileUtil {
 	        }
 	    }
 	 
-	/* private void extractFile(ZipInputStream zipIn, String filePath) throws IOException { 
-		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
-		byte[] bytesIn = new byte[binaryBuffeSize];
-		int read = 0;
-		while ((read = zipIn.read(bytesIn)) != -1) {
-		bos.write(bytesIn, 0, read);
-		}
-		bos.close();
-	}*/
 	 
 	public static InputStream zipUnpack (InputStream zipStream, String fileToFindInZip) throws DhxException{
 		try {

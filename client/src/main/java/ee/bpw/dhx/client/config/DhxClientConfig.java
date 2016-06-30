@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,43 +21,53 @@ import ee.bpw.dhx.ws.service.RepresentationService;
 @Configuration
 @Getter
 @Setter
-@ConfigurationProperties(prefix="dhx.client")
+@ConfigurationProperties(prefix = "dhx.client")
 @Slf4j
 public class DhxClientConfig {
-	
-	private String  representatives;
+
+	private String representatives;
 	private Integer logMaxSize;
 	private Integer logRefresh;
-	private String  capsuleTestFile;
-	//private String  jobRecipient;
+	private String capsuleTestFile;
+	// private String jobRecipient;
 	private Integer binaryBufferSize;
 	private String name;
 	private String info;
-		
-	
+
+	private String testFile1;
+	private String testFile2;
+
+	private String sendDocumentHelp;
+	private String representationListHelp;
+	private String logEventsHelp;
+	private String logRefreshHelp;
+	private String representativesHelp;
+	private String validateCapsuleHelp;
+	private String securityServerHelp;
+	private String xroadMemberHelp;
+	private String maxFileSizeHelp;
+
 	List<String> representativesList = null;
-	
+
 	public List<String> getRepresentativesList() {
-		if(representativesList == null) {
+		if (representativesList == null) {
 			representativesList = Arrays.asList(representatives.split(","));
 		}
 		return representativesList;
 	}
-	
+
 	@Bean
-	RepresentationService representationService()
-	{
-	    return new RepresentationServiceImpl();
+	RepresentationService representationService() {
+		return new RepresentationServiceImpl();
 	}
-	
+
 	@Bean
-	DocumentService documentService()
-	{
+	DocumentService documentService() {
 		DocumentService service = new DocumentClientService();
-	    return service;
+		return service;
 	}
-	
-	@Bean 
+
+	@Bean
 	DhxGateway dhxGateway() {
 		return new DocumentGateWayClient();
 	}

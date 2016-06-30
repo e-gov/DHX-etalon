@@ -5,11 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
@@ -19,18 +24,14 @@ import javax.xml.validation.Validator;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.axis.AxisFault;
 import org.codehaus.stax2.XMLInputFactory2;
-import org.codehaus.stax2.XMLStreamProperties;
 import org.codehaus.stax2.XMLStreamReader2;
 import org.codehaus.stax2.validation.XMLValidationException;
 import org.codehaus.stax2.validation.XMLValidationSchema;
 import org.codehaus.stax2.validation.XMLValidationSchemaFactory;
-import org.springframework.core.io.ClassPathResource;
 
 import ee.bpw.dhx.exception.DHXExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 
 @Slf4j
 public class XsdUtil {
@@ -105,6 +106,7 @@ public class XsdUtil {
 	 * @param capsuleFile
 	 * @return
 	 * @throws DhxException
+	 * @Deprecated use  unmarshallCapsule (File capsuleFile, Unmarshaller unmarshaller)
 	 */
 	public static <T> T unmarshallCapsule (InputStream capsuleStream, Unmarshaller unmarshaller) throws DhxException{
 		try{
@@ -154,7 +156,7 @@ public class XsdUtil {
 	 * @param schemaFileStream - stream containing schema against which to validate
 	 * @throws DhxException
 	 */
-	public static void validate (InputStream fileStream, InputStream schemaStream) throws DhxException{
+	private static void validate (InputStream fileStream, InputStream schemaStream) throws DhxException{
 		try {
 			Source schemaSource = new StreamSource(schemaStream);
 			Source xmlFile = new StreamSource(fileStream);
@@ -180,6 +182,22 @@ public class XsdUtil {
 			log.error(ex.getMessage(), ex);
 			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
 		}
+	}
+	
+	public static XMLGregorianCalendar toGregorianCalendar(Date date) throws DhxException{
+		try {
+			GregorianCalendar gcalendar = new GregorianCalendar();
+			gcalendar.setTime(date);
+			XMLGregorianCalendar xmlDate = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcalendar);
+			return xmlDate;
+		} catch(DatatypeConfigurationException ex) {
+			throw new DhxException(DHXExceptionEnum.TECHNICAL_ERROR, "Error occured while converting date. " + ex.getMessage(), ex);
+		}
+	}
+	
+	public static Date toDate(XMLGregorianCalendar xmlDate) {
+		return xmlDate.toGregorianCalendar().getTime();
+
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ws.context.MessageContext;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 
 @Service
@@ -15,15 +16,13 @@ import ee.bpw.dhx.model.XroadMember;
  * @author Aleksei Kokarev
  *
  */
-public abstract class RepresentationService {
-	
-	@Autowired
-	DhxGateway dhxGateway;
+public interface RepresentationService {
 
-	public abstract List<String> getRepresentationList() throws DhxException;
-	
-	public List<String> getRepresentationListForEndpoint (MessageContext messageContext) throws DhxException {
-		dhxGateway.getXroadCLientAndSetRersponseHeader(messageContext);
-		return getRepresentationList();
-	} 
+	/**
+	 * Method returns list of representees. 
+	 * @return
+	 * @throws DhxException
+	 */
+	public abstract List<Representee> getRepresentationList() throws DhxException;
+
 }

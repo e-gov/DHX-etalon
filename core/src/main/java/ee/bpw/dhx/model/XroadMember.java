@@ -1,9 +1,9 @@
  package ee.bpw.dhx.model;
 
-import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
-import eu.x_road.xsd.xroad.MemberType;
 import lombok.Getter;
 import lombok.Setter;
+import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
+import eu.x_road.xsd.xroad.MemberType;
 
 @Getter
 @Setter
@@ -23,20 +23,20 @@ public class XroadMember {
 		this.subsystemCode = subsytemCode;
 	}
 	
-	public XroadMember (XroadMember member, String representativeCode) {
+	public XroadMember (XroadMember member, Representee representee) {
 		this.xRoadInstance = member.getXRoadInstance();
 		this.memberClass = member.getMemberClass();
 		this.memberCode = member.getMemberCode();
 		this.subsystemCode = member.getSubsystemCode();
-		this.representativeCode = representativeCode;
+		this.representee = representee;
 	}
 	
-	public XroadMember (String xRoadInstance, String memberClass, String memberCode, String subsystemCode, String representativeCode) {
+	public XroadMember (String xRoadInstance, String memberClass, String memberCode, String subsystemCode, Representee representee) {
 		this.xRoadInstance = xRoadInstance;
 		this.memberClass = memberClass;
 		this.memberCode = memberCode;
 		this.subsystemCode = subsystemCode;
-		this.representativeCode = representativeCode;
+		this.representee = representee;
 		
 	}
 	   private String xRoadInstance;
@@ -44,12 +44,12 @@ public class XroadMember {
 	   private String memberCode;
 	   private String subsystemCode;
 	   
-	   private String representativeCode;
+	   private Representee representee;
 	   
 	   
 	 @Override
 	 public String toString() {
-		 return "addressee: " + (representativeCode==null?memberCode:representativeCode) + ", X-road member: " + xRoadInstance + "/" + memberClass + "/" + memberCode + "/" + subsystemCode + ", is representee: " + (representativeCode==null?false:true);
+		 return "addressee: " + (representee==null?memberCode:representee.toString()) + ", X-road member: " + xRoadInstance + "/" + memberClass + "/" + memberCode + "/" + subsystemCode + ", is representee: " + (representee==null?false:true);
 	 }
 
 }
