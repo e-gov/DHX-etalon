@@ -101,6 +101,7 @@ public class XsdUtil {
 			throw new DhxException(DHXExceptionEnum.CAPSULE_VALIDATION_ERROR, "Error occured while creating object from capsule. " + ex.getMessage(), ex);
 		}
 	}
+	
 	/**
 	 * Parses capsule
 	 * @param capsuleFile
@@ -150,6 +151,7 @@ public class XsdUtil {
 	public static void validate (File file, InputStream schemaStream) throws DhxException{
 		validate(FileUtil.getFileAsStream(file), schemaStream);
 	}
+	
 	/**
 	 * Function validates file against XSD schema
 	 * @param file - file to validate

@@ -1,9 +1,9 @@
  package ee.bpw.dhx.model;
 
-import lombok.Getter;
-import lombok.Setter;
 import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
 import eu.x_road.xsd.xroad.MemberType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

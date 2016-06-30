@@ -154,6 +154,7 @@ public class FileUtil {
     		throw new DhxException(DHXExceptionEnum.FILE_ERROR, "Error occured while creating file. " + ex.getMessage(), ex);
     	}
     }
+    
 	 public static boolean writeToFile(InputStream inStream, File targetFile) {
 	    	long totalBytesExtracted = 0;
 	        byte[] buf = new byte[binaryBuffeSize];
@@ -336,6 +337,7 @@ public class FileUtil {
 	            throw new RuntimeException(e);
 	        }
 	    }
+	 
 	 public static void gzipUnpackXML(File sourceFile, boolean appendDocumentHeader) throws FileNotFoundException, IOException, DhxException{
 	        if (sourceFile == null ) {
 	        	throw new DhxException(DHXExceptionEnum.EXCTRACTION_ERROR, "Extracting gzipped XML file failed because file was not supplied!");
