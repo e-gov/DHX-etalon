@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
-			<version>0.3.1</version>
+			<version>0.6.0</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
