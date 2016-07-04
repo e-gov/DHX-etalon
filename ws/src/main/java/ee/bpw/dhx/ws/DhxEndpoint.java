@@ -47,7 +47,8 @@ public class DhxEndpoint {
   DhxGateway dhxGateway;
 
   /**
-   * X-road SOAP service sendDocument. 
+   * X-road SOAP service sendDocument.
+   * 
    * @param request - service request
    * @param messageContext - SOAP message context
    * @return - service response. contains information about document being received or not
@@ -74,6 +75,7 @@ public class DhxEndpoint {
 
   /**
    * X-road SOAP service representationList.
+   * 
    * @param request - service request
    * @param messageContext - SOAP message context
    * @return - service response. contains representee list
@@ -82,7 +84,8 @@ public class DhxEndpoint {
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "representationList")
   @ResponsePayload
   public RepresentationListResponse representationList(
-      @RequestPayload RepresentationList request, MessageContext messageContext) throws DhxException{
+      @RequestPayload RepresentationList request, MessageContext messageContext)
+      throws DhxException {
     try {
       RepresentationListResponse response = new RepresentationListResponse();
       dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);

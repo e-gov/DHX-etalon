@@ -11,10 +11,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.File;
-import java.io.InputStream;
 
 /**
  * DhxDocument implementation specific for capsule version 2.1
+ * 
  * @author Aleksei Kokarev
  *
  */
@@ -26,8 +26,9 @@ public class DhxDocument21 extends DhxDocument {
 
   /**
    * Create DhxDocument21(for capsule version 2.1)
+   * 
    * @param service - XroadMember to whom document is mean to be sent
-   * @param container - document capsule  of version 2.1
+   * @param container - document capsule of version 2.1
    * @param file - documents file
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
@@ -39,11 +40,10 @@ public class DhxDocument21 extends DhxDocument {
 
   }
 
-  /*public DhxDocument21(XroadMember service, InputStream stream, DecContainer container,
-      Boolean packFile) throws DhxException {
-    super(service, stream, packFile);
-    this.container = container;
-  }*/
+  /*
+   * public DhxDocument21(XroadMember service, InputStream stream, DecContainer container, Boolean
+   * packFile) throws DhxException { super(service, stream, packFile); this.container = container; }
+   */
 
   public DhxDocument21(XroadMember client, SendDocument document, DecContainer container) {
     super(client, document);

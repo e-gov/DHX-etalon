@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Internal representation of X-road member. 
+ * Internal representation of X-road member.
+ * 
  * @author Aleksei Kokarev
  *
  */
@@ -17,6 +18,7 @@ public class XroadMember {
 
   /**
    * Create internal XroadMember from XRoadClientIdentifierType(X-road object).
+   * 
    * @param xrdClient - x-road client
    */
   public XroadMember(XRoadClientIdentifierType xrdClient) {
@@ -28,6 +30,7 @@ public class XroadMember {
 
   /**
    * Create internal XroadMember.
+   * 
    * @param xroadInstance - name of X-road instance
    * @param member - X-road member(X-road obvject)
    * @param subsytemCode - X-road subsystem
@@ -41,6 +44,7 @@ public class XroadMember {
 
   /**
    * Create internal XroadMember from another XroadMember and representee.
+   * 
    * @param member - XroadMember from which nto create new XroadMember
    * @param representee - representee to put to new XroadMember
    */
@@ -54,7 +58,8 @@ public class XroadMember {
 
   /**
    * Create internal XroadMember.
-   * @param xroadInstance  - name of members X-road instance
+   * 
+   * @param xroadInstance - name of members X-road instance
    * @param memberClass - name of members X-road class
    * @param memberCode - members X-road member code
    * @param subsystemCode - name on X-road subsystem

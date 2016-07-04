@@ -181,7 +181,8 @@ public class DhxUi extends UI {
     // info.setValue(config.getInfo());
     layout.addComponent(info);
     StreamResource source =
-        new StreamResource(new DhxStreamSource(config.getCapsuleCorrect()), "DVKkapsel_korrektne.xml");
+        new StreamResource(new DhxStreamSource(config.getCapsuleCorrect()),
+            "DVKkapsel_korrektne.xml");
     FileDownloader fileDownloader = new FileDownloader(source);
     Link link = new Link("Lae alla korrektselt kapseldatud fail", null);
     fileDownloader.extend(link);
@@ -326,6 +327,7 @@ public class DhxUi extends UI {
         if (value) {
           consignmentId.setEnabled(false);
           consignmentId.setRequired(false);
+          consignmentId.setValue("");
         } else {
           consignmentId.setEnabled(true);
           consignmentId.setRequired(true);
@@ -389,9 +391,11 @@ public class DhxUi extends UI {
     help.setCaptionAsHtml(true);
     help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp()
         + "</span>");
-    FormLayout formLayout =
-        new FormLayout(/* formLabel, */help, consignmentCheck, consignmentId, /* uploadField, */
-            capsules, adressees, buttonSubmit, chosenFile);
+    FormLayout formLayout = new FormLayout(/* formLabel, */help, consignmentCheck, consignmentId, /*
+                                                                                                   * uploadField
+                                                                                                   * ,
+                                                                                                   */
+    capsules, adressees, buttonSubmit, chosenFile);
     formLayout.setMargin(false);
     VerticalLayout vertLayout = new VerticalLayout();
     vertLayout.addComponent(help);

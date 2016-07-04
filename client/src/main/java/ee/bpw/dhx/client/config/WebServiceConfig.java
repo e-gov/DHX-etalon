@@ -36,6 +36,7 @@ public class WebServiceConfig {
 
   /**
    * Creates bean SoapFaultMappingExceptionResolver.
+   * 
    * @return SoapFaultMappingExceptionResolver
    */
   @Bean

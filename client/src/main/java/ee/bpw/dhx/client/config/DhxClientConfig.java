@@ -1,12 +1,11 @@
 package ee.bpw.dhx.client.config;
 
 import ee.bpw.dhx.client.service.AddressClientServiceImpl;
-import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.client.service.DhxClientGateWay;
+import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.client.service.RepresentationServiceImpl;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
-import ee.bpw.dhx.ws.service.DocumentService;
 import ee.bpw.dhx.ws.service.RepresentationService;
 
 import lombok.Getter;
@@ -33,7 +32,7 @@ public class DhxClientConfig {
   private String representatives;
   private Integer logMaxSize;
   private Integer logRefresh;
-  //private String capsuleTestFile;
+  // private String capsuleTestFile;
   // private String jobRecipient;
   private Integer binaryBufferSize;
   private String name;
@@ -51,12 +50,12 @@ public class DhxClientConfig {
   private String securityServerHelp;
   private String xroadMemberHelp;
   private String maxFileSizeHelp;
-  
+
   private String capsuleCorrect;
   private String capsuleInvalid;
   private String capsuleNotxml;
   private String capsuleWrongAdressee;
-  
+
   private String capsuleAddressateSelect;
   private String capsuleSelect;
 
@@ -64,6 +63,7 @@ public class DhxClientConfig {
 
   /**
    * Returns list of representatives from configuration.
+   * 
    * @return - list of representatives
    */
   public List<String> getRepresentativesList() {
@@ -72,23 +72,23 @@ public class DhxClientConfig {
     }
     return representativesList;
   }
-  
-  public List<Map<String, String>> getCapsuleSelect () {
-   return getSelect(capsuleSelect);
+
+  public List<Map<String, String>> getCapsuleSelect() {
+    return getSelect(capsuleSelect);
   }
-  
-  public List<Map<String, String>> getCapsuleAddressateSelect () {
+
+  public List<Map<String, String>> getCapsuleAddressateSelect() {
     return getSelect(capsuleAddressateSelect);
-   }
-  
-  private List<Map<String, String>> getSelect (String selectString) {
-    List<Map<String, String>> select = new ArrayList<Map<String,String>>();
+  }
+
+  private List<Map<String, String>> getSelect(String selectString) {
+    List<Map<String, String>> select = new ArrayList<Map<String, String>>();
     Map<String, String> row = null;
-    for(String part : selectString.split(";")) {
-      if(row == null) {
+    for (String part : selectString.split(";")) {
+      if (row == null) {
         row = new HashMap<String, String>();
         row.put("name", part);
-      } else if(row.get("value") == null) {
+      } else if (row.get("value") == null) {
         row.put("value", part);
         select.add(row);
         row = null;
@@ -107,7 +107,7 @@ public class DhxClientConfig {
     DocumentClientServiceImpl service = new DocumentClientServiceImpl();
     return service;
   }
-  
+
   @Bean
   AddressService addressService() {
     AddressService service = new AddressClientServiceImpl();

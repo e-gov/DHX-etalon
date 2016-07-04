@@ -1,7 +1,7 @@
 package ee.bpw.dhx.ws.service.impl;
 
-import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
@@ -87,7 +87,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
    * @return - unique id of the document that was saved.
    * @throws DhxException - thrown if error occurs while receiving document
    */
-  // public abstract String recieveDocument(DhxDocument document) throws DhxException;
+  // public abstract String receiveDocument(DhxDocument document) throws DhxException;
 
   /**
    * Method should send document to all recipients defined in capsule. Should be implemented in
@@ -103,11 +103,11 @@ public abstract class DocumentServiceImpl implements DocumentService {
    * throws DhxException;
    */
 
-  private SendDocumentResponse sendDocumentNoCapsulePasring(File capsuleFile,
+  private SendDocumentResponse sendDocumentNoCapsulePasring(InputStream capsuleStream,
       String consignmentId, String recipient) throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     XroadMember adressee = addressService.getClientForMemberCode(recipient);
-    DhxDocument document = new DhxDocument(adressee, capsuleFile, true);
+    DhxDocument document = new DhxDocument(adressee, capsuleStream, true);
     SendDocumentResponse response = documentGateway.sendDocument(document);
     return response;
   }
@@ -142,7 +142,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
         dhxDocument = extractAndValidateDocumentNoParsing(document, client);
       }
       dhxDocument.setClient(client);
-      String id = recieveDocument(dhxDocument);
+      String id = receiveDocument(dhxDocument);
       SendDocumentResponse response = new SendDocumentResponse();
       response.setReceiptId(id);
       return response;
@@ -161,7 +161,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
   protected DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client)
       throws DhxException {
     try {
-      log.info("Recieving document. for representative: " + document.getRecipient());
+      log.info("Receiving document. for representative: " + document.getRecipient());
       DecContainer container = null;
       File unpacked = FileUtil.extractAndUnpackAttachment(document.getDocumentAttachment());
       checkFileSize(unpacked);
@@ -177,21 +177,21 @@ public abstract class DocumentServiceImpl implements DocumentService {
       } else {
         log.debug("Validating capsule is disabled");
       }
-      if(config.getCheckRecipient()) {
+      if (config.getCheckRecipient()) {
         checkRecipient(document.getRecipient(), getStringList(container.getTransport()
             .getDecRecipient()));
       }
       log.info("Recipient from capsule checked and found in representative list "
           + "or own member code. recipient:"
           + container.getTransport().getDecRecipient().get(0).getOrganisationCode());
-      log.info("Document recieved.");
+      log.info("Document received.");
       DhxDocument dhxDocument =
           new DhxDocument(client, document, container, XsdVersionEnum.forClass(container
               .getClass()));
       return dhxDocument;
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
-      log.info("Document is not recieved. code:" + ex.getExceptionCode() + " message:"
+      log.info("Document is not received. code:" + ex.getExceptionCode() + " message:"
           + ex.getMessage());
       throw ex;
     }
@@ -200,10 +200,28 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Override
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
       String recipient) throws DhxException {
+    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, String recipient)");
+    checkFileSize(capsuleFile);
+    InputStream stream = FileUtil.getFileAsStream(capsuleFile);
+    List<SendDocumentResponse> responses;
+    try {
+      responses = sendDocument(stream, consignmentId, recipient);
+    } catch (DhxException ex) {
+      throw ex;
+    } finally {
+      FileUtil.safeCloseStream(stream);
+    }
+
+    return responses;
+  }
+
+  @Override
+  public List<SendDocumentResponse> sendDocument(InputStream capsuleFStream,
+      String consignmentId, String recipient) throws DhxException {
+    log.debug("List<SendDocumentResponse>  sendDocument(InputStream capsuleFStream, String consignmentId, String recipient)");
     if (recipient != null && !recipient.equals("")) {
-      checkFileSize(capsuleFile);
-      List<SendDocumentResponse> responses =  new ArrayList<SendDocumentResponse>();
-      responses.add(sendDocumentNoCapsulePasring(capsuleFile, consignmentId, recipient));
+      List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
+      responses.add(sendDocumentNoCapsulePasring(capsuleFStream, consignmentId, recipient));
       return responses;
     } else {
       throw new DhxException(DhxExceptionEnum.WRONG_RECIPIENT,
@@ -212,22 +230,56 @@ public abstract class DocumentServiceImpl implements DocumentService {
   }
 
   @Override
-  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
-      throws DhxException {     
-    log.debug("List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)");
+  public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId)
+      throws DhxException {
+    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId)");
+    return sendDocument(capsuleStream, consignmentId, config.getCurrentCapsuleVersion());
+  }
+
+  @Override
+  public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
+      XsdVersionEnum version) throws DhxException {
+    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId, , XsdVersionEnum version)");
     if (config.getParseCapsule()) {
-      checkFileSize(capsuleFile);
-      Object container = XsdUtil.unmarshallCapsule(capsuleFile, unmarshaller);
-      if(config.getCapsuleValidate()){ 
-        XsdUtil.validate(capsuleFile, FileUtil.getFileAsStream(config.getXsdForVersion(XsdVersionEnum.forClass(container.getClass())))); 
-       }
-      return sendDocument(container, capsuleFile, consignmentId);
+      InputStream schemaStream = null;
+      if (config.getCapsuleValidate()) {
+        schemaStream = FileUtil.getFileAsStream(config.getXsdForVersion(version));
+      }
+      Object container =
+          XsdUtil.unmarshallCapsuleAndValidate(capsuleStream, schemaStream, unmarshaller);
+      return sendDocument(container, capsuleStream, consignmentId);
     } else {
-      throw new DhxException(DhxExceptionEnum.WRONG_RECIPIENT,
+      throw new DhxException(
+          DhxExceptionEnum.WRONG_RECIPIENT,
           "Unable to define adressees without parsing capsule. parsing capsule is disabled in configuration.");
     }
   }
-  
+
+  @Override
+  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
+      throws DhxException {
+    log.debug("List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)");
+    return sendDocument(capsuleFile, consignmentId, config.getCurrentCapsuleVersion());
+  }
+
+  @Override
+  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
+      XsdVersionEnum version) throws DhxException {
+    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, XsdVersionEnum version) version="
+        + version.toString());
+    checkFileSize(capsuleFile);
+    InputStream stream = FileUtil.getFileAsStream(capsuleFile);
+    List<SendDocumentResponse> responses;
+    try {
+      responses = sendDocument(stream, consignmentId, version);
+    } catch (DhxException ex) {
+      throw ex;
+    } finally {
+      FileUtil.safeCloseStream(stream);
+    }
+    return responses;
+  }
+
 
   /**
    * 
@@ -239,20 +291,22 @@ public abstract class DocumentServiceImpl implements DocumentService {
    * @throws DhxException - throws error if it occured while reading container. if error occured
    *         while sending to one of the recipients, then error returned in reponse fault
    */
-  protected List<SendDocumentResponse> sendDocument(Object container, File capsuleFile, String consignmentId)
-      throws DhxException {
-    log.debug("Sending document with capsule parsing.");
+  protected List<SendDocumentResponse> sendDocument(Object container, InputStream capsuleStream,
+      String consignmentId) throws DhxException {
+    log.debug("Sending document with capsule parsing. consignmentId=" + consignmentId);
     List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
     List<CapsuleAdressee> adressees = XsdUtil.getAdresseesFromContainer(container);
     if (adressees != null && adressees.size() > 0) {
-      //File capsuleFile = null;
-      //capsuleFile = XsdUtil.marshallCapsule(container, marshaller);
+      // TODO: think of some method not to marshall object, but to use original file and just gzip
+      // it. problem is that stream is already read at this point and not able to read it again
+      File capsuleFile = null;
+      capsuleFile = XsdUtil.marshallCapsule(container, marshaller);
       for (CapsuleAdressee adressee : adressees) {
         XroadMember adresseeXroad =
             addressService.getClientForMemberCode(adressee.getAdresseeCode());
         DhxDocument document =
-            new DhxDocument(adresseeXroad, container, XsdVersionEnum.forClass(container.getClass()),
-                capsuleFile, true);
+            new DhxDocument(adresseeXroad, container, XsdVersionEnum.forClass(container
+                .getClass()), capsuleFile/* capsuleStream */, consignmentId, true);
         responses.add(sendDocumentTry(document));
       }
       return responses;
@@ -314,7 +368,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
   protected DhxDocument extractAndValidateDocumentNoParsing(SendDocument document,
       XroadMember client) throws DhxException {
     try {
-      log.info("Recieving document. for representative: " + document.getRecipient());
+      log.info("Receiving document. for representative: " + document.getRecipient());
       // File unpacked = FileUtil.extractAndUnpackAttachment(dhxDocument.getDocumentFile());
       if (config.getCapsuleValidate()) {
         throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -323,17 +377,17 @@ public abstract class DocumentServiceImpl implements DocumentService {
       } else {
         log.debug("Validating capsule is disabled");
       }
-      if(config.getCheckRecipient()) {
+      if (config.getCheckRecipient()) {
         checkRecipient(document.getRecipient(), null);
         log.info("Recipient checked and found in representative list or own member code. recipient:"
             + document.getRecipient());
       }
       DhxDocument dhxDocument = new DhxDocument(client, document);
-      log.info("Document recieved.");
+      log.info("Document received.");
       return dhxDocument;
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
-      log.info("Document is not recieved. code:" + ex.getExceptionCode() + " message:"
+      log.info("Document is not received. code:" + ex.getExceptionCode() + " message:"
           + ex.getMessage());
       throw ex;
     }

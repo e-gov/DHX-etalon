@@ -39,11 +39,13 @@ public class DhxConfig {
   private String marshallContext;
   private Integer maxFileSize;
   private String dateFormat;
+  private XsdVersionEnum currentCapsuleVersion;
 
   private String[] marshallContextAsList;
 
   /**
    * Method return marhllaing context as list.
+   * 
    * @return array of package names for marshaller
    */
   public String[] getMarshallContextAsList() {
@@ -63,12 +65,17 @@ public class DhxConfig {
     return sdf.format(date);
   }
 
-  public String getXsdForVersion(XsdVersionEnum version)  throws DhxException{
+  public String getCurrentXsd() throws DhxException {
+    return getXsdForVersion(currentCapsuleVersion);
+  }
+
+  public String getXsdForVersion(XsdVersionEnum version) throws DhxException {
     switch (version) {
       case V21:
         return getCapsuleXsdFile21();
       default:
-        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR, "Unable to find XSD file for given verion. version:" + version.toString());
+        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
+            "Unable to find XSD file for given verion. version:" + version.toString());
     }
   }
 }

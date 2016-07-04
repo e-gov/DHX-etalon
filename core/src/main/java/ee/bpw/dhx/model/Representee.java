@@ -21,6 +21,7 @@ public class Representee {
 
   /**
    * Create Representee from member(which is representationList service output).
+   * 
    * @param member - member from which to create representee
    */
   public Representee(Member member) {
@@ -35,6 +36,7 @@ public class Representee {
 
   /**
    * Create Representee.
+   * 
    * @param memberCode - X-road member code
    * @param startDate - representees start date
    * @param endDate - representees end date
@@ -52,6 +54,7 @@ public class Representee {
 
   /**
    * Converts representee to member(for representationList service output).
+   * 
    * @return - member
    * @throws DhxException - thrown if error occurs while converting
    */

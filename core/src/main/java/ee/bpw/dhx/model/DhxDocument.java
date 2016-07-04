@@ -4,7 +4,6 @@ import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.XsdVersionEnum;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 
 import eu.x_road.dhx.producer.SendDocument;
 
@@ -28,17 +27,18 @@ public class DhxDocument {
 
   /**
    * Create DhxDocument. For document sending
+   * 
    * @param service - XroadMember to whom document is mean to be sent
    * @param file - documents file
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  public DhxDocument(XroadMember service, File file, Boolean packFile)
-      throws DhxException {
+  public DhxDocument(XroadMember service, File file, Boolean packFile) throws DhxException {
     try {
       if (packFile) {
-        FileUtil.gzipPackXml(file);
-      } 
+        // TODO: delete original file or not???
+        file = FileUtil.gzipPackXml(file);
+      }
       InputStream stream = new FileInputStream(file);
       DataSource source = new ByteArrayDataSource(stream, "application/octet-stream");
       documentFile = new DataHandler(source);
@@ -51,25 +51,35 @@ public class DhxDocument {
 
   }
 
-  /*
-   * private DhxDocument(InputStream stream, Boolean packFile) throws DhxException { try {
-   * InputStream realStream; if (packFile) { realStream = new
-   * FileInputStream(FileUtil.gzipPackXml(stream)); } else { realStream = stream; } DataSource
-   * source = new ByteArrayDataSource(realStream, "application/octet-stream"); documentFile = new
-   * DataHandler(source); } catch (IOException ex) { throw new
-   * DhxException(DhxExceptionEnum.FILE_ERROR, ex.getMessage(), ex); } }
+  /**
+   * Create DhxDocument. For document sending
+   * 
+   * @param service - XroadMember to whom document is mean to be sent
+   * @param stream - documents stream
+   * @param packFile - is file need to packed(true), or it is already packed(false)
+   * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
+  public DhxDocument(XroadMember service, InputStream stream, Boolean packFile)
+      throws DhxException {
+    try {
+      InputStream realStream;
+      if (packFile) {
+        realStream = new FileInputStream(FileUtil.gzipPackXml(stream));
+      } else {
+        realStream = stream;
+      }
+      DataSource source = new ByteArrayDataSource(realStream, "application/octet-stream");
+      documentFile = new DataHandler(source);
+      this.service = service;
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
+    }
+  }
 
-  /*public DhxDocument(/XroadMember service, InputStream stream,
-      Boolean packFile) throws DhxException {
-    this(stream, packFile);
-    // this.representativeCode = recipient;
-    // this.container = container;
-    this.service = service;
-  }*/
 
   /**
    * Create DhxDocument. For document receiving
+   * 
    * @param client - XroadMember from who the document is being sent
    * @param document - document to send
    */
@@ -79,9 +89,10 @@ public class DhxDocument {
     this.externalConsignmentId = document.getConsignmentId();
     this.client = client;
   }
-  
+
   /**
-   * Create DhxDocument. For document sending. 
+   * Create DhxDocument. For document sending.
+   * 
    * @param service - XroadMember to whom document is mean to be sent
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerClass - class of the document object
@@ -89,33 +100,50 @@ public class DhxDocument {
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public DhxDocument(XroadMember service, Object parsedContainer, XsdVersionEnum parsedContainerVersion, File file, Boolean packFile)
-      throws DhxException {
+  public DhxDocument(XroadMember service, Object parsedContainer,
+      XsdVersionEnum parsedContainerVersion, File file, String internalConsignmentId, Boolean packFile) throws DhxException {
     this(service, file, packFile);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
+    this.internalConsignmentId = internalConsignmentId;
 
   }
 
-  /*public DhxDocument21(XroadMember service, InputStream stream, DecContainer container,
-      Boolean packFile) throws DhxException {
-    super(service, stream, packFile);
-    this.container = container;
-  }*/
+  /**
+   * Create DhxDocument. For document sending.
+   * 
+   * @param service - XroadMember to whom document is mean to be sent
+   * @param stream - documents stream
+   * @param parsedContainer - document Object. Object type bacause different version might be sent
+   * @param parsedContainerClass - class of the document object
+   * @param packFile - is file need to packed(true), or it is already packed(false)
+   * @throws DhxException - thrown if error occurs while sending document
+   */
+  public DhxDocument(XroadMember service, InputStream stream, Object parsedContainer,
+      XsdVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile) throws DhxException {
+    this(service, stream, packFile);
+    this.parsedContainer = parsedContainer;
+    this.parsedContainerVersion = parsedContainerVersion;
+    this.internalConsignmentId = internalConsignmentId;
+  }
+
 
   /**
    * Create DhxDocument. For document receiving.
+   * 
    * @param client - XroadMember from who the document is being sent
    * @param document - document to send
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerClass - class of the document object
    */
-  public DhxDocument(XroadMember client, SendDocument document, Object parsedContainer, XsdVersionEnum parsedContainerVersion) {
+  public DhxDocument(XroadMember client, SendDocument document, Object parsedContainer,
+      XsdVersionEnum parsedContainerVersion) {
+    this(client, document);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
   }
 
-  //packed document file capsule
+  // packed document file capsule
   private DataHandler documentFile;
   // private String representativeCode;
   // private DecContainer container;
@@ -134,8 +162,8 @@ public class DhxDocument {
    * consignment id
    */
   private String internalConsignmentId;
-  
+
   private Object parsedContainer;
-  
+
   private XsdVersionEnum parsedContainerVersion;
 }

@@ -37,12 +37,12 @@ public class DhxClientGateWay extends DhxGateway {
       log.info("Sending document to " + document.getService().toString());
       response = super.sendDocument(document);
       log.info("Sending document done");
-      logger.log(Level.getLevel("EVENT"), "Document sent to :"
+      logger.log(Level.getLevel("EVENT"), "Document sent to: "
           + document.getService().toString()
-          + " ReceiptId:"
+          + " ReceiptId: "
           + response.getReceiptId()
-          + (response.getFault() == null ? "" : " faultCode:"
-              + response.getFault().getFaultCode() + " faultString:"
+          + (response.getFault() == null ? "" : " faultCode: "
+              + response.getFault().getFaultCode() + " faultString: "
               + response.getFault().getFaultString()));
     } catch (DhxException ex) {
       log.error("Error occured while sending document. :" + document.getService().toString()
@@ -66,9 +66,7 @@ public class DhxClientGateWay extends DhxGateway {
           && response.getMembers().getMember().size() > 0) {
         String representatives = "";
         for (Member memberResponse : response.getMembers().getMember()) {
-          representatives +=
-              ("\n")
-                  + new Representee(memberResponse).toString();
+          representatives += ("\n") + new Representee(memberResponse).toString();
         }
         logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
       } else {

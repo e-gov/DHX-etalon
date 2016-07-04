@@ -3,12 +3,12 @@ package ee.bpw.dhx.util;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.XroadMember;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +30,7 @@ import javax.xml.validation.Validator;
 
 /**
  * Utility methods related to XSD and marshalling.
+ * 
  * @author Aleksei Kokarev
  *
  */
@@ -40,14 +41,15 @@ public class XsdUtil {
    * Parses(unmarshalls) capsule object from file.
    * 
    * @param capsuleFile - capsule file to parse
-   * @param unmarshaller - unmarshaller to use while 
+   * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
-   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)}  instead
+   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
    */
   public static <T> T unmarshallCapsule(File capsuleFile, Unmarshaller unmarshaller)
       throws DhxException {
     try {
+      log.debug("Unmarshalling file. " + capsuleFile.getAbsolutePath());
       return (T) unmarshallCapsule(new FileInputStream(capsuleFile), unmarshaller);
     } catch (FileNotFoundException ex) {
       log.error(ex.getMessage(), ex);
@@ -60,23 +62,51 @@ public class XsdUtil {
    * Parses(unmarshalls) capsule object from file.
    * 
    * @param capsuleStream - stream of capsule to parse
-   * @param unmarshaller - unmarshaller to use while 
+   * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
-   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)}  instead
+   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
    */
-  public static <T> T unmarshallCapsule(InputStream capsuleStream, Unmarshaller unmarshaller)
+  public static <T> T unmarshallCapsule(final InputStream capsuleStream, Unmarshaller unmarshaller)
       throws DhxException {
+    return unmarshallCapsuleAndValidate(capsuleStream, null, unmarshaller);
+  }
+
+
+  /**
+   * Parses(unmarshalls) capsule object from file. And does validation against XSD schema if
+   * schemaStream is present.
+   * 
+   * @param capsuleStream - stream of capsule to parse
+   * @param schemaStream - stream on XSD schema against which to validate. No validation is done if
+   *        stream is NULL
+   * @param unmarshaller - unmarshaller to use while
+   * @return - parsed(unmarshalled) object
+   * @throws DhxException - thrown if error occurs while parsing file
+   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
+   */
+  public static <T> T unmarshallCapsuleAndValidate(final InputStream capsuleStream,
+      InputStream schemaStream, Unmarshaller unmarshaller) throws DhxException {
     try {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
       }
+      if (schemaStream != null) {
+        Source schemaSource = new StreamSource(schemaStream);
+        SchemaFactory schemaFactory =
+            SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Schema schema = schemaFactory.newSchema(schemaSource);
+        unmarshaller.setSchema(schema);
+      }
       Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
       return (T) obj;
-    } catch (JAXBException ex) {
+    } catch (JAXBException | SAXException ex) {
       log.error(ex.getMessage(), ex);
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
           "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+    } finally {
+      // wont set single schema for unmarshaller
+      unmarshaller.setSchema(null);
     }
   }
 
@@ -104,6 +134,7 @@ public class XsdUtil {
 
   /**
    * Method validates file against XSD schema.
+   * 
    * @param file - file to validate
    * @param schemaStream - stream caontaining XSD schema
    * @throws DhxException - thrown if err
@@ -119,11 +150,12 @@ public class XsdUtil {
    * @param schemaFileStream - stream containing schema against which to validate
    * @throws DhxException - thrown if file is not validated against XSD schema.
    */
-  private static void validate(InputStream fileStream, InputStream schemaStream)
+  public static void validate(final InputStream fileStream, InputStream schemaStream)
       throws DhxException {
     try {
       log.info("Starting validating document capsule.");
       Source schemaSource = new StreamSource(schemaStream);
+      // to prevent original inpustream closing crete a new one
       Source xmlFile = new StreamSource(fileStream);
       SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
       Schema schema = schemaFactory.newSchema(schemaSource);
@@ -138,6 +170,7 @@ public class XsdUtil {
 
   /**
    * Method parses(unmarshalls) object.
+   * 
    * @param source - source of the marshalled object
    * @param unmarshaller - unmarshaller to use
    * @return - unmarshalled object
@@ -156,13 +189,14 @@ public class XsdUtil {
           "Error occured while creating object from capsule. " + ex.getMessage(), ex);
     }
   }
-  
-  public static List<CapsuleAdressee> getAdresseesFromContainer (Object containerObject) throws DhxException {
+
+  public static List<CapsuleAdressee> getAdresseesFromContainer(Object containerObject)
+      throws DhxException {
     XsdVersionEnum version = XsdVersionEnum.forClass(containerObject.getClass());
     switch (version) {
       case V21:
         List<CapsuleAdressee> adressees = new ArrayList<CapsuleAdressee>();
-        DecContainer container = (DecContainer)containerObject;
+        DecContainer container = (DecContainer) containerObject;
         if (container != null && container.getTransport() != null
             && container.getTransport().getDecRecipient() != null
             && container.getTransport().getDecRecipient().size() > 0) {
@@ -170,12 +204,13 @@ public class XsdUtil {
           for (DecRecipient recipient : container.getTransport().getDecRecipient()) {
             adressees.add(new CapsuleAdressee(recipient.getOrganisationCode()));
           }
-         return adressees;
+          return adressees;
         }
         return null;
       default:
-        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR, "Unable to find XSD file for given verion. version:" + version.toString());
+        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
+            "Unable to find XSD file for given verion. version:" + version.toString());
     }
-  } 
+  }
 
 }

@@ -12,6 +12,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  * Utility methods for convertation.
+ * 
  * @author Aleksei Kokarev
  *
  */
@@ -19,6 +20,7 @@ public class ConversionUtil {
 
   /**
    * Converts Date to XML date.
+   * 
    * @param date - date to convert
    * @return - converted date
    * @throws DhxException - thrown if error occurs
@@ -38,6 +40,7 @@ public class ConversionUtil {
 
   /**
    * Converts XML date to Date.
+   * 
    * @param xmlDate - XML date to convert
    * @return - converted Date
    */

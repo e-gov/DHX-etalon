@@ -5,11 +5,11 @@
   <parent>
     <groupId>ee.bpw.dhx</groupId>
     <artifactId>DHX</artifactId>
-    <version>0.6.0</version>
+    <version>0.6.4</version>
   </parent>
   <groupId>ee.bpw.dhx</groupId>
   <artifactId>ws</artifactId>
-  <version>0.6.0</version>
+  <version>0.6.4</version>
   <name>Web services</name>
   <packaging>jar</packaging>
   <properties>
@@ -20,7 +20,7 @@
   		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>core</artifactId>
-			<version>0.6.0</version>
+			<version>0.6.4</version>
 			<scope>compile</scope>
 		</dependency>
          <dependency>

@@ -1,7 +1,7 @@
 package ee.bpw.dhx.ws.service.impl;
 
-import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;

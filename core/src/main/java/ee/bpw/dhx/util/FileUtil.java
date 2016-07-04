@@ -22,7 +22,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.UUID;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import java.util.zip.ZipEntry;
@@ -160,8 +159,9 @@ public class FileUtil {
    * @return - files stream
    * @throws DhxException - throws if error occcurs while getting files stream
    */
-  protected static InputStream getFileAsStream(File file) throws DhxException {
+  public static InputStream getFileAsStream(File file) throws DhxException {
     try {
+      log.debug("Creating stream for file " + file.getAbsolutePath());
       return new FileInputStream(file);
     } catch (IOException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error while reading file. path:"
@@ -273,12 +273,12 @@ public class FileUtil {
   }
 
   /**
-   * Packs the file with gzip. Internally replaces original file with new one(base64 encoded and
-   * gzipped)
+   * Packs the file with gzip. Internally creates new file for gzipping and returns it.
    * 
    * @param fileToZip - file which needs to be gzipped and base64 encoded
+   * @return - gzipped base64 file
    */
-  public static void gzipPackXml(File fileToZip) throws DhxException {
+  public static File gzipPackXml(File fileToZip) throws DhxException {
     if (!fileToZip.exists()) {
       log.debug("Input file \"" + fileToZip.getPath() + "\" does not exist!");
       throw new IllegalArgumentException("Data file does not exist!");
@@ -288,9 +288,10 @@ public class FileUtil {
       log.debug("Starting packing file. path:" + fileToZip.getPath());
       InputStream stream = new FileInputStream(fileToZip);
       File zipPackedFile = gzipPackXml(stream, String.valueOf(time), String.valueOf(time + 1));
-      fileToZip.delete();
-      zipPackedFile.renameTo(fileToZip);
-      fileToZip = zipPackedFile;
+      // fileToZip.delete();
+      // zipPackedFile.renameTo(fileToZip);
+      // fileToZip = zipPackedFile;
+      return zipPackedFile;
     } catch (IOException ex) {
       log.error("Unable to gzip and encode to base64", ex);
       throw new DhxException(DhxExceptionEnum.FILE_ERROR,
@@ -304,15 +305,20 @@ public class FileUtil {
    * @param fileToZip - file which need to be gzipped
    * @return - gzipped file
    */
-  /*
-   * public static File gzipPackXml(InputStream streamtoZip) { long time =
-   * Calendar.getInstance().getTimeInMillis(); try { log.debug("Starting packing inputstream.");
-   * return gzipPackXml(streamtoZip, String.valueOf(time), String.valueOf(time + 1)); } catch
-   * (IOException ex) { log.error("Unable to gzip and encode to base64", ex); throw new
-   * RuntimeException(ex); } }
-   */
 
-  private static File gzipPackXml(InputStream streamtoZip, String orgCode, String requestName)
+  public static File gzipPackXml(InputStream streamtoZip) {
+    long time = Calendar.getInstance().getTimeInMillis();
+    try {
+      log.debug("Starting packing inputstream.");
+      return gzipPackXml(streamtoZip, String.valueOf(time), String.valueOf(time + 1));
+    } catch (IOException ex) {
+      log.error("Unable to gzip and encode to base64", ex);
+      throw new RuntimeException(ex);
+    }
+  }
+
+
+  public static File gzipPackXml(InputStream streamtoZip, String orgCode, String requestName)
       throws IllegalArgumentException, IOException {
     File zipOutFile = gzipFile(streamtoZip);
     File base64File = createPipelineFile();

@@ -45,6 +45,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 
   /**
    * Sets servlet registration bean.
+   * 
    * @param applicationContext - context of the application
    * @return ServletRegistrationBean
    */
@@ -58,6 +59,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 
   /**
    * Defines WSDL.
+   * 
    * @return SimpleWsdl11Definition
    */
   @Bean(name = "dhx")
@@ -89,6 +91,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 
   /**
    * Method returns bean List of MarshallingPayloadMethodProcessors.
+   * 
    * @return bean List of MarshallingPayloadMethodProcessors
    */
   @Bean
@@ -103,6 +106,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 
   /**
    * Sets marshaller bean.
+   * 
    * @return marshaller
    */
   @Bean
@@ -115,6 +119,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
 
   /**
    * sets unmarshaller bean.
+   * 
    * @return unmarshaller
    */
   @Bean

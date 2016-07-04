@@ -1,7 +1,7 @@
 package ee.bpw.dhx.ws.service;
 
-import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.XsdUtil;
@@ -198,7 +198,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
     log.info("Sending document to recipient:" + document.getService().toString());
     try {
       SendDocument request = new SendDocument();
-      if(document.getService().getRepresentee() != null) {
+      if (document.getService().getRepresentee() != null) {
         request.setRecipient(document.getService().getRepresentee().getMemberCode());
       }
       request.setDocumentAttachment(document.getDocumentFile());

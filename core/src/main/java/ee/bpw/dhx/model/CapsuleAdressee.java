@@ -6,11 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CapsuleAdressee {
-  
-  public CapsuleAdressee ( String adresseeCode) {
+
+  public CapsuleAdressee(String adresseeCode) {
     this.adresseeCode = adresseeCode;
   }
-  
+
   String adresseeCode;
 
 }
