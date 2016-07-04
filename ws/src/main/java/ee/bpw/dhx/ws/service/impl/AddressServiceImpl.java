@@ -97,69 +97,74 @@ public class AddressServiceImpl implements AddressService {
   }
 
   /**
-   * Method refreshes local list of addresses.
+   * Method refreshes local list of addresses. Firstly shared parameters are fetched from security
+   * server. In shared parameters members with subsystem DHX are found, those members are direct
+   * adressees. Secondly DHX representation group is found and for every group member
+   * representationList service request is invoked to find representees for every representor. Total
+   * local addressees list is done from direct addressees and list of all representees found through
+   * representationList service requests.
    */
   public void renewAddressList() {
-    List<XroadMember> members = new ArrayList<XroadMember>();
     try {
-      SharedParametersType globalConf = getGlobalConf();
-      if (globalConf != null) {
-        for (MemberType member : globalConf.getMember()) {
-          for (SubsystemType subSystem : member.getSubsystem()) {
-            // find DHX subsytem. if found, then member is ready to use DHX protocol
-            if (subSystem.getSubsystemCode().equalsIgnoreCase(config.getSubsystem())) {
-              log.debug("Found DHX subsystem for member " + member.getMemberCode());
-              if (!member.getMemberCode().equals(config.getMemberCode())) {
-                members.add(new XroadMember(config.getXroadInstance(), member, config
-                    .getSubsystem()));
-                break;
-              }
-            }
-          }
-        }
-        for (GlobalGroupType group : globalConf.getGlobalGroup()) {
-          log.debug("group " + group.getDescription());
-          if (group.getGroupCode().equals(config.getDhxRepresentationGroupName())) {
-            log.debug("Found representation group");
-            for (XRoadClientIdentifierType client : group.getGroupMember()) {
-              // excelude own representatives
-              if (!client.getMemberCode().equals(config.getMemberCode())) {
-                XroadMember member = new XroadMember(client);
-                log.debug("getting representatives for member:" + member.toString());
-                try {
-                  List<XroadMember> representeeMembers = getRepresentees(member);
-                  if (representeeMembers != null && representeeMembers.size() > 0) {
-                    members.addAll(representeeMembers);
-                  }
-                } catch (DhxException ex) {
-                  log.error(
-                      "Error occured while getting representationList for:" + member.toString()
-                          + ex.getMessage(), ex);
-                }
-                // include own representatives not from x-road servicce, but from local method
-              } else {
-                XroadMember member = new XroadMember(client);
-                List<Representee> representees = representationService.getRepresentationList();
-                List<XroadMember> representeesmembers = new ArrayList<XroadMember>();
-                for (Representee representee : representees) {
-                  representeesmembers.add(new XroadMember(member, representee));
-                }
-                members.addAll(representeesmembers);
-              }
+      setAddresseeList(getRenewedAdresseesList());
+    } catch (DhxException ex) {
+      log.error(ex.getMessage(), ex);
+    }
+  }
+
+
+  protected List<XroadMember> getRenewedAdresseesList() throws DhxException {
+    List<XroadMember> members = new ArrayList<XroadMember>();
+    SharedParametersType globalConf = getGlobalConf();
+    if (globalConf != null) {
+      for (MemberType member : globalConf.getMember()) {
+        for (SubsystemType subSystem : member.getSubsystem()) {
+          // find DHX subsytem. if found, then member is ready to use DHX protocol
+          if (subSystem.getSubsystemCode().equalsIgnoreCase(config.getSubsystem())) {
+            log.debug("Found DHX subsystem for member " + member.getMemberCode());
+            if (!member.getMemberCode().equals(config.getMemberCode())) {
+              members.add(new XroadMember(config.getXroadInstance(), member, config
+                  .getSubsystem()));
+              break;
             }
           }
         }
       }
-    } catch (DhxException ex) {
-      log.error(ex.getMessage(), ex);
+      for (GlobalGroupType group : globalConf.getGlobalGroup()) {
+        log.debug("group " + group.getDescription());
+        if (group.getGroupCode().equals(config.getDhxRepresentationGroupName())) {
+          log.debug("Found representation group");
+          for (XRoadClientIdentifierType client : group.getGroupMember()) {
+            // excelude own representatives
+            if (!client.getMemberCode().equals(config.getMemberCode())) {
+              XroadMember member = new XroadMember(client);
+              log.debug("getting representatives for member:" + member.toString());
+              try {
+                List<XroadMember> representeeMembers = getRepresentees(member);
+                if (representeeMembers != null && representeeMembers.size() > 0) {
+                  members.addAll(representeeMembers);
+                }
+              } catch (DhxException ex) {
+                log.error(
+                    "Error occured while getting representationList for:" + member.toString()
+                        + ex.getMessage(), ex);
+              }
+              // include own representatives not from x-road servicce, but from local method
+            } else {
+              XroadMember member = new XroadMember(client);
+              List<Representee> representees = representationService.getRepresentationList();
+              List<XroadMember> representeesmembers = new ArrayList<XroadMember>();
+              for (Representee representee : representees) {
+                representeesmembers.add(new XroadMember(member, representee));
+              }
+              members.addAll(representeesmembers);
+            }
+          }
+        }
+      }
     }
-    /*
-     * XroadMember testmemMember = new XroadMember("ee-dev", "GOV", "40000001", "DHX", null);
-     * members.add(testmemMember);
-     */
-    setAddresseeList(members);
+    return members;
   }
-
 
   private List<XroadMember> getRepresentees(XroadMember member) throws DhxException {
     RepresentationListResponse response = dhxGateway.getRepresentationList(member);

@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.UUID;
 
 @Slf4j
-public class DocumentGateWayClient extends DhxGateway {
+public class DhxClientGateWay extends DhxGateway {
 
   // get log4j logger to log events on custom level.
   final Logger logger = LogManager.getLogger();
@@ -67,7 +67,7 @@ public class DocumentGateWayClient extends DhxGateway {
         String representatives = "";
         for (Member memberResponse : response.getMembers().getMember()) {
           representatives +=
-              (representatives.equals("") ? "" : ", ")
+              ("\n")
                   + new Representee(memberResponse).toString();
         }
         logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);

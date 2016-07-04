@@ -2,6 +2,11 @@ package ee.bpw.dhx.util;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
+import ee.bpw.dhx.model.CapsuleAdressee;
+import ee.bpw.dhx.model.DhxDocument;
+import ee.bpw.dhx.model.XroadMember;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,6 +15,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
@@ -115,6 +122,7 @@ public class XsdUtil {
   private static void validate(InputStream fileStream, InputStream schemaStream)
       throws DhxException {
     try {
+      log.info("Starting validating document capsule.");
       Source schemaSource = new StreamSource(schemaStream);
       Source xmlFile = new StreamSource(fileStream);
       SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -148,5 +156,26 @@ public class XsdUtil {
           "Error occured while creating object from capsule. " + ex.getMessage(), ex);
     }
   }
+  
+  public static List<CapsuleAdressee> getAdresseesFromContainer (Object containerObject) throws DhxException {
+    XsdVersionEnum version = XsdVersionEnum.forClass(containerObject.getClass());
+    switch (version) {
+      case V21:
+        List<CapsuleAdressee> adressees = new ArrayList<CapsuleAdressee>();
+        DecContainer container = (DecContainer)containerObject;
+        if (container != null && container.getTransport() != null
+            && container.getTransport().getDecRecipient() != null
+            && container.getTransport().getDecRecipient().size() > 0) {
+          File capsuleFile = null;
+          for (DecRecipient recipient : container.getTransport().getDecRecipient()) {
+            adressees.add(new CapsuleAdressee(recipient.getOrganisationCode()));
+          }
+         return adressees;
+        }
+        return null;
+      default:
+        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR, "Unable to find XSD file for given verion. version:" + version.toString());
+    }
+  } 
 
 }

@@ -1,0 +1,252 @@
+2016-07-04 12:49:23,719 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:49:24,448 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null
+2016-07-04 12:49:24,470 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-07-04 12:49:24,753 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:49:25,076 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:49:25 EEST 2016 endDate: null
+2016-07-04 12:49:25,077 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-07-04 12:49:26,957 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:50:52,815 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:50:56,878 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:50:57 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:50:57 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:50:57 EEST 2016 endDate: null
+2016-07-04 12:50:56,914 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-07-04 12:50:57,289 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:50:57,602 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:50:58 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:50:58 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:50:58 EEST 2016 endDate: null
+2016-07-04 12:50:57,603 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-07-04 12:50:59,438 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:51:39,687 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:9f897b05-4669-4f90-bd6f-008eb3d8f4f8
+2016-07-04 12:51:40,031 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Document sent to :addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId:a9a7ff06-5270-4415-8ba7-4644a6b00e6f
+2016-07-04 12:51:47,091 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-07-04 12:51:47,255 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:51:47,874 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:51:48 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:51:48 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:51:48 EEST 2016 endDate: null
+2016-07-04 12:51:47,875 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-07-04 12:51:49,542 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:52:01,905 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:52:02,526 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Representation list received: memberCode: 70000001 startDate: Mon Jul 04 12:52:03 EEST 2016 endDate: null, memberCode: 70000002 startDate: Mon Jul 04 12:52:03 EEST 2016 endDate: null, memberCode: 70000003 startDate: Mon Jul 04 12:52:03 EEST 2016 endDate: null
+2016-07-04 12:52:39,586 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:53:51,285 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:53:53,023 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Mon Jul 04 12:53:53 EEST 2016 endDate: null
+memberCode: 70000002 startDate: Mon Jul 04 12:53:53 EEST 2016 endDate: null
+memberCode: 70000003 startDate: Mon Jul 04 12:53:53 EEST 2016 endDate: null
+2016-07-04 12:53:53,049 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-07-04 12:53:53,290 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-07-04 12:53:54,816 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Mon Jul 04 12:53:55 EEST 2016 endDate: null
+memberCode: 70000002 startDate: Mon Jul 04 12:53:55 EEST 2016 endDate: null
+memberCode: 70000003 startDate: Mon Jul 04 12:53:55 EEST 2016 endDate: null
+2016-07-04 12:53:54,817 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-07-04 12:53:56,710 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:54:46,801 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:55:36,838 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:56:26,915 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:57:17,008 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-04 12:58:07,029 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:252) ~[ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:166) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:224) [ws-0.3.1.jar:0.3.1]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:41) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]

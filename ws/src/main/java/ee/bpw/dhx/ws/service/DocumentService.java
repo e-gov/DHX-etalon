@@ -30,17 +30,32 @@ public interface DocumentService {
    */
   public String recieveDocument(DhxDocument document) throws DhxException;
 
+
   /**
-   * Method should send document to all recipients defined in capsule. Should be implemented in
-   * service which has information about version of the capsule
+   * Send document. No capsule parsing is done and document is sent
+   * to recipient.
    * 
-   * @param capsuleFile - file cantaining capsule to send
-   * @param consignmentId - consignment id to set when sending file.
-   * @return service responses for each recipient
-   * @throws DhxException - thrown if error occurs while receiving document
+   * @param capsuleFile - file to send
+   * @param consignmentId - consignment id of the document
+   * @pararm recipient - to whom document is sent
+   * @return
+   * @throws DhxException
+   */
+  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
+      String recipient) throws DhxException;
+
+  /**
+   * Parses capsule from file and sends document. Document is sent to every recipient defined in
+   * capsule
+   * 
+   * @param capsuleFile - file to send
+   * @param consignmentId - consignment id of the document
+   * @return
+   * @throws DhxException
    */
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
       throws DhxException;
+
 
   /**
    * Method searches through saved documents and checks if document with save sender and consignment

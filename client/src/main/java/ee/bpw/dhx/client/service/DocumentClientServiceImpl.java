@@ -1,13 +1,20 @@
 package ee.bpw.dhx.client.service;
 
+import ee.bpw.dhx.client.config.DhxClientConfig;
+
 import ee.bpw.dhx.container21.DhxDocument21;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.util.XsdUtil;
+import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.service.DhxGateway;
-import ee.bpw.dhx.ws.service.impl.container21.DocumentServiceImpl21;
+import ee.bpw.dhx.ws.service.impl.DocumentServiceImpl;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Recipient;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
@@ -26,19 +33,69 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.xml.bind.Unmarshaller;
+
 
 @Service
 @Slf4j
-public class DocumentClientService extends DocumentServiceImpl21 {
+public class DocumentClientServiceImpl extends DocumentServiceImpl {
 
   @Autowired
   DhxGateway dhxGateway;
+  
+  @Autowired
+  DhxClientConfig clientConfig;
+  
+  @Autowired
+  DhxConfig config;
 
   // get log4j logger to log events on custom level.
   final Logger logger = LogManager.getLogger();
 
   private static List<DhxDocument> receevedDocuments = new ArrayList<DhxDocument>();
 
+  public List<SendDocumentResponse> sendDocument (String capsuleType, String recipientString, String consignmentId) throws DhxException{
+    try {
+      String capsuleFilePath = "";
+      switch (capsuleType) {
+        case "correct":
+          capsuleFilePath = clientConfig.getCapsuleCorrect();
+          break;
+        case "invalid":
+          capsuleFilePath = clientConfig.getCapsuleInvalid();
+          break;
+        case "notxml":
+          capsuleFilePath = clientConfig.getCapsuleNotxml();
+          break;
+        case "wrongAdressee":
+          capsuleFilePath = clientConfig.getCapsuleWrongAdressee();
+          break;
+        default:
+          break;
+      }
+      File capsuleFile = FileUtil.getFile(capsuleFilePath);
+      //if we want to send to wrong adressee , then wont change the capsule
+      if(!capsuleType.equals("wrongAdressee")) {
+        DecContainer container = (DecContainer)XsdUtil.unmarshallCapsule(capsuleFile, unmarshaller);
+        container.getTransport().getDecRecipient().removeAll(container.getTransport().getDecRecipient());
+        DecRecipient recipient = new DecRecipient();
+        recipient.setOrganisationCode(recipientString);
+        container.getTransport().getDecRecipient().add(recipient);
+        capsuleFile = XsdUtil.marshallCapsule(container, super.marshaller);
+      } 
+      if(config.getParseCapsule()) {
+        return sendDocument(capsuleFile, consignmentId);
+      } else {
+        return sendDocument(capsuleFile, consignmentId, recipientString);
+      }
+      
+    } catch (DhxException ex) {
+      logger.log(Level.getLevel("EVENT"),
+          "Error occured while sending document. " + ex.getMessage(), ex);
+      throw ex;
+    }
+  }
+  
   /**
    * overriden just to log events.
    */
@@ -63,18 +120,19 @@ public class DocumentClientService extends DocumentServiceImpl21 {
    * Implementation of abstract method. Saves documents to in memory list
    */
   @Override
-  public String recieveDocument2_1(DhxDocument21 dhxDocument) throws DhxException {
+  public String recieveDocument(DhxDocument dhxDocument) throws DhxException {
     String receiptId = UUID.randomUUID().toString();
     logger.log(Level.getLevel("EVENT"), "Document recieved. for: "
         + dhxDocument.getClient().toString() + " receipt:" + receiptId);
-    if (dhxDocument.getContainer() != null) {
+    if (dhxDocument.getParsedContainer() != null) {
+      DecContainer container = (DecContainer)dhxDocument.getParsedContainer();
       logger.log(Level.getLevel("EVENT"),
           "Document data from capsule: recipient organisationCode:"
-              + dhxDocument.getContainer().getTransport().getDecRecipient().get(0)
+              + container.getTransport().getDecRecipient().get(0)
                   .getOrganisationCode() + " sender organisationCode:"
-              + dhxDocument.getContainer().getTransport().getDecSender().getOrganisationCode());
+              + container.getTransport().getDecSender().getOrganisationCode());
     }
-    dhxDocument.setContainer(null);
+    dhxDocument.setParsedContainer(null);
     dhxDocument.setDocumentFile(null);
     receevedDocuments.add(dhxDocument);
     return receiptId;
@@ -102,10 +160,10 @@ public class DocumentClientService extends DocumentServiceImpl21 {
    * override just to log events.
    */
   @Override
-  protected List<SendDocumentResponse> sendDocument(DecContainer container, String consignmentId)
+  protected List<SendDocumentResponse> sendDocument(Object container, File capsuleFile, String consignmentId)
       throws DhxException {
     try {
-      return super.sendDocument(container, consignmentId);
+      return super.sendDocument(container, capsuleFile, consignmentId);
     } catch (DhxException ex) {
       logger.log(Level.getLevel("EVENT"),
           "Error occured while sending document. " + ex.getMessage(), ex);
@@ -117,10 +175,10 @@ public class DocumentClientService extends DocumentServiceImpl21 {
    * overriden to log events.
    */
   @Override
-  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
+  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId, String recipient)
       throws DhxException {
     try {
-      return super.sendDocument(capsuleFile, consignmentId);
+      return super.sendDocument(capsuleFile, consignmentId, recipient);
     } catch (DhxException ex) {
       logger.log(Level.getLevel("EVENT"),
           "Error occured while sending document. " + ex.getMessage(), ex);
