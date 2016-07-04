@@ -1,6 +1,20 @@
 package ee.bpw.dhx.client.ui;
 
+import ee.bpw.dhx.client.CustomAppender;
+import ee.bpw.dhx.client.config.DhxClientConfig;
+import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
+import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.ws.config.DhxConfig;
+import ee.bpw.dhx.ws.config.SoapConfig;
+import ee.bpw.dhx.ws.service.AddressService;
+import ee.bpw.dhx.ws.service.DhxGateway;
+
 import com.vaadin.annotations.Theme;
+import com.vaadin.data.Property;
+import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.event.UIEvents;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FileDownloader;
@@ -11,6 +25,9 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.CheckBox;
+import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.GridLayout;
@@ -26,18 +43,6 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import ee.bpw.dhx.client.CustomAppender;
-import ee.bpw.dhx.client.config.DhxClientConfig;
-import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.Representee;
-import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.ws.config.DhxConfig;
-import ee.bpw.dhx.ws.config.SoapConfig;
-import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
-import ee.bpw.dhx.ws.service.DocumentService;
-
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.SendDocumentResponse;
@@ -45,23 +50,21 @@ import eu.x_road.dhx.producer.SendDocumentResponse;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.vaadin.easyuploads.FileFactory;
-import org.vaadin.easyuploads.UploadField;
-import org.vaadin.easyuploads.UploadField.FieldType;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
+
 
 @SpringUI
 @Theme("valo")
 @Slf4j
 public class DhxUi extends UI {
+  private static final long serialVersionUID = -6857112166321059475L;
 
   @Autowired
-  DocumentService documentService;
+  DocumentClientServiceImpl documentClientService;
 
 
   @Autowired
@@ -85,6 +88,8 @@ public class DhxUi extends UI {
           + "<ul><li>Riigi Infosüsteemi Amet, 2016</li></ul>";
 
   private class DhxStreamSource implements StreamSource {
+
+    private static final long serialVersionUID = -6857112166321059475L;
 
     String filePath;
 
@@ -176,17 +181,17 @@ public class DhxUi extends UI {
     // info.setValue(config.getInfo());
     layout.addComponent(info);
     StreamResource source =
-        new StreamResource(new DhxStreamSource(config.getTestFile1()), "DVKkapsel1.xml");
+        new StreamResource(new DhxStreamSource(config.getCapsuleCorrect()), "DVKkapsel_korrektne.xml");
     FileDownloader fileDownloader = new FileDownloader(source);
-    Link link = new Link("Lae alla näidiskapsel DVKkapsel1.xml", null);
+    Link link = new Link("Lae alla korrektselt kapseldatud fail", null);
     fileDownloader.extend(link);
     // link.setTargetName("_blank");
     layout.addComponent(link);
 
     StreamResource source2 =
-        new StreamResource(new DhxStreamSource(config.getTestFile2()), "DVKkapsel2.xml");
+        new StreamResource(new DhxStreamSource(config.getCapsuleInvalid()), "DVKkapsel_vale.xml");
     FileDownloader fileDownloader2 = new FileDownloader(source2);
-    Link link2 = new Link("Lae alla näidiskapsel DVKkapsel2.xml", null);
+    Link link2 = new Link("Lae alla valesti kapseldatud fail", null);
     fileDownloader2.extend(link2);
     // link.setTargetName("_blank");
     layout.addComponent(link2);
@@ -225,13 +230,22 @@ public class DhxUi extends UI {
       text.setEnabled(false);
       text.setHeight(500, Unit.PIXELS);
       Button buttonClear = new Button("Tühista logi");
-      buttonClear.addListener(new Button.ClickListener() {
+      buttonClear.addClickListener(new ClickListener() {
+        private static final long serialVersionUID = -6857112166321059475L;
+
+        @Override
         public void buttonClick(ClickEvent event) {
           CustomAppender.deleteLastEvents();
           text.setValue("");
         }
       });
+      /*
+       * buttonClear.addListener(new Button.ClickListener() { public void buttonClick(ClickEvent
+       * event) { CustomAppender.deleteLastEvents(); text.setValue(""); } });
+       */
       addPollListener(new UIEvents.PollListener() {
+        private static final long serialVersionUID = -6857112166321059475L;
+
         @Override
         public void poll(UIEvents.PollEvent event) {
           // log.error("Polling");
@@ -298,60 +312,76 @@ public class DhxUi extends UI {
   }
 
   private Layout getSendDocumentLayout() {
-    // Label formLabel = new Label("Dokumendi saatmine");
-    // formLabel.setStyleName("h3");
     final Label chosenFile = new Label();
-    final UploadField uploadField = new UploadField();
-    uploadField.setBuffered(true);
-    uploadField.setFieldType(FieldType.BYTE_ARRAY);
-    uploadField.setDisplayUpload(false);
-    uploadField.setCaption("Dokumendi kapsel");
-    uploadField.setButtonCaption("Vali fail");
-    uploadField.setFieldType(FieldType.FILE);
-    uploadField.setFileFactory(new FileFactory() {
-      public File createFile(String fileName, String mimeType) {
-        try {
-          log.debug("creating file for uploaded file.");
-          File file = FileUtil.createPipelineFile();
-          chosenFile.setValue("valitud fail: " + fileName);
-          return file;
-        } catch (IOException ex) {
-          return null;
+    final TextField consignmentId = new TextField();
+    consignmentId.setEnabled(false);
+    consignmentId.setCaption("Saadetise id");
+    CheckBox consignmentCheck = new CheckBox("Genereeri saadetise ID automaatselt");
+    consignmentCheck.setValue(true);
+    consignmentCheck.addValueChangeListener(new Property.ValueChangeListener() {
+      private static final long serialVersionUID = -6857112166321059475L;
+
+      public void valueChange(ValueChangeEvent event) {
+        boolean value = (Boolean) event.getProperty().getValue();
+        if (value) {
+          consignmentId.setEnabled(false);
+          consignmentId.setRequired(false);
+        } else {
+          consignmentId.setEnabled(true);
+          consignmentId.setRequired(true);
         }
       }
     });
-    final TextField consignmentId = new TextField();
-    consignmentId.setCaption("Saadetise id");
+    final ComboBox capsules = getSelect(config.getCapsuleSelect(), "vali dokument");
+    capsules.setWidth(400, Unit.PIXELS);
+    capsules.setRequired(true);
+    final ComboBox adressees = getSelect(config.getCapsuleAddressateSelect(), "Vali adressaat");
+    adressees.setWidth(400, Unit.PIXELS);
+    adressees.setRequired(true);
     Button buttonSubmit = new Button("Saada document");
-    buttonSubmit.addListener(new Button.ClickListener() {
+    buttonSubmit.addClickListener(
+    /* buttonSubmit.addListener( */new Button.ClickListener() {
+      private static final long serialVersionUID = -6857112166321059475L;
+
       public void buttonClick(ClickEvent event) {
-        try {
-          File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
-          List<SendDocumentResponse> responses =
-              documentService.sendDocument(attachment, consignmentId.getValue());
-          String statuses = "";
-          for (SendDocumentResponse response : responses) {
-            statuses +=
-                "Dokument saadetud. Status:"
-                    + response.getReceiptId()
-                    + (response.getFault() == null ? "" : " faultCode:"
-                        + response.getFault().getFaultCode() + " faultString:"
-                        + response.getFault().getFaultString() + "\n'");
-            // showNotification();
-          }
+        if (adressees.getValue() == null || capsules.getValue() == null) {
           Notification notification =
-              new Notification("Dokuemndi saatmise staatused:" + statuses,
-                  Notification.Type.HUMANIZED_MESSAGE);
-          notification.setDelayMsec(-1);
-          notification.show(Page.getCurrent());
-        } catch (DhxException ex) {
-          log.error("Error while sending document." + ex.getMessage(), ex);
-          Notification notification =
-              new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+              new Notification("Täitke kõik kohustuslikud väljad!",
                   Notification.Type.WARNING_MESSAGE);
           notification.setDelayMsec(-1);
           notification.show(Page.getCurrent());
-          // showNotification("Viga documendi saatmisel!" + ex.getMessage());
+        } else {
+          log.info("got request. addressees:" + adressees.getValue() + " capsule:"
+              + capsules.getValue());
+          try {
+            // File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
+            List<SendDocumentResponse> responses =
+                documentClientService.sendDocument(capsules.getValue().toString(), adressees
+                    .getValue().toString(), consignmentId.getValue());
+            String statuses = "";
+            for (SendDocumentResponse response : responses) {
+              statuses +=
+                  "Dokument saadetud. Status:"
+                      + response.getReceiptId()
+                      + (response.getFault() == null ? "" : " faultCode:"
+                          + response.getFault().getFaultCode() + " faultString:"
+                          + response.getFault().getFaultString() + "\n'");
+              // showNotification();
+            }
+            Notification notification =
+                new Notification("Dokuemndi saatmise staatused:" + statuses,
+                    Notification.Type.HUMANIZED_MESSAGE);
+            notification.setDelayMsec(-1);
+            notification.show(Page.getCurrent());
+          } catch (DhxException ex) {
+            log.error("Error while sending document." + ex.getMessage(), ex);
+            Notification notification =
+                new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                    Notification.Type.WARNING_MESSAGE);
+            notification.setDelayMsec(-1);
+            notification.show(Page.getCurrent());
+            // showNotification("Viga documendi saatmisel!" + ex.getMessage());
+          }
         }
       }
     });
@@ -360,7 +390,8 @@ public class DhxUi extends UI {
     help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp()
         + "</span>");
     FormLayout formLayout =
-        new FormLayout(/* formLabel, */help, consignmentId, uploadField, buttonSubmit, chosenFile);
+        new FormLayout(/* formLabel, */help, consignmentCheck, consignmentId, /* uploadField, */
+            capsules, adressees, buttonSubmit, chosenFile);
     formLayout.setMargin(false);
     VerticalLayout vertLayout = new VerticalLayout();
     vertLayout.addComponent(help);
@@ -368,49 +399,89 @@ public class DhxUi extends UI {
     return vertLayout;
   }
 
+  private ComboBox getSelect(List<Map<String, String>> selectString, String caption) {
+    ComboBox select = new ComboBox(caption);
+    for (Map<String, String> row : selectString) {
+      select.addItem(row.get("value"));
+      select.setItemCaption(row.get("value"), row.get("name"));
+    }
+    return select;
+  }
+
+  private void sendDocumentOnClick() {
+
+  }
+
   private Layout getRepresentationListLayout() {
-    final TextField regClass = new TextField();
-    regClass.setCaption("Asutuse klass");
-    final TextField regCode = new TextField();
-    regCode.setCaption("Asutuse kood");
+    /*
+     * final TextField regClass = new TextField(); regClass.setCaption("Asutuse klass"); final
+     * TextField regCode = new TextField(); regCode.setCaption("Asutuse kood");
+     */
+    final ComboBox adressees = getSelect(config.getCapsuleAddressateSelect(), "Vali adressaat");
+    adressees.setWidth(400, Unit.PIXELS);
+    adressees.setRequired(true);
     Button button = new Button("Saada päring");
-    button.addListener(new Button.ClickListener() {
+    button.addClickListener(
+    /* button.addListener( */new Button.ClickListener() {
+      private static final long serialVersionUID = -6857112166321059475L;
+
       public void buttonClick(ClickEvent event) {
-        try {
-          log.debug("getting representation List");
-          XroadMember member =
-              new XroadMember(soapConfig.getXroadInstance(), regClass.getValue(), regCode
-                  .getValue(), soapConfig.getSubsystem(), null);
-          RepresentationListResponse response = dhxGateway.getRepresentationList(member);
-          String reprStr = "";
-          if (response.getMembers() != null && response.getMembers().getMember() != null
-              && response.getMembers().getMember().size() > 0) {
-            for (Member repr : response.getMembers().getMember()) {
-              SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-              String startDateStr = "";
-              String endDateStr = "";
-              Representee representee = new Representee(repr);
-              if (representee.getStartDate() != null) {
-                startDateStr = sdf.format(representee.getStartDate());
+        if (adressees.getValue() != null) {
+          try {
+            log.debug("getting representation List");
+            /*
+             * XroadMember member = new XroadMember(soapConfig.getXroadInstance(),
+             * regClass.getValue(), regCode .getValue(), soapConfig.getSubsystem(), null);
+             */
+            XroadMember member =
+                addressService.getClientForMemberCode(adressees.getValue().toString());
+            if (member.getRepresentee() == null) {
+              RepresentationListResponse response = dhxGateway.getRepresentationList(member);
+              String reprStr = "";
+              if (response.getMembers() != null && response.getMembers().getMember() != null
+                  && response.getMembers().getMember().size() > 0) {
+                for (Member repr : response.getMembers().getMember()) {
+                  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                  String startDateStr = "";
+                  String endDateStr = "";
+                  Representee representee = new Representee(repr);
+                  if (representee.getStartDate() != null) {
+                    startDateStr = sdf.format(representee.getStartDate());
+                  }
+                  if (representee.getEndDate() != null) {
+                    endDateStr = sdf.format(representee.getEndDate());
+                  }
+                  reprStr =
+                      reprStr
+                          + (reprStr.equals("") ? "" : ", ")
+                          + (repr.getMemberCode() + " algus: " + startDateStr + " lõpp:" + endDateStr);
+                }
               }
-              if (representee.getEndDate() != null) {
-                endDateStr = sdf.format(representee.getEndDate());
-              }
-              reprStr =
-                  reprStr
-                      + (reprStr.equals("") ? "" : ", ")
-                      + (repr.getMemberCode() + " algus: " + startDateStr + " lõpp:" + endDateStr);
+              Notification notification =
+                  new Notification("Representatives:" + reprStr,
+                      Notification.Type.HUMANIZED_MESSAGE);
+              notification.setDelayMsec(-1);
+              notification.show(Page.getCurrent());
+            } else {
+              Notification notification =
+                  new Notification(
+                      "Valitud adressaat on vahendatav. Ei ole võimalik leida tema poolt vahendatavate nimekirja.",
+                      Notification.Type.WARNING_MESSAGE);
+              notification.setDelayMsec(-1);
+              notification.show(Page.getCurrent());
             }
+          } catch (DhxException ex) {
+            log.error("Error while sending document." + ex.getMessage(), ex);
+            Notification notification =
+                new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                    Notification.Type.WARNING_MESSAGE);
+            notification.setDelayMsec(-1);
+            notification.show(Page.getCurrent());
           }
+        } else {
           Notification notification =
-              new Notification("Representatives:" + reprStr, Notification.Type.HUMANIZED_MESSAGE);
-          notification.setDelayMsec(-1);
-          notification.show(Page.getCurrent());
-        } catch (DhxException ex) {
-          log.error("Error while sending document." + ex.getMessage(), ex);
-          Notification notification =
-              new Notification("Viga documendi saatmisel!" + ex.getMessage(),
-                  Notification.Type.HUMANIZED_MESSAGE);
+              new Notification("Täitke kõik kohustuslikud väljad!",
+                  Notification.Type.WARNING_MESSAGE);
           notification.setDelayMsec(-1);
           notification.show(Page.getCurrent());
         }
@@ -418,7 +489,7 @@ public class DhxUi extends UI {
     });
     // Label label = new Label("Vahendatavate nimekiri");
     // label.setStyleName("h3");
-    FormLayout formLayout = new FormLayout(/* label, */regClass, regCode, button);
+    FormLayout formLayout = new FormLayout(adressees, button);
     formLayout.setMargin(false);
     Label help = new Label();
     help.setCaptionAsHtml(true);
@@ -442,7 +513,10 @@ public class DhxUi extends UI {
     adrLabel.setCaption(getAdresseeString(members));
     adresseeLayout.addComponent(adrLabel);
     Button button = new Button("Uuenda");
-    button.addListener(new Button.ClickListener() {
+    button.addClickListener(
+    /* button.addListener( */new Button.ClickListener() {
+      private static final long serialVersionUID = -6857112166321059475L;
+
       public void buttonClick(ClickEvent event) {
 
         log.debug("renewing address list");
