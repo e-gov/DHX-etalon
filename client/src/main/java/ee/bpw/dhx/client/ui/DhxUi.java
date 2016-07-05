@@ -1,17 +1,5 @@
 package ee.bpw.dhx.client.ui;
 
-import ee.bpw.dhx.client.CustomAppender;
-import ee.bpw.dhx.client.config.DhxClientConfig;
-import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
-import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.Representee;
-import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.ws.config.DhxConfig;
-import ee.bpw.dhx.ws.config.SoapConfig;
-import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
-
 import com.vaadin.annotations.Theme;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -42,6 +30,18 @@ import com.vaadin.ui.TextArea;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import ee.bpw.dhx.client.CustomAppender;
+import ee.bpw.dhx.client.config.DhxClientConfig;
+import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
+import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.ws.config.DhxConfig;
+import ee.bpw.dhx.ws.config.SoapConfig;
+import ee.bpw.dhx.ws.service.AddressService;
+import ee.bpw.dhx.ws.service.DhxGateway;
 
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
@@ -348,12 +348,12 @@ public class DhxUi extends UI {
       public void buttonClick(ClickEvent event) {
         if (adressees.getValue() == null || capsules.getValue() == null) {
           Notification notification =
-              new Notification("Täitke kõik kohustuslikud väljad!",
+              new Notification("Täitke kõik kohustuslikud väljad! ",
                   Notification.Type.WARNING_MESSAGE);
           notification.setDelayMsec(-1);
           notification.show(Page.getCurrent());
         } else {
-          log.info("got request. addressees:" + adressees.getValue() + " capsule:"
+          log.info("got request. addressees: " + adressees.getValue() + " capsule: "
               + capsules.getValue());
           try {
             // File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
@@ -363,22 +363,22 @@ public class DhxUi extends UI {
             String statuses = "";
             for (SendDocumentResponse response : responses) {
               statuses +=
-                  "Dokument saadetud. Status:"
+                  "Dokument saadetud. Status: "
                       + response.getReceiptId()
-                      + (response.getFault() == null ? "" : " faultCode:"
-                          + response.getFault().getFaultCode() + " faultString:"
+                      + (response.getFault() == null ? "" : " faultCode: "
+                          + response.getFault().getFaultCode() + " faultString: "
                           + response.getFault().getFaultString() + "\n'");
               // showNotification();
             }
             Notification notification =
-                new Notification("Dokuemndi saatmise staatused:" + statuses,
+                new Notification("Dokumendi saatmise staatused: " + statuses,
                     Notification.Type.HUMANIZED_MESSAGE);
             notification.setDelayMsec(-1);
             notification.show(Page.getCurrent());
           } catch (DhxException ex) {
             log.error("Error while sending document." + ex.getMessage(), ex);
             Notification notification =
-                new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                new Notification("Viga dokumendi saatmisel! " + ex.getMessage(),
                     Notification.Type.WARNING_MESSAGE);
             notification.setDelayMsec(-1);
             notification.show(Page.getCurrent());
@@ -391,11 +391,9 @@ public class DhxUi extends UI {
     help.setCaptionAsHtml(true);
     help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp()
         + "</span>");
-    FormLayout formLayout = new FormLayout(/* formLabel, */help, consignmentCheck, consignmentId, /*
-                                                                                                   * uploadField
-                                                                                                   * ,
-                                                                                                   */
-    capsules, adressees, buttonSubmit, chosenFile);
+    FormLayout formLayout =
+        new FormLayout(help, consignmentCheck, consignmentId, capsules, adressees, buttonSubmit,
+            chosenFile);
     formLayout.setMargin(false);
     VerticalLayout vertLayout = new VerticalLayout();
     vertLayout.addComponent(help);
@@ -458,7 +456,8 @@ public class DhxUi extends UI {
                   reprStr =
                       reprStr
                           + (reprStr.equals("") ? "" : ", ")
-                          + (repr.getMemberCode() + " algus: " + startDateStr + " lõpp:" + endDateStr);
+                          + (repr.getMemberCode() + " algus: " + startDateStr 
+                              + " lõpp:" + endDateStr);
                 }
               }
               Notification notification =
@@ -468,8 +467,8 @@ public class DhxUi extends UI {
               notification.show(Page.getCurrent());
             } else {
               Notification notification =
-                  new Notification(
-                      "Valitud adressaat on vahendatav. Ei ole võimalik leida tema poolt vahendatavate nimekirja.",
+                  new Notification("Valitud adressaat on vahendatav. "
+                      + "Ei ole võimalik leida tema poolt vahendatavate nimekirja.",
                       Notification.Type.WARNING_MESSAGE);
               notification.setDelayMsec(-1);
               notification.show(Page.getCurrent());

@@ -121,7 +121,7 @@ public class AddressServiceImpl implements AddressService {
         for (SubsystemType subSystem : member.getSubsystem()) {
           // find DHX subsytem. if found, then member is ready to use DHX protocol
           if (subSystem.getSubsystemCode().equalsIgnoreCase(config.getSubsystem())) {
-            log.debug("Found DHX subsystem for member " + member.getMemberCode());
+            log.debug("Found DHX subsystem for member: " + member.getMemberCode());
             if (!member.getMemberCode().equals(config.getMemberCode())) {
               members.add(new XroadMember(config.getXroadInstance(), member, config
                   .getSubsystem()));
@@ -138,7 +138,7 @@ public class AddressServiceImpl implements AddressService {
             // excelude own representatives
             if (!client.getMemberCode().equals(config.getMemberCode())) {
               XroadMember member = new XroadMember(client);
-              log.debug("getting representatives for member:" + member.toString());
+              log.debug("getting representatives for member: " + member.toString());
               try {
                 List<XroadMember> representeeMembers = getRepresentees(member);
                 if (representeeMembers != null && representeeMembers.size() > 0) {
@@ -146,7 +146,7 @@ public class AddressServiceImpl implements AddressService {
                 }
               } catch (DhxException ex) {
                 log.error(
-                    "Error occured while getting representationList for:" + member.toString()
+                    "Error occured while getting representationList for: " + member.toString()
                         + ex.getMessage(), ex);
               }
               // include own representatives not from x-road servicce, but from local method
@@ -209,12 +209,12 @@ public class AddressServiceImpl implements AddressService {
     } catch (MalformedURLException ex) {
       log.error("Error occurrred in url", ex);
       throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-          "Error occured while getting global conf " + ex.getMessage(), ex);
+          "Error occured while getting global conf. " + ex.getMessage(), ex);
 
     } catch (IOException ex) {
       log.error("Error occurrred ", ex);
       throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-          "Error occured while getting global conf " + ex.getMessage(), ex);
+          "Error occured while getting global conf. " + ex.getMessage(), ex);
     }
   }
 
@@ -241,7 +241,7 @@ public class AddressServiceImpl implements AddressService {
       }
     }
     throw new DhxException(DhxExceptionEnum.WRONG_RECIPIENT,
-        "Recipient is not found in address list. memberCode" + memberCode);
+        "Recipient is not found in address list. memberCode: " + memberCode);
   }
 
 }

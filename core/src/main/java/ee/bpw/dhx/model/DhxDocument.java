@@ -95,13 +95,14 @@ public class DhxDocument {
    * 
    * @param service - XroadMember to whom document is mean to be sent
    * @param parsedContainer - document Object. Object type bacause different version might be sent
-   * @param parsedContainerClass - class of the document object
+   * @param parsedContainerVersion - version of the container
    * @param file - documents file
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
   public DhxDocument(XroadMember service, Object parsedContainer,
-      XsdVersionEnum parsedContainerVersion, File file, String internalConsignmentId, Boolean packFile) throws DhxException {
+      XsdVersionEnum parsedContainerVersion, File file, String internalConsignmentId,
+      Boolean packFile) throws DhxException {
     this(service, file, packFile);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
@@ -115,12 +116,13 @@ public class DhxDocument {
    * @param service - XroadMember to whom document is mean to be sent
    * @param stream - documents stream
    * @param parsedContainer - document Object. Object type bacause different version might be sent
-   * @param parsedContainerClass - class of the document object
+   * @param parsedContainerVersion - version of the container
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
   public DhxDocument(XroadMember service, InputStream stream, Object parsedContainer,
-      XsdVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile) throws DhxException {
+      XsdVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile)
+      throws DhxException {
     this(service, stream, packFile);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
@@ -134,7 +136,7 @@ public class DhxDocument {
    * @param client - XroadMember from who the document is being sent
    * @param document - document to send
    * @param parsedContainer - document Object. Object type bacause different version might be sent
-   * @param parsedContainerClass - class of the document object
+   * @param parsedContainerVersion - version of the container
    */
   public DhxDocument(XroadMember client, SendDocument document, Object parsedContainer,
       XsdVersionEnum parsedContainerVersion) {

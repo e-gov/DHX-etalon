@@ -39,8 +39,8 @@ public interface DocumentService {
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
    * @pararm recipient - to whom document is sent
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
       String recipient) throws DhxException;
@@ -52,8 +52,8 @@ public interface DocumentService {
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
    * @pararm recipient - to whom document is sent
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
       String recipient) throws DhxException;
@@ -64,8 +64,8 @@ public interface DocumentService {
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
       throws DhxException;
@@ -77,8 +77,8 @@ public interface DocumentService {
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
    * @param version - version of the capsule to parse
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
       XsdVersionEnum version) throws DhxException;
@@ -86,14 +86,13 @@ public interface DocumentService {
   /**
    * Parses capsule from file and sends document. Document is sent to every recipient defined in
    * capsule. Uses default capsule version from configuration to parse capsule.
-   * 
    * NO FILESIZE CHECK IS DONE is this method. To check file size use
    * {@link #sendDocument(File, String)}
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId)
       throws DhxException;
@@ -101,15 +100,14 @@ public interface DocumentService {
   /**
    * Parses capsule from file and sends document. Document is sent to every recipient defined in
    * capsule. Uses default capsule version from configuration to parse capsule.
-   * 
    * NO FILESIZE CHECK IS DONE is this method. To check file size use
    * {@link #sendDocument(File, String)}
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
    * @param version - version of the capsule to parse
-   * @return
-   * @throws DhxException
+   * @return - sendDocument service responses
+   * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
       XsdVersionEnum version) throws DhxException;

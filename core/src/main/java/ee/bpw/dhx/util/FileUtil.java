@@ -302,7 +302,7 @@ public class FileUtil {
   /**
    * Packs the file with gzip.
    * 
-   * @param fileToZip - file which need to be gzipped
+   * @param streamtoZip - stream which need to be gzipped
    * @return - gzipped file
    */
 
@@ -318,7 +318,7 @@ public class FileUtil {
   }
 
 
-  public static File gzipPackXml(InputStream streamtoZip, String orgCode, String requestName)
+  private static File gzipPackXml(InputStream streamtoZip, String orgCode, String requestName)
       throws IllegalArgumentException, IOException {
     File zipOutFile = gzipFile(streamtoZip);
     File base64File = createPipelineFile();

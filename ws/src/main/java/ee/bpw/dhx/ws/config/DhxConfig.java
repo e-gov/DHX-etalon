@@ -69,6 +69,12 @@ public class DhxConfig {
     return getXsdForVersion(currentCapsuleVersion);
   }
 
+  /**
+   * Method finds config parameter which contains link to XSD for given version.
+   * @param version - version for which to find XSD
+   * @return - link to XSD file for given version
+   * @throws DhxException - thrown then no XSD file is defined for given version
+   */
   public String getXsdForVersion(XsdVersionEnum version) throws DhxException {
     switch (version) {
       case V21:

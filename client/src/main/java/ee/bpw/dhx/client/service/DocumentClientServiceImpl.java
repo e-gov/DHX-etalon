@@ -50,6 +50,14 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
 
   private static List<DhxDocument> receevedDocuments = new ArrayList<DhxDocument>();
 
+  /**
+   * Method to serve UI needs. It replaces capsule adressees if needed.
+   * @param capsuleType - type of the capsule (e.g. correct, invalid etc.)
+   * @param recipientString - recipient of the capsule
+   * @param consignmentId - consignment ID to set while sending document
+   * @return - sendDocument service responsese
+   * @throws DhxException - thrown if error occurs while sending document
+   */
   public List<SendDocumentResponse> sendDocument(String capsuleType, String recipientString,
       String consignmentId) throws DhxException {
     log.debug("sending document. capsuleType=" + capsuleType + " recipientString="
@@ -105,8 +113,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
       throws DhxException {
     try {
       logger.log(Level.getLevel("EVENT"), "Starting to receive document. for representative: "
-          + document.getRecipient() +
-           " consignmentId: " + document.getConsignmentId());
+          + document.getRecipient() + " consignmentId: " + document.getConsignmentId());
       return super.extractAndValidateDocument(document, client);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
@@ -125,7 +132,8 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
   public String receiveDocument(DhxDocument dhxDocument) throws DhxException {
     String receiptId = UUID.randomUUID().toString();
     logger.log(Level.getLevel("EVENT"), "Document received. for: "
-        + dhxDocument.getClient().toString() + " receipt:" + receiptId + " consignmentId: " + dhxDocument.getExternalConsignmentId());
+        + dhxDocument.getClient().toString() + " receipt:" + receiptId + " consignmentId: "
+        + dhxDocument.getExternalConsignmentId());
     if (dhxDocument.getParsedContainer() != null) {
       DecContainer container = (DecContainer) dhxDocument.getParsedContainer();
       logger.log(Level.getLevel("EVENT"),
@@ -149,9 +157,10 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
   public boolean isDuplicatePackage(XroadMember from, String consignmentId) {
     log.debug("Checking for duplicates. from memberCode:" + from.toString()
         + " from consignmentId:" + consignmentId);
-    if(receevedDocuments != null && receevedDocuments.size()>0) {
+    if (receevedDocuments != null && receevedDocuments.size() > 0) {
       for (DhxDocument document : receevedDocuments) {
-        if (document.getExternalConsignmentId() != null && document.getExternalConsignmentId().equals(consignmentId)
+        if (document.getExternalConsignmentId() != null
+            && document.getExternalConsignmentId().equals(consignmentId)
             && document.getClient().toString().equals(from.toString())) {
           return true;
         }
@@ -163,32 +172,22 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
   /**
    * override just to log events.
    */
-  @Override
-  protected List<SendDocumentResponse> sendDocument(Object container, InputStream capsuleStream,
-      String consignmentId) throws DhxException {
-    try {
-      return super.sendDocument(container, capsuleStream, consignmentId);
-    } catch (DhxException ex) {
-      logger.log(Level.getLevel("EVENT"),
-          "Error occured while sending document. " + ex.getMessage(), ex);
-      throw ex;
-    }
-  }
-
-  /**
-   * overriden to log events.
+  /*
+   * @Override protected List<SendDocumentResponse> sendDocument(Object container, InputStream
+   * capsuleStream, String consignmentId) throws DhxException { try { return
+   * super.sendDocument(container, capsuleStream, consignmentId); } catch (DhxException ex) {
+   * logger.log(Level.getLevel("EVENT"), "Error occured while sending document. " + ex.getMessage(),
+   * ex); throw ex; } }
+   * 
+   * /** overriden to log events.
    */
-  @Override
-  public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
-      String recipient) throws DhxException {
-    try {
-      return super.sendDocument(capsuleFile, consignmentId, recipient);
-    } catch (DhxException ex) {
-      logger.log(Level.getLevel("EVENT"),
-          "Error occured while sending document. " + ex.getMessage(), ex);
-      throw ex;
-    }
-  }
+  /*
+   * @Override public List<SendDocumentResponse> sendDocument(File capsuleFile, String
+   * consignmentId, String recipient) throws DhxException { try { return
+   * super.sendDocument(capsuleFile, consignmentId, recipient); } catch (DhxException ex) {
+   * logger.log(Level.getLevel("EVENT"), "Error occured while sending document. " + ex.getMessage(),
+   * ex); throw ex; } }
+   */
 
   /**
    * Overriden to log events.

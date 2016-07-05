@@ -200,7 +200,8 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Override
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
       String recipient) throws DhxException {
-    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, String recipient)");
+    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, "
+        + "String consignmentId, String recipient)");
     checkFileSize(capsuleFile);
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     List<SendDocumentResponse> responses;
@@ -218,7 +219,8 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Override
   public List<SendDocumentResponse> sendDocument(InputStream capsuleFStream,
       String consignmentId, String recipient) throws DhxException {
-    log.debug("List<SendDocumentResponse>  sendDocument(InputStream capsuleFStream, String consignmentId, String recipient)");
+    log.debug("List<SendDocumentResponse>  sendDocument(InputStream capsuleFStream, "
+        + "String consignmentId, String recipient)");
     if (recipient != null && !recipient.equals("")) {
       List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
       responses.add(sendDocumentNoCapsulePasring(capsuleFStream, consignmentId, recipient));
@@ -232,14 +234,16 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Override
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId)
       throws DhxException {
-    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId)");
+    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
+        + "String consignmentId)");
     return sendDocument(capsuleStream, consignmentId, config.getCurrentCapsuleVersion());
   }
 
   @Override
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
       XsdVersionEnum version) throws DhxException {
-    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId, , XsdVersionEnum version)");
+    log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
+        + "String consignmentId, , XsdVersionEnum version)");
     if (config.getParseCapsule()) {
       InputStream schemaStream = null;
       if (config.getCapsuleValidate()) {
@@ -251,7 +255,8 @@ public abstract class DocumentServiceImpl implements DocumentService {
     } else {
       throw new DhxException(
           DhxExceptionEnum.WRONG_RECIPIENT,
-          "Unable to define adressees without parsing capsule. parsing capsule is disabled in configuration.");
+          "Unable to define adressees without parsing capsule. "
+          + "parsing capsule is disabled in configuration.");
     }
   }
 
@@ -265,8 +270,8 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Override
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
       XsdVersionEnum version) throws DhxException {
-    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, XsdVersionEnum version) version="
-        + version.toString());
+    log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, "
+        + "XsdVersionEnum version) version=" + version.toString());
     checkFileSize(capsuleFile);
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     List<SendDocumentResponse> responses;
