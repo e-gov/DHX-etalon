@@ -56,7 +56,13 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
-
+/**
+ * Main user interface of the DHX client application. Contains all needed to monitor and test DHX
+ * core and ws applications
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @SpringUI
 @Theme("valo")
 @Slf4j
@@ -342,51 +348,51 @@ public class DhxUi extends UI {
     adressees.setRequired(true);
     Button buttonSubmit = new Button("Saada document");
     buttonSubmit.addClickListener(
-    /* buttonSubmit.addListener( */new Button.ClickListener() {
-      private static final long serialVersionUID = -6857112166321059475L;
+        /* buttonSubmit.addListener( */new Button.ClickListener() {
+          private static final long serialVersionUID = -6857112166321059475L;
 
-      public void buttonClick(ClickEvent event) {
-        if (adressees.getValue() == null || capsules.getValue() == null) {
-          Notification notification =
-              new Notification("Täitke kõik kohustuslikud väljad! ",
-                  Notification.Type.WARNING_MESSAGE);
-          notification.setDelayMsec(-1);
-          notification.show(Page.getCurrent());
-        } else {
-          log.info("got request. addressees: " + adressees.getValue() + " capsule: "
-              + capsules.getValue());
-          try {
-            // File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
-            List<SendDocumentResponse> responses =
-                documentClientService.sendDocument(capsules.getValue().toString(), adressees
-                    .getValue().toString(), consignmentId.getValue());
-            String statuses = "";
-            for (SendDocumentResponse response : responses) {
-              statuses +=
-                  "Dokument saadetud. Status: "
-                      + response.getReceiptId()
-                      + (response.getFault() == null ? "" : " faultCode: "
-                          + response.getFault().getFaultCode() + " faultString: "
-                          + response.getFault().getFaultString() + "\n'");
-              // showNotification();
+          public void buttonClick(ClickEvent event) {
+            if (adressees.getValue() == null || capsules.getValue() == null) {
+              Notification notification =
+                  new Notification("Täitke kõik kohustuslikud väljad! ",
+                      Notification.Type.WARNING_MESSAGE);
+              notification.setDelayMsec(-1);
+              notification.show(Page.getCurrent());
+            } else {
+              log.info("got request. addressees: " + adressees.getValue() + " capsule: "
+                  + capsules.getValue());
+              try {
+                // File attachment = FileUtil.createFileAndWrite(uploadField.getContentAsStream());
+                List<SendDocumentResponse> responses =
+                    documentClientService.sendDocument(capsules.getValue().toString(), adressees
+                        .getValue().toString(), consignmentId.getValue());
+                String statuses = "";
+                for (SendDocumentResponse response : responses) {
+                  statuses +=
+                      "Dokument saadetud. Status: "
+                          + response.getReceiptId()
+                          + (response.getFault() == null ? "" : " faultCode: "
+                              + response.getFault().getFaultCode() + " faultString: "
+                              + response.getFault().getFaultString() + "\n'");
+                  // showNotification();
+                }
+                Notification notification =
+                    new Notification("Dokumendi saatmise staatused: " + statuses,
+                        Notification.Type.HUMANIZED_MESSAGE);
+                notification.setDelayMsec(-1);
+                notification.show(Page.getCurrent());
+              } catch (DhxException ex) {
+                log.error("Error while sending document." + ex.getMessage(), ex);
+                Notification notification =
+                    new Notification("Viga dokumendi saatmisel! " + ex.getMessage(),
+                        Notification.Type.WARNING_MESSAGE);
+                notification.setDelayMsec(-1);
+                notification.show(Page.getCurrent());
+                // showNotification("Viga documendi saatmisel!" + ex.getMessage());
+              }
             }
-            Notification notification =
-                new Notification("Dokumendi saatmise staatused: " + statuses,
-                    Notification.Type.HUMANIZED_MESSAGE);
-            notification.setDelayMsec(-1);
-            notification.show(Page.getCurrent());
-          } catch (DhxException ex) {
-            log.error("Error while sending document." + ex.getMessage(), ex);
-            Notification notification =
-                new Notification("Viga dokumendi saatmisel! " + ex.getMessage(),
-                    Notification.Type.WARNING_MESSAGE);
-            notification.setDelayMsec(-1);
-            notification.show(Page.getCurrent());
-            // showNotification("Viga documendi saatmisel!" + ex.getMessage());
           }
-        }
-      }
-    });
+        });
     Label help = new Label();
     help.setCaptionAsHtml(true);
     help.setCaption("<span style=\"white-space:normal;\">" + config.getSendDocumentHelp()
@@ -424,72 +430,72 @@ public class DhxUi extends UI {
     adressees.setRequired(true);
     Button button = new Button("Saada päring");
     button.addClickListener(
-    /* button.addListener( */new Button.ClickListener() {
-      private static final long serialVersionUID = -6857112166321059475L;
+        /* button.addListener( */new Button.ClickListener() {
+          private static final long serialVersionUID = -6857112166321059475L;
 
-      public void buttonClick(ClickEvent event) {
-        if (adressees.getValue() != null) {
-          try {
-            log.debug("getting representation List");
-            /*
-             * XroadMember member = new XroadMember(soapConfig.getXroadInstance(),
-             * regClass.getValue(), regCode .getValue(), soapConfig.getSubsystem(), null);
-             */
-            XroadMember member =
-                addressService.getClientForMemberCode(adressees.getValue().toString());
-            if (member.getRepresentee() == null) {
-              RepresentationListResponse response = dhxGateway.getRepresentationList(member);
-              String reprStr = "";
-              if (response.getMembers() != null && response.getMembers().getMember() != null
-                  && response.getMembers().getMember().size() > 0) {
-                for (Member repr : response.getMembers().getMember()) {
-                  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-                  String startDateStr = "";
-                  String endDateStr = "";
-                  Representee representee = new Representee(repr);
-                  if (representee.getStartDate() != null) {
-                    startDateStr = sdf.format(representee.getStartDate());
+          public void buttonClick(ClickEvent event) {
+            if (adressees.getValue() != null) {
+              try {
+                log.debug("getting representation List");
+                /*
+                 * XroadMember member = new XroadMember(soapConfig.getXroadInstance(),
+                 * regClass.getValue(), regCode .getValue(), soapConfig.getSubsystem(), null);
+                 */
+                XroadMember member =
+                    addressService.getClientForMemberCode(adressees.getValue().toString());
+                if (member.getRepresentee() == null) {
+                  RepresentationListResponse response = dhxGateway.getRepresentationList(member);
+                  String reprStr = "";
+                  if (response.getMembers() != null && response.getMembers().getMember() != null
+                      && response.getMembers().getMember().size() > 0) {
+                    for (Member repr : response.getMembers().getMember()) {
+                      SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                      String startDateStr = "";
+                      String endDateStr = "";
+                      Representee representee = new Representee(repr);
+                      if (representee.getStartDate() != null) {
+                        startDateStr = sdf.format(representee.getStartDate());
+                      }
+                      if (representee.getEndDate() != null) {
+                        endDateStr = sdf.format(representee.getEndDate());
+                      }
+                      reprStr =
+                          reprStr
+                              + (reprStr.equals("") ? "" : ", ")
+                              + (repr.getMemberCode() + " algus: " + startDateStr
+                                  + " lõpp:" + endDateStr);
+                    }
                   }
-                  if (representee.getEndDate() != null) {
-                    endDateStr = sdf.format(representee.getEndDate());
-                  }
-                  reprStr =
-                      reprStr
-                          + (reprStr.equals("") ? "" : ", ")
-                          + (repr.getMemberCode() + " algus: " + startDateStr 
-                              + " lõpp:" + endDateStr);
+                  Notification notification =
+                      new Notification("Representatives:" + reprStr,
+                          Notification.Type.HUMANIZED_MESSAGE);
+                  notification.setDelayMsec(-1);
+                  notification.show(Page.getCurrent());
+                } else {
+                  Notification notification =
+                      new Notification("Valitud adressaat on vahendatav. "
+                          + "Ei ole võimalik leida tema poolt vahendatavate nimekirja.",
+                          Notification.Type.WARNING_MESSAGE);
+                  notification.setDelayMsec(-1);
+                  notification.show(Page.getCurrent());
                 }
+              } catch (DhxException ex) {
+                log.error("Error while sending document." + ex.getMessage(), ex);
+                Notification notification =
+                    new Notification("Viga documendi saatmisel!" + ex.getMessage(),
+                        Notification.Type.WARNING_MESSAGE);
+                notification.setDelayMsec(-1);
+                notification.show(Page.getCurrent());
               }
-              Notification notification =
-                  new Notification("Representatives:" + reprStr,
-                      Notification.Type.HUMANIZED_MESSAGE);
-              notification.setDelayMsec(-1);
-              notification.show(Page.getCurrent());
             } else {
               Notification notification =
-                  new Notification("Valitud adressaat on vahendatav. "
-                      + "Ei ole võimalik leida tema poolt vahendatavate nimekirja.",
+                  new Notification("Täitke kõik kohustuslikud väljad!",
                       Notification.Type.WARNING_MESSAGE);
               notification.setDelayMsec(-1);
               notification.show(Page.getCurrent());
             }
-          } catch (DhxException ex) {
-            log.error("Error while sending document." + ex.getMessage(), ex);
-            Notification notification =
-                new Notification("Viga documendi saatmisel!" + ex.getMessage(),
-                    Notification.Type.WARNING_MESSAGE);
-            notification.setDelayMsec(-1);
-            notification.show(Page.getCurrent());
           }
-        } else {
-          Notification notification =
-              new Notification("Täitke kõik kohustuslikud väljad!",
-                  Notification.Type.WARNING_MESSAGE);
-          notification.setDelayMsec(-1);
-          notification.show(Page.getCurrent());
-        }
-      }
-    });
+        });
     // Label label = new Label("Vahendatavate nimekiri");
     // label.setStyleName("h3");
     FormLayout formLayout = new FormLayout(adressees, button);
@@ -517,24 +523,25 @@ public class DhxUi extends UI {
     adresseeLayout.addComponent(adrLabel);
     Button button = new Button("Uuenda");
     button.addClickListener(
-    /* button.addListener( */new Button.ClickListener() {
-      private static final long serialVersionUID = -6857112166321059475L;
+        /* button.addListener( */new Button.ClickListener() {
+          private static final long serialVersionUID = -6857112166321059475L;
 
-      public void buttonClick(ClickEvent event) {
+          public void buttonClick(ClickEvent event) {
 
-        log.debug("renewing address list");
-        addressService.renewAddressList();
-        List<XroadMember> members = addressService.getAdresseeList();
-        adrLabel.setCaption("<span style=\"white-space:normal;\">" + getAdresseeString(members)
-            + "</span>");
-        Notification notification =
-            new Notification("Lokaalne aadressiraamat uuendatud",
-                Notification.Type.HUMANIZED_MESSAGE);
-        notification.setDelayMsec(-1);
-        notification.show(Page.getCurrent());
+            log.debug("renewing address list");
+            addressService.renewAddressList();
+            List<XroadMember> members = addressService.getAdresseeList();
+            adrLabel.setCaption("<span style=\"white-space:normal;\">"
+                + getAdresseeString(members)
+                + "</span>");
+            Notification notification =
+                new Notification("Lokaalne aadressiraamat uuendatud",
+                    Notification.Type.HUMANIZED_MESSAGE);
+            notification.setDelayMsec(-1);
+            notification.show(Page.getCurrent());
 
-      }
-    });
+          }
+        });
     adresseeLayout.addComponent(button);
     return adresseeLayout;
   }

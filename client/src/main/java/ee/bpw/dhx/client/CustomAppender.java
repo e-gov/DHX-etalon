@@ -20,7 +20,11 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-
+/**
+ * Custom LOG4J appender. Needed to contain and log EVENTs occured in DHX application.
+ * @author Aleksei Kokarev
+ *
+ */
 
 @Plugin(name = "CustomAppender", category = "Core", elementType = "appender", printObject = true)
 public final class CustomAppender extends AbstractAppender {

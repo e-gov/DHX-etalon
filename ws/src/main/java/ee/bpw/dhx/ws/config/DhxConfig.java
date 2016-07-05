@@ -18,7 +18,7 @@ import java.util.Date;
 @ConfigurationProperties(prefix = "dhx")
 @Configuration
 /**
- * Main config of DHX webservice application
+ * Main configuration of DHX webservice application
  * @author Aleksei Kokarev
  *
  */

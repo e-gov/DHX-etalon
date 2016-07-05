@@ -29,7 +29,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 /**
- * Utility methods related to XSD and marshalling.
+ * Utility methods related to XSD and marshalling. e.g. marshalling, unmarshalling , validating
  * 
  * @author Aleksei Kokarev
  *
@@ -44,7 +44,6 @@ public class XsdUtil {
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
-   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
    */
   public static <T> T unmarshallCapsule(File capsuleFile, Unmarshaller unmarshaller)
       throws DhxException {
@@ -65,7 +64,6 @@ public class XsdUtil {
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
-   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
    */
   public static <T> T unmarshallCapsule(final InputStream capsuleStream, Unmarshaller unmarshaller)
       throws DhxException {
@@ -83,7 +81,6 @@ public class XsdUtil {
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
-   * @Deprecated use {@link #unmarshallCapsule(File, Unmarshaller)} instead
    */
   public static <T> T unmarshallCapsuleAndValidate(final InputStream capsuleStream,
       InputStream schemaStream, Unmarshaller unmarshaller) throws DhxException {
@@ -114,6 +111,7 @@ public class XsdUtil {
    * Marshalls capsule to file.
    * 
    * @param container - object to marshall
+   * @param marshaller - marshaller to use
    * @return - file containing marshalled object
    * @throws DhxException - thrown if error occurs while marshalling capsule
    */

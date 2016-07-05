@@ -14,7 +14,9 @@ import java.util.List;
 
 
 /**
- * Interface for document sending and receiving.
+ * Interface for document sending and receiving. Service is independant from capsule versions that
+ * are being sent or received, that means that no changes should be done in service if new capsule
+ * version is added.
  * 
  * @author Aleksei Kokarev
  *
@@ -38,7 +40,7 @@ public interface DocumentService {
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
-   * @pararm recipient - to whom document is sent
+   * @param recipient - to whom document is sent
    * @return - sendDocument service responses
    * @throws DhxException - thrown if error occurs while sending document
    */
@@ -51,7 +53,7 @@ public interface DocumentService {
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
-   * @pararm recipient - to whom document is sent
+   * @param recipient - to whom document is sent
    * @return - sendDocument service responses
    * @throws DhxException - thrown if error occurs while sending document
    */
@@ -85,9 +87,8 @@ public interface DocumentService {
 
   /**
    * Parses capsule from file and sends document. Document is sent to every recipient defined in
-   * capsule. Uses default capsule version from configuration to parse capsule.
-   * NO FILESIZE CHECK IS DONE is this method. To check file size use
-   * {@link #sendDocument(File, String)}
+   * capsule. Uses default capsule version from configuration to parse capsule. NO FILESIZE CHECK IS
+   * DONE is this method. To check file size use {@link #sendDocument(File, String)}
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
@@ -99,9 +100,8 @@ public interface DocumentService {
 
   /**
    * Parses capsule from file and sends document. Document is sent to every recipient defined in
-   * capsule. Uses default capsule version from configuration to parse capsule.
-   * NO FILESIZE CHECK IS DONE is this method. To check file size use
-   * {@link #sendDocument(File, String)}
+   * capsule. Uses default capsule version from configuration to parse capsule. NO FILESIZE CHECK IS
+   * DONE is this method. To check file size use {@link #sendDocument(File, String)}
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document

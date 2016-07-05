@@ -10,6 +10,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Extension of AddressServiceImpl. Contains changes needed for client application. e.g. event logging.
+ * @author Aleksei Kokarev
+ *
+ */
 public class AddressClientServiceImpl extends AddressServiceImpl {
 
   final Logger logger = LogManager.getLogger();

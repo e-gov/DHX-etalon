@@ -18,6 +18,11 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.UUID;
 
+/**
+ * Extension of DhxGateway. Contains changes needed for client application. e.g. event logging.
+ * @author Aleksei Kokarev
+ *
+ */
 @Slf4j
 public class DhxClientGateWay extends DhxGateway {
 

@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Implementation of the RepresentationService. Gets representation list from the configuration
+ * parameters
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @Slf4j
 public class RepresentationServiceImpl implements RepresentationService {
 

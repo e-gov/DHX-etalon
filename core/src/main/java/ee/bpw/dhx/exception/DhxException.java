@@ -3,6 +3,12 @@ package ee.bpw.dhx.exception;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * DHX specific exception. contains error code.
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @Getter
 @Setter
 public class DhxException extends Exception {

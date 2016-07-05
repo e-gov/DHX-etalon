@@ -1,5 +1,10 @@
 package ee.bpw.dhx.exception;
 
+/**
+ * Enumeration which contains codes of the errors that might occur in DHX application.
+ * @author Aleksei Kokarev
+ *
+ */
 public enum DhxExceptionEnum {
 
   CAPSULE_VALIDATION_ERROR("Client.Validation"), 

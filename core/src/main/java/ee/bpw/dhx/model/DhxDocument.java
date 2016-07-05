@@ -20,6 +20,11 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.util.ByteArrayDataSource;
 
+/**
+ * Document object. Contains information needed for sending the document and for receiving the document.
+ * @author Aleksei Kokarev
+ *
+ */
 
 @Getter
 @Setter
@@ -97,6 +102,7 @@ public class DhxDocument {
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
    * @param file - documents file
+   * @param internalConsignmentId - consingment id for sending document
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
@@ -117,6 +123,7 @@ public class DhxDocument {
    * @param stream - documents stream
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
+   * @param internalConsignmentId - consignment id for sending document
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */

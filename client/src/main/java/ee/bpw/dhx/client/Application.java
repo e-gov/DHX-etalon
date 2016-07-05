@@ -9,6 +9,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+/**
+ * Class containing main method.
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @SpringBootApplication
 @EnableScheduling
 @EnableAutoConfiguration

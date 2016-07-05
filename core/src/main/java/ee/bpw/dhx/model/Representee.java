@@ -10,7 +10,11 @@ import lombok.Setter;
 
 import java.util.Date;
 
-
+/**
+ * REpresentee object. Contains all information needed for representee.
+ * @author Aleksei Kokarev
+ *
+ */
 @Getter
 @Setter
 public class Representee {

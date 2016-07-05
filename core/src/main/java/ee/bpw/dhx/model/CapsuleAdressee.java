@@ -3,6 +3,11 @@ package ee.bpw.dhx.model;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Internal representation of adressee defined in capsule. 
+ * @author Aleksei Kokarev
+ *
+ */
 @Getter
 @Setter
 public class CapsuleAdressee {

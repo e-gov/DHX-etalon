@@ -5975,3 +5975,105 @@ ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Re
 2016-07-05 11:33:34,417 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 42bf9390-95f8-4a90-bd85-a962d08ea5d9
 2016-07-05 11:34:24,440 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:d3538276-8c79-459e-b18f-3ff4492967f7
 2016-07-05 11:34:24,675 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 4d1c029a-6057-4c19-940b-45722ccb5540
+2016-07-05 11:35:14,708 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:34933d1c-4f56-44fa-8ea6-027c3d7509af
+2016-07-05 11:35:15,013 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 99f11da5-f164-43c5-b1aa-0958ff556634
+2016-07-05 11:36:05,037 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:0928e5db-0272-44ff-9812-8a20294ad293
+2016-07-05 11:36:05,260 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 50269165-b384-4fb5-9a65-6483ff6150fa
+2016-07-05 11:36:55,299 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:009d4e7b-d48b-4d3f-a3aa-4ad1d8d841e9
+2016-07-05 11:36:55,517 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: f149777f-a251-4866-aa7d-20dff9929d84
+2016-07-05 11:37:45,588 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:e757f07f-4ffe-49e9-a4e3-132e9925e827
+2016-07-05 11:37:45,826 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 9470e4f7-1c23-4d2a-8ed8-ca6d7b637dc3
+2016-07-05 11:38:35,861 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:6d0f74e5-88df-4ab7-a367-8c48c1ed8bad
+2016-07-05 11:38:36,093 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: e88044be-4c1d-4ce7-acba-7e48910e7896
+2016-07-05 11:39:26,122 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:7044cd35-7a87-402e-a72f-c49656205503
+2016-07-05 11:39:26,346 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: a8decbb9-7b7f-474e-8474-6a35b2e68385
+2016-07-05 11:40:16,369 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:9a9a32c8-8d2c-4f59-bd5c-8d2fb3b8d915
+2016-07-05 11:40:16,583 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 05199412-4f90-47f7-9c6b-5bcd37be2183
+2016-07-05 11:41:06,613 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:67be37e5-bb07-4c45-ab91-c0a2386e4b06
+2016-07-05 11:41:06,982 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 19f1d44c-f886-450a-b95e-902618a910a0
+2016-07-05 11:41:57,093 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:f4ab9c2a-3c85-48c6-b747-0ec29cd15e8b
+2016-07-05 11:41:57,428 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: ad9176ea-c2fe-42d7-a5c7-7b233ffd4c3e
+2016-07-05 11:42:47,488 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:d015930d-7db4-4896-9afd-b363b64dad4b
+2016-07-05 11:42:47,748 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: f141a110-5e59-4b1a-8200-3f0c86f7815a
+2016-07-05 11:43:37,800 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:58f423d7-9527-4adf-875a-aca14bfe5492
+2016-07-05 11:43:38,029 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: d10aa951-41d2-4ff2-8432-53c234ffb773
+2016-07-05 11:44:28,113 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:b96c04f4-3054-4037-9c66-57887a69048f
+2016-07-05 11:44:28,360 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 7ba4068e-d3f8-4518-8bcc-7cbded690783
+2016-07-05 11:45:18,409 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:96e6a43c-dfc6-4996-a7bb-807c1a626f06
+2016-07-05 11:45:18,621 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: c1e28715-74ce-4d96-8ffe-9216973b160e
+2016-07-05 11:46:08,658 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:dc859485-a402-402f-8c6d-2f15b2a749e3
+2016-07-05 11:46:08,864 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: b74844ef-39b6-42d4-8015-37c4e9958808
+2016-07-05 11:46:58,898 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:b67c382f-fa35-49b8-bf23-cbe5d7fe47b6
+2016-07-05 11:46:59,147 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 53344a0c-e634-4d9f-9ab2-6faa1235aa0f
+2016-07-05 11:47:49,180 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:b8fb84f4-f88d-46d1-9a05-a7d5e615eb11
+2016-07-05 11:47:49,457 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 3b0eccaf-0410-4bbd-af1a-029b98138128
+2016-07-05 11:48:39,513 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:34cf7e21-e128-4323-b7a4-7f3a25d89ec5
+2016-07-05 11:48:39,720 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 8cdc44fd-f41f-40bd-a78d-218e0bf80275
+2016-07-05 11:49:29,751 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:be299d33-9488-4f49-aed9-d5239f7ae0b1
+2016-07-05 11:49:30,293 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: b816e7e9-b426-44a3-8567-c244efddfec0
+2016-07-05 11:50:20,349 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:be76b5cf-4067-4029-83f7-d6fc8651d41e
+2016-07-05 11:50:20,614 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: e8f82fe4-5e90-4274-a60f-283ffd75094b
+2016-07-05 11:51:10,642 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:c49a42f2-3be2-4458-b420-0f07b6d3377b
+2016-07-05 11:51:10,852 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: a6138b53-b585-4dd9-8af1-7a277ca425ee
+2016-07-05 11:52:00,880 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:fd21d54e-a669-42a9-beb1-24b53bd28e5c
+2016-07-05 11:52:01,173 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 12463c4b-111b-4a63-887e-2cb26c075563
+2016-07-05 11:52:51,215 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:6c9e33c5-2a79-433e-8615-97fb6890ba3a
+2016-07-05 11:52:51,429 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: e2576172-743b-4d12-b93f-2c9ee1ce2360
+2016-07-05 11:53:41,452 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:a2675d0c-2dca-43c5-bd33-7de7886580d4
+2016-07-05 11:53:41,714 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: a2f5e920-5eb2-431a-aa4c-06212c006822
+2016-07-05 11:54:31,770 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:f5e90f06-b4c9-4f81-991e-1f7b4fc49a6a
+2016-07-05 11:54:32,036 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 6a3dd3de-a578-4f5b-a0f5-7ce7f4b46dd2
+2016-07-05 11:55:22,066 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:731ecd8e-029a-41b8-aa38-4673a891a7e7
+2016-07-05 11:55:22,292 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 91984862-b768-458b-ba3a-10746038e141
+2016-07-05 11:56:12,318 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:7cbb9c85-1b29-4f57-b93e-bb76ef76c2c3
+2016-07-05 11:56:12,543 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 84886678-dad7-476f-884a-c544b66d9451
+2016-07-05 11:57:02,571 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:dd0c0d9c-3b4e-4127-839e-8c5c83b4b75c
+2016-07-05 11:57:02,831 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: eb3889c3-c352-4a8a-ad79-d097b38d4a51
+2016-07-05 11:57:52,870 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:7314cbec-fff1-4dff-9fbc-8be3a990b081
+2016-07-05 11:57:53,123 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 843b2d1e-bfc1-414e-ad57-735e8cf3445f
+2016-07-05 11:58:43,173 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:186e86cd-5630-4e8b-85c0-a2bfd996c978
+2016-07-05 11:58:43,663 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: a77015b3-69df-4b14-8c02-319b2b1b179f
+2016-07-05 11:59:33,702 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Sending document to:addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId:0f68aab6-55ca-4d5e-8324-b98304c173c2
+2016-07-05 11:59:33,921 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 23129790-ba2e-43e4-9cdd-9947473f8816
+2016-07-05 12:00:23,951 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:306) ~[ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:167) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:250) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:274) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:262) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:39) [classes/:?]
+	at sun.reflect.GeneratedMethodAccessor71.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-07-05 12:01:13,977 EVENT e.b.d.c.s.DocumentClientServiceImpl [pool-2-thread-1] ----- Error occured while sending document. DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: Client.InvalidAddressee Recipient is not found in address list. memberCode40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:243) ~[ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:306) ~[ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:167) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:250) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:274) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:262) [ws-0.6.4.jar:0.6.4]
+	at ee.bpw.dhx.client.ScheduledClient.sendValidDocument(ScheduledClient.java:39) [classes/:?]
+	at sun.reflect.GeneratedMethodAccessor71.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]

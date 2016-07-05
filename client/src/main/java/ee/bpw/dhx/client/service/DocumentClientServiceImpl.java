@@ -32,6 +32,13 @@ import java.util.List;
 import java.util.UUID;
 
 
+/**
+ * Extension of DocumentServiceImpl. Contains changes needed for client application. e.g. event
+ * logging and abstract method implementations.
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @Service
 @Slf4j
 public class DocumentClientServiceImpl extends DocumentServiceImpl {
@@ -52,6 +59,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
 
   /**
    * Method to serve UI needs. It replaces capsule adressees if needed.
+   * 
    * @param capsuleType - type of the capsule (e.g. correct, invalid etc.)
    * @param recipientString - recipient of the capsule
    * @param consignmentId - consignment ID to set while sending document

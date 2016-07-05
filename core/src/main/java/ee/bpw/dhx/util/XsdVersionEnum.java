@@ -6,6 +6,12 @@ import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Enumeration which contains all capsule versions that DHX application can read.
+ * 
+ * @author Aleksei Kokarev
+ *
+ */
 @Slf4j
 public enum XsdVersionEnum {
 
@@ -20,9 +26,10 @@ public enum XsdVersionEnum {
   public Class<? extends Object> getContainerClass() {
     return containerClass;
   }
-  
+
   /**
    * Method finds XSdVersion for given Class. Root Class needs to be given to find version.
+   * 
    * @param containerClass - root class of the container
    * @return - version of the container
    * @throws DhxException - thrown if error occurs while searching version

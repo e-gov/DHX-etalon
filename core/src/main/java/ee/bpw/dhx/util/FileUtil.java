@@ -33,7 +33,8 @@ import javax.mail.MessagingException;
 
 
 /**
- * Utility methods related to files.
+ * Utility methods related to files. e.g. creating files, reading files, zipping and unzipping,
+ * base64 endocding and decoding
  * 
  * @author Aleksei Kokarev
  *
@@ -67,6 +68,8 @@ public class FileUtil {
    * Generates operationsystem temporary file with unique name. File is written to java.io.tmpdir
    * 
    * @return created file
+   * @throws IOException - thrown if error occurs while creating file
+   * 
    */
   public static File createPipelineFile() throws IOException {
     /*
@@ -277,6 +280,7 @@ public class FileUtil {
    * 
    * @param fileToZip - file which needs to be gzipped and base64 encoded
    * @return - gzipped base64 file
+   * @throws DhxException - thrown if error occurs while gzipping or base64 encoding file
    */
   public static File gzipPackXml(File fileToZip) throws DhxException {
     if (!fileToZip.exists()) {
