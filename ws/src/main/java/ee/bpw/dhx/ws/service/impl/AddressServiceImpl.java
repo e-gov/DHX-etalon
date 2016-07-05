@@ -38,7 +38,7 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Unmarshaller;
 
 /**
- * Implementation of AddressService for creating and storing of address list. Stores address list in memory at the moment.
+ * Implementation of AddressService  for creating and storing of address list. Stores address list in memory at the moment.
  * Refreshes address list at startup. Might be needed scheduled job to refresh list periodically
  * 
  * @author Aleksei Kokarev
