@@ -27,6 +27,7 @@ import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 @EnableWs
@@ -98,7 +99,7 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
   public List<MarshallingPayloadMethodProcessor> methodProcessors() {
     List<MarshallingPayloadMethodProcessor> retVal =
         new ArrayList<MarshallingPayloadMethodProcessor>();
-    Jaxb2Marshaller marshallerMtom = marshaller();
+    Jaxb2Marshaller marshallerMtom = jaxb2Marshaller();
     retVal.add(new MarshallingPayloadMethodProcessor(marshallerMtom));
 
     return retVal;
@@ -110,11 +111,16 @@ public class DhxWebServiceConfig extends WsConfigurationSupport {
    * @return marshaller
    */
   @Bean
-  public Jaxb2Marshaller marshaller() {
+  public Jaxb2Marshaller jaxb2Marshaller() {
     Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
     marshaller.setMtomEnabled(true);
     marshaller.setContextPaths(config.getMarshallContextAsList());
     return marshaller;
+  }
+
+  @Bean
+  public Marshaller marshaller() throws JAXBException {
+    return jaxb2Marshaller().getJaxbContext().createMarshaller();
   }
 
   /**

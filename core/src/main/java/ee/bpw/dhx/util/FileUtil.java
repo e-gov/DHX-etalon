@@ -59,7 +59,7 @@ public class FileUtil {
       gzipUnpackXml(file, false);
       return file;
     } catch (Exception ex) {
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Error while extracting and unpacking attachment. " + ex.getMessage(), ex);
     }
   }
@@ -374,18 +374,18 @@ public class FileUtil {
   private static void gzipUnpackXml(File sourceFile, boolean appendDocumentHeader)
       throws FileNotFoundException, IOException, DhxException {
     if (sourceFile == null) {
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Extracting gzipped XML file failed because file was not supplied!");
 
     }
 
     File sourceFileAsObject = sourceFile;
     if (!sourceFileAsObject.exists()) {
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Extracting gzipped XML file failed because file " + sourceFile + " does not exist!");
     }
     if (sourceFileAsObject.length() < 1) {
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Extracting gzipped XML file failed because file " + sourceFile + " is empty!");
     }
 
@@ -441,18 +441,6 @@ public class FileUtil {
     }
   }
 
-
-  /**
-   * Determines if given String is null or empty (zero length). Whitespace is not treated as empty
-   * string.
-   *
-   * @param stringToEvaluate String that will be checked for having NULL or empty value
-   * @return true, if input String is NULL or has zero length
-   */
-  public static boolean isNullOrEmpty(final String stringToEvaluate) {
-    return ((stringToEvaluate == null) || stringToEvaluate.isEmpty());
-  }
-
   /**
    * Safely closes inputstream.
    * 
@@ -503,7 +491,7 @@ public class FileUtil {
       ZipInputStream zis = new ZipInputStream(zipStream);
       ZipEntry ze;
       log.debug("Zip inputstream created");
-      ze = zis.getNextEntry();
+      //ze = zis.getNextEntry();
       while ((ze = zis.getNextEntry()) != null) {
         log.debug("Zip entry:" + ze.getName());
         if (ze.getName().equals(fileToFindInZip)) {
@@ -513,10 +501,10 @@ public class FileUtil {
           // return sharedParameters;
         }
       }
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Not found expected file in ZIP archive. FILE:" + fileToFindInZip);
     } catch (IOException ex) {
-      throw new DhxException(DhxExceptionEnum.EXCTRACTION_ERROR,
+      throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
           "Extracting zipped XML file failed!" + ex.getMessage(), ex);
     }
 

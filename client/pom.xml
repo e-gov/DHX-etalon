@@ -53,6 +53,10 @@
 				<directory>src/main/resources/images</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
 			</resource>
+			<resource>
+				<directory>src/main/resources/i18</directory>
+				<targetPath>${basedir}/target/classes/i18</targetPath>
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>

@@ -37,19 +37,45 @@ import javax.xml.validation.Validator;
 @Slf4j
 public class XsdUtil {
 
+
   /**
-   * Parses(unmarshalls) capsule object from file.
+   * Method parses(unmarshalls) object.
    * 
-   * @param capsuleFile - capsule file to parse
+   * @param source - source of the marshalled object
+   * @param unmarshaller - unmarshaller to use
+   * @return - unmarshalled object
+   * @throws DhxException - thrown if error occurs while unmrashalling object
+   */
+  public static <T> T unmarshall(Source source, Unmarshaller unmarshaller) throws DhxException {
+    log.debug(" <T> T unmarshall(Source source, Unmarshaller unmarshaller)");
+    try {
+      if (log.isDebugEnabled()) {
+        log.debug("unmarshalling file");
+      }
+      Object obj = (Object) unmarshaller.unmarshal(source);
+      return (T) obj;
+    } catch (JAXBException ex) {
+      log.error(ex.getMessage(), ex);
+      throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
+          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+    }
+  }
+
+
+  /**
+   * Parses(unmarshalls) object from file.
+   * 
+   * @param capsuleFile - file to parse
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
-  public static <T> T unmarshallCapsule(File capsuleFile, Unmarshaller unmarshaller)
+  public static <T> T unmarshall(File capsuleFile, Unmarshaller unmarshaller)
       throws DhxException {
+    log.debug("<T> T unmarshallCapsule(File capsuleFile, Unmarshaller unmarshaller)");
     try {
       log.debug("Unmarshalling file. " + capsuleFile.getAbsolutePath());
-      return (T) unmarshallCapsule(new FileInputStream(capsuleFile), unmarshaller);
+      return (T) unmarshall(new FileInputStream(capsuleFile), unmarshaller);
     } catch (FileNotFoundException ex) {
       log.error(ex.getMessage(), ex);
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -58,32 +84,35 @@ public class XsdUtil {
   }
 
   /**
-   * Parses(unmarshalls) capsule object from file.
+   * Parses(unmarshalls) object from file.
    * 
-   * @param capsuleStream - stream of capsule to parse
+   * @param capsuleStream - stream to parse
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
-  public static <T> T unmarshallCapsule(final InputStream capsuleStream, Unmarshaller unmarshaller)
+  public static <T> T unmarshall(final InputStream capsuleStream, Unmarshaller unmarshaller)
       throws DhxException {
-    return unmarshallCapsuleAndValidate(capsuleStream, null, unmarshaller);
+    log.debug("<T> T unmarshallCapsule(final InputStream capsuleStream, Unmarshaller unmarshaller)");
+    return unmarshallAndValidate(capsuleStream, null, unmarshaller);
   }
 
 
   /**
-   * Parses(unmarshalls) capsule object from file. And does validation against XSD schema if
-   * schemaStream is present.
+   * Parses(unmarshalls) object from file. And does validation against XSD schema if schemaStream is
+   * present.
    * 
-   * @param capsuleStream - stream of capsule to parse
+   * @param capsuleStream - stream of to parse
    * @param schemaStream - stream on XSD schema against which to validate. No validation is done if
    *        stream is NULL
    * @param unmarshaller - unmarshaller to use while
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
-  public static <T> T unmarshallCapsuleAndValidate(final InputStream capsuleStream,
+  public static <T> T unmarshallAndValidate(final InputStream capsuleStream,
       InputStream schemaStream, Unmarshaller unmarshaller) throws DhxException {
+    log.debug("<T> T unmarshallCapsuleAndValidate(final InputStream capsuleStream, "
+        + "InputStream schemaStream, Unmarshaller unmarshaller)");
     try {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
@@ -108,14 +137,14 @@ public class XsdUtil {
   }
 
   /**
-   * Marshalls capsule to file.
+   * Marshalls object to file.
    * 
    * @param container - object to marshall
    * @param marshaller - marshaller to use
    * @return - file containing marshalled object
-   * @throws DhxException - thrown if error occurs while marshalling capsule
+   * @throws DhxException - thrown if error occurs while marshalling object
    */
-  public static File marshallCapsule(Object container, Marshaller marshaller) throws DhxException {
+  public static File marshall(Object container, Marshaller marshaller) throws DhxException {
     try {
       if (log.isDebugEnabled()) {
         log.debug("marshalling container");
@@ -135,7 +164,7 @@ public class XsdUtil {
    * 
    * @param file - file to validate
    * @param schemaStream - stream caontaining XSD schema
-   * @throws DhxException - thrown if err
+   * @throws DhxException - thrown if error occurs
    */
   public static void validate(File file, InputStream schemaStream) throws DhxException {
     validate(FileUtil.getFileAsStream(file), schemaStream);
@@ -163,28 +192,6 @@ public class XsdUtil {
     } catch (Exception ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
           "Error occured while validating capsule. " + ex.getMessage(), ex);
-    }
-  }
-
-  /**
-   * Method parses(unmarshalls) object.
-   * 
-   * @param source - source of the marshalled object
-   * @param unmarshaller - unmarshaller to use
-   * @return - unmarshalled object
-   * @throws DhxException - thrown if error occurs while unmrashalling object
-   */
-  public static <T> T unmarshall(Source source, Unmarshaller unmarshaller) throws DhxException {
-    try {
-      if (log.isDebugEnabled()) {
-        log.debug("unmarshalling file");
-      }
-      Object obj = (Object) unmarshaller.unmarshal(source);
-      return (T) obj;
-    } catch (JAXBException ex) {
-      log.error(ex.getMessage(), ex);
-      throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
-          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
     }
   }
 

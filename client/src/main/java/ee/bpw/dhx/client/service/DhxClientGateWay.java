@@ -20,6 +20,7 @@ import java.util.UUID;
 
 /**
  * Extension of DhxGateway. Contains changes needed for client application. e.g. event logging.
+ * 
  * @author Aleksei Kokarev
  *
  */

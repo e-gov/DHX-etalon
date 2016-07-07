@@ -22,6 +22,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * Custom LOG4J appender. Needed to contain and log EVENTs occured in DHX application.
+ * 
  * @author Aleksei Kokarev
  *
  */

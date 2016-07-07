@@ -4,7 +4,7 @@ import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.XsdUtil;
+import ee.bpw.dhx.ws.DhxHttpComponentsMessageSender;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 
@@ -21,7 +21,6 @@ import eu.x_road.xsd.identifiers.XRoadServiceIdentifierType;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.client.WebServiceFaultException;
@@ -33,7 +32,7 @@ import org.springframework.ws.soap.SoapHeader;
 import org.springframework.ws.soap.SoapHeaderElement;
 import org.springframework.ws.soap.SoapMessage;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
-import org.springframework.ws.transport.http.HttpComponentsMessageSender;
+import org.springframework.ws.transport.http.HttpTransportConstants;
 import org.springframework.xml.transform.StringSource;
 
 import java.io.IOException;
@@ -43,9 +42,7 @@ import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.soap.AttachmentPart;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -66,20 +63,25 @@ public class DhxGateway extends WebServiceGatewaySupport {
   @Autowired
   private SoapConfig soapConfig;
 
-  @Autowired
-  Jaxb2Marshaller marshaller;
+  /*
+   * @Autowired Jaxb2Marshaller marshaller;
+   * 
+   * @Autowired Unmarshaller unmarshaller;
+   */
 
   @Autowired
-  Unmarshaller unmarshaller;
+  DhxMarshallerService dhxMarshallerService;
 
   /**
    * Postconstruct method which sets marshaller and unmarshaller.
    */
   @PostConstruct
   public void setMarshallers() {
-    setMarshaller(marshaller);
-    setUnmarshaller(marshaller);
-    HttpComponentsMessageSender messageSender = new HttpComponentsMessageSender();
+    setMarshaller(dhxMarshallerService.getJaxbMarshaller());
+    setUnmarshaller(dhxMarshallerService.getJaxbMarshaller());
+    DhxHttpComponentsMessageSender messageSender = new DhxHttpComponentsMessageSender();
+    // HttpURLConnection con;
+    // HttpTransportConstants.HEADER_CONTENT_TRANSFER_ENCODING
     log.debug("before sender");
     log.debug("sender " + messageSender.toString());
     log.debug("config " + soapConfig.getConnectionTimeout());
@@ -114,37 +116,43 @@ public class DhxGateway extends WebServiceGatewaySupport {
     public void doWithMessage(WebServiceMessage message) throws IOException, TransformerException {
       try {
         SoapHeader header = ((SoapMessage) message).getSoapHeader();
+        for (Iterator it = ((SaajSoapMessage) message).getSaajMessage().getAttachments(); it
+            .hasNext();) {
+          AttachmentPart attachment = (AttachmentPart) it.next();
+          log.debug("attachment part" + attachment.getContentType());
+          attachment.setMimeHeader(HttpTransportConstants.HEADER_CONTENT_TRANSFER_ENCODING,
+              "base64");
+        }
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        Marshaller marshallerHeader = marshaller.getJaxbContext().createMarshaller();
-        marshallerHeader.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
+        // Marshaller marshallerHeader = marshaller.getJaxbContext().createMarshaller();
+        // marshallerHeader.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
         eu.x_road.xsd.xroad.ObjectFactory factory = new eu.x_road.xsd.xroad.ObjectFactory();
         transformer.transform(
-            marshallObject(factory.createProtocolVersion(soapConfig.getProtocolVersion()),
-                marshallerHeader), header.getResult());
-        transformer.transform(
-            marshallObject(factory.createId(UUID.randomUUID().toString()), marshallerHeader),
+            marshallObject(factory.createProtocolVersion(soapConfig.getProtocolVersion())),
             header.getResult());
         transformer
             .transform(
-                marshallObject(factory.createClient(getXRoadClientIdentifierType()),
-                    marshallerHeader), header.getResult());
+                marshallObject(factory.createId(UUID.randomUUID().toString())),
+                header.getResult());
+        transformer
+            .transform(
+                marshallObject(factory.createClient(getXRoadClientIdentifierType())),
+                header.getResult());
         transformer.transform(
-            marshallObject(factory.createService(getXRoadServiceIdentifierType()),
-                marshallerHeader), header.getResult());
-      } catch (JAXBException ex) {
+            marshallObject(factory.createService(getXRoadServiceIdentifierType())),
+            header.getResult());
+      } catch (DhxException ex) {
         throw new RuntimeException(ex);
       }
     }
 
-    private StringSource marshallObject(Object obejct, Marshaller objectMarshaller) {
+    private StringSource marshallObject(Object obejct)
+        throws DhxException {
       String result = "";
-      StringWriter sw = new StringWriter();
-      try {
-        objectMarshaller.marshal(obejct, sw);
-        result = sw.toString();
-      } catch (JAXBException ex) {
-        throw new RuntimeException(ex);
-      }
+      // StringWriter sw = new StringWriter();
+      // objectMarshaller.marshal(obejct, sw);
+      StringWriter sw = dhxMarshallerService.marshallToWriter(obejct);
+      result = sw.toString();
       return new StringSource(result);
     }
 
@@ -311,8 +319,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
         SoapHeaderElement ele = itr.next();
         if (ele.getName().getLocalPart().endsWith("client")) {
           JAXBElement<XRoadClientIdentifierType> xrdClientElement =
-              (JAXBElement<XRoadClientIdentifierType>) XsdUtil.unmarshall(ele.getSource(),
-                  unmarshaller);
+              (JAXBElement<XRoadClientIdentifierType>) dhxMarshallerService.unmarshall(ele
+                  .getSource());
           XRoadClientIdentifierType xrdClient = xrdClientElement.getValue();
           if (xrdClient != null) {
             client = new XroadMember(xrdClient);
@@ -323,7 +331,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
         }
         transformer.transform(ele.getSource(), respheader.getResult());
       }
-      log.debug("xrd client" + client.getMemberCode());
+      log.debug("xrd client memberCode: " + client.getMemberCode());
       return client;
     } catch (TransformerException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR,

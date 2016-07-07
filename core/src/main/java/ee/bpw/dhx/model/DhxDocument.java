@@ -21,7 +21,9 @@ import javax.activation.DataSource;
 import javax.mail.util.ByteArrayDataSource;
 
 /**
- * Document object. Contains information needed for sending the document and for receiving the document.
+ * Document object. Contains information needed for sending the document and for receiving the
+ * document.
+ * 
  * @author Aleksei Kokarev
  *
  */
@@ -40,12 +42,12 @@ public class DhxDocument {
    */
   public DhxDocument(XroadMember service, File file, Boolean packFile) throws DhxException {
     try {
-      if (packFile) {
-        // TODO: delete original file or not???
-        file = FileUtil.gzipPackXml(file);
-      }
+      /*
+       * if (packFile) { // TODO: delete original file or not??? file = FileUtil.gzipPackXml(file);
+       * }
+       */
       InputStream stream = new FileInputStream(file);
-      DataSource source = new ByteArrayDataSource(stream, "application/octet-stream");
+      DataSource source = new ByteArrayDataSource(stream, "text/xml; charset=UTF-8");
       documentFile = new DataHandler(source);
       this.service = service;
     } catch (FileNotFoundException ex) {
@@ -68,11 +70,7 @@ public class DhxDocument {
       throws DhxException {
     try {
       InputStream realStream;
-      if (packFile) {
-        realStream = new FileInputStream(FileUtil.gzipPackXml(stream));
-      } else {
-        realStream = stream;
-      }
+      realStream = stream;
       DataSource source = new ByteArrayDataSource(realStream, "application/octet-stream");
       documentFile = new DataHandler(source);
       this.service = service;
@@ -81,19 +79,6 @@ public class DhxDocument {
     }
   }
 
-
-  /**
-   * Create DhxDocument. For document receiving
-   * 
-   * @param client - XroadMember from who the document is being sent
-   * @param document - document to send
-   */
-  public DhxDocument(XroadMember client, SendDocument document) {
-    // this.representativeCode = document.getRecipient();
-    this.documentFile = document.getDocumentAttachment();
-    this.externalConsignmentId = document.getConsignmentId();
-    this.client = client;
-  }
 
   /**
    * Create DhxDocument. For document sending.
@@ -136,6 +121,20 @@ public class DhxDocument {
     this.internalConsignmentId = internalConsignmentId;
   }
 
+
+
+  /**
+   * Create DhxDocument. For document receiving
+   * 
+   * @param client - XroadMember from who the document is being sent
+   * @param document - document to send
+   */
+  public DhxDocument(XroadMember client, SendDocument document) {
+    // this.representativeCode = document.getRecipient();
+    this.documentFile = document.getDocumentAttachment();
+    this.externalConsignmentId = document.getConsignmentId();
+    this.client = client;
+  }
 
   /**
    * Create DhxDocument. For document receiving.

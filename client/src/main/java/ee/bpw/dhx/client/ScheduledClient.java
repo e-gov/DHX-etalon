@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 
 /**
- * Periodically sends documents. 
+ * Periodically sends documents.
+ * 
  * @author Aleksei Kokarev
  *
  */

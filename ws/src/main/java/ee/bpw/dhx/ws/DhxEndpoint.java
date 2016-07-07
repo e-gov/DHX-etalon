@@ -56,7 +56,7 @@ public class DhxEndpoint {
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "sendDocument")
   @ResponsePayload
   public SendDocumentResponse sendDocument(@RequestPayload SendDocument request,
-      MessageContext messageContext) {
+      MessageContext messageContext) throws DhxException {
     SendDocumentResponse response = new SendDocumentResponse();
     try {
       XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
@@ -64,11 +64,14 @@ public class DhxEndpoint {
       // response.setStatus(StatusEnum.ACCEPTED.getName());
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
-      // response.setStatus(StatusEnum.REJECTED.getName());
-      Fault fault = new Fault();
-      fault.setFaultCode(ex.getExceptionCode().getCodeForService());
-      fault.setFaultString(ex.getMessage());
-      response.setFault(fault);
+      if (ex.getExceptionCode().isBusinessException()) {
+        Fault fault = new Fault();
+        fault.setFaultCode(ex.getExceptionCode().getCodeForService());
+        fault.setFaultString(ex.getMessage());
+        response.setFault(fault);
+      } else {
+        throw ex;
+      }
     }
     return response;
   }

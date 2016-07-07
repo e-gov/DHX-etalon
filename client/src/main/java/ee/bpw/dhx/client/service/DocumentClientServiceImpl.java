@@ -6,9 +6,9 @@ import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.util.XsdUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.impl.DocumentServiceImpl;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
@@ -26,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -51,6 +50,9 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
 
   @Autowired
   DhxConfig config;
+
+  @Autowired
+  DhxMarshallerService dhxMarshallerService;
 
   // get log4j logger to log events on custom level.
   final Logger logger = LogManager.getLogger();
@@ -92,15 +94,15 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
       // if we want to send to wrong adressee , then wont change the capsule
       if (!capsuleType.equals("wrongAdressee")) {
         DecContainer container =
-            (DecContainer) XsdUtil.unmarshallCapsule(capsuleFile, unmarshaller);
+            (DecContainer) dhxMarshallerService.unmarshall(capsuleFile);
         container.getTransport().getDecRecipient()
             .removeAll(container.getTransport().getDecRecipient());
         DecRecipient recipient = new DecRecipient();
         recipient.setOrganisationCode(recipientString);
         container.getTransport().getDecRecipient().add(recipient);
-        capsuleFile = XsdUtil.marshallCapsule(container, super.marshaller);
+        capsuleFile = dhxMarshallerService.marshall(container);
       }
-      if (config.getParseCapsule()) {
+      if (config.getParseCapsule() && !capsuleType.equals("wrongAdressee")) {
         return sendDocument(capsuleFile, consignmentId);
       } else {
         return sendDocument(capsuleFile, consignmentId, recipientString);
@@ -169,7 +171,8 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
       for (DhxDocument document : receevedDocuments) {
         if (document.getExternalConsignmentId() != null
             && document.getExternalConsignmentId().equals(consignmentId)
-            && document.getClient().toString().equals(from.toString())) {
+            && (document.getClient().toString().equals(from.toString())
+            || document.getClient().getRepresentee().getMemberCode().equals(from.toString()))) {
           return true;
         }
       }

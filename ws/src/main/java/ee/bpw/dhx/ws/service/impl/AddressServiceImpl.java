@@ -5,10 +5,10 @@ import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.util.XsdUtil;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.RepresentationService;
 
 import eu.x_road.dhx.producer.Member;
@@ -22,7 +22,6 @@ import eu.x_road.xsd.xroad.SubsystemType;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,16 +34,15 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBElement;
-import javax.xml.bind.Unmarshaller;
 
 /**
- * Implementation of AddressService  for creating and storing of address list. Stores address list in memory at the moment.
- * Refreshes address list at startup. Might be needed scheduled job to refresh list periodically
+ * Implementation of AddressService for creating and storing of address list. Stores address list in
+ * memory at the moment. Refreshes address list at startup. Might be needed scheduled job to refresh
+ * list periodically
  * 
  * @author Aleksei Kokarev
  *
  */
-@Service
 @Slf4j
 public class AddressServiceImpl implements AddressService {
 
@@ -60,8 +58,11 @@ public class AddressServiceImpl implements AddressService {
   @Autowired
   DhxGateway dhxGateway;
 
+  // @Autowired
+  // Unmarshaller unmarshaller;
+
   @Autowired
-  Unmarshaller unmarshaller;
+  DhxMarshallerService dhxMarshallerService;
 
   @Autowired
   private RepresentationService representationService;
@@ -122,11 +123,12 @@ public class AddressServiceImpl implements AddressService {
           // find DHX subsytem. if found, then member is ready to use DHX protocol
           if (subSystem.getSubsystemCode().equalsIgnoreCase(config.getSubsystem())) {
             log.debug("Found DHX subsystem for member: " + member.getMemberCode());
-            if (!member.getMemberCode().equals(config.getMemberCode())) {
-              members.add(new XroadMember(config.getXroadInstance(), member, config
-                  .getSubsystem()));
-              break;
-            }
+            // do we have to add self to address list??
+            // if (!member.getMemberCode().equals(config.getMemberCode())) {
+            members.add(new XroadMember(config.getXroadInstance(), member, config
+                .getSubsystem()));
+            break;
+            // }
           }
         }
       }
@@ -202,7 +204,7 @@ public class AddressServiceImpl implements AddressService {
               config.getGlobalConfLocation() + "/" + config.getXroadInstance() + "/"
                   + config.getGlobalConfFilename());
       JAXBElement<SharedParametersType> globalConfElement =
-          XsdUtil.unmarshallCapsule(confStream, unmarshaller);
+          dhxMarshallerService.unmarshall(confStream);
       confStream.close();
       stream.close();
       return globalConfElement.getValue();
@@ -226,20 +228,26 @@ public class AddressServiceImpl implements AddressService {
    * @throws DhxException - thrown if recipient is not found
    */
   public XroadMember getClientForMemberCode(String memberCode) throws DhxException {
+    log.debug("getClientForMemberCode(String memberCode) memberCode: " + memberCode);
     List<XroadMember> members = getAdresseeList();
     Date curDate = new Date();
-    for (XroadMember member : members) {
-      if (member.getMemberCode().equals(memberCode)
-          && (member.getRepresentee() == null || member.getRepresentee().getMemberCode() == null)) {
-        return member;
-      } else if (member.getRepresentee() != null
-          && member.getRepresentee().getMemberCode().equals(memberCode)
-          && (member.getRepresentee().getStartDate().getTime() <= curDate.getTime() && (member
-              .getRepresentee().getEndDate() == null || member.getRepresentee().getEndDate()
-              .getTime() >= curDate.getTime()))) {
-        return member;
+    if (members != null && members.size() > 0) {
+      log.debug("local adressee list size: " + members.size());
+      for (XroadMember member : members) {
+        if (member.getMemberCode().equals(memberCode)
+            && (member.getRepresentee() == null
+            || member.getRepresentee().getMemberCode() == null)) {
+          return member;
+        } else if (member.getRepresentee() != null
+            && member.getRepresentee().getMemberCode().equals(memberCode)
+            && (member.getRepresentee().getStartDate().getTime() <= curDate.getTime() && (member
+                .getRepresentee().getEndDate() == null || member.getRepresentee().getEndDate()
+                .getTime() >= curDate.getTime()))) {
+          return member;
+        }
       }
     }
+    log.info("Membercode not found in local adressee list memberCode: " + memberCode);
     throw new DhxException(DhxExceptionEnum.WRONG_RECIPIENT,
         "Recipient is not found in address list. memberCode: " + memberCode);
   }

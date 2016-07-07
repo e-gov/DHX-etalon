@@ -7,25 +7,30 @@ package ee.bpw.dhx.exception;
  */
 public enum DhxExceptionEnum {
 
-  CAPSULE_VALIDATION_ERROR("Client.Validation"), 
-  DUPLICATE_PACKAGE("Client.Duplicate"), 
-  WRONG_RECIPIENT("Client.InvalidAddressee"), 
-  OVER_MAX_SIZE("Server.SizeLimitExceeded"), 
-  FILE_ERROR("FILE_ERROR"), 
-  WS_ERROR("WS_ERROR"), 
-  EXCTRACTION_ERROR("EXCTRACTION_ERROR"), 
-  TECHNICAL_ERROR("Client.TechnicalError");
+  CAPSULE_VALIDATION_ERROR("DHX.Validation", true), 
+  DUPLICATE_PACKAGE("DHX.Duplicate", true), 
+  WRONG_RECIPIENT("DHX.InvalidAddressee", true), 
+  OVER_MAX_SIZE("DHX.SizeLimitExceeded", true), 
+  FILE_ERROR("FILE_ERROR", false), 
+  WS_ERROR("WS_ERROR", false), 
+  EXTRACTION_ERROR("EXCTRACTION_ERROR", false), 
+  TECHNICAL_ERROR("TECHNICAL_ERROR", false);
 
   // error code which is returned is services
   private String codeForService;
+  private Boolean businessException;
 
 
-  private DhxExceptionEnum(String codeForService) {
+  private DhxExceptionEnum(String codeForService, Boolean businessException) {
     this.codeForService = codeForService;
+    this.businessException = businessException;
   }
 
   public String getCodeForService() {
     return codeForService;
   }
 
+  public Boolean isBusinessException() {
+    return businessException;
+  }
 }

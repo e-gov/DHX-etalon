@@ -71,6 +71,7 @@ public class DhxConfig {
 
   /**
    * Method finds config parameter which contains link to XSD for given version.
+   * 
    * @param version - version for which to find XSD
    * @return - link to XSD file for given version
    * @throws DhxException - thrown then no XSD file is defined for given version

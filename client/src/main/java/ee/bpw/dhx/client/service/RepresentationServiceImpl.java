@@ -36,12 +36,14 @@ public class RepresentationServiceImpl implements RepresentationService {
   public List<Representee> getRepresentationList() {
     String memberCodesStr = "";
     logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
-    List<String> list = dhxConfig.getRepresentativesList();
+    List<String> list = dhxConfig.getRepresenteesList();
     List<Representee> representees = new ArrayList<Representee>();
-    for (String representative : list) {
-      memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representative;
-      Representee representee = new Representee(representative, new Date(), null);
-      representees.add(representee);
+    if (list != null) {
+      for (String representative : list) {
+        memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representative;
+        Representee representee = new Representee(representative, new Date(), null);
+        representees.add(representee);
+      }
     }
     logger.log(Level.getLevel("EVENT"), "Returning representationList. " + memberCodesStr);
     return representees;
