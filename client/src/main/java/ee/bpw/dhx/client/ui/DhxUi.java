@@ -57,6 +57,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Main user interface of the DHX client application. Contains all needed to monitor and test DHX
@@ -383,9 +384,13 @@ public class DhxUi extends UI {
               log.info("got request. addressees: " + adressees.getValue() + " capsule: "
                   + capsules.getValue());
               try {
+                String consignmentIdStr = consignmentId.getValue();
+                if (consignmentIdStr == null || consignmentIdStr.equals("")) {
+                  consignmentIdStr = UUID.randomUUID().toString();
+                }
                 List<SendDocumentResponse> responses =
                     documentClientService.sendDocument(capsules.getValue().toString(), adressees
-                        .getValue().toString(), consignmentId.getValue());
+                        .getValue().toString(), consignmentIdStr);
                 String statuses = "";
                 for (SendDocumentResponse response : responses) {
                   statuses +=

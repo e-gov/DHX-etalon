@@ -214,8 +214,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
           && !document.getInternalConsignmentId().isEmpty()) {
         request.setConsignmentId(document.getInternalConsignmentId());
       } else {
-        // TODO: is that ok to generat UUID?
-        request.setConsignmentId(UUID.randomUUID().toString());
+        throw new DhxException(DhxExceptionEnum.DATA_ERROR, "Consignment id is empty!");
       }
       log.info("Sending document for " + document.getService().toString() + " sec server:"
           + soapConfig.getSecurityServer() + " with consignmentId:" + request.getConsignmentId());
