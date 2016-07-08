@@ -287,11 +287,11 @@ public class DhxGateway extends WebServiceGatewaySupport {
       log.info("Representation list received");
     } catch (WebServiceFaultException ex) {
       throw new DhxException(DhxExceptionEnum.WS_ERROR,
-          "Error occured while sending document. SOAP-fault:"
+          "Error occured while getting representation list. SOAP-fault:"
               + ex.getWebServiceMessage().getFaultCode().getLocalPart()
               + "SOAP fault returned from web service: " + ex.getMessage(), ex);
     } catch (Exception ex) {
-      throw new DhxException(DhxExceptionEnum.WS_ERROR, "Error occured while sending document."
+      throw new DhxException(DhxExceptionEnum.WS_ERROR, "Error occured while getting representation list."
           + ex.getMessage(), ex);
     }
     return response;

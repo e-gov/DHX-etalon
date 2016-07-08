@@ -330,9 +330,9 @@ public class DhxUi extends UI {
         + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/"
         + soapConfig.getSubsystem()));
 
-    gridLayout.addComponent(addTooltip(new Label(getMessage("settings.max-file-size") + ": "),
+   /* gridLayout.addComponent(addTooltip(new Label(getMessage("settings.max-file-size") + ": "),
         getMessage("settings.max-file-size"), getMessage("settings.max-file-size-help")));
-    gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));
+    gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));*/
     VerticalLayout layout = new VerticalLayout();
     layout.addComponent(gridLayout);
     return layout;
