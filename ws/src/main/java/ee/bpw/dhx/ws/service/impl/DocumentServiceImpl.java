@@ -40,9 +40,7 @@ import java.util.List;
 /**
  * Class for document sending and receiving. Service is independent from capsule versions that are
  * being sent or received, that means that no changes should be done in service if new capsule
- * version is added. {{@link #isDuplicatePackage(XroadMember, String)} and {
- * {@link #receiveDocument(DhxDocument)} are not implemented, because those methods depend on
- * specific implementation of document storage.
+ * version is added. 
  * 
  * @author Aleksei Kokarev
  *
@@ -438,6 +436,5 @@ public class DocumentServiceImpl implements DocumentService {
       log.info("Checking filesize is disabled in configuration.");
     }
   }
-
 
 }
