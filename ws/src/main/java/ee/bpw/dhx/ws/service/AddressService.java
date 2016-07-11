@@ -22,13 +22,10 @@ import javax.annotation.PostConstruct;
 public interface AddressService {
 
 
-  public List<XroadMember> getAdresseeList();
-
-  public void setAddresseeList(List<XroadMember> members);
-
   @PostConstruct
   /**
-   * Method refreshes local list of addresses
+   * Method refreshes local list of addresses. Local list of adresses is refreshed using X-road 
+   * global conf and represenattionList service if needed
    */
   public void renewAddressList();
 
@@ -42,5 +39,7 @@ public interface AddressService {
    * @throws DhxException - thrown if recipient is not found
    */
   public XroadMember getClientForMemberCode(String memberCode) throws DhxException;
+  
+  public List<XroadMember> getAdresseeList();
 
 }

@@ -28,7 +28,7 @@ public class DhxConfig {
 
   private Boolean capsuleValidate = true;
   private Boolean checkRecipient = true;
-  private Boolean checkFileSize = false;
+  private boolean checkFilesize;
   private Boolean checkDuplicate = true;
   private Boolean parseCapsule = true;
   private String capsuleXsdFile21;

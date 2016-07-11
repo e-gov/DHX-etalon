@@ -290,8 +290,9 @@ public class DhxGateway extends WebServiceGatewaySupport {
               + ex.getWebServiceMessage().getFaultCode().getLocalPart()
               + "SOAP fault returned from web service: " + ex.getMessage(), ex);
     } catch (Exception ex) {
-      throw new DhxException(DhxExceptionEnum.WS_ERROR, "Error occured while getting representation list."
-          + ex.getMessage(), ex);
+      throw new DhxException(DhxExceptionEnum.WS_ERROR,
+          "Error occured while getting representation list."
+              + ex.getMessage(), ex);
     }
     return response;
   }

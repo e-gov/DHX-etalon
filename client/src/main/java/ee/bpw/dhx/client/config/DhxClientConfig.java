@@ -2,29 +2,25 @@ package ee.bpw.dhx.client.config;
 
 import ee.bpw.dhx.client.service.AddressClientServiceImpl;
 import ee.bpw.dhx.client.service.DhxClientGateWay;
+import ee.bpw.dhx.client.service.DhxClientSpecificService;
 import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
-import ee.bpw.dhx.client.service.RepresentationServiceImpl;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
-import ee.bpw.dhx.ws.service.RepresentationService;
 import ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.boot.actuate.autoconfigure.ExportMetricWriter;
-import org.springframework.boot.actuate.metrics.jmx.JmxMetricWriter;
-import org.springframework.boot.actuate.metrics.writer.MetricWriter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.jmx.export.MBeanExporter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -113,8 +109,8 @@ public class DhxClientConfig {
   }
 
   @Bean
-  RepresentationService representationService() {
-    return new RepresentationServiceImpl();
+  DhxImplementationSpecificService dhxImplementationSpecificService() {
+    return new DhxClientSpecificService();
   }
 
   @Bean

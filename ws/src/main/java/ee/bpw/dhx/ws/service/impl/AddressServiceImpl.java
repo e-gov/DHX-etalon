@@ -8,8 +8,8 @@ import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
-import ee.bpw.dhx.ws.service.RepresentationService;
 
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
@@ -50,8 +50,6 @@ public class AddressServiceImpl implements AddressService {
   SoapConfig config;
 
 
-  private List<XroadMember> members;
-
   @Autowired
   private DocumentServiceImpl documentService;
 
@@ -63,29 +61,24 @@ public class AddressServiceImpl implements AddressService {
 
   @Autowired
   DhxMarshallerService dhxMarshallerService;
-
+  
   @Autowired
-  private RepresentationService representationService;
+  DhxImplementationSpecificService dhxImplementationSpecificService;
 
 
   public AddressServiceImpl() {}
 
-  /**
-   * Methods need to be overriden if in memmory address list os not an option. Then getAddresseeList
-   * might fetch address list from DB for example
-   */
-  public List<XroadMember> getAdresseeList() {
-    return members;
-  }
 
   /**
-   * Methods need to be overriden if in memmory address list os not an option. Then setAddresseeList
-   * might save addresses to DB for example
-   * 
-   * @param members - list of members
+   * Returns list of adressees. 
    */
-  public void setAddresseeList(List<XroadMember> members) {
-    this.members = members;
+  public List<XroadMember> getAdresseeList() {
+    return dhxImplementationSpecificService.getAdresseeList();
+  }
+
+
+  private void setAddresseeList(List<XroadMember> members) {
+    dhxImplementationSpecificService.saveAddresseeList(members);
   }
 
   /**
@@ -154,7 +147,7 @@ public class AddressServiceImpl implements AddressService {
               // include own representatives not from x-road servicce, but from local method
             } else {
               XroadMember member = new XroadMember(client);
-              List<Representee> representees = representationService.getRepresentationList();
+              List<Representee> representees = dhxImplementationSpecificService.getRepresentationList();
               List<XroadMember> representeesmembers = new ArrayList<XroadMember>();
               for (Representee representee : representees) {
                 representeesmembers.add(new XroadMember(member, representee));

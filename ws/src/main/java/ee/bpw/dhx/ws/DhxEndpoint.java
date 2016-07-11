@@ -1,11 +1,12 @@
 package ee.bpw.dhx.ws;
 
 import ee.bpw.dhx.exception.DhxException;
+
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DocumentService;
-import ee.bpw.dhx.ws.service.RepresentationService;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.Members;
@@ -41,7 +42,7 @@ public class DhxEndpoint {
   DocumentService documentService;
 
   @Autowired
-  RepresentationService representationService;
+  DhxImplementationSpecificService dhxImplementationSpecificService;
 
   @Autowired
   DhxGateway dhxGateway;
@@ -92,7 +93,7 @@ public class DhxEndpoint {
     try {
       RepresentationListResponse response = new RepresentationListResponse();
       dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
-      List<Representee> representees = representationService.getRepresentationList();
+      List<Representee> representees = dhxImplementationSpecificService.getRepresentationList();
       if (representees != null) {
         // MemberCodes memberCodes = new MemberCodes();
         Members members = new Members();

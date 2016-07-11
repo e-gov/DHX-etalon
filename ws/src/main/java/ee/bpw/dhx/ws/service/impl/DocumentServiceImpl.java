@@ -1,6 +1,7 @@
 package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
+
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
@@ -13,9 +14,9 @@ import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.DocumentService;
-import ee.bpw.dhx.ws.service.RepresentationService;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
@@ -37,24 +38,23 @@ import java.util.List;
 
 
 /**
- * Generic class for document sending and receiving. Does not parse capsule neither validates
- * capsule, because does not contain information about container. capsule - xml file containing
- * document and metadata about the document
+ * Class for document sending and receiving. Service is independent from capsule versions that are
+ * being sent or received, that means that no changes should be done in service if new capsule
+ * version is added. {{@link #isDuplicatePackage(XroadMember, String)} and {
+ * {@link #receiveDocument(DhxDocument)} are not implemented, because those methods depend on
+ * specific implementation of document storage.
  * 
  * @author Aleksei Kokarev
  *
  */
 @Slf4j
-public abstract class DocumentServiceImpl implements DocumentService {
+public class DocumentServiceImpl implements DocumentService {
 
   @Autowired
   private DhxConfig config;
 
   @Autowired
   private SoapConfig soapConfig;
-
-  @Autowired
-  RepresentationService representationService;
 
   @Autowired
   AddressService addressService;
@@ -65,30 +65,9 @@ public abstract class DocumentServiceImpl implements DocumentService {
   @Autowired
   DhxMarshallerService dhxMarshallerService;
 
+  @Autowired
+  DhxImplementationSpecificService dhxImplementationSpecificService;
 
-  /**
-   * Method should receive document(save in database for example) and return unique id of it. Id
-   * will be sent as receipt in response.
-   * 
-   * @param document - document to receive
-   * @return - unique id of the document that was saved.
-   * @throws DhxException - thrown if error occurs while receiving document
-   */
-  // public abstract String receiveDocument(DhxDocument document) throws DhxException;
-
-  /**
-   * Method should send document to all recipients defined in capsule. Should be implemented in
-   * service which has information about version of the capsule
-   * 
-   * @param capsuleFile - file cantaining capsule to send
-   * @param consignmentId - consignment id to set when sending file.
-   * @return service responses for each recipient
-   * @throws DhxException - thrown if error occurs while receiving document
-   */
-  /*
-   * public abstract List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
-   * throws DhxException;
-   */
 
   private SendDocumentResponse sendDocumentNoCapsulePasring(InputStream capsuleStream,
       String consignmentId, String recipient) throws DhxException {
@@ -112,7 +91,9 @@ public abstract class DocumentServiceImpl implements DocumentService {
    */
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
       XroadMember client) throws DhxException {
-    if (config.getCheckDuplicate() && isDuplicatePackage(client, document.getConsignmentId())) {
+    if (config.getCheckDuplicate()
+        && dhxImplementationSpecificService.isDuplicatePackage(client,
+            document.getConsignmentId())) {
       throw new DhxException(DhxExceptionEnum.DUPLICATE_PACKAGE,
           "Already got package with this consignmentID. from:" + client.toString()
               + " consignmentId:" + document.getConsignmentId());
@@ -128,7 +109,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
         dhxDocument = extractAndValidateDocumentNoParsing(document, client);
       }
       dhxDocument.setClient(client);
-      String id = receiveDocument(dhxDocument);
+      String id = dhxImplementationSpecificService.receiveDocument(dhxDocument);
       SendDocumentResponse response = new SendDocumentResponse();
       response.setReceiptId(id);
       return response;
@@ -405,7 +386,7 @@ public abstract class DocumentServiceImpl implements DocumentService {
       recipient = soapConfig.getMemberCode();
     }
     List<String> recipientList = new ArrayList<String>();
-    List<Representee> representees = representationService.getRepresentationList();
+    List<Representee> representees = dhxImplementationSpecificService.getRepresentationList();
     Date curDate = new Date();
     if (representees != null && representees.size() > 0) {
       for (Representee representee : representees) {
@@ -442,11 +423,11 @@ public abstract class DocumentServiceImpl implements DocumentService {
    * @throws DhxException thrown if filesize is bigger that maximum filesize
    */
   private void checkFileSize(InputStream streamToCheck) throws DhxException {
-    if (config.getCheckFileSize() == true) {
+    if (config.isCheckFilesize()) {
       log.info("Checking filesize.");
       log.info("File size check not done because check is not implemented.");
-      // throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-      // "No filesize check is implemented!");
+      throw new DhxException(DhxExceptionEnum.NOT_IMPLEMENTED,
+          "No filesize check is implemented!");
       /*
        * Integer maxSize = config.getMaxFileSizeInBytes(); log.debug("Max file size:" + maxSize +
        * " filesize:" + fileToCheck.length()); if (maxSize < fileToCheck.length()) { throw new
@@ -458,19 +439,5 @@ public abstract class DocumentServiceImpl implements DocumentService {
     }
   }
 
-  /**
-   * Method checks filesize againts maximum filesize.
-   * 
-   * @param fileToCheck - file that need to be checked
-   * @throws DhxException thrown if filesize is bigger that maximum filesize
-   */
-  /*
-   * private void checkFileSize(File fileToCheck) throws DhxException { if
-   * (config.getCheckFileSize()) { log.info("Checking filesize."); Integer maxSize =
-   * config.getMaxFileSizeInBytes(); log.debug("Max file size:" + maxSize + " filesize:" +
-   * fileToCheck.length()); if (maxSize < fileToCheck.length()) { throw new
-   * DhxException(DhxExceptionEnum.OVER_MAX_SIZE, "File size is too big.  Max file size:" +
-   * config.getMaxFileSize()); } return; } else {
-   * log.info("Checking filesize is disabled in configuration."); } }
-   */
+
 }

@@ -135,50 +135,6 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
     }
   }
 
-  /**
-   * Implementation of abstract method. Saves documents to in memory list
-   */
-  @Override
-  public String receiveDocument(DhxDocument dhxDocument) throws DhxException {
-    String receiptId = UUID.randomUUID().toString();
-    logger.log(Level.getLevel("EVENT"), "Document received. for: "
-        + dhxDocument.getClient().toString() + " receipt:" + receiptId + " consignmentId: "
-        + dhxDocument.getExternalConsignmentId());
-    if (dhxDocument.getParsedContainer() != null) {
-      DecContainer container = (DecContainer) dhxDocument.getParsedContainer();
-      logger.log(Level.getLevel("EVENT"),
-          "Document data from capsule: recipient organisationCode:"
-              + container.getTransport().getDecRecipient().get(0).getOrganisationCode()
-              + " sender organisationCode:"
-              + container.getTransport().getDecSender().getOrganisationCode());
-    }
-    dhxDocument.setParsedContainer(null);
-    dhxDocument.setDocumentFile(null);
-    receevedDocuments.add(dhxDocument);
-    return receiptId;
-  }
-
-
-  /**
-   * Implementation of abtract method. Searches if that consignment id and that member are in the.
-   * list of saved documents
-   */
-  @Override
-  public boolean isDuplicatePackage(XroadMember from, String consignmentId) {
-    log.debug("Checking for duplicates. from memberCode:" + from.toString()
-        + " from consignmentId:" + consignmentId);
-    if (receevedDocuments != null && receevedDocuments.size() > 0) {
-      for (DhxDocument document : receevedDocuments) {
-        if (document.getExternalConsignmentId() != null
-            && document.getExternalConsignmentId().equals(consignmentId)
-            && (document.getClient().toString().equals(from.toString())
-            || document.getClient().getRepresentee().getMemberCode().equals(from.toString()))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
 
   /**
    * override just to log events.

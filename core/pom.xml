@@ -84,7 +84,7 @@
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
-		</dependency>		
+		</dependency>	
   </dependencies>
     <build>
         <plugins>

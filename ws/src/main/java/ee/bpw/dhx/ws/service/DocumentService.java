@@ -14,25 +14,14 @@ import java.util.List;
 
 
 /**
- * Interface for document sending and receiving. Service is independant from capsule versions that
- * are being sent or received, that means that no changes should be done in service if new capsule
- * version is added.
+ * Interface for document sending and receiving. Service must be independent from capsule versions
+ * that are being sent or received, that means that no changes should be done in service if new
+ * capsule version is added.
  * 
  * @author Aleksei Kokarev
  *
  */
 public interface DocumentService {
-
-
-  /**
-   * Method should receive document(save in database for example) and return unique id of it. Id
-   * will be sent as receipt in response.
-   * 
-   * @param document - document to receive
-   * @return - unique id of the document that was saved.
-   * @throws DhxException - thrown if error occurs while receiving document
-   */
-  public String receiveDocument(DhxDocument document) throws DhxException;
 
 
   /**
@@ -112,17 +101,6 @@ public interface DocumentService {
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
       XsdVersionEnum version) throws DhxException;
 
-
-  /**
-   * Method searches through saved documents and checks if document with save sender and consignment
-   * id exists.
-   * 
-   * 
-   * @param from - document sender to check
-   * @param consignmentId - consignment id to check
-   * @return - true if document with same sender and consignment id exists, otherwise false
-   */
-  public abstract boolean isDuplicatePackage(XroadMember from, String consignmentId);
 
   /**
    * Method is used by endpoint. Is called when document arrives to endpoint.
