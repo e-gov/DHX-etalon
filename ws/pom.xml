@@ -7,7 +7,7 @@
     <artifactId>DHX</artifactId>
     <version>0.6.7</version>
   </parent>
-  <groupId>ee.bpw.dhx</groupId>
+
   <artifactId>ws</artifactId>
   <version>0.6.7</version>
   <name>Web services</name>
@@ -27,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-ws</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
 		    <groupId>org.apache.httpcomponents</groupId>
 		    <artifactId>httpclient</artifactId>
@@ -35,4 +34,19 @@
 		</dependency>
 		
   </dependencies>
+  <build>
+  		<resources>
+			<resource>
+				<directory>../src/main/resources/${resourceDir}/ws</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+				<excludes>
+                    <exclude>conf</exclude>         
+                </excludes>
+			</resource>
+		</resources>
+  </build>
 </project>

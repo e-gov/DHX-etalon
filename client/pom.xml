@@ -46,18 +46,17 @@
 		<finalName>${packageName}</finalName>
 		<resources>
 			<resource>
-				<directory>src/main/resources/${resourceDir}</directory>
+				<directory>../src/main/resources/${resourceDir}/client</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
 			</resource>
 			<resource>
-				<directory>src/main/resources/images</directory>
+				<directory>src/main/resources</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
+				<excludes>
+                    <exclude>conf</exclude>         
+                </excludes>
 			</resource>
-			<resource>
-				<directory>src/main/resources/i18</directory>
-				<targetPath>${basedir}/target/classes/i18</targetPath>
-			</resource>
-		</resources>
+		</resources>	
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>

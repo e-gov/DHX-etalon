@@ -78,12 +78,12 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>arendus-bpw</id>
+			<id>development</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<conf>arendus-bpw</conf>
+				<conf>development</conf>
 			</properties>
 		</profile>
 		<profile>
@@ -102,30 +102,30 @@
 			</properties>
 		</profile>
 		<profile>
-			<id>dhs-maket1</id>
+			<id>etalon1</id>
 			<activation>
 				<property>
 					<name>env</name>
-					<value>dhs-maket1</value>
+					<value>etalon1</value>
 				</property>
 			</activation>
 			<properties>
-				<conf>dhs-maket1</conf>
+				<conf>etalon1</conf>
 				<tomcat.manager>http://10.0.13.51:8080/manager/text</tomcat.manager>
 				<tomcat.manager.username>admin</tomcat.manager.username>
 				<tomcat.manager.password>admin</tomcat.manager.password>
 			</properties>
 		</profile>
 		<profile>
-			<id>dhs-maket2</id>
+			<id>etalon2</id>
 			<activation>
 				<property>
 					<name>env</name>
-					<value>dhs-maket2</value>
+					<value>etalon2</value>
 				</property>
 			</activation>
 			<properties>
-				<conf>dhs-maket2</conf>
+				<conf>etalon2</conf>
 				<tomcat.manager>http://10.0.13.52:8080/manager/text</tomcat.manager>
 				<tomcat.manager.username>admin</tomcat.manager.username>
 				<tomcat.manager.password>admin</tomcat.manager.password>
