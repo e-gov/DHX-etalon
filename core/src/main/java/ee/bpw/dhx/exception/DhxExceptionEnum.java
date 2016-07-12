@@ -16,7 +16,8 @@ public enum DhxExceptionEnum {
   EXTRACTION_ERROR("EXCTRACTION_ERROR", false), 
   TECHNICAL_ERROR("TECHNICAL_ERROR", false),
   DATA_ERROR("DATA_ERROR", false),
-  NOT_IMPLEMENTED("NOT_IMPLEMENTED", false);
+  NOT_IMPLEMENTED("NOT_IMPLEMENTED", false),
+  XSD_VERSION_ERROR("XSD_VERSION_ERROR", false);
 
   // error code which is returned is services
   private String codeForService;

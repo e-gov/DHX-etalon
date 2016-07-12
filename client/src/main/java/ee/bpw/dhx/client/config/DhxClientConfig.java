@@ -68,6 +68,7 @@ public class DhxClientConfig {
   private String capsuleWrongAdressee;
 
   private String capsuleAddressateSelect;
+  private String capsuleAddressateSelectRepresentation;
   private String capsuleSelect;
 
   List<String> representeesList = null;
@@ -90,6 +91,10 @@ public class DhxClientConfig {
 
   public List<Map<String, String>> getCapsuleAddressateSelect() {
     return getSelect(capsuleAddressateSelect);
+  }
+  
+  public List<Map<String, String>> getCapsuleAddressateSelectRepresentation() {
+    return getSelect(capsuleAddressateSelectRepresentation);
   }
 
   private List<Map<String, String>> getSelect(String selectString) {

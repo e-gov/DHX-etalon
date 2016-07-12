@@ -2,7 +2,10 @@ package ee.bpw.dhx.ws.config;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
+import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +13,11 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,18 +34,15 @@ public class DhxConfig {
 
   private Boolean capsuleValidate = true;
   private Boolean checkRecipient = true;
-  private boolean checkFilesize;
+  private Boolean checkFilesize = false;
   private Boolean checkDuplicate = true;
   private Boolean parseCapsule = true;
-  private String capsuleXsdFile21;
-  private String xsdFile;
   private String wsdlFile;
   private String endpointPath;
   private String sendRetryCount;
   private String marshallContext;
   private Integer maxFileSize;
   private String dateFormat;
-  private XsdVersionEnum currentCapsuleVersion;
 
   private String[] marshallContextAsList;
 
@@ -65,24 +68,5 @@ public class DhxConfig {
     return sdf.format(date);
   }
 
-  public String getCurrentXsd() throws DhxException {
-    return getXsdForVersion(currentCapsuleVersion);
-  }
-
-  /**
-   * Method finds config parameter which contains link to XSD for given version.
-   * 
-   * @param version - version for which to find XSD
-   * @return - link to XSD file for given version
-   * @throws DhxException - thrown then no XSD file is defined for given version
-   */
-  public String getXsdForVersion(XsdVersionEnum version) throws DhxException {
-    switch (version) {
-      case V21:
-        return getCapsuleXsdFile21();
-      default:
-        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-            "Unable to find XSD file for given verion. version:" + version.toString());
-    }
-  }
+  
 }

@@ -1,7 +1,6 @@
 package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
-
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
@@ -12,18 +11,19 @@ import ee.bpw.dhx.util.XsdUtil;
 import ee.bpw.dhx.util.XsdVersionEnum;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
+import ee.bpw.dhx.ws.config.XsdConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.DocumentService;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,10 +49,15 @@ import java.util.List;
 public class DocumentServiceImpl implements DocumentService {
 
   @Autowired
-  private DhxConfig config;
+  @Getter
+  @Setter
+  DhxConfig config;
 
   @Autowired
-  private SoapConfig soapConfig;
+  SoapConfig soapConfig;
+  
+  @Autowired
+  XsdConfig xsdConfig;
 
   @Autowired
   AddressService addressService;
@@ -127,7 +132,7 @@ public class DocumentServiceImpl implements DocumentService {
       throws DhxException {
     try {
       log.info("Receiving document. for representative: " + document.getRecipient());
-      DecContainer container = null;
+      Object container = null;
       InputStream fileStream = document.getDocumentAttachment().getInputStream();
       checkFileSize(fileStream);
 
@@ -136,22 +141,24 @@ public class DocumentServiceImpl implements DocumentService {
         log.debug("Validating capsule is enabled");
         // TODO: here need to get version from input as we dont know which version came!!!!
         schemaStream =
-            FileUtil.getFileAsStream(config.getXsdForVersion(config.getCurrentCapsuleVersion()));
+            FileUtil.getFileAsStream(xsdConfig.getXsdForVersion(xsdConfig.getCurrentCapsuleVersion()));
       } else {
         log.debug("Validating capsule is disabled");
       }
       container = dhxMarshallerService.unmarshallAndValidate(fileStream, schemaStream);
-      log.info("Document data from capsule: recipient organisationCode:"
-          + container.getTransport().getDecRecipient().get(0).getOrganisationCode()
-          + " sender organisationCode:"
-          + container.getTransport().getDecSender().getOrganisationCode());
-      if (config.getCheckRecipient()) {
-        checkRecipient(document.getRecipient(), getStringList(container.getTransport()
-            .getDecRecipient()));
+      List<CapsuleAdressee> adressees = xsdConfig.getAdresseesFromContainer(container);
+      if(log.isDebugEnabled()) {
+        for(CapsuleAdressee adressee : adressees) {
+          log.debug("Document data from capsule: recipient organisationCode:"
+            + adressee.getAdresseeCode());
+        }
       }
-      log.info("Recipient from capsule checked and found in representative list "
-          + "or own member code. recipient:"
-          + container.getTransport().getDecRecipient().get(0).getOrganisationCode());
+
+      if (config.getCheckRecipient()) {
+        checkRecipient(document.getRecipient(), adressees);
+      }
+      log.debug("Recipients from capsule checked and found in representative list "
+          + "or own member code. ");
       log.info("Document received.");
       DhxDocument dhxDocument =
           new DhxDocument(client, document, container, XsdVersionEnum.forClass(container
@@ -206,7 +213,7 @@ public class DocumentServiceImpl implements DocumentService {
       throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
         + "String consignmentId)");
-    return sendDocument(capsuleStream, consignmentId, config.getCurrentCapsuleVersion());
+    return sendDocument(capsuleStream, consignmentId, xsdConfig.getCurrentCapsuleVersion());
   }
 
   @Override
@@ -214,10 +221,13 @@ public class DocumentServiceImpl implements DocumentService {
       XsdVersionEnum version) throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
         + "String consignmentId, , XsdVersionEnum version)");
+    if(version == null) {
+      throw new DhxException(DhxExceptionEnum.XSD_VERSION_ERROR, "Unable to send document using NULL xsd version");
+    }
     if (config.getParseCapsule()) {
       InputStream schemaStream = null;
       if (config.getCapsuleValidate()) {
-        schemaStream = FileUtil.getFileAsStream(config.getXsdForVersion(version));
+        schemaStream = FileUtil.getFileAsStream(xsdConfig.getXsdForVersion(version));
       }
       Object container =
           dhxMarshallerService.unmarshallAndValidate(capsuleStream, schemaStream);
@@ -234,7 +244,7 @@ public class DocumentServiceImpl implements DocumentService {
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
       throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)");
-    return sendDocument(capsuleFile, consignmentId, config.getCurrentCapsuleVersion());
+    return sendDocument(capsuleFile, consignmentId, xsdConfig.getCurrentCapsuleVersion());
   }
 
   @Override
@@ -270,9 +280,9 @@ public class DocumentServiceImpl implements DocumentService {
     log.debug("Sending document with capsule parsing. consignmentId=" + consignmentId);
     checkFileSize(capsuleStream);
     List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
-    List<CapsuleAdressee> adressees = XsdUtil.getAdresseesFromContainer(container);
+    List<CapsuleAdressee> adressees = xsdConfig.getAdresseesFromContainer(container);
     if (adressees != null && adressees.size() > 0) {
-      // TODO: think of some method not to marshall object, but to use original file and just gzip
+      // TODO: think of some method not to marshall object, but to use original file and just send
       // it. problem is that stream is already read at this point and not able to read it again
       File capsuleFile = null;
       capsuleFile = dhxMarshallerService.marshall(container);
@@ -321,7 +331,7 @@ public class DocumentServiceImpl implements DocumentService {
     return response;
   }
 
-  private List<String> getStringList(List<DecRecipient> recipients) {
+ /* private List<String> getStringList(List<DecRecipient> recipients) {
     List<String> recipientList = new ArrayList<String>();
     if (recipients != null && recipients.size() > 0) {
       for (DecRecipient recipient : recipients) {
@@ -329,7 +339,7 @@ public class DocumentServiceImpl implements DocumentService {
       }
     }
     return recipientList;
-  }
+  }*/
 
   /**
    * Method extracts and validates attached document. Attachment validation is not implemented in
@@ -377,7 +387,7 @@ public class DocumentServiceImpl implements DocumentService {
    * @param capsuleRecipients -recipient list parsed from capsule.
    * @throws DhxException throws if recipient not found. Means that document recipient if faulty
    */
-  protected void checkRecipient(String recipient, List<String> capsuleRecipients)
+  protected void checkRecipient(String recipient, List<CapsuleAdressee> capsuleRecipients)
       throws DhxException {
     log.info("Checking recipient.");
     if (recipient == null || recipient.equals("")) {
@@ -402,8 +412,8 @@ public class DocumentServiceImpl implements DocumentService {
               + recipient);
     }
     if (capsuleRecipients != null) {
-      for (String capsuleRecipient : capsuleRecipients) {
-        if (capsuleRecipient.equals(recipient)) {
+      for (CapsuleAdressee capsuleRecipient : capsuleRecipients) {
+        if (capsuleRecipient.getAdresseeCode().equals(recipient)) {
           return;
         }
       }
@@ -421,7 +431,7 @@ public class DocumentServiceImpl implements DocumentService {
    * @throws DhxException thrown if filesize is bigger that maximum filesize
    */
   private void checkFileSize(InputStream streamToCheck) throws DhxException {
-    if (config.isCheckFilesize()) {
+    if (config.getCheckFilesize()) {
       log.info("Checking filesize.");
       log.info("File size check not done because check is not implemented.");
       throw new DhxException(DhxExceptionEnum.NOT_IMPLEMENTED,

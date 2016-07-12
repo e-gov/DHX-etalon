@@ -1,10 +1,9 @@
 package ee.bpw.dhx.util;
 
 import ee.bpw.dhx.exception.DhxException;
+
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -195,37 +194,6 @@ public class XsdUtil {
     }
   }
 
-  /**
-   * Method to fing adresssees from container. Method must return adressees for every existing
-   * version of the container, bacause service which uses that method does not know anything about
-   * container and just need adressees defined in it.
-   * 
-   * @param containerObject - container(capsule) object from which to find adressees
-   * @return - list of the adresssees
-   * @throws DhxException - thrown adressees parsing is not defined for given object (capsule
-   *         version)
-   */
-  public static List<CapsuleAdressee> getAdresseesFromContainer(Object containerObject)
-      throws DhxException {
-    XsdVersionEnum version = XsdVersionEnum.forClass(containerObject.getClass());
-    switch (version) {
-      case V21:
-        List<CapsuleAdressee> adressees = new ArrayList<CapsuleAdressee>();
-        DecContainer container = (DecContainer) containerObject;
-        if (container != null && container.getTransport() != null
-            && container.getTransport().getDecRecipient() != null
-            && container.getTransport().getDecRecipient().size() > 0) {
-          File capsuleFile = null;
-          for (DecRecipient recipient : container.getTransport().getDecRecipient()) {
-            adressees.add(new CapsuleAdressee(recipient.getOrganisationCode()));
-          }
-          return adressees;
-        }
-        return null;
-      default:
-        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-            "Unable to find XSD file for given verion. version:" + version.toString());
-    }
-  }
+
 
 }

@@ -457,7 +457,7 @@ public class DhxUi extends UI {
 
   private Layout getRepresentationListLayout() {
     final ComboBox adressees =
-        getSelect(config.getCapsuleAddressateSelect(),
+        getSelect(config.getCapsuleAddressateSelectRepresentation(),
             getMessage("activity.representation-list.choose-adressee"));
     adressees.setWidth(400, Unit.PIXELS);
     adressees.setRequired(true);

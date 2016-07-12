@@ -1,9 +1,11 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
+
 
 
 import java.util.List;
@@ -64,4 +66,5 @@ public interface DhxImplementationSpecificService {
    * @param members - 
    */
   public void saveAddresseeList(List<XroadMember> members);
+  
 }

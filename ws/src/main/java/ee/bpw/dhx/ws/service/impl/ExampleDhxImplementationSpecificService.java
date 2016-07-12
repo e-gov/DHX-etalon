@@ -1,16 +1,18 @@
 package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.exception.DhxExceptionEnum;
+import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.util.XsdVersionEnum;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
-
 import lombok.extern.slf4j.Slf4j;
 
 import org.apache.logging.log4j.Level;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
