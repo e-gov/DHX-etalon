@@ -36,8 +36,8 @@ public class DhxClientGateWay extends DhxGateway {
       String consignmentId = UUID.randomUUID().toString();
       document.setInternalConsignmentId(consignmentId);
     }
-    logger.log(Level.getLevel("EVENT"), "Sending document to:" + document.getService().toString()
-        + " internalConsignmentId:" + document.getInternalConsignmentId());
+    logger.log(Level.getLevel("EVENT"), "Sending document to: " + document.getService().toString()
+        + " internalConsignmentId: " + document.getInternalConsignmentId());
     SendDocumentResponse response = null;
     try {
       log.info("Sending document to " + document.getService().toString());
@@ -51,9 +51,9 @@ public class DhxClientGateWay extends DhxGateway {
               + response.getFault().getFaultCode() + " faultString: "
               + response.getFault().getFaultString()));
     } catch (DhxException ex) {
-      log.error("Error occured while sending document. :" + document.getService().toString()
+      log.error("Error occured while sending document. " + document.getService().toString()
           + ". " + ex.getMessage(), ex);
-      logger.log(Level.getLevel("EVENT"), "Error occured while sending document. recipient:"
+      logger.log(Level.getLevel("EVENT"), "Error occured while sending document. recipient: "
           + document.getService().toString() + ". " + ex.getMessage());
       throw ex;
     }
@@ -64,7 +64,7 @@ public class DhxClientGateWay extends DhxGateway {
   @Override
   public RepresentationListResponse getRepresentationList(XroadMember member) throws DhxException {
     RepresentationListResponse response = null;
-    logger.log(Level.getLevel("EVENT"), "Getting representation list from:" + member.toString());
+    logger.log(Level.getLevel("EVENT"), "Getting representation list from: " + member.toString());
     try {
       response = super.getRepresentationList(member);
 
@@ -79,7 +79,7 @@ public class DhxClientGateWay extends DhxGateway {
         logger.log(Level.getLevel("EVENT"), "Representation list received: empty list");
       }
     } catch (DhxException ex) {
-      logger.log(Level.getLevel("EVENT"), "Error occured while getting representation list for:"
+      logger.log(Level.getLevel("EVENT"), "Error occured while getting representation list for: "
           + member.toString() + ". " + ex.getMessage());
       throw ex;
     }

@@ -70,7 +70,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
    */
   public List<SendDocumentResponse> sendDocument(String capsuleType, String recipientString,
       String consignmentId) throws DhxException {
-    log.debug("sending document. capsuleType=" + capsuleType + " recipientString="
+    log.debug("sending document. capsuleType= " + capsuleType + " recipientString="
         + recipientString + " consignmentId=" + consignmentId);
     try {
       String capsuleFilePath = "";
