@@ -4,9 +4,9 @@ import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.config.DhxConfig;
-import ee.bpw.dhx.ws.config.XsdConfig;
+import ee.bpw.dhx.ws.config.CapsuleConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
@@ -72,7 +72,7 @@ public class DocumentServiceImplTest {
   public final ExpectedException exception = ExpectedException.none();
   
   @Mock
-  XsdConfig xsdConfig;
+  CapsuleConfig xsdConfig;
   
   @Before
   public void init () throws DhxException{
@@ -80,10 +80,10 @@ public class DocumentServiceImplTest {
     MockitoAnnotations.initMocks(this);
     config = new DhxConfig();  
     when(xsdConfig.getCurrentCapsuleVersion())
-    .thenReturn(XsdVersionEnum.V21);
+    .thenReturn(CapsuleVersionEnum.V21);
    /* when(xsdConfig.getCapsuleXsdFile21())
     .thenReturn("jar://Dvk_kapsel_vers_2_1_eng_est.xsd")*/
-    when(xsdConfig.getXsdForVersion(XsdVersionEnum.V21))
+    when(xsdConfig.getXsdForVersion(CapsuleVersionEnum.V21))
     .thenReturn("jar://Dvk_kapsel_vers_2_1_eng_est.xsd");
     
    // config.setCurrentCapsuleVersion(XsdVersionEnum.V21);
@@ -176,7 +176,7 @@ public class DocumentServiceImplTest {
     .thenReturn(capsule);
     when(dhxMarshallerService.marshall(capsule))
     .thenReturn(file);
-    List<SendDocumentResponse> responses = documentService.sendDocument(new FileInputStream(file), "rand", XsdVersionEnum.V21);
+    List<SendDocumentResponse> responses = documentService.sendDocument(new FileInputStream(file), "rand", CapsuleVersionEnum.V21);
     Mockito.verify(dhxGateway, times(1)).sendDocument(Mockito.any(DhxDocument.class));
     assertEquals(1, responses.size());
   }
@@ -201,7 +201,7 @@ public class DocumentServiceImplTest {
     .thenReturn(capsule);
     when(dhxMarshallerService.marshall(capsule))
     .thenReturn(file);
-    List<SendDocumentResponse> responses = documentService.sendDocument(file, "rand", XsdVersionEnum.V21);
+    List<SendDocumentResponse> responses = documentService.sendDocument(file, "rand", CapsuleVersionEnum.V21);
     Mockito.verify(dhxGateway, times(1)).sendDocument(Mockito.any(DhxDocument.class));
     assertEquals(1, responses.size());
   }
@@ -261,7 +261,7 @@ public class DocumentServiceImplTest {
   @Ignore
   @Test
   public void sendDocumentStreamEmptyVersion() throws DhxException, IOException{
-    XsdVersionEnum version = null;
+    CapsuleVersionEnum version = null;
     String recipient = "11";
     XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");

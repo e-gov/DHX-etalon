@@ -3,7 +3,7 @@ package ee.bpw.dhx.ws.service;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
@@ -72,7 +72,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
-      XsdVersionEnum version) throws DhxException;
+      CapsuleVersionEnum version) throws DhxException;
 
   /**
    * Parses capsule from file and sends document. Document is sent to every recipient defined in
@@ -99,7 +99,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
-      XsdVersionEnum version) throws DhxException;
+      CapsuleVersionEnum version) throws DhxException;
 
 
   /**

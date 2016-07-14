@@ -6,7 +6,7 @@ import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,6 +34,7 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   private List<XroadMember> members;
 
   @Override
+  @Deprecated
   public boolean isDuplicatePackage(XroadMember from, String consignmentId) {
     log.debug("Checking for duplicates. from memberCode:" + from.toString()
         + " from consignmentId:" + consignmentId);
@@ -52,6 +53,7 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
 
 
   @Override
+  @Deprecated
   public String receiveDocument(DhxDocument document) throws DhxException {
     log.debug("String receiveDocument(DhxDocument document) externalConsignmentId"
         + document.getExternalConsignmentId());
@@ -61,16 +63,19 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   }
 
   @Override
+  @Deprecated
   public List<Representee> getRepresentationList() {
     return new ArrayList<Representee>();
   }
 
   @Override
+  @Deprecated
   public List<XroadMember> getAdresseeList() {
     return members;
   }
 
   @Override
+  @Deprecated
   public void saveAddresseeList(List<XroadMember> members) {
     this.members = members;
   }

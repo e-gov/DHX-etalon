@@ -3,9 +3,7 @@ package ee.bpw.dhx.ws.config;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
-import ee.bpw.dhx.util.XsdVersionEnum;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 
 import lombok.Getter;
 import lombok.Setter;

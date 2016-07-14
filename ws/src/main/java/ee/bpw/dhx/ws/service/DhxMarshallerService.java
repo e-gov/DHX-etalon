@@ -104,19 +104,6 @@ public interface DhxMarshallerService {
   public void validate(final InputStream fileStream, InputStream schemaStream)
       throws DhxException;
 
-  /**
-   * Method to fing adresssees from container. Method must return adressees for every existing
-   * version of the container, bacause service which uses that method does not know anything about
-   * container and just need adressees defined in it.
-   * 
-   * @param containerObject - container(capsule) object from which to find adressees
-   * @return - list of the adresssees
-   * @throws DhxException - thrown adressees parsing is not defined for given object (capsule
-   *         version)
-   */
-  public List<CapsuleAdressee> getAdresseesFromContainer(Object containerObject)
-      throws DhxException;
-
 
   /**
    * Method returns marshaller

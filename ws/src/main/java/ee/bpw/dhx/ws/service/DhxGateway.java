@@ -17,6 +17,7 @@ import eu.x_road.xsd.identifiers.ObjectFactory;
 import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
 import eu.x_road.xsd.identifiers.XRoadObjectType;
 import eu.x_road.xsd.identifiers.XRoadServiceIdentifierType;
+import eu.x_road.xsd.representation.XRoadRepresentedPartyType;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -164,6 +165,12 @@ public class DhxGateway extends WebServiceGatewaySupport {
       client.setMemberCode(soapConfig.getMemberCode());
       client.setSubsystemCode(soapConfig.getSubsystem());
       return client;
+    }
+    
+    private XRoadRepresentedPartyType getXRoadRepresentedPartyType() {
+      XRoadRepresentedPartyType representee = new XRoadRepresentedPartyType();
+      representee.setPartyCode(service.getRepresentee().getMemberCode());
+      return representee;
     }
 
     private XRoadServiceIdentifierType getXRoadServiceIdentifierType() {

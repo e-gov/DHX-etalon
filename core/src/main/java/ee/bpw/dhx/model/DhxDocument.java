@@ -3,7 +3,7 @@ package ee.bpw.dhx.model;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 
 import eu.x_road.dhx.producer.SendDocument;
 
@@ -92,7 +92,7 @@ public class DhxDocument {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public DhxDocument(XroadMember service, Object parsedContainer,
-      XsdVersionEnum parsedContainerVersion, File file, String internalConsignmentId,
+      CapsuleVersionEnum parsedContainerVersion, File file, String internalConsignmentId,
       Boolean packFile) throws DhxException {
     this(service, file, packFile);
     this.parsedContainer = parsedContainer;
@@ -113,7 +113,7 @@ public class DhxDocument {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public DhxDocument(XroadMember service, InputStream stream, Object parsedContainer,
-      XsdVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile)
+      CapsuleVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile)
       throws DhxException {
     this(service, stream, packFile);
     this.parsedContainer = parsedContainer;
@@ -145,7 +145,7 @@ public class DhxDocument {
    * @param parsedContainerVersion - version of the container
    */
   public DhxDocument(XroadMember client, SendDocument document, Object parsedContainer,
-      XsdVersionEnum parsedContainerVersion) {
+      CapsuleVersionEnum parsedContainerVersion) {
     this(client, document);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
@@ -173,5 +173,5 @@ public class DhxDocument {
 
   private Object parsedContainer;
 
-  private XsdVersionEnum parsedContainerVersion;
+  private CapsuleVersionEnum parsedContainerVersion;
 }

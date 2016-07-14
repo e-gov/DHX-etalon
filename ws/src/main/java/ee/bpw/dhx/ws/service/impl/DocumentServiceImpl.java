@@ -8,10 +8,10 @@ import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.XsdUtil;
-import ee.bpw.dhx.util.XsdVersionEnum;
+import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
-import ee.bpw.dhx.ws.config.XsdConfig;
+import ee.bpw.dhx.ws.config.CapsuleConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
@@ -57,7 +57,7 @@ public class DocumentServiceImpl implements DocumentService {
   SoapConfig soapConfig;
   
   @Autowired
-  XsdConfig xsdConfig;
+  CapsuleConfig capsuleConfig;
 
   @Autowired
   AddressService addressService;
@@ -139,14 +139,14 @@ public class DocumentServiceImpl implements DocumentService {
       InputStream schemaStream = null;
       if (config.getCapsuleValidate()) {
         log.debug("Validating capsule is enabled");
-        // TODO: here need to get version from input as we dont know which version came!!!!
+        // TODO: here need to get version from input as we dont know which version came!!!! parsing using current version at the moment
         schemaStream =
-            FileUtil.getFileAsStream(xsdConfig.getXsdForVersion(xsdConfig.getCurrentCapsuleVersion()));
+            FileUtil.getFileAsStream(capsuleConfig.getXsdForVersion(capsuleConfig.getCurrentCapsuleVersion()));
       } else {
         log.debug("Validating capsule is disabled");
       }
       container = dhxMarshallerService.unmarshallAndValidate(fileStream, schemaStream);
-      List<CapsuleAdressee> adressees = xsdConfig.getAdresseesFromContainer(container);
+      List<CapsuleAdressee> adressees = capsuleConfig.getAdresseesFromContainer(container);
       if(log.isDebugEnabled()) {
         for(CapsuleAdressee adressee : adressees) {
           log.debug("Document data from capsule: recipient organisationCode:"
@@ -161,7 +161,7 @@ public class DocumentServiceImpl implements DocumentService {
           + "or own member code. ");
       log.info("Document received.");
       DhxDocument dhxDocument =
-          new DhxDocument(client, document, container, XsdVersionEnum.forClass(container
+          new DhxDocument(client, document, container, CapsuleVersionEnum.forClass(container
               .getClass()));
       return dhxDocument;
     } catch (IOException ex) {
@@ -213,12 +213,12 @@ public class DocumentServiceImpl implements DocumentService {
       throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
         + "String consignmentId)");
-    return sendDocument(capsuleStream, consignmentId, xsdConfig.getCurrentCapsuleVersion());
+    return sendDocument(capsuleStream, consignmentId, capsuleConfig.getCurrentCapsuleVersion());
   }
 
   @Override
   public List<SendDocumentResponse> sendDocument(InputStream capsuleStream, String consignmentId,
-      XsdVersionEnum version) throws DhxException {
+      CapsuleVersionEnum version) throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(InputStream capsuleStream, "
         + "String consignmentId, , XsdVersionEnum version)");
     if(version == null) {
@@ -227,7 +227,7 @@ public class DocumentServiceImpl implements DocumentService {
     if (config.getParseCapsule()) {
       InputStream schemaStream = null;
       if (config.getCapsuleValidate()) {
-        schemaStream = FileUtil.getFileAsStream(xsdConfig.getXsdForVersion(version));
+        schemaStream = FileUtil.getFileAsStream(capsuleConfig.getXsdForVersion(version));
       }
       Object container =
           dhxMarshallerService.unmarshallAndValidate(capsuleStream, schemaStream);
@@ -244,12 +244,12 @@ public class DocumentServiceImpl implements DocumentService {
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)
       throws DhxException {
     log.debug("List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId)");
-    return sendDocument(capsuleFile, consignmentId, xsdConfig.getCurrentCapsuleVersion());
+    return sendDocument(capsuleFile, consignmentId, capsuleConfig.getCurrentCapsuleVersion());
   }
 
   @Override
   public List<SendDocumentResponse> sendDocument(File capsuleFile, String consignmentId,
-      XsdVersionEnum version) throws DhxException {
+      CapsuleVersionEnum version) throws DhxException {
     log.debug("List<SendDocumentResponse>  sendDocument(File capsuleFile, String consignmentId, "
         + "XsdVersionEnum version) version=" + version.toString());
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
@@ -280,7 +280,7 @@ public class DocumentServiceImpl implements DocumentService {
     log.debug("Sending document with capsule parsing. consignmentId=" + consignmentId);
     checkFileSize(capsuleStream);
     List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
-    List<CapsuleAdressee> adressees = xsdConfig.getAdresseesFromContainer(container);
+    List<CapsuleAdressee> adressees = capsuleConfig.getAdresseesFromContainer(container);
     if (adressees != null && adressees.size() > 0) {
       // TODO: think of some method not to marshall object, but to use original file and just send
       // it. problem is that stream is already read at this point and not able to read it again
@@ -290,7 +290,7 @@ public class DocumentServiceImpl implements DocumentService {
         XroadMember adresseeXroad =
             addressService.getClientForMemberCode(adressee.getAdresseeCode());
         DhxDocument document =
-            new DhxDocument(adresseeXroad, container, XsdVersionEnum.forClass(container
+            new DhxDocument(adresseeXroad, container, CapsuleVersionEnum.forClass(container
                 .getClass()), capsuleFile/* capsuleStream */, consignmentId, true);
         responses.add(sendDocumentTry(document));
       }
