@@ -2,6 +2,7 @@
 <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:xrd="http://x-road.eu/xsd/xroad.xsd" xmlns:tns="http://dhx.x-road.eu/producer"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:repr="http://x-road.eu/xsd/representation.xsd" 
 	targetNamespace="http://dhx.x-road.eu/producer">
 	<wsdl:types>
 		<schema xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd"

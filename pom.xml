@@ -71,7 +71,7 @@
 					<url>${tomcat.manager}</url>
 					<username>${tomcat.manager.username}</username>
 					<password>${tomcat.manager.password}</password>
-					<path>/dhx</path>
+					<path>/${conf}</path>
 				</configuration>
 			</plugin>
 		</plugins>
