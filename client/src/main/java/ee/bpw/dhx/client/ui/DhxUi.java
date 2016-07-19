@@ -392,10 +392,16 @@ public class DhxUi extends UI {
                     documentClientService.sendDocument(capsules.getValue().toString(), adressees
                         .getValue().toString(), consignmentIdStr);
                 String statuses = "";
+                Boolean success = true;
                 for (SendDocumentResponse response : responses) {
+                  if(response.getFault() != null) {
+                    success = false;
+                  } else {
+                    success = true;
+                  }
                   statuses +=
                       "&nbsp;&nbsp;"
-                          + getMessage("activity.send-document.document-sent")
+                          + (success?getMessage("activity.send-document.document-sent"):getMessage("activity.send-document.document-send-error"))                          
                           + " "
                           + getMessage("activity.send-document.receiptid")
                           + ": "
@@ -410,7 +416,7 @@ public class DhxUi extends UI {
                 }
                 showDhxNotification("<span style=\"white-space:normal;\">"
                     + getMessage("activity.send-document.results") + ":<br/> "
-                    + statuses + "</span>", Notification.Type.TRAY_NOTIFICATION);
+                    + statuses + "</span>", (success?Notification.Type.TRAY_NOTIFICATION:Notification.Type.WARNING_MESSAGE));
               } catch (DhxException ex) {
                 log.error("Error while sending document." + ex.getMessage(), ex);
                 showDhxNotification(getMessage("activity.send-document.error")
