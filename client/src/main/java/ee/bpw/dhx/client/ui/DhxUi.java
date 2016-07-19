@@ -245,7 +245,7 @@ public class DhxUi extends UI {
     fileDownloader2.extend(link2);
     // link.setTargetName("_blank");
     layout.addComponent(link2);
-    ExternalResource wsdlResource = new ExternalResource("/dhx/ws/dhx.wsdl");
+    ExternalResource wsdlResource = new ExternalResource("ws/dhx.wsdl");
     Link linkwsdl = new Link(getMessage("main.wsdl"), wsdlResource);
     linkwsdl.setTargetName("_blank");
     layout.addComponent(linkwsdl);
