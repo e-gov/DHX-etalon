@@ -401,7 +401,7 @@ public class DhxUi extends UI {
                   }
                   statuses +=
                       "&nbsp;&nbsp;"
-                          + (success?getMessage("activity.send-document.document-sent"):getMessage("activity.send-document.document-send-error"))                          
+                          + (success?getMessage("activity.send-document.document-sent"):getMessage("activity.send-document.error"))                          
                           + " "
                           + getMessage("activity.send-document.receiptid")
                           + ": "
