@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.6.7</version>
+		<version>0.8.1</version>
 	</parent>
 	<groupId>ee.bpw.dhx</groupId>
 	<artifactId>client</artifactId>
-	<version>0.6.7</version>
+	<version>0.8.1</version>
 	<name>client</name>
 	<packaging>war</packaging>
 	<repositories>
@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
-			<version>0.6.7</version>
+			<version>0.8.1</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

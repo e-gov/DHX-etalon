@@ -6,10 +6,10 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.6.7</version>
+		<version>0.8.1</version>
 	</parent>
 	<artifactId>core</artifactId>
-	<version>0.6.7</version>
+	<version>0.8.1</version>
 	<name>core</name>
 	<packaging>jar</packaging>
 	<properties>
