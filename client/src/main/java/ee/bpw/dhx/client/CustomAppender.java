@@ -51,7 +51,6 @@ public final class CustomAppender extends AbstractAppender {
   public void append(LogEvent event) {
     readLock.lock();
     try {
-      // final byte[] bytes = getLayout().toByteArray(event);
       if (queue.size() >= maxQueueSize) {
         queue.remove();
         queue.add(new String(getLayout().toByteArray(event)));
@@ -69,6 +68,12 @@ public final class CustomAppender extends AbstractAppender {
 
   /**
    * Pluginfactory.
+   * 
+   * @param name - name
+   * @param layout - layout
+   * @param filter - filter
+   * @param otherAttribute - other attribute
+   * @return - customAppender
    */
   @PluginFactory
   public static CustomAppender createAppender(@PluginAttribute("name") String name,

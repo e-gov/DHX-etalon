@@ -1,7 +1,6 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
 

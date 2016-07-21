@@ -1,7 +1,6 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.CapsuleAdressee;
 
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.List;
 
 import javax.xml.transform.Source;
 
@@ -26,6 +24,7 @@ public interface DhxMarshallerService {
   /**
    * Method parses(unmarshalls) object.
    * 
+   * @param <T> - type of the capsule being unmarshalled
    * @param source - source of the marshalled object
    * @return - unmarshalled object
    * @throws DhxException - thrown if error occurs while unmrashalling object
@@ -36,6 +35,7 @@ public interface DhxMarshallerService {
   /**
    * Parses(unmarshalls) object from file.
    * 
+   * @param <T> - type of the capsule being unmarshalled
    * @param capsuleFile - file to parse
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
@@ -46,6 +46,7 @@ public interface DhxMarshallerService {
   /**
    * Parses(unmarshalls) object from file.
    * 
+   * @param <T> - type of the capsule being unmarshalled
    * @param capsuleStream - stream to parse
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
@@ -58,6 +59,7 @@ public interface DhxMarshallerService {
    * Parses(unmarshalls) object from file. And does validation against XSD schema if schemaStream is
    * present.
    * 
+   * @param <T> - type of the capsule being unmarshalled
    * @param capsuleStream - stream of to parse
    * @param schemaStream - stream on XSD schema against which to validate. No validation is done if
    *        stream is NULL
@@ -106,7 +108,7 @@ public interface DhxMarshallerService {
 
 
   /**
-   * Method returns marshaller
+   * Method returns marshaller.
    * 
    * @return marshaller
    */

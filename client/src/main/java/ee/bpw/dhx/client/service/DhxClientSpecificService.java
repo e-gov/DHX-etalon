@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 public class DhxClientSpecificService extends ExampleDhxImplementationSpecificService {
   // get log4j logger to log events on custom level.

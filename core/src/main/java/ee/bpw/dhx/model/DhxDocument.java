@@ -2,13 +2,9 @@ package ee.bpw.dhx.model;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
 
 import eu.x_road.dhx.producer.SendDocument;
-
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -123,7 +119,6 @@ public class DhxDocument {
    * @param document - document to send
    */
   public DhxDocument(XroadMember client, SendDocument document) {
-    // this.representativeCode = document.getRecipient();
     this.documentFile = document.getDocumentAttachment();
     this.externalConsignmentId = document.getConsignmentId();
     this.client = client;
@@ -193,9 +188,10 @@ public class DhxDocument {
   }
 
   /**
-   * /** If it is inbound document, then client is the one who sent the document, otherwise NULL.
+   * If it is inbound document, then client is the one who sent the document, otherwise NULL.
    * 
-   * @param client
+   * @param client - if it is inbound document, then client is the one who sent the document,
+   *        otherwise NULL.
    */
   public void setClient(XroadMember client) {
     this.client = client;
@@ -211,9 +207,9 @@ public class DhxDocument {
   }
 
   /**
-   * it it is outbound document, then the one to whom the document is being sent, otherwise NULL.
+   * if it is outbound document, then the one to whom the document is being sent, otherwise NULL.
    * 
-   * @param service
+   * @param service - xroad member of the recipient
    */
   public void setService(XroadMember service) {
     this.service = service;
@@ -231,7 +227,7 @@ public class DhxDocument {
   /**
    * External ID of the package.(for package receiving).
    * 
-   * @param externalConsignmentId
+   * @param externalConsignmentId - External ID of the package.(for package receiving).
    */
   public void setExternalConsignmentId(String externalConsignmentId) {
     this.externalConsignmentId = externalConsignmentId;
@@ -240,7 +236,7 @@ public class DhxDocument {
   /**
    * internal id of the package(for package sending).
    * 
-   * @return internalConsignmentId
+   * @return internalConsignmentId - internal id of the package(for package sending).
    */
   public String getInternalConsignmentId() {
     return internalConsignmentId;
@@ -249,7 +245,7 @@ public class DhxDocument {
   /**
    * internal id of the package(for package sending).
    * 
-   * @param internalConsignmentId
+   * @param internalConsignmentId - internal id of the package(for package sending).
    */
   public void setInternalConsignmentId(String internalConsignmentId) {
     this.internalConsignmentId = internalConsignmentId;
@@ -271,7 +267,7 @@ public class DhxDocument {
    * versions might be sent with different object types. Container is parsed only if container
    * parsing is turned on in cofiguration, otherwise parsedConrtainer is NULL.
    * 
-   * @param parsedContainer
+   * @param parsedContainer - Parsed container of the document(capsule)
    */
   public void setParsedContainer(Object parsedContainer) {
     this.parsedContainer = parsedContainer;
@@ -281,7 +277,7 @@ public class DhxDocument {
    * Version of the container that is parsed. Only filled if container parsing is turned on in
    * configuration, otherwise is NULL.
    * 
-   * @return
+   * @return - parsed container object
    */
   public CapsuleVersionEnum getParsedContainerVersion() {
     return parsedContainerVersion;
@@ -290,9 +286,33 @@ public class DhxDocument {
   /**
    * Version of the container that is parsed. Only filled if container parsing is turned on in
    * configuration, otherwise is NULL.
-   * @param parsedContainerVersion
+   * 
+   * @param parsedContainerVersion - parsed container version
    */
   public void setParsedContainerVersion(CapsuleVersionEnum parsedContainerVersion) {
     this.parsedContainerVersion = parsedContainerVersion;
+  }
+
+
+  @Override
+  public String toString() {
+    String objString = "";
+    if (getClient() != null) {
+      objString += "client: " + getClient().toString();
+    }
+    if (getService() != null) {
+      objString += "service: " + getClient().toString();
+    }
+    if (getExternalConsignmentId() != null) {
+      objString += "externalConsignmentId: " + getExternalConsignmentId();
+    }
+    if (getInternalConsignmentId() != null) {
+      objString += "internalConsignmentId: " + getInternalConsignmentId();
+    }
+
+    if (getParsedContainerVersion() != null) {
+      objString += "parsedContainerVersion: " + getParsedContainerVersion().toString();
+    }
+    return objString;
   }
 }

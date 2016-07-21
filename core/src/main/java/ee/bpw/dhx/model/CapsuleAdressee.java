@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Internal representation of adressee defined in capsule. 
+ * Internal representation of adressee defined in capsule.
+ * 
  * @author Aleksei Kokarev
  *
  */

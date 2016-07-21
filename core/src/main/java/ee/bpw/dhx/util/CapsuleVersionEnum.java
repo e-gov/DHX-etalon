@@ -39,13 +39,13 @@ public enum CapsuleVersionEnum {
     if (containerClass != null) {
       for (CapsuleVersionEnum version : CapsuleVersionEnum.values()) {
         if (containerClass.equals(version.getContainerClass())) {
-          log.debug("Found XSD version for class. containerClass:" + containerClass.toString()
+          log.debug("Found XSD version for class. containerClass: {}", containerClass.toString()
               + " version:" + version.toString());
           return version;
         }
       }
       throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-          "Unknown class. No XSD version is found for that class. Class:"
+          "Unknown class. No XSD version is found for that class. Class: "
               + containerClass.toString());
     }
     return null;

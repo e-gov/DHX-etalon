@@ -81,13 +81,8 @@ public class DocumentServiceImplTest {
     config = new DhxConfig();  
     when(xsdConfig.getCurrentCapsuleVersion())
     .thenReturn(CapsuleVersionEnum.V21);
-   /* when(xsdConfig.getCapsuleXsdFile21())
-    .thenReturn("jar://Dvk_kapsel_vers_2_1_eng_est.xsd")*/
     when(xsdConfig.getXsdForVersion(CapsuleVersionEnum.V21))
     .thenReturn("jar://Dvk_kapsel_vers_2_1_eng_est.xsd");
-    
-   // config.setCurrentCapsuleVersion(XsdVersionEnum.V21);
-    //config.setCapsuleXsdFile21("jar://Dvk_kapsel_vers_2_1_eng_est.xsd");
     documentService.setConfig(config);
   }
   

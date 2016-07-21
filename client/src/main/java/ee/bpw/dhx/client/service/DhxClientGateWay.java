@@ -33,14 +33,14 @@ public class DhxClientGateWay extends DhxGateway {
   @Override
   public SendDocumentResponse sendDocument(DhxDocument document) throws DhxException {
     if (document.getInternalConsignmentId() == null) {
-      String consignmentId = UUID.randomUUID().toString();
-      document.setInternalConsignmentId(consignmentId);
+      document.setInternalConsignmentId(UUID.randomUUID().toString());
     }
-    logger.log(Level.getLevel("EVENT"), "Sending document to: " + document.getService().toString()
+    logger.log(Level.getLevel("EVENT"), "Sending document to: "
+        + document.getService().toString()
         + " internalConsignmentId: " + document.getInternalConsignmentId());
     SendDocumentResponse response = null;
     try {
-      log.info("Sending document to " + document.getService().toString());
+      log.info("Sending document to {}", document.getService().toString());
       response = super.sendDocument(document);
       log.info("Sending document done");
       logger.log(Level.getLevel("EVENT"), "Document sent to: "
@@ -51,10 +51,11 @@ public class DhxClientGateWay extends DhxGateway {
               + response.getFault().getFaultCode() + " faultString: "
               + response.getFault().getFaultString()));
     } catch (DhxException ex) {
-      log.error("Error occured while sending document. " + document.getService().toString()
-          + ". " + ex.getMessage(), ex);
-      logger.log(Level.getLevel("EVENT"), "Error occured while sending document. recipient: "
-          + document.getService().toString() + ". " + ex.getMessage());
+      log.error("Error occured while sending document. {}. {}", document.getService().toString(),
+          ex.getMessage(), ex);
+      logger.log(Level.getLevel("EVENT"),
+          "Error occured while sending document. recipient: {}. {}", document.getService()
+              .toString(), ex.getMessage());
       throw ex;
     }
     return response;

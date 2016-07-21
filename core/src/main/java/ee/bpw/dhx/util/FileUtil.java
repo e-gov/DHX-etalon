@@ -72,11 +72,6 @@ public class FileUtil {
    * 
    */
   public static File createPipelineFile() throws IOException {
-    /*
-     * if (extension == null) { extension = ""; } if ((extension.length() > 0) &&
-     * !extension.startsWith(".")) { extension = "." + extension; }
-     */
-
     String tmpDir = System.getProperty("java.io.tmpdir", "");
 
     String result = tmpDir + File.separator + "dhx_" + String.valueOf((new Date()).getTime());
@@ -91,17 +86,6 @@ public class FileUtil {
     file.createNewFile();
     return file;
   }
-
-  /*
-   * public static File getClassPathFile(String path) { File file = null; try { InputStream stream =
-   * new ClassPathResource(path).getInputStream(); file = createPipelineFile(0, "");
-   * writeToFile(stream, file); } catch (IOException ex) {
-   * log.error("Error occured while reading dvk capsule XSD." + ex.getMessage(), ex); file = null; }
-   * return file; }
-   * 
-   * public static InputStream getClassPathFileStream(String path) throws IOException { return new
-   * ClassPathResource(path).getInputStream(); }
-   */
 
   /**
    * Gets file from classpath or from filesystem by files path.
@@ -164,7 +148,7 @@ public class FileUtil {
    */
   public static InputStream getFileAsStream(File file) throws DhxException {
     try {
-      log.debug("Creating stream for file " + file.getAbsolutePath());
+      log.debug("Creating stream for file {}", file.getAbsolutePath());
       return new FileInputStream(file);
     } catch (IOException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error while reading file. path:"
@@ -213,15 +197,13 @@ public class FileUtil {
         out.write(buf, 0, len);
         totalBytesExtracted += len;
       }
-      // Paneme failid kinni, et saaks ülearuse faili maha kustutada ja
-      // vajaliku ümber nimetada.
       safeCloseStream(inStream);
       safeCloseStream(sourceBuffered);
       safeCloseStream(out);
     } catch (IOException ex) {
       log.error(ex.getMessage(), ex);
-      log.error("Initial file length: " + 0 + ", total bytes extracted before error: "
-          + totalBytesExtracted);
+      log.error("Initial file length: 0, total bytes extracted before error: {}",
+          totalBytesExtracted);
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, "Error occured while writing to file. "
           + ex.getMessage(), ex);
     } finally {
@@ -270,8 +252,6 @@ public class FileUtil {
       dataStream = null;
       outStream = null;
     }
-
-    // byte[] digest = md.digest();
     md = null;
   }
 
@@ -284,17 +264,14 @@ public class FileUtil {
    */
   public static File gzipPackXml(File fileToZip) throws DhxException {
     if (!fileToZip.exists()) {
-      log.debug("Input file \"" + fileToZip.getPath() + "\" does not exist!");
+      log.debug("Input file \"{}\" does not exist!", fileToZip.getPath());
       throw new IllegalArgumentException("Data file does not exist!");
     }
     long time = Calendar.getInstance().getTimeInMillis();
     try {
-      log.debug("Starting packing file. path:" + fileToZip.getPath());
+      log.debug("Starting packing file. path: {}", fileToZip.getPath());
       InputStream stream = new FileInputStream(fileToZip);
       File zipPackedFile = gzipPackXml(stream, String.valueOf(time), String.valueOf(time + 1));
-      // fileToZip.delete();
-      // zipPackedFile.renameTo(fileToZip);
-      // fileToZip = zipPackedFile;
       return zipPackedFile;
     } catch (IOException ex) {
       log.error("Unable to gzip and encode to base64", ex);
@@ -487,18 +464,14 @@ public class FileUtil {
   public static InputStream zipUnpack(InputStream zipStream, String fileToFindInZip)
       throws DhxException {
     try {
-      log.debug("Strating zip unpack. Searching for file:" + fileToFindInZip);
+      log.debug("Strating zip unpack. Searching for file: {}", fileToFindInZip);
       ZipInputStream zis = new ZipInputStream(zipStream);
       ZipEntry ze;
       log.debug("Zip inputstream created");
-      //ze = zis.getNextEntry();
       while ((ze = zis.getNextEntry()) != null) {
-        log.debug("Zip entry:" + ze.getName());
+        log.debug("Zip entry: {}", ze.getName());
         if (ze.getName().equals(fileToFindInZip)) {
           return zis;
-          // extractFile(zis, globalConf);
-          // SharedParametersType sharedParameters = XsdUtil.unmarshallCapsule(zis, unmarshaller);
-          // return sharedParameters;
         }
       }
       throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,

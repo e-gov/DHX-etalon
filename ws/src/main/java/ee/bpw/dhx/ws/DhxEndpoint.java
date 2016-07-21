@@ -1,12 +1,13 @@
 package ee.bpw.dhx.ws;
 
 import ee.bpw.dhx.exception.DhxException;
-
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DocumentService;
+
+import com.jcabi.aspects.Loggable;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.Members;
@@ -53,16 +54,17 @@ public class DhxEndpoint {
    * @param request - service request
    * @param messageContext - SOAP message context
    * @return - service response. contains information about document being received or not
+   * @throws DhxException - thrown if error occured while sending document
    */
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "sendDocument")
   @ResponsePayload
+  @Loggable
   public SendDocumentResponse sendDocument(@RequestPayload SendDocument request,
       MessageContext messageContext) throws DhxException {
     SendDocumentResponse response = new SendDocumentResponse();
     try {
       XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
       response = documentService.receiveDocumentFromEndpoint(request, client);
-      // response.setStatus(StatusEnum.ACCEPTED.getName());
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
       if (ex.getExceptionCode().isBusinessException()) {
@@ -87,6 +89,7 @@ public class DhxEndpoint {
    */
   @PayloadRoot(namespace = NAMESPACE_URI, localPart = "representationList")
   @ResponsePayload
+  @Loggable
   public RepresentationListResponse representationList(
       @RequestPayload RepresentationList request, MessageContext messageContext)
       throws DhxException {
@@ -95,7 +98,6 @@ public class DhxEndpoint {
       dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
       List<Representee> representees = dhxImplementationSpecificService.getRepresentationList();
       if (representees != null) {
-        // MemberCodes memberCodes = new MemberCodes();
         Members members = new Members();
         for (Representee representee : representees) {
           members.getMember().add(representee.convertToMember());

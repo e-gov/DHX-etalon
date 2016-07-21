@@ -17,7 +17,6 @@ import eu.x_road.xsd.identifiers.ObjectFactory;
 import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
 import eu.x_road.xsd.identifiers.XRoadObjectType;
 import eu.x_road.xsd.identifiers.XRoadServiceIdentifierType;
-import eu.x_road.xsd.representation.XRoadRepresentedPartyType;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -81,11 +80,6 @@ public class DhxGateway extends WebServiceGatewaySupport {
     setMarshaller(dhxMarshallerService.getJaxbMarshaller());
     setUnmarshaller(dhxMarshallerService.getJaxbMarshaller());
     DhxHttpComponentsMessageSender messageSender = new DhxHttpComponentsMessageSender();
-    // HttpURLConnection con;
-    // HttpTransportConstants.HEADER_CONTENT_TRANSFER_ENCODING
-    log.debug("before sender");
-    log.debug("sender " + messageSender.toString());
-    log.debug("config " + soapConfig.getConnectionTimeout());
     messageSender.setConnectionTimeout(soapConfig.getConnectionTimeout());
     messageSender.setReadTimeout(soapConfig.getReadTimeout());
     getWebServiceTemplate().setMessageSender(messageSender);
@@ -113,6 +107,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
       this.serviceVersion = serviceVersion;
     }
 
+    @SuppressWarnings({"rawtypes"})
     @Override
     public void doWithMessage(WebServiceMessage message) throws IOException, TransformerException {
       try {
@@ -120,13 +115,11 @@ public class DhxGateway extends WebServiceGatewaySupport {
         for (Iterator it = ((SaajSoapMessage) message).getSaajMessage().getAttachments(); it
             .hasNext();) {
           AttachmentPart attachment = (AttachmentPart) it.next();
-          log.debug("attachment part" + attachment.getContentType());
+          log.debug("attachment part: {}", attachment.getContentType());
           attachment.setMimeHeader(HttpTransportConstants.HEADER_CONTENT_TRANSFER_ENCODING,
               "base64");
         }
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        // Marshaller marshallerHeader = marshaller.getJaxbContext().createMarshaller();
-        // marshallerHeader.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
         eu.x_road.xsd.xroad.ObjectFactory factory = new eu.x_road.xsd.xroad.ObjectFactory();
         transformer.transform(
             marshallObject(factory.createProtocolVersion(soapConfig.getProtocolVersion())),
@@ -150,8 +143,6 @@ public class DhxGateway extends WebServiceGatewaySupport {
     private StringSource marshallObject(Object obejct)
         throws DhxException {
       String result = "";
-      // StringWriter sw = new StringWriter();
-      // objectMarshaller.marshal(obejct, sw);
       StringWriter sw = dhxMarshallerService.marshallToWriter(obejct);
       result = sw.toString();
       return new StringSource(result);
@@ -165,12 +156,6 @@ public class DhxGateway extends WebServiceGatewaySupport {
       client.setMemberCode(soapConfig.getMemberCode());
       client.setSubsystemCode(soapConfig.getSubsystem());
       return client;
-    }
-    
-    private XRoadRepresentedPartyType getXRoadRepresentedPartyType() {
-      XRoadRepresentedPartyType representee = new XRoadRepresentedPartyType();
-      representee.setPartyCode(service.getRepresentee().getMemberCode());
-      return representee;
     }
 
     private XRoadServiceIdentifierType getXRoadServiceIdentifierType() {
@@ -210,7 +195,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
   public SendDocumentResponse sendDocument(DhxDocument document, String xroadServiceVersion)
       throws DhxException {
     SendDocumentResponse response = null;
-    log.info("Sending document to recipient:" + document.getService().toString());
+    log.info("Sending document to recipient: {}", document.getService().toString());
     try {
       SendDocument request = new SendDocument();
       if (document.getService().getRepresentee() != null) {
@@ -223,8 +208,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
       } else {
         throw new DhxException(DhxExceptionEnum.DATA_ERROR, "Consignment id is empty!");
       }
-      log.info("Sending document for " + document.getService().toString() + " sec server:"
-          + soapConfig.getSecurityServer() + " with consignmentId:" + request.getConsignmentId());
+      log.info("Sending document for {} sec server: {} with consignmentId: {}", document
+          .getService().toString(), soapConfig.getSecurityServer(), request.getConsignmentId());
       getWebServiceTemplate().setCheckConnectionForFault(false);
       getWebServiceTemplate().setCheckConnectionForError(false);
       SimpleFaultMessageResolver resolver = new SimpleFaultMessageResolver();
@@ -235,11 +220,10 @@ public class DhxGateway extends WebServiceGatewaySupport {
               request,
               new SoapRequestHeaderModifier(document.getService(), soapConfig
                   .getSendDocumentServiceCode(), xroadServiceVersion));
-      log.info("Document sent to:"
-          + document.getService().toString()
-          + " ReceiptId:"
-          + response.getReceiptId()
-          + (response.getFault() == null ? "" : " faultCode:"
+      log.info("Document sent to: {} ReceiptId: {} Fault: {}",
+          document.getService().toString(),
+          response.getReceiptId(),
+          (response.getFault() == null ? "" : " faultCode:"
               + response.getFault().getFaultCode() + " faultString:"
               + response.getFault().getFaultString()));
     } catch (WebServiceFaultException ex) {
@@ -278,7 +262,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
   public RepresentationListResponse getRepresentationList(XroadMember member,
       String xroadServiceVersion) throws DhxException {
     RepresentationListResponse response = null;
-    log.info("Getting representation list from:" + member.toString());
+    log.info("Getting representation list from: {}", member.toString());
     try {
       getWebServiceTemplate().setCheckConnectionForFault(false);
       getWebServiceTemplate().setCheckConnectionForError(false);
@@ -311,6 +295,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * @return - XroadMember found in SOAP message header
    * @throws DhxException - throws if error occurs while getting client from SOAP message
    */
+  @SuppressWarnings({"unchecked"})
   public XroadMember getXroadClientAndSetRersponseHeader(MessageContext messageContext)
       throws DhxException {
     try {
@@ -338,7 +323,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
         }
         transformer.transform(ele.getSource(), respheader.getResult());
       }
-      log.debug("xrd client memberCode: " + client.getMemberCode());
+      log.debug("xrd client memberCode: {}", client.getMemberCode());
       return client;
     } catch (TransformerException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR,

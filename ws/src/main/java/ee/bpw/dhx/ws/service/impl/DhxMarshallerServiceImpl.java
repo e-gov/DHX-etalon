@@ -2,12 +2,10 @@ package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
-import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
+
+import com.jcabi.aspects.Loggable;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,8 +19,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
@@ -54,8 +50,8 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - unmarshalled object
    * @throws DhxException - thrown if error occurs while unmrashalling object
    */
+  @Loggable
   public <T> T unmarshall(Source source) throws DhxException {
-    log.debug(" <T> T unmarshall(Source source, Unmarshaller unmarshaller)");
     try {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
@@ -77,11 +73,11 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
+  @Loggable
   public <T> T unmarshall(File capsuleFile)
       throws DhxException {
-    log.debug("<T> T unmarshallCapsule(File capsuleFile, Unmarshaller unmarshaller)");
     try {
-      log.debug("Unmarshalling file. " + capsuleFile.getAbsolutePath());
+      log.debug("Unmarshalling file: {}", capsuleFile.getAbsolutePath());
       return (T) unmarshall(new FileInputStream(capsuleFile));
     } catch (FileNotFoundException ex) {
       log.error(ex.getMessage(), ex);
@@ -97,10 +93,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
+  @Loggable
   public <T> T unmarshall(final InputStream capsuleStream)
       throws DhxException {
-    log.debug("<T> T unmarshallCapsule(final InputStream capsuleStream, "
-        + "Unmarshaller unmarshaller)");
     return unmarshallAndValidate(capsuleStream, null);
   }
 
@@ -115,10 +110,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - parsed(unmarshalled) object
    * @throws DhxException - thrown if error occurs while parsing file
    */
+  @Loggable
   public <T> T unmarshallAndValidate(final InputStream capsuleStream,
       InputStream schemaStream) throws DhxException {
-    log.debug("<T> T unmarshallCapsuleAndValidate(final InputStream capsuleStream, "
-        + "InputStream schemaStream, Unmarshaller unmarshaller)");
     try {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
@@ -149,6 +143,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - file containing marshalled object
    * @throws DhxException - thrown if error occurs while marshalling object
    */
+  @Loggable
   public File marshall(Object container) throws DhxException {
     try {
       if (log.isDebugEnabled()) {
@@ -171,6 +166,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @return - file containing marshalled object
    * @throws DhxException - thrown if error occurs while marshalling object
    */
+  @Loggable
   public StringWriter marshallToWriter(Object container) throws DhxException {
     try {
       if (log.isDebugEnabled()) {
@@ -193,6 +189,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @param schemaStream - stream caontaining XSD schema
    * @throws DhxException - thrown if error occurs
    */
+  @Loggable
   public void validate(File file, InputStream schemaStream) throws DhxException {
     validate(FileUtil.getFileAsStream(file), schemaStream);
   }
@@ -204,6 +201,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    * @param schemaStream - stream containing schema against which to validate
    * @throws DhxException - thrown if file is not validated against XSD schema.
    */
+  @Loggable
   public void validate(final InputStream fileStream, InputStream schemaStream)
       throws DhxException {
     try {

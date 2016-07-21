@@ -1,21 +1,13 @@
 package ee.bpw.dhx.ws.config;
 
-import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.CapsuleAdressee;
-import ee.bpw.dhx.util.CapsuleVersionEnum;
-
 import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -37,7 +29,6 @@ public class DhxConfig {
   private Boolean parseCapsule = true;
   private String wsdlFile;
   private String endpointPath;
-  private String sendRetryCount;
   private String marshallContext;
   private Integer maxFileSize;
   private String dateFormat;
@@ -66,5 +57,5 @@ public class DhxConfig {
     return sdf.format(date);
   }
 
-  
+
 }

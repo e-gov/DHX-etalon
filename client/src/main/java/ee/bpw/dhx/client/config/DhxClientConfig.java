@@ -4,6 +4,7 @@ import ee.bpw.dhx.client.service.AddressClientServiceImpl;
 import ee.bpw.dhx.client.service.DhxClientGateWay;
 import ee.bpw.dhx.client.service.DhxClientSpecificService;
 import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
+import ee.bpw.dhx.util.StringUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
@@ -49,20 +50,8 @@ public class DhxClientConfig {
   private String representees;
   private Integer logMaxSize;
   private Integer logRefresh;
-  // private String capsuleTestFile;
-  // private String jobRecipient;
   private Integer binaryBufferSize;
   private String name;
-  // private String info;
-
-  /*
-   * private String testFile1; private String testFile2;
-   * 
-   * private String sendDocumentHelp; private String representationListHelp; private String
-   * logEventsHelp; private String logRefreshHelp; private String representativesHelp; private
-   * String validateCapsuleHelp; private String securityServerHelp; private String xroadMemberHelp;
-   * private String maxFileSizeHelp;
-   */
 
   private String capsuleCorrect;
   private String capsuleInvalid;
@@ -81,7 +70,7 @@ public class DhxClientConfig {
    * @return - list of representatives
    */
   public List<String> getRepresenteesList() {
-    if (representeesList == null && representees != null && !representees.equals("")) {
+    if (representeesList == null && !StringUtil.isNullOrEmpty(representees)) {
       representeesList = Arrays.asList(representees.split(","));
     }
     return representeesList;
@@ -94,7 +83,7 @@ public class DhxClientConfig {
   public List<Map<String, String>> getCapsuleAddressateSelect() {
     return getSelect(capsuleAddressateSelect);
   }
-  
+
   public List<Map<String, String>> getCapsuleAddressateSelectRepresentation() {
     return getSelect(capsuleAddressateSelectRepresentation);
   }
@@ -153,22 +142,15 @@ public class DhxClientConfig {
   }
 
   @Bean
-  /**
-   * Creates localeResolver
-   * @return localeResolver
-   */
-  public LocaleResolver localeResolver() {
+  LocaleResolver localeResolver() {
     SessionLocaleResolver resolver = new SessionLocaleResolver();
     resolver.setDefaultLocale(new Locale("et"));
     return resolver;
   }
 
+
   @Bean
-  /**
-   * Creates messageSource
-   * @return messageSource
-   */
-  public MessageSource messageSource() {
+  MessageSource messageSource() {
     ReloadableResourceBundleMessageSource messageSource =
         new ReloadableResourceBundleMessageSource();
     messageSource.setBasename("classpath:i18/messages");

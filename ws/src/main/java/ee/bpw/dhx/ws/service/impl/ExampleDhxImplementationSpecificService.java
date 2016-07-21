@@ -1,18 +1,15 @@
 package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
-import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
+
+import com.jcabi.aspects.Loggable;
+
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.logging.log4j.Level;
-
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -35,8 +32,9 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
 
   @Override
   @Deprecated
+  @Loggable
   public boolean isDuplicatePackage(XroadMember from, String consignmentId) {
-    log.debug("Checking for duplicates. from memberCode:" + from.toString()
+    log.debug("Checking for duplicates. from memberCode: {}", from.toString()
         + " from consignmentId:" + consignmentId);
     if (documents != null && documents.size() > 0) {
       for (DhxDocument document : documents) {
@@ -54,9 +52,10 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
 
   @Override
   @Deprecated
+  @Loggable
   public String receiveDocument(DhxDocument document) throws DhxException {
-    log.debug("String receiveDocument(DhxDocument document) externalConsignmentId"
-        + document.getExternalConsignmentId());
+    log.debug("String receiveDocument(DhxDocument document) externalConsignmentId: {}",
+        document.getExternalConsignmentId());
     String receiptId = UUID.randomUUID().toString();
     documents.add(document);
     return receiptId;
@@ -64,6 +63,7 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
 
   @Override
   @Deprecated
+  @Loggable
   public List<Representee> getRepresentationList() {
     return new ArrayList<Representee>();
   }

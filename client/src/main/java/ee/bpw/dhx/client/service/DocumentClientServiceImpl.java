@@ -26,9 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
 /**
@@ -57,8 +55,6 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
   // get log4j logger to log events on custom level.
   final Logger logger = LogManager.getLogger();
 
-  private static List<DhxDocument> receevedDocuments = new ArrayList<DhxDocument>();
-
   /**
    * Method to serve UI needs. It replaces capsule adressees if needed.
    * 
@@ -70,8 +66,8 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
    */
   public List<SendDocumentResponse> sendDocument(String capsuleType, String recipientString,
       String consignmentId) throws DhxException {
-    log.debug("sending document. capsuleType= " + capsuleType + " recipientString="
-        + recipientString + " consignmentId=" + consignmentId);
+    log.debug("sending document. capsuleType= {} recipientString= {} consignmentId= {}",
+        capsuleType, recipientString, consignmentId);
     try {
       String capsuleFilePath = "";
       switch (capsuleType) {
@@ -135,27 +131,6 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
     }
   }
 
-
-  /**
-   * override just to log events.
-   */
-  /*
-   * @Override protected List<SendDocumentResponse> sendDocument(Object container, InputStream
-   * capsuleStream, String consignmentId) throws DhxException { try { return
-   * super.sendDocument(container, capsuleStream, consignmentId); } catch (DhxException ex) {
-   * logger.log(Level.getLevel("EVENT"), "Error occured while sending document. " + ex.getMessage(),
-   * ex); throw ex; } }
-   * 
-   * /** overriden to log events.
-   */
-  /*
-   * @Override public List<SendDocumentResponse> sendDocument(File capsuleFile, String
-   * consignmentId, String recipient) throws DhxException { try { return
-   * super.sendDocument(capsuleFile, consignmentId, recipient); } catch (DhxException ex) {
-   * logger.log(Level.getLevel("EVENT"), "Error occured while sending document. " + ex.getMessage(),
-   * ex); throw ex; } }
-   */
-
   /**
    * Overriden to log events.
    */
@@ -165,6 +140,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
     try {
       response = dhxGateway.sendDocument(document);
     } catch (Exception ex) {
+
       log.error("Error occured while sending document. " + ex.getMessage(), ex);
       logger.log(Level.getLevel("EVENT"),
           "Error occured while sending document. " + ex.getMessage(), ex);

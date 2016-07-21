@@ -1,5 +1,6 @@
 package ee.bpw.dhx.client.ui;
 
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -39,10 +40,12 @@ import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.util.StringUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
+
 
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
@@ -235,7 +238,6 @@ public class DhxUi extends UI {
     FileDownloader fileDownloader = new FileDownloader(source);
     Link link = new Link(getMessage("main.download-correct"), null);
     fileDownloader.extend(link);
-    // link.setTargetName("_blank");
     layout.addComponent(link);
 
     StreamResource source2 =
@@ -243,7 +245,6 @@ public class DhxUi extends UI {
     FileDownloader fileDownloader2 = new FileDownloader(source2);
     Link link2 = new Link(getMessage("main.download-invalid"), null);
     fileDownloader2.extend(link2);
-    // link.setTargetName("_blank");
     layout.addComponent(link2);
     ExternalResource wsdlResource = new ExternalResource("ws/dhx.wsdl");
     Link linkwsdl = new Link(getMessage("main.wsdl"), wsdlResource);
@@ -330,10 +331,6 @@ public class DhxUi extends UI {
     gridLayout.addComponent(new Label(soapConfig.getXroadInstance() + "/"
         + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/"
         + soapConfig.getSubsystem()));
-
-   /* gridLayout.addComponent(addTooltip(new Label(getMessage("settings.max-file-size") + ": "),
-        getMessage("settings.max-file-size"), getMessage("settings.max-file-size-help")));
-    gridLayout.addComponent(new Label(dhxConfig.getMaxFileSize().toString()));*/
     VerticalLayout layout = new VerticalLayout();
     layout.addComponent(gridLayout);
     return layout;
@@ -381,11 +378,11 @@ public class DhxUi extends UI {
               showDhxNotification(getMessage("error.fill-required-fields"),
                   Notification.Type.WARNING_MESSAGE);
             } else {
-              log.info("got request. addressees: " + adressees.getValue() + " capsule: "
-                  + capsules.getValue());
+              log.info("got request. addressees: {} capsule: {}", adressees.getValue(),
+                  capsules.getValue());
               try {
                 String consignmentIdStr = consignmentId.getValue();
-                if (consignmentIdStr == null || consignmentIdStr.equals("")) {
+                if (StringUtil.isNullOrEmpty(consignmentIdStr)) {
                   consignmentIdStr = UUID.randomUUID().toString();
                 }
                 List<SendDocumentResponse> responses =
@@ -394,14 +391,16 @@ public class DhxUi extends UI {
                 String statuses = "";
                 Boolean success = true;
                 for (SendDocumentResponse response : responses) {
-                  if(response.getFault() != null) {
+                  if (response.getFault() != null) {
                     success = false;
                   } else {
                     success = true;
                   }
                   statuses +=
                       "&nbsp;&nbsp;"
-                          + (success?getMessage("activity.send-document.document-sent"):getMessage("activity.send-document.error"))                          
+                          + (success
+                              ? getMessage("activity.send-document.document-sent")
+                              : getMessage("activity.send-document.error"))
                           + " "
                           + getMessage("activity.send-document.receiptid")
                           + ": "
@@ -416,7 +415,9 @@ public class DhxUi extends UI {
                 }
                 showDhxNotification("<span style=\"white-space:normal;\">"
                     + getMessage("activity.send-document.results") + ":<br/> "
-                    + statuses + "</span>", (success?Notification.Type.TRAY_NOTIFICATION:Notification.Type.WARNING_MESSAGE));
+                    + statuses + "</span>", (success
+                    ? Notification.Type.TRAY_NOTIFICATION
+                    : Notification.Type.WARNING_MESSAGE));
               } catch (DhxException ex) {
                 log.error("Error while sending document." + ex.getMessage(), ex);
                 showDhxNotification(getMessage("activity.send-document.error")

@@ -41,7 +41,6 @@ public class ScheduledClient {
     try {
       file = FileUtil.getFile(config.getCapsuleCorrect());
       log.debug("sending document automatically");
-      // DhxDocument document = new DhxDocument(config.getJobRecipient(), stream, false);
       documentService.sendDocument(file, null);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);

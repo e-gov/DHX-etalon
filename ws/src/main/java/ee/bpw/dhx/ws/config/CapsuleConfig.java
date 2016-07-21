@@ -21,17 +21,16 @@ import java.util.List;
 @ConfigurationProperties(prefix = "dhx.xsd")
 @Configuration
 public class CapsuleConfig {
-  
+
   private String capsuleXsdFile21;
-  //private String xsdFile;
   private CapsuleVersionEnum currentCapsuleVersion;
-  
+
 
   public String getCurrentXsd() throws DhxException {
     return getXsdForVersion(currentCapsuleVersion);
   }
 
-  
+
   /**
    * Method finds config parameter which contains link to XSD for given version.
    * 
@@ -40,9 +39,9 @@ public class CapsuleConfig {
    * @throws DhxException - thrown then no XSD file is defined for given version
    */
   public String getXsdForVersion(CapsuleVersionEnum version) throws DhxException {
-    if(version==null) {
+    if (version == null) {
       throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-        "Unable to find XSD file for given verion. version: null");
+          "Unable to find XSD file for given verion. version: null");
     }
     switch (version) {
       case V21:
@@ -52,7 +51,7 @@ public class CapsuleConfig {
             "Unable to find XSD file for given verion. version:" + version.toString());
     }
   }
-  
+
 
   /**
    * Method to find adresssees from container. Method must return adressees for every existing

@@ -148,8 +148,6 @@ public class FileUtilTest {
     ZipEntry ze = new ZipEntry("file.txt");
     zos.putNextEntry(ze);
     zos.write(unzippedString.getBytes(StandardCharsets.UTF_8));
-    // File testFile = testFolder.newFile("file.txt");
-    // Files.write(Paths.get(testFile.getAbsolutePath()), );
     zos.closeEntry();
     zos.close();
     fos.close();

@@ -39,7 +39,7 @@ public interface AddressService {
    * @throws DhxException - thrown if recipient is not found
    */
   public XroadMember getClientForMemberCode(String memberCode) throws DhxException;
-  
+
   public List<XroadMember> getAdresseeList();
 
 }
