@@ -143,9 +143,9 @@ public class DhxDocument {
   private DataHandler documentFile;
 
   private XroadMember client;
-
-  // it it is outbound document, then the one to whom the document is being sent
   private XroadMember service;
+
+
   /**
    * external ID of the package.(for package receiving)
    */
@@ -179,7 +179,8 @@ public class DhxDocument {
   }
 
   /**
-   * If it is inbound document, then client is the one who sent the document, otherwise NULL.
+   * client represents the one who sent the document(document sender). if it is outbound document
+   * then client is NULL.
    * 
    * @return client
    */
@@ -188,17 +189,19 @@ public class DhxDocument {
   }
 
   /**
-   * If it is inbound document, then client is the one who sent the document, otherwise NULL.
+   * client represents the one who sent the document(document sender). if it is outbound document
+   * then client is NULL.
    * 
-   * @param client - if it is inbound document, then client is the one who sent the document,
-   *        otherwise NULL.
+   * @param client - client represents the one who sent the document(document sender). if it is
+   *        outbound document then client is NULL
    */
   public void setClient(XroadMember client) {
     this.client = client;
   }
 
   /**
-   * it it is outbound document, then the one to whom the document is being sent, otherwise NULL.
+   * service represents the one to whom the document is being sent. if it is inbound document then
+   * service is NULL.
    * 
    * @return service
    */
@@ -207,7 +210,8 @@ public class DhxDocument {
   }
 
   /**
-   * if it is outbound document, then the one to whom the document is being sent, otherwise NULL.
+   * service represents the one to whom the document is being sent(adressee). if it is inbound
+   * document then service is NULL.
    * 
    * @param service - xroad member of the recipient
    */

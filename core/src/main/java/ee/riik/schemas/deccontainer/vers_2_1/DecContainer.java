@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -975,8 +976,29 @@ public class DecContainer {
     protected String mimeType;
     @XmlElement(name = "FileSize")
     protected BigInteger fileSize;
-    @XmlElement(name = "ZipBase64Content", required = true)
+    @XmlElement(name = "ZipBase64Content", required = false)
     protected String zipBase64Content;
+    
+    
+    /**
+     * Gets the value of the zipBase64Content property.
+     * 
+     * @return possible object is {@link String }
+     * 
+     */
+    public String getZipBase64Content() {
+      return zipBase64Content;
+    }
+
+    /**
+     * Sets the value of the zipBase64Content property.
+     * 
+     * @param value allowed object is {@link String }
+     * 
+     */
+    public void setZipBase64Content(String value) {
+      this.zipBase64Content = value;
+    }
 
     /**
      * Gets the value of the fileGuid property.
@@ -1076,26 +1098,6 @@ public class DecContainer {
      */
     public void setFileSize(BigInteger value) {
       this.fileSize = value;
-    }
-
-    /**
-     * Gets the value of the zipBase64Content property.
-     * 
-     * @return possible object is {@link String }
-     * 
-     */
-    public String getZipBase64Content() {
-      return zipBase64Content;
-    }
-
-    /**
-     * Sets the value of the zipBase64Content property.
-     * 
-     * @param value allowed object is {@link String }
-     * 
-     */
-    public void setZipBase64Content(String value) {
-      this.zipBase64Content = value;
     }
 
   }

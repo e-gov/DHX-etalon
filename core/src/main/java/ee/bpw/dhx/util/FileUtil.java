@@ -17,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,7 +44,7 @@ import javax.mail.MessagingException;
 @Slf4j
 public class FileUtil {
 
-  private static final Integer binaryBuffeSize = 100000;
+  public static final Integer BINARY_BUFFER_SIZE = 100000;
 
   /**
    * Method extract attachment and unpacks attachment from datahandler and returns as file.
@@ -184,7 +186,7 @@ public class FileUtil {
    */
   private static void writeToFile(InputStream inStream, File targetFile) throws DhxException {
     long totalBytesExtracted = 0;
-    byte[] buf = new byte[binaryBuffeSize];
+    byte[] buf = new byte[BINARY_BUFFER_SIZE];
     int len;
     BufferedInputStream sourceBuffered = null;
     FileOutputStream out = null;
@@ -192,7 +194,6 @@ public class FileUtil {
     try {
       sourceBuffered = new BufferedInputStream(inStream);
       out = new FileOutputStream(targetFile, false);
-      // Uncompress data in input stream
       while ((len = sourceBuffered.read(buf)) > 0) {
         out.write(buf, 0, len);
         totalBytesExtracted += len;
@@ -329,7 +330,7 @@ public class FileUtil {
       InputStream in = new BufferedInputStream(streamToZip);
       OutputStream zipOutFile = new BufferedOutputStream(new FileOutputStream(zipFile));
       GZIPOutputStream out = new GZIPOutputStream(zipOutFile);
-      byte[] buf = new byte[binaryBuffeSize];
+      byte[] buf = new byte[BINARY_BUFFER_SIZE];
       int len;
       try {
         while ((len = in.read(buf)) > 0) {
@@ -367,7 +368,7 @@ public class FileUtil {
     }
 
     long totalBytesExtracted = 0;
-    byte[] buf = new byte[binaryBuffeSize];
+    byte[] buf = new byte[BINARY_BUFFER_SIZE];
     int len;
     FileInputStream sourceStream = null;
     BufferedInputStream sourceBuffered = null;
@@ -448,6 +449,40 @@ public class FileUtil {
         log.error("Error occured while closing stream." + ex.getMessage(), ex);
       } finally {
         stream = null;
+      }
+    }
+  }
+
+  /**
+   * Safely closes reader.
+   * 
+   * @param reader - reader to close
+   */
+  public static void safeCloseReader(Reader reader) {
+    if (reader != null) {
+      try {
+        reader.close();
+      } catch (Exception ex) {
+        log.error("Error occured while closing stream." + ex.getMessage(), ex);
+      } finally {
+        reader = null;
+      }
+    }
+  }
+
+  /**
+   * Safely closes writer.
+   * 
+   * @param writer - writer to close
+   */
+  public static void safeCloseWriter(Writer writer) {
+    if (writer != null) {
+      try {
+        writer.close();
+      } catch (Exception ex) {
+        log.error("Error occured while closing stream." + ex.getMessage(), ex);
+      } finally {
+        writer = null;
       }
     }
   }

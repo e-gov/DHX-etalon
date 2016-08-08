@@ -1,13 +1,13 @@
 package ee.bpw.dhx.ws;
 
+import com.jcabi.aspects.Loggable;
+
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DocumentService;
-
-import com.jcabi.aspects.Loggable;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.Members;

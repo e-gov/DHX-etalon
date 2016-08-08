@@ -26,6 +26,9 @@ public class ConversionUtil {
    * @throws DhxException - thrown if error occurs
    */
   public static XMLGregorianCalendar toGregorianCalendar(Date date) throws DhxException {
+    if (date == null) {
+      return null;
+    }
     try {
       GregorianCalendar gcalendar = new GregorianCalendar();
       gcalendar.setTime(date);
@@ -45,6 +48,9 @@ public class ConversionUtil {
    * @return - converted Date
    */
   public static Date toDate(XMLGregorianCalendar xmlDate) {
+    if (xmlDate == null) {
+      return null;
+    }
     return xmlDate.toGregorianCalendar().getTime();
 
   }

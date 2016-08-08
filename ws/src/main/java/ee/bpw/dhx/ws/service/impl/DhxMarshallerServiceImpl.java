@@ -1,12 +1,14 @@
 package ee.bpw.dhx.ws.service.impl;
 
+import com.jcabi.aspects.Loggable;
+
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 
-import com.jcabi.aspects.Loggable;
-
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +37,17 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
 
 
   @Autowired
-  protected Unmarshaller unmarshaller;
+  @Getter
+  @Setter
+  Unmarshaller unmarshaller;
 
   @Autowired
+  @Getter
+  @Setter
   Marshaller marshaller;
 
   @Autowired
+  @Getter
   Jaxb2Marshaller jaxbMarshaller;
 
   /**
@@ -96,6 +103,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
   @Loggable
   public <T> T unmarshall(final InputStream capsuleStream)
       throws DhxException {
+
     return unmarshallAndValidate(capsuleStream, null);
   }
 
@@ -117,6 +125,28 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
       }
+      setSchemaForUnmarshaller(schemaStream);
+      return unmarshallNoValidation(capsuleStream);
+    } finally {
+      // wont set single schema for unmarshaller
+      unmarshaller.setSchema(null);
+    }
+  }
+
+  @Loggable
+  protected <T> T unmarshallNoValidation(final InputStream capsuleStream) throws DhxException {
+    try {
+      Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
+      return (T) obj;
+    } catch (JAXBException ex) {
+      throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
+          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+    }
+  }
+
+  @Loggable
+  private void setSchemaForUnmarshaller(InputStream schemaStream) throws DhxException {
+    try {
       if (schemaStream != null) {
         Source schemaSource = new StreamSource(schemaStream);
         SchemaFactory schemaFactory =
@@ -124,15 +154,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
         Schema schema = schemaFactory.newSchema(schemaSource);
         unmarshaller.setSchema(schema);
       }
-      Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
-      return (T) obj;
-    } catch (JAXBException | SAXException ex) {
-      log.error(ex.getMessage(), ex);
+    } catch (SAXException ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
-          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
-    } finally {
-      // wont set single schema for unmarshaller
-      unmarshaller.setSchema(null);
+          "Error occured while setting schema for unmarshaller. " + ex.getMessage(), ex);
     }
   }
 
@@ -151,6 +175,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       }
       File outputFile = FileUtil.createPipelineFile();
       marshaller.marshal(container, outputFile);
+
       return outputFile;
     } catch (IOException | JAXBException ex) {
       log.error(ex.getMessage(), ex);
@@ -220,12 +245,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
     }
   }
 
-  public Jaxb2Marshaller getJaxbMarshaller() {
-    return jaxbMarshaller;
+  public void readBig(InputStream fileStream) {
+
   }
 
-  public Unmarshaller getUnmarshaller() {
-    return unmarshaller;
-  }
 
 }

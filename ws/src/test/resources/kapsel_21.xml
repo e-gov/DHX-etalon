@@ -20,7 +20,7 @@
       <Residency>EE</Residency>
     </Person>
     <ContactData>
-      <Adit>1</Adit>
+      <Adit>true</Adit>
       <Phone>3726630276</Phone>
       <Email>lauri.tammemae@ria.ee</Email>
       <WebPage>www.hot.ee/lauri</WebPage>
@@ -48,7 +48,7 @@
       <Residency>EE</Residency>
     </Person>
     <ContactData>
-      <Adit>1</Adit>
+      <Adit>false</Adit>
       <Phone>3726630276</Phone>
       <Email>lauri.tammemae@ria.ee</Email>
       <WebPage>www.hot.ee/lauri</WebPage>
@@ -87,7 +87,7 @@
   </Access>
   <File>
     <FileGuid>25892e17-80f6-415f-9c65-7395632f0001</FileGuid>
-    <RecordMainComponent>1</RecordMainComponent>
+    <RecordMainComponent>0</RecordMainComponent>
     <FileName>Ettepanek.doc</FileName>
     <MimeType>application/msword</MimeType>
     <FileSize>211543</FileSize>

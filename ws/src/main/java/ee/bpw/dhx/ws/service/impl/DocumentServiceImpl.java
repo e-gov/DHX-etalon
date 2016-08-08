@@ -1,5 +1,7 @@
 package ee.bpw.dhx.ws.service.impl;
 
+import com.jcabi.aspects.Loggable;
+
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
@@ -17,8 +19,6 @@ import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.DocumentService;
-
-import com.jcabi.aspects.Loggable;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
@@ -155,7 +155,7 @@ public class DocumentServiceImpl implements DocumentService {
       if (log.isDebugEnabled()) {
         for (CapsuleAdressee adressee : adressees) {
           log.debug("Document data from capsule: recipient organisationCode: {}",
-            adressee.getAdresseeCode());
+              adressee.getAdresseeCode());
         }
       }
 
@@ -363,7 +363,7 @@ public class DocumentServiceImpl implements DocumentService {
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
       log.info("Document is not received. code: {} message: {}",
-        ex.getExceptionCode(), ex.getMessage());
+          ex.getExceptionCode(), ex.getMessage());
       throw ex;
     }
   }

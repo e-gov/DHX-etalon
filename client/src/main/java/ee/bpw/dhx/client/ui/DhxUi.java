@@ -46,7 +46,6 @@ import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 
-
 import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.SendDocumentResponse;
@@ -388,31 +387,9 @@ public class DhxUi extends UI {
                 List<SendDocumentResponse> responses =
                     documentClientService.sendDocument(capsules.getValue().toString(), adressees
                         .getValue().toString(), consignmentIdStr);
-                String statuses = "";
-                Boolean success = true;
-                for (SendDocumentResponse response : responses) {
-                  if (response.getFault() != null) {
-                    success = false;
-                  } else {
-                    success = true;
-                  }
-                  statuses +=
-                      "&nbsp;&nbsp;"
-                          + (success
-                              ? getMessage("activity.send-document.document-sent")
-                              : getMessage("activity.send-document.error"))
-                          + " "
-                          + getMessage("activity.send-document.receiptid")
-                          + ": "
-                          + response.getReceiptId()
-                          + "<br/>"
-                          + (response.getFault() == null
-                              ? ""
-                              : "&nbsp;&nbsp;&nbsp;&nbsp;faultCode: "
-                                  + response.getFault().getFaultCode()
-                                  + "<br/>&nbsp;&nbsp;&nbsp;&nbsp;faultString: "
-                                  + response.getFault().getFaultString() + "\n'");
-                }
+                
+                Boolean success = isSendDocumentSuccess(responses);
+                String statuses = getSendDocumentStatuses(responses, success);
                 showDhxNotification("<span style=\"white-space:normal;\">"
                     + getMessage("activity.send-document.results") + ":<br/> "
                     + statuses + "</span>", (success
@@ -439,6 +416,41 @@ public class DhxUi extends UI {
     vertLayout.addComponent(help);
     vertLayout.addComponent(formLayout);
     return vertLayout;
+  }
+  
+  private Boolean isSendDocumentSuccess (List<SendDocumentResponse> responses) {
+    Boolean success = true;
+    for (SendDocumentResponse response : responses) {
+      if (response.getFault() != null) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+    return success;
+  }
+  
+  private String getSendDocumentStatuses (List<SendDocumentResponse> responses, Boolean success) {
+    String statuses = "";
+    for (SendDocumentResponse response : responses) {
+      statuses +=
+          "&nbsp;&nbsp;"
+              + (success
+                  ? getMessage("activity.send-document.document-sent")
+                  : getMessage("activity.send-document.error"))
+              + " "
+              + getMessage("activity.send-document.receiptid")
+              + ": "
+              + response.getReceiptId()
+              + "<br/>"
+              + (response.getFault() == null
+                  ? ""
+                  : "&nbsp;&nbsp;&nbsp;&nbsp;faultCode: "
+                      + response.getFault().getFaultCode()
+                      + "<br/>&nbsp;&nbsp;&nbsp;&nbsp;faultString: "
+                      + response.getFault().getFaultString() + "\n'");
+    }
+    return statuses;
   }
 
   private void showDhxNotification(String notificationText, Notification.Type type) {

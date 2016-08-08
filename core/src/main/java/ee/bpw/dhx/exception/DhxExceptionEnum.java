@@ -20,7 +20,7 @@ public enum DhxExceptionEnum {
   NOT_IMPLEMENTED("NOT_IMPLEMENTED", false),
   XSD_VERSION_ERROR("XSD_VERSION_ERROR", false);
 
-  // error code which is returned is services
+  // error code which is returned in SOAP services(custom fault element)
   private String codeForService;
   private Boolean businessException;
 
@@ -30,10 +30,21 @@ public enum DhxExceptionEnum {
     this.businessException = businessException;
   }
 
+  /**
+   * Returns error code which is returned in SOAP services(custom fault element).
+   * 
+   * @return - error code for SOAP services
+   */
   public String getCodeForService() {
     return codeForService;
   }
 
+  /**
+   * is exception a business exception. Business exceptions are returned as custom fault element
+   * with predefined exception code.
+   * 
+   * @return - is exception a business exception
+   */
   public Boolean isBusinessException() {
     return businessException;
   }

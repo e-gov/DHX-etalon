@@ -1,12 +1,12 @@
 package ee.bpw.dhx.ws.service.impl;
 
+import com.jcabi.aspects.Loggable;
+
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
 import ee.bpw.dhx.model.Representee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
-
-import com.jcabi.aspects.Loggable;
 
 import lombok.extern.slf4j.Slf4j;
 

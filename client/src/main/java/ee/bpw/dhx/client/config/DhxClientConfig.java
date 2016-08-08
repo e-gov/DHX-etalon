@@ -1,6 +1,7 @@
 package ee.bpw.dhx.client.config;
 
 import ee.bpw.dhx.client.service.AddressClientServiceImpl;
+
 import ee.bpw.dhx.client.service.DhxClientGateWay;
 import ee.bpw.dhx.client.service.DhxClientSpecificService;
 import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
@@ -155,7 +156,6 @@ public class DhxClientConfig {
         new ReloadableResourceBundleMessageSource();
     messageSource.setBasename("classpath:i18/messages");
     messageSource.setDefaultEncoding("UTF-8");
-    messageSource.setFallbackToSystemLocale(true);
     return messageSource;
   }
 

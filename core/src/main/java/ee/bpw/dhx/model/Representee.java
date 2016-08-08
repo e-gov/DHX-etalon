@@ -66,12 +66,8 @@ public class Representee {
   public Member convertToMember() throws DhxException {
     Member member = new Member();
     member.setMemberCode(memberCode);
-    if (this.getStartDate() != null) {
-      member.setStartDate(ConversionUtil.toGregorianCalendar(startDate));
-    }
-    if (this.getEndDate() != null) {
-      member.setEndDate(ConversionUtil.toGregorianCalendar(endDate));
-    }
+    member.setStartDate(ConversionUtil.toGregorianCalendar(this.getStartDate()));
+    member.setEndDate(ConversionUtil.toGregorianCalendar(this.getEndDate()));
     return member;
   }
 
