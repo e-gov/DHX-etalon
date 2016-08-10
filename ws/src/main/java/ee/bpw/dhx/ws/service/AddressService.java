@@ -4,11 +4,7 @@ package ee.bpw.dhx.ws.service;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.XroadMember;
 
-import org.springframework.stereotype.Service;
-
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 
 
 
@@ -18,13 +14,11 @@ import javax.annotation.PostConstruct;
  * @author Aleksei Kokarev
  *
  */
-@Service
 public interface AddressService {
 
 
-  @PostConstruct
   /**
-   * Method refreshes local list of addresses. Local list of adresses is refreshed using X-road 
+   * Method refreshes local list of addresses. Local list of adresses is refreshed using X-road
    * global conf and represenattionList service if needed
    */
   public void renewAddressList();

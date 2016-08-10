@@ -36,8 +36,8 @@ import java.util.List;
  * @author Aleksei Kokarev
  *
  */
-@Service
 @Slf4j
+@Service
 public class DocumentClientServiceImpl extends DocumentServiceImpl {
 
   @Autowired

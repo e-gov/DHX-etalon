@@ -1,4 +1,4 @@
-package ee.bpw.dhx.ws;
+package ee.bpw.dhx.ws.endpoint;
 
 import com.jcabi.aspects.Loggable;
 

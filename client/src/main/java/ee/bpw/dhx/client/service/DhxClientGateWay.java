@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
@@ -25,6 +26,7 @@ import java.util.UUID;
  *
  */
 @Slf4j
+@Service
 public class DhxClientGateWay extends DhxGateway {
 
   // get log4j logger to log events on custom level.

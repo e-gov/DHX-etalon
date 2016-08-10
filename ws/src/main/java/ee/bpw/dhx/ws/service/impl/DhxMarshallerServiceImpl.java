@@ -5,6 +5,7 @@ import com.jcabi.aspects.Loggable;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.FileUtil;
+import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 
+import javax.annotation.PostConstruct;
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -33,22 +36,34 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 @Slf4j
+@Service
 public class DhxMarshallerServiceImpl implements DhxMarshallerService {
 
 
-  @Autowired
   @Getter
   @Setter
   Unmarshaller unmarshaller;
 
-  @Autowired
   @Getter
   @Setter
   Marshaller marshaller;
 
-  @Autowired
   @Getter
   Jaxb2Marshaller jaxbMarshaller;
+
+  @Autowired
+  DhxConfig config;
+
+  /**
+   * Postconstruct init method. Sets marshallers needed for that service.
+   * @throws JAXBException - thrown when error occured
+   */
+  @PostConstruct
+  public void init() throws JAXBException {
+    jaxbMarshaller = config.getDhxJaxb2Marshaller();
+    marshaller = jaxbMarshaller.getJaxbContext().createMarshaller();
+    unmarshaller = jaxbMarshaller.getJaxbContext().createUnmarshaller();
+  }
 
   /**
    * Method parses(unmarshalls) object.

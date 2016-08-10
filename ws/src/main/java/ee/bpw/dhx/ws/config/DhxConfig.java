@@ -1,10 +1,14 @@
 package ee.bpw.dhx.ws.config;
 
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,6 +17,7 @@ import java.util.Date;
 @Setter
 @ConfigurationProperties(prefix = "dhx")
 @Configuration
+@Slf4j
 /**
  * Main configuration of DHX webservice application
  * @author Aleksei Kokarev
@@ -27,11 +32,14 @@ public class DhxConfig {
   private Boolean checkFilesize = false;
   private Boolean checkDuplicate = true;
   private Boolean parseCapsule = true;
-  private String wsdlFile;
-  private String endpointPath;
   private String marshallContext;
   private Integer maxFileSize;
   private String dateFormat;
+
+  private String wsdlFile;
+  private String endpointPath;
+
+  private Jaxb2Marshaller dhxJaxb2Marshaller;
 
   private String[] marshallContextAsList;
 
@@ -55,6 +63,21 @@ public class DhxConfig {
   public String format(Date date) {
     SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
     return sdf.format(date);
+  }
+
+  /**
+   * Sets marshaller bean.
+   * 
+   * @return marshaller
+   */
+  @Bean
+  public Jaxb2Marshaller getDhxJaxb2Marshaller() {
+    if (this.dhxJaxb2Marshaller == null) {
+      dhxJaxb2Marshaller = new Jaxb2Marshaller();
+      dhxJaxb2Marshaller.setMtomEnabled(true);
+      dhxJaxb2Marshaller.setContextPaths(getMarshallContextAsList());
+    }
+    return dhxJaxb2Marshaller;
   }
 
 

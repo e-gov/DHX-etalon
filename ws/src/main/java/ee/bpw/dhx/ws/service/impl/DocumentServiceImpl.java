@@ -29,6 +29,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +49,7 @@ import java.util.List;
  *
  */
 @Slf4j
+@Service
 public class DocumentServiceImpl implements DocumentService {
 
   @Autowired

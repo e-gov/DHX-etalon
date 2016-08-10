@@ -1,15 +1,7 @@
 package ee.bpw.dhx.client.config;
 
-import ee.bpw.dhx.client.service.AddressClientServiceImpl;
-
-import ee.bpw.dhx.client.service.DhxClientGateWay;
 import ee.bpw.dhx.client.service.DhxClientSpecificService;
-import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.util.StringUtil;
-import ee.bpw.dhx.ws.config.DhxConfig;
-import ee.bpw.dhx.ws.config.SoapConfig;
-import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl;
@@ -111,36 +103,25 @@ public class DhxClientConfig {
   }
 
   @Bean
-  DocumentClientServiceImpl documentClientServiceImpl() {
-    DocumentClientServiceImpl service = new DocumentClientServiceImpl();
-    return service;
-  }
-
-  @Bean
-  AddressService addressService() {
-    AddressService service = new AddressClientServiceImpl();
-    return service;
-  }
-
-  @Bean
   DhxMarshallerService dhxMarshallerService() {
     return new DhxMarshallerServiceImpl();
   }
 
-  @Bean
-  DhxGateway dhxGateway() {
-    return new DhxClientGateWay();
-  }
-
-  @Bean
-  DhxConfig dhxConfig() {
-    return new DhxConfig();
-  }
-
-  @Bean
-  SoapConfig soapConfig() {
-    return new SoapConfig();
-  }
+  /*
+   * @Bean DocumentClientServiceImpl documentClientServiceImpl() { DocumentClientServiceImpl service
+   * = new DocumentClientServiceImpl(); return service; }
+   * 
+   * @Bean AddressService addressService() { AddressService service = new
+   * AddressClientServiceImpl(); return service; }
+   * 
+   * @Bean DhxMarshallerService dhxMarshallerService() { return new DhxMarshallerServiceImpl(); }
+   * 
+   * @Bean DhxGateway dhxGateway() { return new DhxClientGateWay(); }
+   * 
+   * @Bean DhxConfig dhxConfig() { return new DhxConfig(); }
+   * 
+   * @Bean SoapConfig soapConfig() { return new SoapConfig(); }
+   */
 
   @Bean
   LocaleResolver localeResolver() {

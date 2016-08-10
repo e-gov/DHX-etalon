@@ -19,7 +19,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableScheduling
 @EnableAutoConfiguration
 @EnableWebMvc
-@ComponentScan(basePackages = "ee.bpw.dhx.*")
+@ComponentScan(basePackages = "ee.bpw.dhx.client.*,ee.bpw.dhx.ws.config,"
+    + "ee.bpw.dhx.ws.endpoint,ee.bpw.dhx.ws.beanconfig")
 public class Application extends SpringBootServletInitializer {
 
   @Override

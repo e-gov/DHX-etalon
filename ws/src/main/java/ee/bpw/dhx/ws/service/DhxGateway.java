@@ -63,12 +63,6 @@ public class DhxGateway extends WebServiceGatewaySupport {
   @Autowired
   private SoapConfig soapConfig;
 
-  /*
-   * @Autowired Jaxb2Marshaller marshaller;
-   * 
-   * @Autowired Unmarshaller unmarshaller;
-   */
-
   @Autowired
   DhxMarshallerService dhxMarshallerService;
 
@@ -76,7 +70,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * Postconstruct method which sets marshaller and unmarshaller.
    */
   @PostConstruct
-  public void setMarshallers() {
+  public void init() {
     setMarshaller(dhxMarshallerService.getJaxbMarshaller());
     setUnmarshaller(dhxMarshallerService.getJaxbMarshaller());
     DhxHttpComponentsMessageSender messageSender = new DhxHttpComponentsMessageSender();

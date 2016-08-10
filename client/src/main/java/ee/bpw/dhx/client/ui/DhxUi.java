@@ -387,7 +387,7 @@ public class DhxUi extends UI {
                 List<SendDocumentResponse> responses =
                     documentClientService.sendDocument(capsules.getValue().toString(), adressees
                         .getValue().toString(), consignmentIdStr);
-                
+
                 Boolean success = isSendDocumentSuccess(responses);
                 String statuses = getSendDocumentStatuses(responses, success);
                 showDhxNotification("<span style=\"white-space:normal;\">"
@@ -417,8 +417,8 @@ public class DhxUi extends UI {
     vertLayout.addComponent(formLayout);
     return vertLayout;
   }
-  
-  private Boolean isSendDocumentSuccess (List<SendDocumentResponse> responses) {
+
+  private Boolean isSendDocumentSuccess(List<SendDocumentResponse> responses) {
     Boolean success = true;
     for (SendDocumentResponse response : responses) {
       if (response.getFault() != null) {
@@ -429,8 +429,8 @@ public class DhxUi extends UI {
     }
     return success;
   }
-  
-  private String getSendDocumentStatuses (List<SendDocumentResponse> responses, Boolean success) {
+
+  private String getSendDocumentStatuses(List<SendDocumentResponse> responses, Boolean success) {
     String statuses = "";
     for (SendDocumentResponse response : responses) {
       statuses +=

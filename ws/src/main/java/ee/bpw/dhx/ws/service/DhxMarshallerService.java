@@ -3,7 +3,6 @@ package ee.bpw.dhx.ws.service;
 import ee.bpw.dhx.exception.DhxException;
 
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.InputStream;
@@ -17,7 +16,6 @@ import javax.xml.transform.Source;
  * @author Aleksei Kokarev
  *
  */
-@Service
 public interface DhxMarshallerService {
 
 

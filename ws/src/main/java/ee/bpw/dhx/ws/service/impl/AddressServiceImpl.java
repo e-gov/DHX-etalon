@@ -24,6 +24,7 @@ import eu.x_road.xsd.xroad.SubsystemType;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,6 +47,7 @@ import javax.xml.bind.JAXBElement;
  *
  */
 @Slf4j
+@Service
 public class AddressServiceImpl implements AddressService {
 
   @Autowired

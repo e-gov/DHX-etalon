@@ -21,7 +21,6 @@ import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -978,8 +977,8 @@ public class DecContainer {
     protected BigInteger fileSize;
     @XmlElement(name = "ZipBase64Content", required = false)
     protected String zipBase64Content;
-    
-    
+
+
     /**
      * Gets the value of the zipBase64Content property.
      * 

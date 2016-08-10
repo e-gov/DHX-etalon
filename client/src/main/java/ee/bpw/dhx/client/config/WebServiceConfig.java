@@ -1,6 +1,7 @@
 package ee.bpw.dhx.client.config;
 
 
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,9 +19,6 @@ import javax.xml.soap.SOAPException;
 @EnableWs
 @Configuration
 public class WebServiceConfig {
-
-  // get log4j logger to log events on custom level.
-  final Logger logger = LogManager.getLogger();
 
   private class DhxClientSoapFaultTranslatorExceptionResolver
       extends SoapFaultMappingExceptionResolver {
@@ -55,6 +53,5 @@ public class WebServiceConfig {
     exceptionResolver.setOrder(1);
     return exceptionResolver;
   }
-
 
 }
