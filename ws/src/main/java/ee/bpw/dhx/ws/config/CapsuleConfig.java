@@ -54,7 +54,7 @@ public class CapsuleConfig {
 
 
   /**
-   * Method to find adresssees from container. Method must return adressees for every existing
+   * Method to find adresssees from container. Method returns adressees for every existing
    * version of the container, bacause service which uses that method does not know anything about
    * container and just needs adressees defined in it. Given implementation is able to find
    * adressees for capsule version 2.1
@@ -82,7 +82,7 @@ public class CapsuleConfig {
         return null;
       default:
         throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
-            "Unable to find XSD file for given verion. version:" + version.toString());
+            "Unable to find adressees for given verion. version:" + version.toString());
     }
   }
 

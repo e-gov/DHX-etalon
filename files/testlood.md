@@ -48,13 +48,13 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 
 &nbsp;&nbsp;**Adressaat**: Hõbekuuli OÜ
 
-&nbsp;&nbsp;**Saadetis**: kapsli fail mis ei vasta Elektroonilise andmevahetuse metaandmete loendile 2.1 (nt puudu kohustuslik väli), aga on XML fail õige XML vorminguga
+&nbsp;&nbsp;**Saadetis**: kapsli fail, mis ei vasta Elektroonilise andmevahetuse metaandmete loendile 2.1 (nt puudu kohustuslik väli), aga on XML fail õige XML vorminguga
 
 &nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
 
 * Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
-* Valib rippmenüüst Vali dokument väärtuse valesti kapseldatud
-* Valib rippmenüüst Vali adressaat väärtuse Hõbekuuli OÜ, registrikood 30000001
+* Valib rippmenüüst Vali dokument väärtus valesti kapseldatud
+* Valib rippmenüüst Vali adressaat väärtus Hõbekuuli OÜ, registrikood 30000001
 * Vajutab nupule Saada dokument
 
 &nbsp;&nbsp;**Oodatav väljund**:
@@ -77,12 +77,12 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 &nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
 
 * Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
-* Valib rippmenüüst Vali dokument väärtuse vale XML või mitte XML fail
-* Valib rippmenüüst Vali adressaat väärtuse Hõbekuuli OÜ, registrikood 30000001
+* Valib rippmenüüst Vali dokument väärtus vale XML või mitte XML fail
+* Valib rippmenüüst Vali adressaat väärtus Hõbekuuli OÜ, registrikood 30000001
 * Vajutab nupule Saada dokument
 
 &nbsp;&nbsp;**Oodatav väljund**:
-* dokumendi saatmine ebaõnnestus.
+* dokumendi saatmine ebaõnnestus
 * vastuses on DHX.Validation koodiga fault
 * kajastatud sündmuste logis
 
@@ -101,10 +101,10 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 &nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
 
 * Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
-* Eemaldab  märkeruudu  Genereeri saadetise ID automaatselt märkimist
+* Eemaldab  linnukese märkeruudust  'Genereeri saadetise ID automaatselt'
 * Sisestab välja Saadetise ID väärtuse, millega on eelnevalt dokument juba saadetud (väärtuse saab sündmuste logist, sündmuse logist tuleb kopeerida õnnestunud saatmise internalConsignmentId. Sündmuse logi näide: Sending document to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId: **7e8d0dbc-8a04-48c6-a509-6ef25eb38c7b**)
-* Valib rippmenüüst Vali dokument väärtuse korrektselt kapseldatud
-* Valib rippmenüüst Vali adressaat väärtuse Hõbekuuli OÜ, registrikood 30000001
+* Valib rippmenüüst Vali dokument väärtus korrektselt kapseldatud
+* Valib rippmenüüst Vali adressaat väärtus Hõbekuuli OÜ, registrikood 30000001
 * Vajutab nupule Saada dokument
 
 *DHS 2 tunneb ära, et on sama saadetise juba edukalt vastu võtnud ja tagastab vastava veateate.*
@@ -209,4 +209,3 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 * dokument on vastu võetud
 * saatvale süsteemile on saadetud õige vastuskood
 * kajastatud sündmuste logis
-

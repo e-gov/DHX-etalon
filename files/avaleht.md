@@ -15,7 +15,7 @@ Alljärgnevalt selgitame, kuidas etalonteostust kasutada ja kuidas anda tagasisi
 Etalonteostus on loodud projekti ["Dokumendivahetustaristu hajusarhitektuurile üleviimise väljatöötamine"](https://github.com/e-gov/DHX/blob/master/README.md#projekt-dokumendivahetustaristu-hajusarhitektuurile-%C3%BCleviimise-v%C3%A4ljat%C3%B6%C3%B6tamine) raames.
 
 
-Kasutamiseks on saadaval kaks etalonteostuse rakendust. Mõlemad rakendused on samaväärsed ja on võimelised dokumente saata ja vastu võtta DHX dokumendivahetusprotokolli järgi.
+Kasutamiseks on saadaval kaks etalonteostuse rakendust. Mõlemad rakendused on samaväärsed ja on võimelised dokumente saatma ja vastu võtma DHX dokumendivahetusprotokolli järgi.
 Etalonteostuse rakendus 1(autentimine ID kaardiga)
 Etalonteostuse rakendus 2(autentimine ID kaardiga)
 
@@ -30,4 +30,3 @@ Läbi viidud on [Hajusa dokumendivahetuse andmevahetusprotokolli DHX analüüs](
 #### Tehn vaade
 
 ![](../img/Etalonteostus-Tehn01.PNG)
-

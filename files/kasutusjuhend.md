@@ -14,24 +14,24 @@ Dokumendi saatmisel saadetakse dokumendi kapsel saatja asutuse poolt vastuvõtja
 
 ![](../img/kasutusjuhend/send_doc_tab.jpg)
 
-* Kasutaja täidab saatmiseks vajalikud andmed
+* Kasutaja täidab saatmiseks vajalikud andmed.
 
     * Kasutaja eemaldab  märkeruudu  ’Genereeri saadetise ID automaatselt’ valiku, kui soovib saadetise id käsitsi sisestada.
-    * Juhul kui ’Genereeri saadetise ID automaatselt’ ei ole valitud, siis kasutaja täidab ’Saadetise id’
+    * Juhul kui valik  ’Genereeri saadetise ID automaatselt’ ei ole valitud, siis kasutaja täidab ’Saadetise id’
     * Kasutaja valib saadetava dokumendi kapsli ’Vali dokument’ rippmenüüst.  
 Rippmenüü sisu:
 
 ![](../img/kasutusjuhend/doc.jpg)
 
-  *Märkus:  ’Kapslis vale adressaat’ kasutatakse et testida kapsli adressaadi valideerimist. Juhul kui valitud  ’kapslis vale adressaat’, siis järgmises punktis valitud adressaadi ignoreeritakse ja ei panda kapslisse, vaid saadetakse vale adressaadiga kapsli.*
+  *Märkus:  ’Kapslis vale adressaat’ kasutatakse, et testida kapsli adressaadi valideerimist. Juhul kui valitud  ’kapslis vale adressaat’, siis järgmises punktis valitud adressaati ignoreeritakse ja ei panda kapslisse, vaid saadetakse vale adressaadiga kapsel.*
   * Kasutaja valib adressaadi ’Vali adressaat’ rippmenüüst. Rippmenüü sisu:
   
   ![](../img/kasutusjuhend/doc_adressee.jpg)
 
-  *Märkus: Asutus Y on mõeldud veasituasiooni testimiseks. Asutus Y on olemas X-tees ja on DHX protokolli liige X-tee andmete järgi aga tegelikult ei paku vajalikud teenused. Asutus Z puudub X-tees ja mõeldud veasituatsiooni testimiseks. Ülejäänud adressaadid on X-tees olemas ja pakuvad vajalikud teenused.*
+  *Märkus: Asutus Y on mõeldud veasituatsiooni testimiseks. Asutus Y on olemas X-tees ja on DHX protokolli liige X-tee andmete järgi,  aga tegelikult ei paku vajalikke teenuseid. Asutus Z puudub X-tees ja on mõeldud veasituatsiooni testimiseks. Ülejäänud adressaadid on X-tees olemas ja pakuvad vajalikke teenuseid.*
    
-* Kasutaja vajutab  ’Saada dokument’ nupule
-* Süsteem kuvab teade dokumendi saatmise tulemustega brauseri akna allpool.  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5)
+* Kasutaja vajutab  ’Saada dokument’ nupule.
+* Süsteem kuvab teate dokumendi saatmise tulemustega brauseri akna allosas.  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5).
 
 ##### Teadete näited:
   
@@ -44,7 +44,7 @@ Rippmenüü sisu:
   ![](../img/kasutusjuhend/doc_result_success.jpg)
 
 ### 2. Vahendatavate nimekirja pärimine
-DHX vastuvõtja süsteem, kes vahendab dokumente teistele asutustele, peab pakkuma enda poolt vahendatavate asutuste nimekirja leidmise SOAP teenust (representationList). 
+DHX vastuvõtja süsteem, mis vahendab dokumente teistele asutustele, peab pakkuma enda poolt vahendatavate asutuste nimekirja leidmise SOAP teenust (representationList). 
 
 * Kasutaja valib ’Tegevused’ regioonis ’Vahendatavate nimekiri’  tab-i.
 
@@ -52,13 +52,13 @@ DHX vastuvõtja süsteem, kes vahendab dokumente teistele asutustele, peab pakku
 
 * Kasutaja täidab saatmiseks vajalikud andmed
 
-    *  Kasutaja valib adressaadi nimekirjast ’Vali adressaat’. Pakutava nimekirja sisu(nimekirjas on ainult vahendaja rollis asutus):
+    *  Kasutaja valib adressaadi nimekirjast ’Vali adressaat’. Pakutava nimekirja sisu (nimekirjas on ainult vahendaja rollis asutus):
     
   ![](../img/kasutusjuhend/repr_adressee.jpg)
   
-  *Märkus: Asutus Y on mõeldud veasituasiooni testimiseks. Asutus Y on olemas X-tees ja on DHX protokolli liige X-tee andmete järgi aga tegelikult ei paku vajalikud teenused. Asutus Z puudub X-tees ja mõeldud veasituatsiooni testimiseks. Ülejäänud adressaadid on X-tees olemas ja pakuvad vajalikud teenused.*
+  *Märkus: Asutus Y on mõeldud veasituasiooni testimiseks. Asutus Y on olemas X-tees ja on DHX protokolli liige X-tee andmete järgi, aga tegelikult ei paku vajalikke teenuseid. Asutus Z puudub X-tees ja on mõeldud veasituatsiooni testimiseks. Ülejäänud adressaadid on X-tees olemas ja pakuvad vajalikke teenuseid.*
 * Kasutaja vajutab  ’Saada päring’ nupule
-* Süsteem kuvab teade päringu tulemustega.  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5)
+* Süsteem kuvab teate päringu tulemustega.  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5)
 
 ##### Teadete näited:
 
@@ -77,9 +77,9 @@ Lokaalne aadressiraamat on nimekiri kõikidest asutustest, kellele DHX kaudu saa
 
 ![](../img/kasutusjuhend/adr_tab.jpg)
   
-  *Märkus: lokaalses aadressiraamatus on kirjas adressaat(ehk asutuse registrikood kellele võib dokumente saata kasutades DHX protokolli), X-tee liige(ehk tegelik X-tee liige kellele saadetakse dokument. X-tee liikme kood võib erineda adressaadi registri koodist kui tegemist on vahendatava asutusega), kas asutus on vahendatav ja vahendamise algus- ja lõppkuupäevad juhul kui asutus on vahendatav.*
+  *Märkus: lokaalses aadressiraamatus on kirjas adressaat (ehk asutuse registrikood, kellele võib dokumente saata kasutades DHX protokolli), X-tee liige(ehk tegelik X-tee liige kellele saadetakse dokument. X-tee liikme kood võib erineda adressaadi registri koodist, kui tegemist on vahendatava asutusega), kas asutus on vahendatav ja vahendamise algus- ja lõppkuupäevad juhul kui asutus on vahendatav.*
 * Kasutaja vajutab ’Uuenda’ nupule.
-* Süsteem kuvab teade uuendamise õnnestumisest .  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5)
+* Süsteem kuvab teate aadressiraamatu uuendamise õnnestumisest.  Vastav info on kajastatud ka ’Sündmuste logis’(vt.  Punkt  5)
 ##### Teadete näited:
 * Õnnestumise teade:
 
@@ -90,7 +90,7 @@ Lokaalne aadressiraamat on nimekiri kõikidest asutustest, kellele DHX kaudu saa
 
 ![](../img/kasutusjuhend/log.jpg)
 
-  *Märkus:  Sündmuste logis kuvatakse viimased süsteemis tekkinud sündmusi. Logisse jõuavad järgmised sündmused: dokumendi saatmine, dokumendi vastuvõtmine,  vahendatavate listi pärimine,vahendatavate listi tagastamine, aadressi listi koostamine(uuendamine). Iga sündmuse kohta logitakse järgmise andmed: sündmuse toimumise kellaaeg(ntks: 13:33:53.905), sündmuse kirjeldus(inglise keelne sündmuse kirjeldus koos sisend/väljund parameetritega, ntks: Sending document to:addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId:b17cdacd-60c6-412b-9a4c-5f2c3edb3095)*
+  *Märkus:  Sündmuste logis kuvatakse viimaseid süsteemis tekkinud sündmusi. Logisse jõuavad järgmised sündmused: dokumendi saatmine, dokumendi vastuvõtmine,  vahendatavate listi pärimine,vahendatavate listi tagastamine, aadressi listi koostamine (uuendamine). Iga sündmuse kohta logitakse järgmised andmed: sündmuse toimumise kellaaeg (ntks: 13:33:53.905), sündmuse kirjeldus (inglise keelne sündmuse kirjeldus koos sisend/väljund parameetritega, ntks: Sending document to:addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId:b17cdacd-60c6-412b-9a4c-5f2c3edb3095)*
 * Kasutaja vajutab ’Tühista logi’ nupule.
 * Süsteem tühistab sündmuste logi (kuvatakse tühja logi).
 
@@ -101,4 +101,3 @@ Lokaalne aadressiraamat on nimekiri kõikidest asutustest, kellele DHX kaudu saa
 ![](../img/kasutusjuhend/conf_tab.jpg)
 
   *Märkus: iga konfiguratsiooni parameetri nimele hiirega peale minnes kuvatakse selle parameetri sisu selgitav tekst*
-
