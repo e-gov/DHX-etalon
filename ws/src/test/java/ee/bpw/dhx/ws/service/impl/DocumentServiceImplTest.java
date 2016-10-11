@@ -79,6 +79,7 @@ public class DocumentServiceImplTest {
     documentService = new DocumentServiceImpl();
     MockitoAnnotations.initMocks(this);
     config = new DhxConfig();  
+    config.setParseCapsule(true);
     when(xsdConfig.getCurrentCapsuleVersion())
     .thenReturn(CapsuleVersionEnum.V21);
     when(xsdConfig.getXsdForVersion(CapsuleVersionEnum.V21))
@@ -90,29 +91,29 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentFileToRecipient() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
-    List<SendDocumentResponse> responses = documentService.sendDocument(file, "rand", recipient);
+    SendDocumentResponse responses = documentService.sendDocument(file, "rand", recipient, null);
     Mockito.verify(dhxGateway, times(1)).sendDocument(Mockito.any(DhxDocument.class));
-    assertEquals(1, responses.size());
+    assertEquals(null, responses.getFault());
   }
   
   @Test
   public void sendDocumentStreamToRecipient() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
-    List<SendDocumentResponse> responses = documentService.sendDocument(new FileInputStream(file), "rand", recipient);
+    List<SendDocumentResponse> responses = documentService.sendDocument(new FileInputStream(file), "rand", recipient, null);
     Mockito.verify(dhxGateway, times(1)).sendDocument(Mockito.any(DhxDocument.class));
     assertEquals(1, responses.size());
   }
@@ -121,7 +122,7 @@ public class DocumentServiceImplTest {
   public void sendDocumentStreamToEmptyRecipient() throws DhxException, IOException{
     String recipient = null;
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    documentService.sendDocument(new FileInputStream(file), "rand", recipient);
+    documentService.sendDocument(new FileInputStream(file), "rand", recipient, null);
     Mockito.verify(dhxGateway, times(1)).sendDocument(Mockito.any(DhxDocument.class));
     exception.expectMessage("Recipient not defined");
   }
@@ -129,14 +130,14 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentStream() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
@@ -154,14 +155,14 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentStreamVersion() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
@@ -179,14 +180,14 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentFileVersion() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
@@ -204,14 +205,14 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentFile() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
@@ -231,14 +232,14 @@ public class DocumentServiceImplTest {
   @Test
   public void sendDocumentStreamNoCapsuleRecipient() throws DhxException, IOException{
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);
@@ -258,14 +259,14 @@ public class DocumentServiceImplTest {
   public void sendDocumentStreamEmptyVersion() throws DhxException, IOException{
     CapsuleVersionEnum version = null;
     String recipient = "11";
-    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null);
+    XroadMember member = new XroadMember("ee", "GOV", "11", "DHX", null, null);
     CapsuleAdressee adr = new CapsuleAdressee("10560025");
     List<CapsuleAdressee> adrs = new ArrayList<CapsuleAdressee>();
     DecContainer capsule = new DecContainer();
     adrs.add(adr);
     SendDocumentResponse resp = new SendDocumentResponse();
     File file = new ClassPathResource("kapsel_21.xml").getFile();
-    when(addressService.getClientForMemberCode(Mockito.eq(recipient)))
+    when(addressService.getClientForMemberCode(Mockito.eq(recipient), Mockito.anyString()))
     .thenReturn(member);
     when(dhxGateway.sendDocument(Mockito.any(DhxDocument.class)))
     .thenReturn(resp);

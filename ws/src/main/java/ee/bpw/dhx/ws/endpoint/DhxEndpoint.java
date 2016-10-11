@@ -3,16 +3,16 @@ package ee.bpw.dhx.ws.endpoint;
 import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.InternalRepresentee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DocumentService;
 
 import eu.x_road.dhx.producer.Fault;
-import eu.x_road.dhx.producer.Members;
 import eu.x_road.dhx.producer.RepresentationList;
 import eu.x_road.dhx.producer.RepresentationListResponse;
+import eu.x_road.dhx.producer.Representees;
 import eu.x_road.dhx.producer.SendDocument;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
@@ -64,7 +64,12 @@ public class DhxEndpoint {
     SendDocumentResponse response = new SendDocumentResponse();
     try {
       XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
-      response = documentService.receiveDocumentFromEndpoint(request, client);
+      XroadMember service = dhxGateway.getXroadService(messageContext);
+      if (log.isDebugEnabled()) {
+        log.debug("Got sendDocument request from: " + client.toString());
+      }
+      response =
+          documentService.receiveDocumentFromEndpoint(request, client, service, messageContext);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
       if (ex.getExceptionCode().isBusinessException()) {
@@ -78,6 +83,7 @@ public class DhxEndpoint {
     }
     return response;
   }
+
 
   /**
    * X-road SOAP service representationList.
@@ -95,14 +101,18 @@ public class DhxEndpoint {
       throws DhxException {
     try {
       RepresentationListResponse response = new RepresentationListResponse();
-      dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
-      List<Representee> representees = dhxImplementationSpecificService.getRepresentationList();
-      if (representees != null) {
-        Members members = new Members();
-        for (Representee representee : representees) {
-          members.getMember().add(representee.convertToMember());
+      XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
+      if (log.isDebugEnabled()) {
+        log.debug("Got representationList request from: " + client.toString());
+      }
+      List<InternalRepresentee> internalRepresentees =
+          dhxImplementationSpecificService.getRepresentationList();
+      if (internalRepresentees != null) {
+        Representees representees = new Representees();
+        for (InternalRepresentee internalRepresentee : internalRepresentees) {
+          representees.getRepresentee().add(internalRepresentee.convertToRepresentee());
         }
-        response.setMembers(members);
+        response.setRepresentees(representees);
       }
       return response;
     } catch (Exception ex) {

@@ -7,8 +7,10 @@ import lombok.Getter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.ws.config.annotation.WsConfigurationSupport;
 import org.springframework.ws.server.endpoint.adapter.DefaultMethodEndpointAdapter;
 import org.springframework.ws.server.endpoint.adapter.method.MarshallingPayloadMethodProcessor;
 import org.springframework.ws.server.endpoint.adapter.method.MessageContextMethodArgumentResolver;
@@ -18,14 +20,19 @@ import org.springframework.ws.server.endpoint.adapter.method.MethodReturnValueHa
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Configuration
+
 /**
  * Creates beans needed for DHX webservices.
+ * 
  * @author Aleksei Kokarev
  *
  */
-public class DhxEndpointConfig {
+@Getter
+@Configuration
+// @EnableWs
+// @EnableWebMvc
+@ComponentScan(basePackages = "ee.bpw.dhx.ws.endpoint")
+public class DhxEndpointConfig extends WsConfigurationSupport {
 
   @Autowired
   DhxConfig config;
@@ -39,10 +46,9 @@ public class DhxEndpointConfig {
    */
   @Bean
   public DefaultMethodEndpointAdapter defaultMethodEndpointAdapter() {
-    DefaultMethodEndpointAdapter adapter = new DefaultMethodEndpointAdapter();
-    List<MethodArgumentResolver> argumentResolvers = adapter.getMethodArgumentResolvers();
+    List<MethodArgumentResolver> argumentResolvers = null;
     List<MethodReturnValueHandler> returnValueHandlers =
-        adapter.getCustomMethodReturnValueHandlers();
+        null;
     if (argumentResolvers == null) {
       argumentResolvers = new ArrayList<MethodArgumentResolver>();
     }
@@ -52,6 +58,7 @@ public class DhxEndpointConfig {
     returnValueHandlers.addAll(methodProcessors());
     argumentResolvers.addAll(methodProcessors());
     argumentResolvers.add(new MessageContextMethodArgumentResolver());
+    DefaultMethodEndpointAdapter adapter = new DefaultMethodEndpointAdapter();
     adapter.setMethodArgumentResolvers(argumentResolvers);
     adapter.setMethodReturnValueHandlers(returnValueHandlers);
     return adapter;
@@ -63,6 +70,7 @@ public class DhxEndpointConfig {
    * 
    * @return bean List of MarshallingPayloadMethodProcessors
    */
+  @Bean
   public List<MarshallingPayloadMethodProcessor> methodProcessors() {
     List<MarshallingPayloadMethodProcessor> retVal =
         new ArrayList<MarshallingPayloadMethodProcessor>();

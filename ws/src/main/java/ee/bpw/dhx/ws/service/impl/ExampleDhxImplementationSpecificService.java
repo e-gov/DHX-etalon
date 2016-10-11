@@ -4,11 +4,13 @@ import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.InternalRepresentee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.ws.context.MessageContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,7 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   @Override
   @Deprecated
   @Loggable
-  public String receiveDocument(DhxDocument document) throws DhxException {
+  public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException {
     log.debug("String receiveDocument(DhxDocument document) externalConsignmentId: {}",
         document.getExternalConsignmentId());
     String receiptId = UUID.randomUUID().toString();
@@ -64,8 +66,8 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   @Override
   @Deprecated
   @Loggable
-  public List<Representee> getRepresentationList() {
-    return new ArrayList<Representee>();
+  public List<InternalRepresentee> getRepresentationList() {
+    return new ArrayList<InternalRepresentee>();
   }
 
   @Override

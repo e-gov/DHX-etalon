@@ -34,10 +34,11 @@ import com.vaadin.ui.VerticalLayout;
 
 import ee.bpw.dhx.client.CustomAppender;
 import ee.bpw.dhx.client.config.DhxClientConfig;
+import ee.bpw.dhx.client.service.AddressClientServiceImpl;
 import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.InternalRepresentee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.StringUtil;
@@ -46,8 +47,8 @@ import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 
-import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
+import eu.x_road.dhx.producer.Representee;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
 import lombok.extern.slf4j.Slf4j;
@@ -362,8 +363,16 @@ public class DhxUi extends UI {
         getSelect(config.getCapsuleSelect(), getMessage("activity.send-document.choose-document"));
     capsules.setWidth(400, Unit.PIXELS);
     capsules.setRequired(true);
+    List<Map<String, String>> adresseesSelect = null;;
+    try {
+      adresseesSelect = ((AddressClientServiceImpl) addressService).getAdresseesAsSelect();
+    } catch (DhxException ex) {
+      log.error("Error while sending document." + ex.getMessage(), ex);
+      showDhxNotification(getMessage("activity.send-document.error")
+          + getMessageForDhxException(ex), Notification.Type.WARNING_MESSAGE);
+    }
     final ComboBox adressees =
-        getSelect(config.getCapsuleAddressateSelect(),
+        getSelect(/* config.getCapsuleAddressateSelect() */adresseesSelect,
             getMessage("activity.send-document.choose-adressee"));
     adressees.setWidth(400, Unit.PIXELS);
     adressees.setRequired(true);
@@ -490,17 +499,18 @@ public class DhxUi extends UI {
               try {
                 log.debug("getting representation List");
                 XroadMember member =
-                    addressService.getClientForMemberCode(adressees.getValue().toString());
+                    addressService.getClientForMemberCode(adressees.getValue().toString(), null);
                 if (member.getRepresentee() == null) {
                   RepresentationListResponse response = dhxGateway.getRepresentationList(member);
                   String reprStr = "";
-                  if (response.getMembers() != null && response.getMembers().getMember() != null
-                      && response.getMembers().getMember().size() > 0) {
-                    for (Member repr : response.getMembers().getMember()) {
+                  if (response.getRepresentees() != null
+                      && response.getRepresentees().getRepresentee() != null
+                      && response.getRepresentees().getRepresentee().size() > 0) {
+                    for (Representee repr : response.getRepresentees().getRepresentee()) {
                       SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
                       String startDateStr = "";
                       String endDateStr = "";
-                      Representee representee = new Representee(repr);
+                      InternalRepresentee representee = new InternalRepresentee(repr);
                       if (representee.getStartDate() != null) {
                         startDateStr = sdf.format(representee.getStartDate());
                       }
@@ -553,30 +563,39 @@ public class DhxUi extends UI {
 
   private Layout getAdresseeList() {
     VerticalLayout adresseeLayout = new VerticalLayout();
-    List<XroadMember> members = addressService.getAdresseeList();
-    final Label adrLabel = new Label("");
-    adrLabel.setCaptionAsHtml(true);
-    adrLabel.setCaption(getAdresseeString(members));
-    adresseeLayout.addComponent(adrLabel);
-    Button button = new Button(getMessage("settings.local-addresse-list.refresh"));
-    button.addClickListener(
-        new Button.ClickListener() {
-          private static final long serialVersionUID = -6857112166321059475L;
+    try {
+      List<XroadMember> members = addressService.getAdresseeList();
+      final Label adrLabel = new Label("");
+      adrLabel.setCaptionAsHtml(true);
+      adrLabel.setCaption(getAdresseeString(members));
+      adresseeLayout.addComponent(adrLabel);
+      Button button = new Button(getMessage("settings.local-addresse-list.refresh"));
+      button.addClickListener(
+          new Button.ClickListener() {
+            private static final long serialVersionUID = -6857112166321059475L;
 
-          public void buttonClick(ClickEvent event) {
+            public void buttonClick(ClickEvent event) {
 
-            log.debug("renewing address list");
-            addressService.renewAddressList();
-            List<XroadMember> members = addressService.getAdresseeList();
-            adrLabel.setCaption("<span style=\"white-space:normal;\">"
-                + getAdresseeString(members)
-                + "</span>");
-            showDhxNotification(getMessage("settings.local-addresse-list.refreshed"),
-                Notification.Type.HUMANIZED_MESSAGE);
-          }
-        });
-    adresseeLayout.addComponent(button);
-    return adresseeLayout;
+              log.debug("renewing address list");
+              addressService.renewAddressList();
+              try {
+                List<XroadMember> members = addressService.getAdresseeList();
+                adrLabel.setCaption("<span style=\"white-space:normal;\">"
+                    + getAdresseeString(members)
+                    + "</span>");
+              } catch (DhxException ex) {
+                log.error(ex.getMessage(), ex);
+              }
+              showDhxNotification(getMessage("settings.local-addresse-list.refreshed"),
+                  Notification.Type.HUMANIZED_MESSAGE);
+            }
+          });
+      adresseeLayout.addComponent(button);
+      return adresseeLayout;
+    } catch (DhxException ex) {
+      log.error(ex.getMessage(), ex);
+    }
+    return null;
   }
 
   private String getAdresseeString(List<XroadMember> members) {

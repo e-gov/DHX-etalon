@@ -18,6 +18,7 @@ import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
 import eu.x_road.xsd.identifiers.XRoadObjectType;
 import eu.x_road.xsd.identifiers.XRoadServiceIdentifierType;
 
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +35,27 @@ import org.springframework.ws.soap.SoapMessage;
 import org.springframework.ws.soap.saaj.SaajSoapMessage;
 import org.springframework.ws.transport.http.HttpTransportConstants;
 import org.springframework.xml.transform.StringSource;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.xml.bind.JAXBElement;
+import javax.xml.namespace.QName;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.AttachmentPart;
+import javax.xml.soap.SOAPElement;
+import javax.xml.soap.SOAPException;
+import javax.xml.soap.SOAPHeader;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -58,12 +71,15 @@ import javax.xml.transform.TransformerFactory;
 public class DhxGateway extends WebServiceGatewaySupport {
 
   @Autowired
+  @Setter
   private DhxConfig config;
 
   @Autowired
+  @Setter
   private SoapConfig soapConfig;
 
   @Autowired
+  @Setter
   DhxMarshallerService dhxMarshallerService;
 
   /**
@@ -77,6 +93,10 @@ public class DhxGateway extends WebServiceGatewaySupport {
     messageSender.setConnectionTimeout(soapConfig.getConnectionTimeout());
     messageSender.setReadTimeout(soapConfig.getReadTimeout());
     getWebServiceTemplate().setMessageSender(messageSender);
+    /*
+     * MessageFactory messageFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
+     * setMessageFactory(new SaajSoapMessageFactory(messageFactory));
+     */
   }
 
 
@@ -101,6 +121,45 @@ public class DhxGateway extends WebServiceGatewaySupport {
       this.serviceVersion = serviceVersion;
     }
 
+
+    private Document convertStringToDocument(String xmlStr) throws IOException, SAXException,
+        ParserConfigurationException {
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      factory.setNamespaceAware(true);
+      DocumentBuilder builder;
+      builder = factory.newDocumentBuilder();
+      Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
+      return doc;
+    }
+
+    private void scanChildren(Node elementtoScan, SOAPElement elementToAddChildren)
+        throws SOAPException {
+      log.debug("scanningCHilder for " + elementtoScan.getNodeName() + ": "
+          + elementtoScan.getLocalName() + ": " + elementtoScan.getPrefix() + ": "
+          + elementtoScan.getNamespaceURI() + " cur soap element "
+          + elementToAddChildren.getLocalName());
+      if (elementtoScan.getNodeType() == Node.TEXT_NODE) {
+        elementToAddChildren.addTextNode(elementtoScan.getTextContent());
+      } else {
+        SOAPElement newSoapElement =
+            elementToAddChildren.addChildElement(elementtoScan.getLocalName(),
+                elementtoScan.getPrefix(), elementtoScan.getNamespaceURI());
+        for (int j = 0; j < elementtoScan.getAttributes().getLength(); j++) {
+          log.debug("Adding attribute. " + elementtoScan.getAttributes().item(j).getNodeName()
+              + " : " + elementtoScan.getAttributes().item(j).getNodeValue());
+
+          newSoapElement.addAttribute(new QName(elementtoScan.getAttributes().item(j)
+              .getNamespaceURI(), elementtoScan.getAttributes().item(j).getLocalName(),
+              elementtoScan.getAttributes().item(j).getPrefix()), elementtoScan.getAttributes()
+              .item(j).getNodeValue());
+        }
+        for (int i = 0; i < elementtoScan.getChildNodes().getLength(); i++) {
+          Node child = elementtoScan.getChildNodes().item(i);
+          scanChildren(child, newSoapElement);
+        }
+      }
+    }
+
     @SuppressWarnings({"rawtypes"})
     @Override
     public void doWithMessage(WebServiceMessage message) throws IOException, TransformerException {
@@ -113,23 +172,42 @@ public class DhxGateway extends WebServiceGatewaySupport {
           attachment.setMimeHeader(HttpTransportConstants.HEADER_CONTENT_TRANSFER_ENCODING,
               "base64");
         }
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        // Transformer transformer = SAXTransformerFactory.newInstance().newTransformer();
+        // TransformerFactory fact =
+        // TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",
+        // null);
+        // Transformer transformer = fact.newTransformer();
         eu.x_road.xsd.xroad.ObjectFactory factory = new eu.x_road.xsd.xroad.ObjectFactory();
-        transformer.transform(
-            marshallObject(factory.createProtocolVersion(soapConfig.getProtocolVersion())),
-            header.getResult());
-        transformer
-            .transform(
-                marshallObject(factory.createId(UUID.randomUUID().toString())),
-                header.getResult());
-        transformer
-            .transform(
-                marshallObject(factory.createClient(getXRoadClientIdentifierType())),
-                header.getResult());
-        transformer.transform(
-            marshallObject(factory.createService(getXRoadServiceIdentifierType())),
-            header.getResult());
-      } catch (DhxException ex) {
+        SOAPHeader head = ((SaajSoapMessage) message).getSaajMessage().getSOAPHeader();
+        String marshalled;
+        marshalled =
+            marshallObjectToString(factory.createProtocolVersion(soapConfig.getProtocolVersion()));
+        scanChildren(convertStringToDocument(marshalled).getFirstChild(), head);
+        marshalled = marshallObjectToString(factory.createId(UUID.randomUUID().toString()));
+        scanChildren(convertStringToDocument(marshalled).getFirstChild(), head);
+        scanChildren(
+            convertStringToDocument(
+                marshallObjectToString(factory.createClient(getXRoadClientIdentifierType())))
+                .getFirstChild(), head);
+        scanChildren(
+            convertStringToDocument(
+                marshallObjectToString(factory.createService(getXRoadServiceIdentifierType())))
+                .getFirstChild(), head);
+        /*
+         * transformer.transform(
+         * marshallObject(factory.createProtocolVersion(soapConfig.getProtocolVersion())),
+         * header.getResult()); transformer .transform(
+         * marshallObject(factory.createId(UUID.randomUUID().toString())), header.getResult());
+         * transformer .transform(
+         * marshallObject(factory.createClient(getXRoadClientIdentifierType())),
+         * header.getResult());
+         * 
+         * transformer.transform(
+         * marshallObject(factory.createService(getXRoadServiceIdentifierType())),
+         * header.getResult());
+         */
+      } catch (DhxException | SOAPException | IOException | SAXException
+          | ParserConfigurationException ex) {
         throw new RuntimeException(ex);
       }
     }
@@ -140,6 +218,14 @@ public class DhxGateway extends WebServiceGatewaySupport {
       StringWriter sw = dhxMarshallerService.marshallToWriter(obejct);
       result = sw.toString();
       return new StringSource(result);
+    }
+
+    private String marshallObjectToString(Object obejct)
+        throws DhxException {
+      String result = "";
+      StringWriter sw = dhxMarshallerService.marshallToWriter(obejct);
+      result = sw.toString();
+      return result;
     }
 
     private XRoadClientIdentifierType getXRoadClientIdentifierType() {
@@ -283,10 +369,11 @@ public class DhxGateway extends WebServiceGatewaySupport {
   }
 
   /**
-   * Method finds header in message context and sets it back to response also.
+   * Method finds header in message context and sets it back to response also. Client element is
+   * parsed and returned.
    * 
    * @param messageContext - SOAP message context
-   * @return - XroadMember found in SOAP message header
+   * @return - client XroadMember found in SOAP message header
    * @throws DhxException - throws if error occurs while getting client from SOAP message
    */
   @SuppressWarnings({"unchecked"})
@@ -311,7 +398,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
           if (xrdClient != null) {
             client = new XroadMember(xrdClient);
           } else {
-            throw new DhxException("Unable to find xroad client in header.");
+            throw new DhxException(DhxExceptionEnum.WS_ERROR,
+                "Unable to find xroad client in header.");
           }
 
         }
@@ -323,6 +411,40 @@ public class DhxGateway extends WebServiceGatewaySupport {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR,
           "Error occured while reading info form soap header." + ex.getMessage(), ex);
     }
+  }
+
+  /**
+   * Method finds header in message context, parses and returns service element.
+   * 
+   * @param messageContext - SOAP message context
+   * @return - service XroadMember found in SOAP message header
+   * @throws DhxException - throws if error occurs while getting client from SOAP message
+   */
+  @SuppressWarnings({"unchecked"})
+  public XroadMember getXroadService(MessageContext messageContext)
+      throws DhxException {
+    XroadMember service = null;
+    SaajSoapMessage soapRequest = (SaajSoapMessage) messageContext.getRequest();
+    SoapHeader reqheader = soapRequest.getSoapHeader();
+    Iterator<SoapHeaderElement> itr = reqheader.examineAllHeaderElements();
+    while (itr.hasNext()) {
+      SoapHeaderElement ele = itr.next();
+      if (ele.getName().getLocalPart().endsWith("service")) {
+        JAXBElement<XRoadServiceIdentifierType> xrdServiceElement =
+            (JAXBElement<XRoadServiceIdentifierType>) dhxMarshallerService.unmarshall(ele
+                .getSource());
+        XRoadServiceIdentifierType xrdService = xrdServiceElement.getValue();
+        if (xrdService != null) {
+          service = new XroadMember(xrdService);
+        } else {
+          throw new DhxException(DhxExceptionEnum.WS_ERROR,
+              "Unable to find xroad client in header.");
+        }
+
+      }
+    }
+    log.debug("xrd service: {}", service.toString());
+    return service;
   }
 
 }

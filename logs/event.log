@@ -1,0 +1,115 @@
+2016-10-11 12:16:37,597 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-11 12:16:37,614 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:16:56,712 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-4] ----- Staring renewing local address list
+2016-10-11 12:16:57,177 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Getting representation list from: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-10-11 12:16:57,830 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 11 12:16:57 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 11 12:16:57 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 11 12:16:57 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-11 12:16:57,833 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-4] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-10-11 12:17:15,249 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-11 12:17:15,250 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:17:17,108 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-11 12:17:17,108 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:17:32,445 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-11 12:17:32,445 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:31:36,229 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-11 12:31:36,230 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:31:36,234 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Document received. for: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false receipt:e933393e-e9b9-4b21-8bfd-c80234591726 consignmentId: 40f7b8a0-a69c-4f14-a44d-517c192547e2
+2016-10-11 12:33:54,665 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-11 12:33:55,133 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-10-11 12:33:55,848 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 11 12:33:55 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 11 12:33:55 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 11 12:33:55 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-11 12:33:55,849 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-10-11 12:34:01,184 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId: e300c820-37f2-46ee-b450-d259981abc87
+2016-10-11 12:34:02,084 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: 812450b6-b4cf-4c82-9783-d2ce0fb58405
+2016-10-11 12:37:14,382 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-11 12:37:14,382 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:40:51,896 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-11 12:40:51,897 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 12:40:51,900 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Document received. for: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false receipt:3d1888ae-17e8-4a3f-b416-7f2c6193f4d8 consignmentId: 85922e64-7695-466f-b01f-55efa03de0ee
+2016-10-11 12:43:18,764 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-11 12:43:19,117 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-10-11 12:43:19,704 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 11 12:43:19 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 11 12:43:19 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 11 12:43:19 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-11 12:43:19,706 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-10-11 12:43:24,336 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: b6b747d8-21cb-4781-a391-67a14dba972e
+2016-10-11 12:43:25,120 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in capsule recipient list. recipient:40000001
+2016-10-11 12:43:31,880 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: f484c90d-1f8e-48bf-b637-76ccd8242c26
+2016-10-11 12:43:32,493 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in capsule recipient list. recipient:40000001
+2016-10-11 12:48:40,753 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: 847157e3-5df5-4c51-a5fc-869cdeac6ded
+2016-10-11 12:48:41,934 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: e97ab6d6-52b8-4e9b-83e7-0c95c6d2a726
+2016-10-11 13:43:21,242 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-11 13:43:21,838 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-10-11 13:43:22,659 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 11 13:43:22 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 11 13:43:22 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 11 13:43:22 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-11 13:43:22,661 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-10-11 13:43:29,241 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false internalConsignmentId: 05bafb23-9d3a-4f88-9afd-cc3ce6bdf1fc
+2016-10-11 13:43:29,568 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false ReceiptId: null faultCode: Server.ServerProxy.UnknownService faultString: SOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/40000001/DHX.subsystem/sendDocument/v1
+2016-10-11 13:43:41,968 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false internalConsignmentId: 9a7f7b21-934c-46a1-8adc-9d98b771a178
+2016-10-11 13:43:42,200 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem'
+2016-10-11 13:55:41,547 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-11 13:55:41,548 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-11 14:19:08,122 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-11 14:19:08,666 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+2016-10-11 14:19:09,980 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 11 14:19:09 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 11 14:19:09 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 11 14:19:09 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-11 14:19:09,983 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false
+addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX.subsystem, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX, is representee: false
+addressee: 70000004, X-road member: ee-dev/GOV/70000004/DHX.subsystem, is representee: false
+addressee: 70000001, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000002, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: true
+2016-10-11 14:19:15,578 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: 5a1c0f88-d117-431b-8b8e-aa060dcf7666
+2016-10-11 14:19:15,871 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.HttpError faultString: SOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-11 14:19:20,353 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId: e3407941-ec0b-41b9-95dd-70b55b708763
+2016-10-11 14:19:21,032 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.DuplicateHeaderField faultString: SOAP fault returned from web service: SOAP header contains duplicate field '{http://x-road.eu/xsd/xroad.xsd}protocolVersion'
+2016-10-11 14:19:31,722 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId: 98449b4f-0f3a-4d4e-ba1e-c4c2d4df57af
+2016-10-11 14:19:32,192 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.DuplicateHeaderField faultString: SOAP fault returned from web service: SOAP header contains duplicate field '{http://x-road.eu/xsd/xroad.xsd}protocolVersion'
+2016-10-11 14:20:45,111 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false internalConsignmentId: 0e8722bf-3206-451e-bbed-d757c856053d
+2016-10-11 14:20:45,436 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.DuplicateHeaderField faultString: SOAP fault returned from web service: SOAP header contains duplicate field '{http://x-road.eu/xsd/xroad.xsd}protocolVersion'
+2016-10-11 14:22:16,266 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: 8615bd10-cfb2-42dd-b25e-1a04c208b27a
+2016-10-11 14:22:16,892 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.HttpError faultString: SOAP fault returned from web service: Server responded with error 404: Not Found

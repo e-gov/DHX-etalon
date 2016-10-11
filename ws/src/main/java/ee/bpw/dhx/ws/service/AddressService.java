@@ -29,11 +29,12 @@ public interface AddressService {
    * Method finds xroadmember in local list of addresses by memberCode
    * 
    * @param memberCode - adressee code, might be either X-road member code or representee code.
+   * @param system - adressees system. default system is NULL.
    * @return - return XroadMember object
    * @throws DhxException - thrown if recipient is not found
    */
-  public XroadMember getClientForMemberCode(String memberCode) throws DhxException;
+  public XroadMember getClientForMemberCode(String memberCode, String system) throws DhxException;
 
-  public List<XroadMember> getAdresseeList();
+  public List<XroadMember> getAdresseeList() throws DhxException;
 
 }

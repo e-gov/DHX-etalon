@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import java.io.File;
@@ -29,6 +30,7 @@ import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -36,7 +38,7 @@ import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 @Slf4j
-@Service
+@Service("dhxMarshallerService")
 public class DhxMarshallerServiceImpl implements DhxMarshallerService {
 
 
@@ -52,10 +54,12 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
   Jaxb2Marshaller jaxbMarshaller;
 
   @Autowired
+  @Setter
   DhxConfig config;
 
   /**
    * Postconstruct init method. Sets marshallers needed for that service.
+   * 
    * @throws JAXBException - thrown when error occured
    */
   @PostConstruct
@@ -198,6 +202,50 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
           "Error occured while creating object from capsule. " + ex.getMessage(), ex);
     }
   }
+
+
+  /**
+   * Marshalls object to result.
+   * 
+   * @param obj - object to marshall
+   * @param result - result into which object will be marshalled
+   * @throws DhxException - thrown if error occurs while marshalling object
+   */
+  @Loggable
+  public void marshallToResult(Object obj, Result result) throws DhxException {
+    try {
+      if (log.isDebugEnabled()) {
+        log.debug("marshalling object");
+      }
+      marshaller.marshal(obj, result);
+    } catch (JAXBException ex) {
+      log.error(ex.getMessage(), ex);
+      throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
+          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+    }
+  }
+
+  /**
+   * Marshalls object to node.
+   * 
+   * @param obj - object to marshall
+   * @param node - node into which object will be marshalled
+   * @throws DhxException - thrown if error occurs while marshalling object
+   */
+  @Loggable
+  public void marshallToNode(Object obj, Node node) throws DhxException {
+    try {
+      if (log.isDebugEnabled()) {
+        log.debug("marshalling object");
+      }
+      marshaller.marshal(obj, node);
+    } catch (JAXBException ex) {
+      log.error(ex.getMessage(), ex);
+      throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
+          "Error occured while creating object from capsule. " + ex.getMessage(), ex);
+    }
+  }
+
 
   /**
    * Marshalls object to writer.

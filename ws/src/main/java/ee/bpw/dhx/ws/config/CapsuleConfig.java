@@ -10,21 +10,42 @@ import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient
 import lombok.Getter;
 import lombok.Setter;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "dhx.xsd")
+// @ConfigurationProperties(prefix = "dhx.xsd")
 @Configuration
+@PropertySource("classpath:dhx-application.properties")
 public class CapsuleConfig {
 
-  private String capsuleXsdFile21;
-  private CapsuleVersionEnum currentCapsuleVersion;
+  private String capsuleXsdFile21 = "jar://Dvk_kapsel_vers_2_1_eng_est.xsd";
+  private CapsuleVersionEnum currentCapsuleVersion = CapsuleVersionEnum.V21;
 
+  @Autowired
+  Environment env;
+
+  /**
+   * Automatically initialize properties.
+   */
+  @PostConstruct
+  public void init() {
+    if (env.getProperty("dhx.xsd.capsule-xsd-file21") != null) {
+      setCapsuleXsdFile21(env.getProperty("dhx.xsd.capsule-xsd-file21"));
+    }
+    if (env.getProperty("dhx.xsd.current-capsule-version") != null) {
+      setCurrentCapsuleVersion(CapsuleVersionEnum.valueOf(env
+          .getProperty("dhx.xsd.current-capsule-version")));
+    }
+  }
 
   public String getCurrentXsd() throws DhxException {
     return getXsdForVersion(currentCapsuleVersion);
@@ -54,10 +75,10 @@ public class CapsuleConfig {
 
 
   /**
-   * Method to find adresssees from container. Method returns adressees for every existing
-   * version of the container, bacause service which uses that method does not know anything about
-   * container and just needs adressees defined in it. Given implementation is able to find
-   * adressees for capsule version 2.1
+   * Method to find adresssees from container. Method returns adressees for every existing version
+   * of the container, bacause service which uses that method does not know anything about container
+   * and just needs adressees defined in it. Given implementation is able to find adressees for
+   * capsule version 2.1
    * 
    * @param containerObject - container(capsule) object from which to find adressees
    * @return - list of the adresssees

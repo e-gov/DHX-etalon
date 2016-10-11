@@ -3,7 +3,7 @@ package ee.bpw.dhx.client.service;
 import ee.bpw.dhx.client.config.DhxClientConfig;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.InternalRepresentee;
 import ee.bpw.dhx.ws.service.impl.ExampleDhxImplementationSpecificService;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 
@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ws.context.MessageContext;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,8 +27,8 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
 
 
   @Override
-  public String receiveDocument(DhxDocument document) throws DhxException {
-    String receiptId = super.receiveDocument(document);
+  public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException {
+    String receiptId = super.receiveDocument(document, context);
     logger.log(Level.getLevel("EVENT"), "Document received. for: "
         + document.getClient().toString() + " receipt:" + receiptId + " consignmentId: "
         + document.getExternalConsignmentId());
@@ -43,15 +44,19 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
   }
 
   @Override
-  public List<Representee> getRepresentationList() {
+  public List<InternalRepresentee> getRepresentationList() {
     String memberCodesStr = "";
     logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
     List<String> list = dhxConfig.getRepresenteesList();
-    List<Representee> representees = new ArrayList<Representee>();
+    List<String> listNames = dhxConfig.getRepresenteesNamesList();
+    List<InternalRepresentee> representees = new ArrayList<InternalRepresentee>();
     if (list != null) {
-      for (String representative : list) {
-        memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representative;
-        Representee representee = new Representee(representative, new Date(), null);
+      for (int i = 0; i < list.size(); i++) {
+        String representeeCode = list.get(i);
+        String representeeName = listNames.get(i);
+        memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representeeCode;
+        InternalRepresentee representee =
+            new InternalRepresentee(representeeCode, new Date(), null, representeeName, null);
         representees.add(representee);
       }
     }

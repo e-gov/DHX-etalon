@@ -2,12 +2,12 @@ package ee.bpw.dhx.client.service;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.Representee;
+import ee.bpw.dhx.model.InternalRepresentee;
 import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 
-import eu.x_road.dhx.producer.Member;
 import eu.x_road.dhx.producer.RepresentationListResponse;
+import eu.x_road.dhx.producer.Representee;
 import eu.x_road.dhx.producer.SendDocumentResponse;
 
 import lombok.extern.slf4j.Slf4j;
@@ -71,11 +71,12 @@ public class DhxClientGateWay extends DhxGateway {
     try {
       response = super.getRepresentationList(member);
 
-      if (response.getMembers() != null && response.getMembers().getMember() != null
-          && response.getMembers().getMember().size() > 0) {
+      if (response.getRepresentees() != null
+          && response.getRepresentees().getRepresentee() != null
+          && response.getRepresentees().getRepresentee().size() > 0) {
         String representatives = "";
-        for (Member memberResponse : response.getMembers().getMember()) {
-          representatives += ("\n") + new Representee(memberResponse).toString();
+        for (Representee memberResponse : response.getRepresentees().getRepresentee()) {
+          representatives += ("\n") + new InternalRepresentee(memberResponse).toString();
         }
         logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
       } else {

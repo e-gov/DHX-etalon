@@ -15,13 +15,11 @@ public class DhxException extends Exception {
 
   private DhxExceptionEnum exceptionCode;
 
-  public DhxException() {
-    super();
-  }
-
-  public DhxException(String message) {
-    super(message);
-  }
+  /*
+   * public DhxException() { super(); }
+   * 
+   * public DhxException(String message) { super(message); }
+   */
 
   public DhxException(DhxExceptionEnum exceptionCode, String message) {
     super(message);

@@ -3,11 +3,13 @@ package ee.bpw.dhx.ws.service;
 import ee.bpw.dhx.exception.DhxException;
 
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.w3c.dom.Node;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.StringWriter;
 
+import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 
 /**
@@ -75,6 +77,24 @@ public interface DhxMarshallerService {
    * @throws DhxException - thrown if error occurs while marshalling object
    */
   public File marshall(Object container) throws DhxException;
+
+  /**
+   * Marshalls object to result.
+   * 
+   * @param obj - object to marshall
+   * @param result - result into which object will be marshalled
+   * @throws DhxException - thrown if error occurs while marshalling object
+   */
+  public void marshallToResult(Object obj, Result result) throws DhxException;
+
+  /**
+   * Marshalls object to node.
+   * 
+   * @param obj - object to marshall
+   * @param node - node into which object will be marshalled
+   * @throws DhxException - thrown if error occurs while marshalling object
+   */
+  public void marshallToNode(Object obj, Node node) throws DhxException;
 
   /**
    * Marshalls object to writer.

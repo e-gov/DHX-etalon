@@ -144,6 +144,7 @@ public class DhxDocument {
 
   private XroadMember client;
   private XroadMember service;
+  private Recipient recipient;
 
 
   /**
@@ -200,8 +201,8 @@ public class DhxDocument {
   }
 
   /**
-   * service represents the one to whom the document is being sent. if it is inbound document then
-   * service is NULL.
+   * service represents the one to whom the document is being sent.  if it is inbound
+   * document then service represents self X-road member.
    * 
    * @return service
    */
@@ -211,13 +212,32 @@ public class DhxDocument {
 
   /**
    * service represents the one to whom the document is being sent(adressee). if it is inbound
-   * document then service is NULL.
+   * document then service represents self X-road member.
    * 
    * @param service - xroad member of the recipient
    */
   public void setService(XroadMember service) {
     this.service = service;
   }
+
+  /**
+   * 
+   * @return - For incoming document. Contains recipient data. If document is sent to representee
+   *         then object contains representees data, otherwise object contains direct recipient
+   */
+  public Recipient getRecipient() {
+    return recipient;
+  }
+
+  /**
+   * 
+   * @param recipient - For incoming document. Must contain recipient data(either representee or
+   *        direct recipient)
+   */
+  public void setRecipient(Recipient recipient) {
+    this.recipient = recipient;
+  }
+
 
   /**
    * External ID of the package.(for package receiving).

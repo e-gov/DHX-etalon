@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -101,7 +102,21 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
       if (config.getParseCapsule() && !capsuleType.equals("wrongAdressee")) {
         return sendDocument(capsuleFile, consignmentId);
       } else {
-        return sendDocument(capsuleFile, consignmentId, recipientString);
+        String recipientCode = null;
+        String recipientSystem = null;
+        String[] parts = recipientString.split("\\.");
+        if (parts.length == 2) {
+          recipientCode = parts[1];
+          recipientSystem = parts[0];
+        } else if (parts.length == 3) { // system with DHX. prefix example(DHX.south.10560025)
+          recipientCode = parts[2];
+          recipientSystem = parts[0] + "." + parts[1];
+        } else {
+          recipientCode = recipientString;
+        }
+        List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
+        responses.add(sendDocument(capsuleFile, consignmentId, recipientCode, recipientSystem));
+        return responses;
       }
 
     } catch (DhxException ex) {

@@ -41,6 +41,7 @@ import java.util.Map;
 public class DhxClientConfig {
 
   private String representees;
+  private String representeesNames;
   private Integer logMaxSize;
   private Integer logRefresh;
   private Integer binaryBufferSize;
@@ -56,6 +57,7 @@ public class DhxClientConfig {
   private String capsuleSelect;
 
   List<String> representeesList = null;
+  List<String> representeesNamesList = null;
 
   /**
    * Returns list of representatives from configuration.
@@ -67,6 +69,18 @@ public class DhxClientConfig {
       representeesList = Arrays.asList(representees.split(","));
     }
     return representeesList;
+  }
+
+  /**
+    * Returns list of representatives names from configuration.
+   * 
+   * @return - list of representatives names
+   */
+  public List<String> getRepresenteesNamesList() {
+    if (representeesNamesList == null && !StringUtil.isNullOrEmpty(representeesNames)) {
+      representeesNamesList = Arrays.asList(representeesNames.split(","));
+    }
+    return representeesNamesList;
   }
 
   public List<Map<String, String>> getCapsuleSelect() {

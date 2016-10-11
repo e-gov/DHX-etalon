@@ -5,7 +5,7 @@
 
 	<groupId>ee.bpw.dhx</groupId>
 	<artifactId>DHX</artifactId>
-	<version>0.8.7</version>
+	<version>0.9.2</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,7 +24,7 @@
 		<module>ws</module>
 	</modules>
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
@@ -32,8 +32,9 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
+
 			</exclusions>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -44,10 +45,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+		 <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		</dependency> 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
