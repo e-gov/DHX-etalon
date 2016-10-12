@@ -29,9 +29,10 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
   @Override
   public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException {
     String receiptId = super.receiveDocument(document, context);
-    logger.log(Level.getLevel("EVENT"), "Document received. for: "
-        + document.getClient().toString() + " receipt:" + receiptId + " consignmentId: "
-        + document.getExternalConsignmentId());
+    logger.log(Level.getLevel("EVENT"), "Document received." + " receipt:" + receiptId + " consignmentId: "
+        + document.getExternalConsignmentId() + " Document sender: "
+        + document.getClient().toString() + " Document reciever: "
+        + document.getService().toString() + " Document recipient: " + document.getRecipient().toString());
     if (document.getParsedContainer() != null) {
       DecContainer container = (DecContainer) document.getParsedContainer();
       logger.log(Level.getLevel("EVENT"),

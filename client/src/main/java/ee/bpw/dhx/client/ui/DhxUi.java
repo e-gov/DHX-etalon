@@ -330,7 +330,7 @@ public class DhxUi extends UI {
         getMessage("settings.xroad-member-help")));
     gridLayout.addComponent(new Label(soapConfig.getXroadInstance() + "/"
         + soapConfig.getMemberClass() + "/" + soapConfig.getMemberCode() + "/"
-        + soapConfig.getSubsystem()));
+        + soapConfig.getDefaultSubsystem()));
     VerticalLayout layout = new VerticalLayout();
     layout.addComponent(gridLayout);
     return layout;
@@ -619,7 +619,7 @@ public class DhxUi extends UI {
                     .toString()
                     .replace("addressee", getMessage("settings.local-addresse-list.adressee"))
                     .replace("X-road member", "X-tee liige")
-                    .replace("is representee",
+                    .replace("representee",
                         getMessage("activity.representation-list.is-represented"))
                 + (member.getRepresentee() == null ? "" : " "
                     + getMessage("activity.representation-list.start-date") + ": " + startDateStr

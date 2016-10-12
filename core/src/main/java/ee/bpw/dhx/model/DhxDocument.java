@@ -55,7 +55,7 @@ public class DhxDocument {
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  public DhxDocument(XroadMember service, InputStream stream, Boolean packFile)
+  public DhxDocument(XroadMember service, XroadMember client, InputStream stream, Boolean packFile)
       throws DhxException {
     try {
       InputStream realStream;
@@ -63,6 +63,7 @@ public class DhxDocument {
       DataSource source = new ByteArrayDataSource(realStream, "application/octet-stream");
       documentFile = new DataHandler(source);
       this.service = service;
+      this.client = client;
     } catch (IOException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
     }
@@ -73,6 +74,7 @@ public class DhxDocument {
    * Create DhxDocument. For document sending.
    * 
    * @param service - XroadMember to whom document is mean to be sent
+   * @param client - XroadMember who sends the document
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
    * @param file - documents file
@@ -80,13 +82,14 @@ public class DhxDocument {
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public DhxDocument(XroadMember service, Object parsedContainer,
+  public DhxDocument(XroadMember service, XroadMember client, Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, File file, String internalConsignmentId,
       Boolean packFile) throws DhxException {
     this(service, file, packFile);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
     this.internalConsignmentId = internalConsignmentId;
+    this.client = client;
 
   }
 
@@ -101,10 +104,10 @@ public class DhxDocument {
    * @param packFile - is file need to packed(true), or it is already packed(false)
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public DhxDocument(XroadMember service, InputStream stream, Object parsedContainer,
+  public DhxDocument(XroadMember service, XroadMember client, InputStream stream, Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, String internalConsignmentId, Boolean packFile)
       throws DhxException {
-    this(service, stream, packFile);
+    this(service, client, stream, packFile);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
     this.internalConsignmentId = internalConsignmentId;
@@ -181,7 +184,7 @@ public class DhxDocument {
 
   /**
    * client represents the one who sent the document(document sender). if it is outbound document
-   * then client is NULL.
+   * then client represents self X-road member
    * 
    * @return client
    */
@@ -194,7 +197,7 @@ public class DhxDocument {
    * then client is NULL.
    * 
    * @param client - client represents the one who sent the document(document sender). if it is
-   *        outbound document then client is NULL
+   *        outbound document then client represents self X-road member
    */
   public void setClient(XroadMember client) {
     this.client = client;

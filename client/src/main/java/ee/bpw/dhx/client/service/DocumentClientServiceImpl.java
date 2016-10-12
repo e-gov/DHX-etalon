@@ -130,12 +130,12 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
    * overriden just to log events.
    */
   @Override
-  public DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client)
+  public DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client, XroadMember service)
       throws DhxException {
     try {
       logger.log(Level.getLevel("EVENT"), "Starting to receive document. for representative: "
           + document.getRecipient() + " consignmentId: " + document.getConsignmentId());
-      return super.extractAndValidateDocument(document, client);
+      return super.extractAndValidateDocument(document, client, service);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
       logger.log(

@@ -1,5 +1,10 @@
 package ee.bpw.dhx.ws.config;
 
+import ee.bpw.dhx.model.XroadMember;
+
+import eu.x_road.xsd.identifiers.ObjectFactory;
+import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -22,24 +30,27 @@ import javax.annotation.PostConstruct;
  */
 public class SoapConfig {
 
+  private final String separator = ",";
+
   String targetnamespace = "http://dhx.x-road.eu/producer";
   String securityServer;
   String securityServerAppender = "/cgi-bin/consumer_proxy";
   String xroadInstance;
   String memberClass;
   String memberCode;
-  String subsystem;
+  String defaultSubsystem = "DHX";
   String userId;
   String protocolVersion = "4.0";
 
   String globalConfLocation = "verificationconf";
   String globalConfFilename = "shared-params.xml";
   String dhxRepresentationGroupName = "DHX vahendajad";
+  String acceptedSubsystems = "DHX";
+  List<String> acceptedSubsystemsAsList;
 
-
-  String serviceXroadInstance;
-  String serviceMemberClass;
-  String serviceSubsystem;
+  /*
+   * String serviceXroadInstance; String serviceMemberClass; String serviceSubsystem;
+   */
 
 
   String sendDocumentServiceCode = "sendDocument";
@@ -54,6 +65,14 @@ public class SoapConfig {
 
   @Autowired
   Environment env;
+
+  public List<String> getAcceptedSubsystemsAsList() {
+    if (acceptedSubsystemsAsList == null) {
+      String[] contextArray = acceptedSubsystems.split(separator);
+      acceptedSubsystemsAsList = Arrays.asList(contextArray);
+    }
+    return acceptedSubsystemsAsList;
+  }
 
   /**
    * Automatically initialize properties.
@@ -78,8 +97,8 @@ public class SoapConfig {
     if (env.getProperty("soap.dhx-subsystem-prefix") != null) {
       setDhxSubsystemPrefix(env.getProperty("soap.dhx-subsystem-prefix"));
     }
-    if (env.getProperty("soap.subsystem") != null) {
-      setSubsystem(env.getProperty("soap.subsystem"));
+    if (env.getProperty("soap.default-subsystem") != null) {
+      setDefaultSubsystem(env.getProperty("soap.default-subsystem"));
     }
     if (env.getProperty("soap.user-id") != null) {
       setUserId(env.getProperty("soap.user-id"));
@@ -99,12 +118,12 @@ public class SoapConfig {
     if (env.getProperty("soap.dhx-representation-group-name") != null) {
       setDhxRepresentationGroupName(env.getProperty("soap.dhx-representation-group-name"));
     }
-    if (env.getProperty("soap.service-xroad-instance") != null) {
-      setServiceXroadInstance(env.getProperty("soap.service-xroad-instance"));
-    }
-    if (env.getProperty("soap.service-subsystem") != null) {
-      setServiceSubsystem(env.getProperty("soap.service-subsystem"));
-    }
+    /*
+     * if (env.getProperty("soap.service-xroad-instance") != null) {
+     * setServiceXroadInstance(env.getProperty("soap.service-xroad-instance")); } if
+     * (env.getProperty("soap.service-subsystem") != null) {
+     * setServiceSubsystem(env.getProperty("soap.service-subsystem")); }
+     */
     if (env.getProperty("soap.send-document-service-code") != null) {
       setSendDocumentServiceCode(env.getProperty("soap.send-document-service-code"));
     }
@@ -131,6 +150,7 @@ public class SoapConfig {
 
   /**
    * Helper method to add prefix if no prefix found.
+   * 
    * @param system - system name to add prefix to
    * @return - uppercase system with prefix added
    */
@@ -142,6 +162,13 @@ public class SoapConfig {
       system = getDhxSubsystemPrefix() + "." + system;
     }
     return system.toUpperCase();
+  }
+
+  public XroadMember getDefaultClient() {
+    XroadMember client =
+        new XroadMember(getXroadInstance(), getMemberClass(), getMemberCode(),
+            getDefaultSubsystem(), "", null);
+    return client;
   }
 
 }

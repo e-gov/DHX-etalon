@@ -28,7 +28,7 @@ public class XroadMember {
     this.memberCode = xrdClient.getMemberCode();
     this.subsystemCode = xrdClient.getSubsystemCode();
   }
-  
+
   /**
    * Create internal XroadMember from XRoadServiceIdentifierType(X-road object).
    * 
@@ -39,7 +39,7 @@ public class XroadMember {
     this.memberClass = xrdService.getMemberClass();
     this.memberCode = xrdService.getMemberCode();
     this.subsystemCode = xrdService.getSubsystemCode();
-    
+
     this.serviceCode = xrdService.getServiceCode();
     this.serviceVersion = xrdService.getServiceVersion();
   }
@@ -101,8 +101,8 @@ public class XroadMember {
   private String memberCode;
   private String subsystemCode;
   private String name;
-  
-  //service variables
+
+  // service variables
   private String serviceCode;
   private String serviceVersion;
 
@@ -111,9 +111,15 @@ public class XroadMember {
 
   @Override
   public String toString() {
-    return "addressee: " + (representee == null ? memberCode : representee.getMemberCode())
-        + ", X-road member: " + xroadInstance + "/" + memberClass + "/" + memberCode + "/"
-        + subsystemCode + ", is representee: " + (representee == null ? false : true);
+    return "X-road member " + xroadInstance + "/" + memberClass + "/" + memberCode + "/"
+        + subsystemCode + (representee == null ?"":", representee: "
+        +  representee.getMemberCode() + ", system:" + representee.getSystem());
+
+    /*
+     * "addressee: " + (representee == null ? memberCode : representee.getMemberCode()) +
+     * ", X-road member: " + xroadInstance + "/" + memberClass + "/" + memberCode + "/" +
+     * subsystemCode + ", is representee: " + (representee == null ? false : true);
+     */
   }
 
 }

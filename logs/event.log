@@ -113,3 +113,611 @@ addressee: 70000003, X-road member: ee-dev/COM/30000001/DHX, is representee: tru
 2016-10-11 14:20:45,436 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: addressee: 30000001, X-road member: ee-dev/COM/30000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.DuplicateHeaderField faultString: SOAP fault returned from web service: SOAP header contains duplicate field '{http://x-road.eu/xsd/xroad.xsd}protocolVersion'
 2016-10-11 14:22:16,266 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false internalConsignmentId: 8615bd10-cfb2-42dd-b25e-1a04c208b27a
 2016-10-11 14:22:16,892 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: addressee: 40000001, X-road member: ee-dev/GOV/40000001/DHX, is representee: false ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.HttpError faultString: SOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-12 15:18:22,457 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-12 15:18:23,184 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX, representee: , 
+2016-10-12 15:18:24,401 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 15:18:24 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 15:18:24 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 15:18:24 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 15:18:24,405 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX, representee: , 
+X-road member ee-dev/GOV/40000001/DHX, representee: , 
+X-road member ee-dev/GOV/40000001/DHX.subsystem, representee: , 
+X-road member ee-dev/GOV/70000004/DHX, representee: , 
+X-road member ee-dev/GOV/70000004/DHX.subsystem, representee: , 
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, null
+2016-10-12 15:18:37,303 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: ,  internalConsignmentId: 74228f3a-849e-4f09-bdae-4f1931aa160b
+2016-10-12 15:18:37,750 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: ,  ReceiptId: 2dc660d2-c5b8-4e43-bf09-dfab4413e959
+2016-10-12 15:18:41,651 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX, representee: ,  internalConsignmentId: f4839364-8cda-492b-820f-8ef65c0d6757
+2016-10-12 15:18:42,066 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX, representee: ,  ReceiptId: 1df5a2d4-f2e9-43a0-85cd-3e3e0710f549
+2016-10-12 15:18:44,386 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null internalConsignmentId: eeabb416-150c-4585-9265-65a31a7bb3da
+2016-10-12 15:18:45,260 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null ReceiptId: 2d8dcf32-e890-4d88-b637-2026223faa9f
+2016-10-12 16:05:12,237 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 16:08:05,082 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 16:08:05,609 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 16:08:06,883 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 16:08:07 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 16:08:07 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 16:08:07 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 16:08:06,886 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, null
+2016-10-12 16:10:09,722 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 6d16ff3f-8bc7-48f0-8969-8f1e7edc3172
+2016-10-12 16:10:10,188 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 0784a4e8-4d44-41d2-a5d9-fea962d00ed5
+2016-10-12 16:10:13,951 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 3dc0382c-0a5b-4e88-9fce-4f74b09f8480
+2016-10-12 16:10:14,370 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 6a7704c1-ed32-4475-8dc9-bf5d47d150ce
+2016-10-12 16:10:21,822 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null internalConsignmentId: 5575021f-4d9b-4365-8f4e-57d2c2f05367
+2016-10-12 16:10:22,231 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, null ReceiptId: 9ee67df9-b809-4707-afb3-46bc8a740496
+2016-10-12 17:42:24,999 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 17:42:25,689 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 17:42:26,616 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 17:42:27 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 17:42:27 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 17:42:27 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 17:42:26,624 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 17:42:31,997 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: a544d052-2086-450c-bf14-b75b9ce89e9f
+2016-10-12 17:42:32,504 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 1a14c5c8-feaf-4a9a-82cd-19d52c9ad6f2
+2016-10-12 17:42:36,402 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 54bad62c-7e4c-4833-97eb-1c835a4849ba
+2016-10-12 17:42:36,877 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 5fffbff7-36e2-4bec-a918-6069c8b91491
+2016-10-12 17:42:39,396 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 8fa4f3ca-1f30-4336-bb99-0f5cc91f9bcb
+2016-10-12 17:42:39,840 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 35f40739-fb66-418c-811c-99abeadebdcf
+2016-10-12 17:42:42,646 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-1] ----- Error occured while sending document. DHXException code: DHX.Validation Error occured while validating capsule. cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns5:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.Validation Error occured while validating capsule. cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns5:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate_aroundBody22(DhxMarshallerServiceImpl.java:307) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure23.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate(DhxMarshallerServiceImpl.java:296) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentToXroadMember_aroundBody26(DocumentServiceImpl.java:321) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure27.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentToXroadMember(DocumentServiceImpl.java:308) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentNoCapsulePasring_aroundBody0(DocumentServiceImpl.java:99) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure1.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentNoCapsulePasring(DocumentServiceImpl.java:92) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument_aroundBody12(DocumentServiceImpl.java:194) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure13.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:191) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:118) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:397) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: org.xml.sax.SAXParseException: cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns5:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.util.ErrorHandlerWrapper.error(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.reportSchemaError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.handleStartElement(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.xs.XMLSchemaValidator.startElement(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.jaxp.validation.StreamValidatorHelper.validate(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.jaxp.validation.ValidatorImpl.validate(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at javax.xml.validation.Validator.validate(Validator.java:124) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate_aroundBody22(DhxMarshallerServiceImpl.java:303) ~[ws-0.9.4.jar:0.9.4]
+	... 88 more
+2016-10-12 17:42:47,062 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-3] ----- Error occured while sending document. DHXException code: DHX.Validation Error occured while creating object from capsule. null
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.Validation Error occured while creating object from capsule. null
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:162) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure9.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate_aroundBody6(DhxMarshallerServiceImpl.java:148) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure7.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate(DhxMarshallerServiceImpl.java:144) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody4(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure5.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody2(DhxMarshallerServiceImpl.java:107) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure3.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:106) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:94) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:397) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: javax.xml.bind.UnmarshalException
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.4.jar:0.9.4]
+	... 88 more
+Caused by: org.xml.sax.SAXParseException: Content is not allowed in prolog.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$PrologDispatcher.dispatch(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.4.jar:0.9.4]
+	... 88 more
+2016-10-12 18:21:55,373 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 18:21:56,015 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 18:21:57,208 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 18:21:58 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 18:21:58 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 18:21:58 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 18:21:57,211 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 18:22:07,370 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 7b96282d-7a9a-4d1c-88e2-ee64eddd676a
+2016-10-12 18:22:08,105 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: af46691a-e1b8-43a7-8d64-47bfc44c3586
+2016-10-12 18:22:11,886 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 53d1067e-7248-4c2c-9515-2fad327aef6a
+2016-10-12 18:22:12,256 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 35d11f11-c0d2-49fd-8b48-88315982fae9
+2016-10-12 18:22:15,664 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 32212f98-9388-4084-855d-04020a291c92
+2016-10-12 18:22:16,148 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 3c50a4e6-39c2-4f1a-babb-65dd788d9943
+2016-10-12 18:43:21,984 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 18:43:22,519 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 18:43:23,380 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 18:43:24 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 18:43:24 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 18:43:24 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 18:43:23,386 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 18:43:28,897 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: ac4bb949-8063-40dc-8823-cdaaabd5e514
+2016-10-12 18:43:29,366 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 92d3ba8d-b739-4725-bc2c-58cb49eea934
+2016-10-12 18:43:33,454 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 8a74efa1-e060-4977-a1e8-e96902aa6b69
+2016-10-12 18:43:33,866 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 92cd3e2c-89f6-4a57-a4eb-8634b541025b
+2016-10-12 18:44:03,226 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 946e35eb-0bde-40eb-8168-8c92940951b6
+2016-10-12 18:44:03,626 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 21e4d4ee-61ef-4ca4-be7a-a74587f39cea
+2016-10-12 18:44:56,199 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 6d8e891d-9cdb-4db8-b67e-45862e818893
+2016-10-12 18:44:56,662 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 27cb27db-32e1-48a4-b456-cee58835275f
+2016-10-12 18:45:00,222 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 4275f195-4a39-4341-94c6-71cbb4644126
+2016-10-12 18:45:00,650 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 38eacc0b-a333-4fad-b37f-2f535b8ce926
+2016-10-12 18:45:03,976 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: b3ba4805-406d-473b-b15c-7d17e719f498
+2016-10-12 18:45:04,435 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 7823007d-7d71-4ad3-b783-d19821d0df27
+2016-10-12 18:57:25,727 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-12 18:57:26,281 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 18:57:27,140 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 18:57:28 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 18:57:28 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 18:57:28 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 18:57:27,142 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 18:57:34,173 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 90d855a9-9d65-43bb-b30f-2997a3a826b1
+2016-10-12 18:57:34,198 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Error occured while sending document. recipient: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while sending document.null
+2016-10-12 18:57:34,200 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-5] ----- Error occured while sending document. DHXException code: WS_ERROR Error occured while sending document.null
+ee.bpw.dhx.exception.DhxException: DHXException code: WS_ERROR Error occured while sending document.null
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:333) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:278) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:46) ~[classes/:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocumentTry(DocumentClientServiceImpl.java:156) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument_aroundBody28(DocumentServiceImpl.java:371) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure29.run(DocumentServiceImpl.java:1) [ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) [aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) [jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:348) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument_aroundBody22(DocumentServiceImpl.java:273) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure23.run(DocumentServiceImpl.java:1) [ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) [aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) [jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:262) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:295) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument_aroundBody24(DocumentServiceImpl.java:286) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure25.run(DocumentServiceImpl.java:1) [ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) [aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) [jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) [jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:286) [ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:103) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:397) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.lang.NullPointerException
+	at ee.bpw.dhx.ws.service.DhxGateway$SoapRequestHeaderModifier.getXRoadClientIdentifierType(DhxGateway.java:249) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.DhxGateway$SoapRequestHeaderModifier.doWithMessage(DhxGateway.java:207) ~[ws-0.9.4.jar:0.9.4]
+	at org.springframework.ws.client.core.WebServiceTemplate$2.doWithMessage(WebServiceTemplate.java:401) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.doSendAndReceive(WebServiceTemplate.java:590) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.sendAndReceive(WebServiceTemplate.java:555) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.marshalSendAndReceive(WebServiceTemplate.java:390) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:313) ~[ws-0.9.4.jar:0.9.4]
+	... 86 more
+2016-10-12 19:01:45,375 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-12 19:01:45,932 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 19:01:46,821 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 19:01:47 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 19:01:47 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 19:01:47 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 19:01:46,826 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 19:01:52,698 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 4d6af2cf-8d24-4078-acb0-6c354e0a43a7
+2016-10-12 19:01:53,171 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 60f4d1ae-72a7-458a-8152-81f496df67cf
+2016-10-12 19:18:19,925 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-12 19:18:20,422 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 19:18:21,271 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 19:18:22 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 19:18:22 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 19:18:22 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 19:18:21,279 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-12 19:18:27,531 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 7733e9e5-7013-46fa-95d5-ef75eb7b6b74
+2016-10-12 19:18:27,556 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Error occured while sending document. recipient: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while sending document.null
+2016-10-12 19:18:27,561 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-5] ----- Error occured while sending document. DHXException code: WS_ERROR Error occured while sending document.null
+ee.bpw.dhx.exception.DhxException: DHXException code: WS_ERROR Error occured while sending document.null
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:333) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:278) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:46) ~[classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentToXroadMember_aroundBody26(DocumentServiceImpl.java:328) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure27.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentToXroadMember(DocumentServiceImpl.java:308) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentNoCapsulePasring_aroundBody0(DocumentServiceImpl.java:99) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure1.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocumentNoCapsulePasring(DocumentServiceImpl.java:92) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument_aroundBody12(DocumentServiceImpl.java:194) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl$AjcClosure13.run(DocumentServiceImpl.java:1) ~[ws-0.9.4.jar:0.9.4]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DocumentServiceImpl.sendDocument(DocumentServiceImpl.java:191) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:118) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:397) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.lang.NullPointerException
+	at ee.bpw.dhx.ws.service.DhxGateway$SoapRequestHeaderModifier.getXRoadClientIdentifierType(DhxGateway.java:249) ~[ws-0.9.4.jar:0.9.4]
+	at ee.bpw.dhx.ws.service.DhxGateway$SoapRequestHeaderModifier.doWithMessage(DhxGateway.java:207) ~[ws-0.9.4.jar:0.9.4]
+	at org.springframework.ws.client.core.WebServiceTemplate$2.doWithMessage(WebServiceTemplate.java:401) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.doSendAndReceive(WebServiceTemplate.java:590) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.sendAndReceive(WebServiceTemplate.java:555) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at org.springframework.ws.client.core.WebServiceTemplate.marshalSendAndReceive(WebServiceTemplate.java:390) ~[spring-ws-core-2.2.3.RELEASE.jar:2.2.3.RELEASE]
+	at ee.bpw.dhx.ws.service.DhxGateway.sendDocument(DhxGateway.java:313) ~[ws-0.9.4.jar:0.9.4]
+	... 84 more
+2016-10-12 19:59:18,079 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-12 19:59:18,091 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-12 19:59:37,838 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-12 19:59:37,838 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-12 20:00:01,650 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-12 20:00:01,650 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-12 20:00:01,654 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Document received. receipt:62f14e3f-dd66-47fb-84fd-906e3214d08f consignmentId: 2d7b2955-b14f-4366-8344-a9c8ebd6f346 Document sender: X-road member ee-dev/GOV/40000001/DHX, representee: MEMBER3, system:null Document reciever: X-road member ee-dev/COM/40000001/DHX Document recipient: code: 40000001, system: DHX
+2016-10-12 20:00:07,477 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-8] ----- Staring renewing local address list
+2016-10-12 20:00:07,921 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-12 20:00:08,570 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 12 20:00:09 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 12 20:00:09 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 12 20:00:09 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-12 20:00:08,572 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-8] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null

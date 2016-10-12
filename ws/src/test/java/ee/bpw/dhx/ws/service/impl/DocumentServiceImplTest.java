@@ -7,6 +7,7 @@ import ee.bpw.dhx.model.XroadMember;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.CapsuleConfig;
+import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
@@ -60,6 +61,9 @@ public class DocumentServiceImplTest {
   DhxConfig config;
   
   @Mock
+  SoapConfig soapConfig;
+  
+  @Mock
   DhxMarshallerService dhxMarshallerService;
 
   @Mock
@@ -82,6 +86,9 @@ public class DocumentServiceImplTest {
     config.setParseCapsule(true);
     when(xsdConfig.getCurrentCapsuleVersion())
     .thenReturn(CapsuleVersionEnum.V21);
+    when(soapConfig.getDefaultClient())
+    .thenReturn(new XroadMember("", "", "", "", "", null));
+    
     when(xsdConfig.getXsdForVersion(CapsuleVersionEnum.V21))
     .thenReturn("jar://Dvk_kapsel_vers_2_1_eng_est.xsd");
     documentService.setConfig(config);
