@@ -4,8 +4,8 @@ import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
@@ -79,8 +79,8 @@ public class AddressServiceImpl implements AddressService {
   /**
    * Returns list of adressees.
    */
-  public List<XroadMember> getAdresseeList() throws DhxException {
-    List<XroadMember> adressees = dhxImplementationSpecificService.getAdresseeList();
+  public List<InternalXroadMember> getAdresseeList() throws DhxException {
+    List<InternalXroadMember> adressees = dhxImplementationSpecificService.getAdresseeList();
     // obviously not initialized yet
     if (adressees == null) {
       renewAddressList();
@@ -90,7 +90,7 @@ public class AddressServiceImpl implements AddressService {
   }
 
 
-  private void setAddresseeList(List<XroadMember> members) throws DhxException {
+  private void setAddresseeList(List<InternalXroadMember> members) throws DhxException {
     dhxImplementationSpecificService.saveAddresseeList(members);
   }
 
@@ -119,8 +119,8 @@ public class AddressServiceImpl implements AddressService {
   }
 
   @Loggable
-  protected List<XroadMember> getRenewedAdresseesList() throws DhxException {
-    List<XroadMember> members = new ArrayList<XroadMember>();
+  protected List<InternalXroadMember> getRenewedAdresseesList() throws DhxException {
+    List<InternalXroadMember> members = new ArrayList<InternalXroadMember>();
     SharedParametersType globalConf = getGlobalConf();
     if (globalConf != null) {
       for (MemberType member : globalConf.getMember()) {
@@ -130,7 +130,7 @@ public class AddressServiceImpl implements AddressService {
               .startsWith(config.getDhxSubsystemPrefix().toUpperCase())) {
             log.debug("Found DHX subsystem for member: {}", member.getMemberCode());
             // do we have to add self to address list??
-            members.add(new XroadMember(config.getXroadInstance(), member, subSystem
+            members.add(new InternalXroadMember(config.getXroadInstance(), member, subSystem
                 .getSubsystemCode(), member.getName()));
             // break;
           }
@@ -143,10 +143,10 @@ public class AddressServiceImpl implements AddressService {
           for (XRoadClientIdentifierType client : group.getGroupMember()) {
             // exclude own representatives
             if (!client.getMemberCode().equals(config.getMemberCode())) {
-              XroadMember member = new XroadMember(client);
+              InternalXroadMember member = new InternalXroadMember(client);
               log.debug("getting representatives for member: {}", member.toString());
               try {
-                List<XroadMember> representeeMembers = getRepresentees(member);
+                List<InternalXroadMember> representeeMembers = getRepresentees(member);
                 if (representeeMembers != null && representeeMembers.size() > 0) {
                   members.addAll(representeeMembers);
                 }
@@ -157,12 +157,12 @@ public class AddressServiceImpl implements AddressService {
               }
               // include own representatives not from x-road servicce, but from local method
             } else {
-              XroadMember member = new XroadMember(client);
-              List<InternalRepresentee> representees =
+              InternalXroadMember member = new InternalXroadMember(client);
+              List<DhxRepresentee> representees =
                   dhxImplementationSpecificService.getRepresentationList();
-              List<XroadMember> representeesmembers = new ArrayList<XroadMember>();
-              for (InternalRepresentee representee : representees) {
-                representeesmembers.add(new XroadMember(member, representee));
+              List<InternalXroadMember> representeesmembers = new ArrayList<InternalXroadMember>();
+              for (DhxRepresentee representee : representees) {
+                representeesmembers.add(new InternalXroadMember(member, representee));
               }
               members.addAll(representeesmembers);
             }
@@ -174,17 +174,17 @@ public class AddressServiceImpl implements AddressService {
   }
 
   @Loggable
-  private List<XroadMember> getRepresentees(XroadMember member) throws DhxException {
+  private List<InternalXroadMember> getRepresentees(InternalXroadMember member) throws DhxException {
     RepresentationListResponse response = dhxGateway.getRepresentationList(member);
     if (response == null || response.getRepresentees() == null
         || response.getRepresentees().getRepresentee() == null
         || response.getRepresentees().getRepresentee().size() == 0) {
       return null;
     } else {
-      List<XroadMember> representees = new ArrayList<XroadMember>();
+      List<InternalXroadMember> representees = new ArrayList<InternalXroadMember>();
       for (eu.x_road.dhx.producer.Representee representee : response.getRepresentees()
           .getRepresentee()) {
-        representees.add(new XroadMember(member, new InternalRepresentee(representee)));
+        representees.add(new InternalXroadMember(member, new DhxRepresentee(representee)));
       }
       return representees;
     }
@@ -235,13 +235,13 @@ public class AddressServiceImpl implements AddressService {
    * @throws DhxException - thrown if recipient is not found
    */
   @Loggable
-  public XroadMember getClientForMemberCode(String memberCode, String system) throws DhxException {
+  public InternalXroadMember getClientForMemberCode(String memberCode, String system) throws DhxException {
     log.debug("getClientForMemberCode(String memberCode) memberCode: {}", memberCode);
-    List<XroadMember> members = getAdresseeList();
+    List<InternalXroadMember> members = getAdresseeList();
     Date curDate = new Date();
     if (members != null && members.size() > 0) {
       log.debug("local adressee list size: {}", members.size());
-      for (XroadMember member : members) {
+      for (InternalXroadMember member : members) {
         if (member.getMemberCode().equals(memberCode)
             && (member.getRepresentee() == null
             || member.getRepresentee().getMemberCode() == null)

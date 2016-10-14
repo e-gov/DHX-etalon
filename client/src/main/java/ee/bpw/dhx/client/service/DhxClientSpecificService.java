@@ -1,9 +1,10 @@
 package ee.bpw.dhx.client.service;
 
 import ee.bpw.dhx.client.config.DhxClientConfig;
+
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.InternalRepresentee;
+import ee.bpw.dhx.model.IncomingDhxPackage;
+import ee.bpw.dhx.model.DhxRepresentee;
 import ee.bpw.dhx.ws.service.impl.ExampleDhxImplementationSpecificService;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 
@@ -27,7 +28,7 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
 
 
   @Override
-  public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException {
+  public String receiveDocument(IncomingDhxPackage document, MessageContext context) throws DhxException {
     String receiptId = super.receiveDocument(document, context);
     logger.log(Level.getLevel("EVENT"), "Document received." + " receipt:" + receiptId + " consignmentId: "
         + document.getExternalConsignmentId() + " Document sender: "
@@ -45,19 +46,19 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
   }
 
   @Override
-  public List<InternalRepresentee> getRepresentationList() {
+  public List<DhxRepresentee> getRepresentationList() {
     String memberCodesStr = "";
     logger.log(Level.getLevel("EVENT"), "Staring returning representationList");
     List<String> list = dhxConfig.getRepresenteesList();
     List<String> listNames = dhxConfig.getRepresenteesNamesList();
-    List<InternalRepresentee> representees = new ArrayList<InternalRepresentee>();
+    List<DhxRepresentee> representees = new ArrayList<DhxRepresentee>();
     if (list != null) {
       for (int i = 0; i < list.size(); i++) {
         String representeeCode = list.get(i);
         String representeeName = listNames.get(i);
         memberCodesStr += (memberCodesStr == "" ? "" : ", ") + representeeCode;
-        InternalRepresentee representee =
-            new InternalRepresentee(representeeCode, new Date(), null, representeeName, null);
+        DhxRepresentee representee =
+            new DhxRepresentee(representeeCode, new Date(), null, representeeName, null);
         representees.add(representee);
       }
     }

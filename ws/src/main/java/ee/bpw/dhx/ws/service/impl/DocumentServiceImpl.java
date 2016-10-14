@@ -5,10 +5,12 @@ import com.jcabi.aspects.Loggable;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.CapsuleAdressee;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.Recipient;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxPackage;
+import ee.bpw.dhx.model.IncomingDhxPackage;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.OutgoingDhxPackage;
+import ee.bpw.dhx.model.DhxRecipient;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.StringUtil;
@@ -88,12 +90,14 @@ public class DocumentServiceImpl implements DocumentService {
 
   @Loggable
   private SendDocumentResponse sendDocumentNoCapsulePasring(InputStream capsuleStream,
-      String consignmentId, String recipient, String recipientSystem, String senderSubsystem) throws DhxException {
+      String consignmentId, String recipient, String recipientSystem, String senderSubsystem)
+      throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     checkFileSize(capsuleStream);
-    XroadMember adressee = addressService.getClientForMemberCode(recipient, recipientSystem);
-    XroadMember sender = soapConfig.getDefaultClient();
-    if(senderSubsystem != null) {
+    InternalXroadMember adressee =
+        addressService.getClientForMemberCode(recipient, recipientSystem);
+    InternalXroadMember sender = soapConfig.getDefaultClient();
+    if (senderSubsystem != null) {
       sender.setSubsystemCode(senderSubsystem);
     }
     return sendDocumentToXroadMember(capsuleStream, consignmentId, adressee, sender);
@@ -102,15 +106,15 @@ public class DocumentServiceImpl implements DocumentService {
   @Loggable
   @Override
   public SendDocumentResponse sendDocument(InputStream capsuleStream, String consignmentId,
-      XroadMember recipient) throws DhxException {
+      InternalXroadMember recipient) throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     return sendDocument(capsuleStream, consignmentId, recipient, soapConfig.getDefaultClient());
   }
-  
+
   @Loggable
   @Override
   public SendDocumentResponse sendDocument(InputStream capsuleStream, String consignmentId,
-      XroadMember recipient, XroadMember sender) throws DhxException {
+      InternalXroadMember recipient, InternalXroadMember sender) throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     return sendDocumentToXroadMember(capsuleStream, consignmentId, recipient, sender);
   }
@@ -118,20 +122,22 @@ public class DocumentServiceImpl implements DocumentService {
   @Loggable
   @Override
   public SendDocumentResponse sendDocument(File capsuleFile, String consignmentId,
-      XroadMember recipient) throws DhxException {
+      InternalXroadMember recipient) throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     return sendDocument(capsuleFile, consignmentId, recipient, soapConfig.getDefaultClient());
   }
-  
+
   @Loggable
   @Override
   public SendDocumentResponse sendDocument(File capsuleFile, String consignmentId,
-      XroadMember recipient, XroadMember sender) throws DhxException {
+      InternalXroadMember recipient, InternalXroadMember sender) throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     SendDocumentResponse response;
     try {
-      response = sendDocumentToXroadMember(stream, consignmentId, recipient, soapConfig.getDefaultClient());
+      response =
+          sendDocumentToXroadMember(stream, consignmentId, recipient,
+              soapConfig.getDefaultClient());
     } catch (DhxException ex) {
       throw ex;
     } finally {
@@ -153,7 +159,8 @@ public class DocumentServiceImpl implements DocumentService {
   @Override
   @Loggable
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
-      XroadMember client, XroadMember service, MessageContext context) throws DhxException {
+      InternalXroadMember client, InternalXroadMember service, MessageContext context)
+      throws DhxException {
     if (config.getCheckDuplicate()
         && dhxImplementationSpecificService.isDuplicatePackage(client,
             document.getConsignmentId())) {
@@ -170,7 +177,7 @@ public class DocumentServiceImpl implements DocumentService {
         throw new DhxException(DhxExceptionEnum.EXTRACTION_ERROR,
             "Attached capsule is not found in request");
       }
-      DhxDocument dhxDocument;
+      IncomingDhxPackage dhxDocument;
       if (config.getParseCapsule()) {
         dhxDocument = extractAndValidateDocument(document, client, service);
       } else {
@@ -191,7 +198,8 @@ public class DocumentServiceImpl implements DocumentService {
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     SendDocumentResponse response;
     try {
-      response = sendDocumentNoCapsulePasring(stream, consignmentId, recipient, recipientSystem, null);
+      response =
+          sendDocumentNoCapsulePasring(stream, consignmentId, recipient, recipientSystem, null);
     } catch (DhxException ex) {
       throw ex;
     } finally {
@@ -200,7 +208,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     return response;
   }
-  
+
   @Override
   @Loggable
   public SendDocumentResponse sendDocument(File capsuleFile, String consignmentId,
@@ -208,7 +216,9 @@ public class DocumentServiceImpl implements DocumentService {
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     SendDocumentResponse response;
     try {
-      response = sendDocumentNoCapsulePasring(stream, consignmentId, recipient, recipientSystem, senderSubsystem);
+      response =
+          sendDocumentNoCapsulePasring(stream, consignmentId, recipient, recipientSystem,
+              senderSubsystem);
     } catch (DhxException ex) {
       throw ex;
     } finally {
@@ -232,11 +242,12 @@ public class DocumentServiceImpl implements DocumentService {
           "Recipient not defined in input. Unable to define recipient");
     }
   }
-  
+
   @Override
   @Loggable
   public List<SendDocumentResponse> sendDocument(InputStream capsuleFStream,
-      String consignmentId, String recipient, String recipientSystem, String senderSubsystem) throws DhxException {
+      String consignmentId, String recipient, String recipientSystem, String senderSubsystem)
+      throws DhxException {
     if (!StringUtil.isNullOrEmpty(recipient)) {
       List<SendDocumentResponse> responses = new ArrayList<SendDocumentResponse>();
       responses.add(sendDocumentNoCapsulePasring(capsuleFStream, consignmentId, recipient,
@@ -300,11 +311,12 @@ public class DocumentServiceImpl implements DocumentService {
     }
     return responses;
   }
-  
+
 
   @Loggable
   private SendDocumentResponse sendDocumentToXroadMember(InputStream capsuleStream,
-      String consignmentId, XroadMember recipient, XroadMember sender) throws DhxException {
+      String consignmentId, InternalXroadMember recipient, InternalXroadMember sender)
+      throws DhxException {
     log.debug("Sending document with no capsule parsing.");
     checkFileSize(capsuleStream);
     InputStream schemaStream = null;
@@ -323,8 +335,8 @@ public class DocumentServiceImpl implements DocumentService {
       } else {
         log.debug("Validating capsule is disabled");
       }
-      DhxDocument document = new DhxDocument(recipient, sender, capsuleStream, true);
-      document.setInternalConsignmentId(consignmentId);
+      OutgoingDhxPackage document =
+          new OutgoingDhxPackage(recipient, sender, capsuleStream, consignmentId);
       SendDocumentResponse response = documentGateway.sendDocument(document);
       return response;
     } catch (FileNotFoundException ex) {
@@ -363,11 +375,12 @@ public class DocumentServiceImpl implements DocumentService {
         } else {
           adresseeCode = adressee.getAdresseeCode();
         }
-        XroadMember adresseeXroad =
+        InternalXroadMember adresseeXroad =
             addressService.getClientForMemberCode(adresseeCode, adresseeSystem);
-        DhxDocument document =
-            new DhxDocument(adresseeXroad, soapConfig.getDefaultClient(), container, CapsuleVersionEnum.forClass(container
-                .getClass()), capsuleFile/* capsuleStream */, consignmentId, true);
+        OutgoingDhxPackage document =
+            new OutgoingDhxPackage(adresseeXroad, soapConfig.getDefaultClient(), container,
+                CapsuleVersionEnum.forClass(container
+                    .getClass()), capsuleFile/* capsuleStream */, consignmentId);
         responses.add(sendDocumentTry(document));
       }
       return responses;
@@ -387,7 +400,7 @@ public class DocumentServiceImpl implements DocumentService {
    * @return service response for single recipient defined in document
    */
   @Loggable
-  protected SendDocumentResponse sendDocumentTry(DhxDocument document) {
+  protected SendDocumentResponse sendDocumentTry(OutgoingDhxPackage document) {
     SendDocumentResponse response = null;
     try {
       response = documentGateway.sendDocument(document);
@@ -420,7 +433,8 @@ public class DocumentServiceImpl implements DocumentService {
    * @throws DhxException - throws if error occured while reading or extracting file
    */
   @Loggable
-  protected DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client, XroadMember service)
+  protected IncomingDhxPackage extractAndValidateDocument(SendDocument document,
+      InternalXroadMember client, InternalXroadMember service)
       throws DhxException {
     InputStream schemaStream = null;
     try {
@@ -445,18 +459,16 @@ public class DocumentServiceImpl implements DocumentService {
               adressee.getAdresseeCode());
         }
       }
-      Recipient recipient = getRecipient(document, service);
+      log.info("Document received.");
+      IncomingDhxPackage dhxDocument =
+          new IncomingDhxPackage(client, service, document, container,
+              CapsuleVersionEnum.forClass(container
+                  .getClass()));
       if (config.getCheckRecipient()) {
-        checkRecipient(recipient, adressees);
+        checkRecipient(dhxDocument.getRecipient(), adressees);
       }
       log.debug("Recipients from capsule checked and found in representative list "
           + "or own member code. ");
-      log.info("Document received.");
-      DhxDocument dhxDocument =
-          new DhxDocument(client, document, container, CapsuleVersionEnum.forClass(container
-              .getClass()));
-      dhxDocument.setService(service);
-      dhxDocument.setRecipient(recipient);
       return dhxDocument;
     } catch (IOException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR,
@@ -470,18 +482,7 @@ public class DocumentServiceImpl implements DocumentService {
       FileUtil.safeCloseStream(schemaStream);
     }
   }
-  
-  private Recipient getRecipient (SendDocument document, XroadMember service) {
-    Recipient recipient = new Recipient(soapConfig.getDhxSubsystemPrefix());
-    if (!StringUtil.isNullOrEmpty(document.getRecipient())) {
-      recipient.setCode(document.getRecipient());
-      recipient.setSystem(document.getRecipientSystem());
-    } else {
-      recipient.setCode(service.getMemberCode());
-      recipient.setSystem(service.getSubsystemCode());
-    }
-    return recipient;
-  }
+
 
 
   /**
@@ -496,8 +497,8 @@ public class DocumentServiceImpl implements DocumentService {
    * @throws DhxException - thrown if error occurs while extracting or validating document
    */
   @Loggable
-  protected DhxDocument extractAndValidateDocumentNoParsing(SendDocument document,
-      XroadMember client, XroadMember service) throws DhxException {
+  protected IncomingDhxPackage extractAndValidateDocumentNoParsing(SendDocument document,
+      InternalXroadMember client, InternalXroadMember service) throws DhxException {
     InputStream schemaStream = null;
     try {
       log.info("Receiving document. for representative: {}", document.getRecipient());
@@ -511,15 +512,12 @@ public class DocumentServiceImpl implements DocumentService {
       } else {
         log.debug("Validating capsule is disabled");
       }
-      Recipient recipient = getRecipient(document, service);
+      IncomingDhxPackage dhxDocument = new IncomingDhxPackage(client, service, document);
       if (config.getCheckRecipient()) {
-        checkRecipient(recipient, null);
+        checkRecipient(dhxDocument.getRecipient(), null);
         log.info("Recipient checked and found in representative list or own member code. recipient:"
             + document.getRecipient());
       }
-      DhxDocument dhxDocument = new DhxDocument(client, document);
-      dhxDocument.setService(service);
-      dhxDocument.setRecipient(recipient);
       log.info("Document received.");
       return dhxDocument;
     } catch (IOException ex) {
@@ -541,56 +539,48 @@ public class DocumentServiceImpl implements DocumentService {
    * own memberCode or own representationList. Recipient or own member code MUST be found in
    * capsuleRecipients(if not null)
    * 
-   * @param recipient - recipient from service input.(e.g. representee to whom document is sent or the direct recipient)
+   * @param recipient - recipient from service input.(e.g. representee to whom document is sent or
+   *        the direct recipient)
    * @param capsuleRecipients -recipient list parsed from capsule.
    * @throws DhxException throws if recipient not found. Means that document recipient if faulty
    */
   @Loggable
-  protected void checkRecipient(Recipient recipient, List<CapsuleAdressee> capsuleRecipients)
+  protected void checkRecipient(DhxRecipient recipient, List<CapsuleAdressee> capsuleRecipients)
       throws DhxException {
     log.info("Checking recipient.");
-    String recipientWithSystem = null;
-    /*if (StringUtil.isNullOrEmpty(recipient)) {
-      recipient = soapConfig.getMemberCode();
-      recipientWithSystem = recipient;
-    } else {
-      if (!StringUtil.isNullOrEmpty(recipientSystem)) {
-        recipientWithSystem = recipientSystem + "." + recipient;
-      } else {
-        recipientWithSystem = recipient;
-      }
-    }*/
-    List<Recipient> recipientList = new ArrayList<Recipient>();
-    List<InternalRepresentee> representees =
+    List<DhxRecipient> recipientList = new ArrayList<DhxRecipient>();
+    List<DhxRepresentee> representees =
         dhxImplementationSpecificService.getRepresentationList();
     Date curDate = new Date();
     if (representees != null && representees.size() > 0) {
-      for (InternalRepresentee representee : representees) {
+      for (DhxRepresentee representee : representees) {
         if (representee.getStartDate().getTime() <= curDate.getTime()
             && (representee.getEndDate() == null || representee.getEndDate().getTime() >= curDate
                 .getTime())) {
-          
-          String prefix = "";
-          if (!StringUtil.isNullOrEmpty(representee.getSystem())) {
-            prefix = representee.getSystem() + ".";
-          }
-          recipientList.add(new Recipient(representee.getMemberCode(), representee.getSystem(), soapConfig.getDhxSubsystemPrefix()));
+          recipientList
+              .add(new DhxRecipient(representee.getMemberCode(), representee.getSystem()));
         }
       }
     }
-    for(String subSystem : soapConfig.getAcceptedSubsystemsAsList()) {
-      recipientList.add(new Recipient(soapConfig.getMemberCode(), subSystem, soapConfig.getDhxSubsystemPrefix()));
+    for (String subSystem : soapConfig.getAcceptedSubsystemsAsList()) {
+      recipientList.add(new DhxRecipient(soapConfig.getMemberCode(), subSystem));
     }
-    if (!recipientList.contains(recipient)) {
+    Boolean found = false;
+    for (DhxRecipient rec : recipientList) {
+      if (rec.equals(recipient, soapConfig.getDhxSubsystemPrefix())) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
       throw new DhxException(DhxExceptionEnum.WRONG_RECIPIENT,
           "Recipient not found in representativesList and own member code. recipient:"
               + recipient.toString());
     }
     if (capsuleRecipients != null) {
       for (CapsuleAdressee capsuleRecipient : capsuleRecipients) {
-        // in capsule there is no system, but from adressee might come with system concatenated,
-        // either with DHX prefix or not
-        if (recipient.equalsToCapsuleRecipient(capsuleRecipient.getAdresseeCode())) {
+        if (recipient.equalsToCapsuleRecipient(capsuleRecipient.getAdresseeCode(),
+            soapConfig.getDhxSubsystemPrefix())) {
           return;
         }
       }

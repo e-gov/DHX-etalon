@@ -721,3 +721,402 @@ X-road member ee-dev/GOV/70000004/DHX.subsystem
 X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 14:18:49,121 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-13 14:19:10,283 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:225) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.5.jar:0.9.5]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getAdresseeList(AddressServiceImpl.java:86) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getAdresseesAsSelect(AddressClientServiceImpl.java:65) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getSendDocumentLayout(DhxUi.java:368) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getActivityAsTab(DhxUi.java:213) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.init(DhxUi.java:187) [classes/:?]
+	at com.vaadin.ui.UI.doInit(UI.java:646) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.getBrowserDetailsUI(UIInitHandler.java:214) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.synchronizedHandleRequest(UIInitHandler.java:74) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:720) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:466) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:358) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:318) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.mvc.ServletForwardingController.handleRequestInternal(ServletForwardingController.java:128) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:147) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:869) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:205) ~[ws-0.9.5.jar:0.9.5]
+	... 73 more
+2016-10-13 14:19:10,758 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-1] ----- Staring renewing local address list
+2016-10-13 14:19:31,776 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:225) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.5.jar:0.9.5]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getAdresseeList(AddressServiceImpl.java:86) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getAdresseesAsSelect(AddressClientServiceImpl.java:65) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getSendDocumentLayout(DhxUi.java:368) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getActivityAsTab(DhxUi.java:213) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.init(DhxUi.java:187) [classes/:?]
+	at com.vaadin.ui.UI.doInit(UI.java:646) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.getBrowserDetailsUI(UIInitHandler.java:214) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.synchronizedHandleRequest(UIInitHandler.java:74) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:720) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:466) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:358) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:318) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.mvc.ServletForwardingController.handleRequestInternal(ServletForwardingController.java:128) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:147) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:869) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:205) ~[ws-0.9.5.jar:0.9.5]
+	... 73 more
+2016-10-13 14:19:31,879 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-4] ----- Staring renewing local address list
+2016-10-13 14:19:52,883 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-4] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:225) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.5.jar:0.9.5]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.9.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getAdresseeList(AddressServiceImpl.java:86) [ws-0.9.5.jar:0.9.5]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getAdresseesAsSelect(AddressClientServiceImpl.java:65) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getSendDocumentLayout(DhxUi.java:368) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getActivityAsTab(DhxUi.java:213) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.init(DhxUi.java:187) [classes/:?]
+	at com.vaadin.ui.UI.doInit(UI.java:646) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.getBrowserDetailsUI(UIInitHandler.java:214) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.synchronizedHandleRequest(UIInitHandler.java:74) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:720) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:466) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:358) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:318) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.mvc.ServletForwardingController.handleRequestInternal(ServletForwardingController.java:128) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:147) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:869) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:205) ~[ws-0.9.5.jar:0.9.5]
+	... 73 more
+2016-10-13 14:20:52,987 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-8] ----- Staring renewing local address list
+2016-10-13 14:20:53,592 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 14:20:55,778 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 14:20:57 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 14:20:57 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 14:20:57 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 14:20:55,780 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-8] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 14:21:02,002 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 3b34b08e-d687-4cd3-9164-a621c3c7f6d5
+2016-10-13 14:21:02,654 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 7ace80ea-f33d-4d85-b065-492f6dee88ab
+2016-10-13 14:21:08,219 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: d6f53555-e309-42dd-b0cc-fbdcf4324bdd
+2016-10-13 14:21:08,656 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 97c735b2-16c0-4183-8165-64e5cbdcd74a
+2016-10-13 14:21:11,136 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 19ab9523-cd8c-4324-88d1-bbd68ae22999
+2016-10-13 14:21:11,598 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: e3f0057e-0aaf-45b5-8b89-8856b5bcd12d
+2016-10-13 15:40:00,011 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-13 15:40:00,479 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 15:40:01,812 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 15:40:04 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 15:40:04 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 15:40:04 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 15:40:01,818 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 16:00:00,031 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-13 16:00:00,343 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 16:00:00,748 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 16:00:03 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 16:00:03 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 16:00:03 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 16:00:00,750 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 16:20:00,032 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-13 16:20:00,307 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 16:20:00,755 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 16:20:03 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 16:20:03 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 16:20:03 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 16:20:00,772 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 16:40:00,031 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-13 16:40:00,226 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 16:40:00,706 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 16:40:03 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 16:40:03 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 16:40:03 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 16:40:00,708 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-13 17:00:00,031 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-13 17:00:00,333 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-13 17:00:02,000 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 13 17:00:04 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 13 17:00:04 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 13 17:00:04 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-13 17:00:02,003 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null

@@ -1,10 +1,12 @@
 package ee.bpw.dhx.client.service;
 
 import ee.bpw.dhx.client.config.DhxClientConfig;
+
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.IncomingDhxPackage;
+import ee.bpw.dhx.model.OutgoingDhxPackage;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.service.DhxGateway;
@@ -130,7 +132,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
    * overriden just to log events.
    */
   @Override
-  public DhxDocument extractAndValidateDocument(SendDocument document, XroadMember client, XroadMember service)
+  public IncomingDhxPackage extractAndValidateDocument(SendDocument document, InternalXroadMember client, InternalXroadMember service)
       throws DhxException {
     try {
       logger.log(Level.getLevel("EVENT"), "Starting to receive document. for representative: "
@@ -150,7 +152,7 @@ public class DocumentClientServiceImpl extends DocumentServiceImpl {
    * Overriden to log events.
    */
   @Override
-  protected SendDocumentResponse sendDocumentTry(DhxDocument document) {
+  protected SendDocumentResponse sendDocumentTry(OutgoingDhxPackage document) {
     SendDocumentResponse response = null;
     try {
       response = dhxGateway.sendDocument(document);

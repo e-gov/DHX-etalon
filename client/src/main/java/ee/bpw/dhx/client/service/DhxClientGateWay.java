@@ -1,9 +1,10 @@
 package ee.bpw.dhx.client.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxPackage;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.OutgoingDhxPackage;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 
 import eu.x_road.dhx.producer.RepresentationListResponse;
@@ -33,7 +34,7 @@ public class DhxClientGateWay extends DhxGateway {
   final Logger logger = LogManager.getLogger();
 
   @Override
-  public SendDocumentResponse sendDocument(DhxDocument document) throws DhxException {
+  public SendDocumentResponse sendDocument(OutgoingDhxPackage document) throws DhxException {
     if (document.getInternalConsignmentId() == null) {
       document.setInternalConsignmentId(UUID.randomUUID().toString());
     }
@@ -65,7 +66,7 @@ public class DhxClientGateWay extends DhxGateway {
   }
 
   @Override
-  public RepresentationListResponse getRepresentationList(XroadMember member) throws DhxException {
+  public RepresentationListResponse getRepresentationList(InternalXroadMember member) throws DhxException {
     RepresentationListResponse response = null;
     logger.log(Level.getLevel("EVENT"), "Getting representation list from: " + member.toString());
     try {
@@ -76,7 +77,7 @@ public class DhxClientGateWay extends DhxGateway {
           && response.getRepresentees().getRepresentee().size() > 0) {
         String representatives = "";
         for (Representee memberResponse : response.getRepresentees().getRepresentee()) {
-          representatives += ("\n") + new InternalRepresentee(memberResponse).toString();
+          representatives += ("\n") + new DhxRepresentee(memberResponse).toString();
         }
         logger.log(Level.getLevel("EVENT"), "Representation list received: " + representatives);
       } else {

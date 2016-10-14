@@ -2,7 +2,7 @@ package ee.bpw.dhx.client.service;
 
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.impl.AddressServiceImpl;
 
@@ -33,13 +33,13 @@ public class AddressClientServiceImpl extends AddressServiceImpl {
   SoapConfig config;
 
   @Override
-  protected List<XroadMember> getRenewedAdresseesList() throws DhxException {
+  protected List<InternalXroadMember> getRenewedAdresseesList() throws DhxException {
     logger.log(Level.getLevel("EVENT"), "Staring renewing local address list");
     try {
-      List<XroadMember> list = super.getRenewedAdresseesList();
+      List<InternalXroadMember> list = super.getRenewedAdresseesList();
       String localList = "";
       if (list != null && list.size() > 0) {
-        for (XroadMember member : list) {
+        for (InternalXroadMember member : list) {
           localList += "\n" + member.toString();
         }
       } else {
@@ -62,7 +62,7 @@ public class AddressClientServiceImpl extends AddressServiceImpl {
   public List<Map<String, String>> getAdresseesAsSelect() throws DhxException {
     List<Map<String, String>> select = new ArrayList<Map<String, String>>();
     Map<String, String> row = null;
-    for (XroadMember member : this.getAdresseeList()) {
+    for (InternalXroadMember member : this.getAdresseeList()) {
       row = new HashMap<String, String>();
       String name = null;
       String value = null;

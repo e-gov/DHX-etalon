@@ -3,8 +3,8 @@ package ee.bpw.dhx.ws.endpoint;
 import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DocumentService;
@@ -63,8 +63,8 @@ public class DhxEndpoint {
       MessageContext messageContext) throws DhxException {
     SendDocumentResponse response = new SendDocumentResponse();
     try {
-      XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
-      XroadMember service = dhxGateway.getXroadService(messageContext);
+      InternalXroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
+      InternalXroadMember service = dhxGateway.getXroadService(messageContext);
       if (log.isDebugEnabled()) {
         log.debug("Got sendDocument request from: " + client.toString());
       }
@@ -101,15 +101,15 @@ public class DhxEndpoint {
       throws DhxException {
     try {
       RepresentationListResponse response = new RepresentationListResponse();
-      XroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
+      InternalXroadMember client = dhxGateway.getXroadClientAndSetRersponseHeader(messageContext);
       if (log.isDebugEnabled()) {
         log.debug("Got representationList request from: " + client.toString());
       }
-      List<InternalRepresentee> internalRepresentees =
+      List<DhxRepresentee> internalRepresentees =
           dhxImplementationSpecificService.getRepresentationList();
       if (internalRepresentees != null) {
         Representees representees = new Representees();
-        for (InternalRepresentee internalRepresentee : internalRepresentees) {
+        for (DhxRepresentee internalRepresentee : internalRepresentees) {
           representees.getRepresentee().add(internalRepresentee.convertToRepresentee());
         }
         response.setRepresentees(representees);

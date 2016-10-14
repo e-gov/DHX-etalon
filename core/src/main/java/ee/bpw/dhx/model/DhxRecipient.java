@@ -4,17 +4,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Represents recipient of the document.
+ * Represents recipient of the document. Helps to easily define to whom the document is really sent.
+ * Recipient might be not obvious if document is sent to representee. This class contains
+ * representees data if document is sent to representee and direct reciever data if it is sent
+ * directly, not to representee.
  * 
  * @author Aleksei Kokarev
  *
  */
 @Setter
-public class Recipient {
+public class DhxRecipient {
 
   private String code;
   private String system;
-  private String dhxSubsystemPrefix;
 
   /**
    * Recipient consctructor.
@@ -22,53 +24,54 @@ public class Recipient {
    * @param code - code of the reciepint. might be either X-road memberCode or representees code
    * @param system - system of the recipient. migth be either X-road subSystemCode or representees
    *        system
-   * @param dhxSubSytemPrefix - prefix for DHX subsystems, needed to check for equality if in some
-   *        cases prefix is not added
    */
-  public Recipient(String code, String system, String dhxSubSytemPrefix) {
+  public DhxRecipient(String code, String system) {
     this.code = code;
     this.system = system;
-    this.dhxSubsystemPrefix = dhxSubSytemPrefix;
   }
 
   /**
    * Recipient consctructor.
    * 
-   * @param dhxSubSytemPrefix - prefix for DHX subsystems, needed to check for equality if in some
-   *        cases prefix is not added
    */
-  public Recipient(String dhxSubSytemPrefix) {
-    this.dhxSubsystemPrefix = dhxSubSytemPrefix;
-  }
+  public DhxRecipient() {}
 
-  public String getCode() {
+  public String getCodeUpper() {
     return code.toUpperCase();
+  }
+  
+  public String getCode() {
+    return code;
   }
 
   public String getSystem() {
-    if(system == null) {
-      return null;
-    }
-    return system.toUpperCase();
+    return system;
   }
 
-  private String getNotNullSystem(){
-    if(system == null) {
+  private String getNotNullSystem() {
+    if (system == null) {
       return "";
     }
     return system.toUpperCase();
   }
-  
-  
-  @Override
-  public boolean equals(Object obj) {
-    if (!(obj instanceof Recipient))
+
+
+  /**
+   * 
+   * @param obj - object to compare to
+   * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
+   *        even if one of them presented without prefix.
+   * @return
+   */
+  public boolean equals(Object obj, String dhxSubsystemPrefix) {
+    if (!(obj instanceof DhxRecipient))
       return false;
     if (obj == this)
       return true;
-    Recipient recipient = (Recipient) obj;
-    if (recipient.getCode().equals(this.getCode())
-        && recipient.getAdaptedSystem().equals(this.getAdaptedSystem())) {
+    DhxRecipient recipient = (DhxRecipient) obj;
+    if (recipient.getCodeUpper().equals(this.getCodeUpper())
+        && recipient.getAdaptedSystem(dhxSubsystemPrefix).equals(
+            this.getAdaptedSystem(dhxSubsystemPrefix))) {
       return true;
     }
     return false;
@@ -76,14 +79,17 @@ public class Recipient {
 
   /**
    * add prefix to system if it is not present.
+   * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
+   *        even if one of them presented without prefix.
    * @return - adpted system
    */
-  private String getAdaptedSystem() {
+  private String getAdaptedSystem(String dhxSubsystemPrefix) {
     String adaptedSystem = system;
     if (adaptedSystem == null) {
       adaptedSystem = dhxSubsystemPrefix;
     }
-    if (!adaptedSystem.startsWith(dhxSubsystemPrefix + ".") && !adaptedSystem.equals(dhxSubsystemPrefix)) {
+    if (!adaptedSystem.startsWith(dhxSubsystemPrefix + ".")
+        && !adaptedSystem.equals(dhxSubsystemPrefix)) {
       adaptedSystem = dhxSubsystemPrefix + "." + adaptedSystem;
     }
     return adaptedSystem.toUpperCase();
@@ -94,20 +100,22 @@ public class Recipient {
    * their combination either with or without DHX subsystem prefix.
    * 
    * @param capsuleRecipient
+   * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
+   *        even if one of them presented without prefix.
    * @return
    */
-  public Boolean equalsToCapsuleRecipient(String capsuleRecipient) {
+  public Boolean equalsToCapsuleRecipient(String capsuleRecipient, String dhxSubsystemPrefix) {
     String capsuleRecipientUp = capsuleRecipient.toUpperCase();
-    if (capsuleRecipientUp.equals(getCode())
-        || capsuleRecipientUp.equals(getNotNullSystem() + "." + getCode())
-        || capsuleRecipientUp.equals(getAdaptedSystem() + "." + getCode())
+    if (capsuleRecipientUp.equals(getCodeUpper())
+        || capsuleRecipientUp.equals(getNotNullSystem() + "." + getCodeUpper())
+        || capsuleRecipientUp.equals(getAdaptedSystem(dhxSubsystemPrefix) + "." + getCodeUpper())
         || capsuleRecipientUp.equals(getNotNullSystem())
-        || capsuleRecipientUp.equals(getAdaptedSystem())) {
+        || capsuleRecipientUp.equals(getAdaptedSystem(dhxSubsystemPrefix))) {
       return true;
     }
     return false;
   }
-  
+
   @Override
   public String toString() {
     return "code: " + code

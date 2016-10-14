@@ -38,8 +38,8 @@ import ee.bpw.dhx.client.service.AddressClientServiceImpl;
 import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.StringUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
@@ -498,7 +498,7 @@ public class DhxUi extends UI {
             if (adressees.getValue() != null) {
               try {
                 log.debug("getting representation List");
-                XroadMember member =
+                InternalXroadMember member =
                     addressService.getClientForMemberCode(adressees.getValue().toString(), null);
                 if (member.getRepresentee() == null) {
                   RepresentationListResponse response = dhxGateway.getRepresentationList(member);
@@ -510,7 +510,7 @@ public class DhxUi extends UI {
                       SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
                       String startDateStr = "";
                       String endDateStr = "";
-                      InternalRepresentee representee = new InternalRepresentee(repr);
+                      DhxRepresentee representee = new DhxRepresentee(repr);
                       if (representee.getStartDate() != null) {
                         startDateStr = sdf.format(representee.getStartDate());
                       }
@@ -564,7 +564,7 @@ public class DhxUi extends UI {
   private Layout getAdresseeList() {
     VerticalLayout adresseeLayout = new VerticalLayout();
     try {
-      List<XroadMember> members = addressService.getAdresseeList();
+      List<InternalXroadMember> members = addressService.getAdresseeList();
       final Label adrLabel = new Label("");
       adrLabel.setCaptionAsHtml(true);
       adrLabel.setCaption(getAdresseeString(members));
@@ -579,7 +579,7 @@ public class DhxUi extends UI {
               log.debug("renewing address list");
               addressService.renewAddressList();
               try {
-                List<XroadMember> members = addressService.getAdresseeList();
+                List<InternalXroadMember> members = addressService.getAdresseeList();
                 adrLabel.setCaption("<span style=\"white-space:normal;\">"
                     + getAdresseeString(members)
                     + "</span>");
@@ -598,10 +598,10 @@ public class DhxUi extends UI {
     return null;
   }
 
-  private String getAdresseeString(List<XroadMember> members) {
+  private String getAdresseeString(List<InternalXroadMember> members) {
     String labelAdr = "";
     if (members != null && members.size() > 0) {
-      for (XroadMember member : members) {
+      for (InternalXroadMember member : members) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         String startDateStr = "";
         String endDateStr = "";

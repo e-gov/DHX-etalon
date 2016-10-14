@@ -2,7 +2,7 @@ package ee.bpw.dhx.ws.service;
 
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.InternalXroadMember;
 
 import java.util.List;
 
@@ -33,8 +33,8 @@ public interface AddressService {
    * @return - return XroadMember object
    * @throws DhxException - thrown if recipient is not found
    */
-  public XroadMember getClientForMemberCode(String memberCode, String system) throws DhxException;
+  public InternalXroadMember getClientForMemberCode(String memberCode, String system) throws DhxException;
 
-  public List<XroadMember> getAdresseeList() throws DhxException;
+  public List<InternalXroadMember> getAdresseeList() throws DhxException;
 
 }

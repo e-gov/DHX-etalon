@@ -3,9 +3,10 @@ package ee.bpw.dhx.ws.service.impl;
 import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxPackage;
+import ee.bpw.dhx.model.IncomingDhxPackage;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,18 +29,18 @@ import java.util.UUID;
 @Deprecated
 public class ExampleDhxImplementationSpecificService implements DhxImplementationSpecificService {
 
-  private List<DhxDocument> documents = new ArrayList<DhxDocument>();
+  private List<IncomingDhxPackage> documents = new ArrayList<IncomingDhxPackage>();
 
-  private List<XroadMember> members;
+  private List<InternalXroadMember> members;
 
   @Override
   @Deprecated
   @Loggable
-  public boolean isDuplicatePackage(XroadMember from, String consignmentId) {
+  public boolean isDuplicatePackage(InternalXroadMember from, String consignmentId) {
     log.debug("Checking for duplicates. from memberCode: {}", from.toString()
         + " from consignmentId:" + consignmentId);
     if (documents != null && documents.size() > 0) {
-      for (DhxDocument document : documents) {
+      for (IncomingDhxPackage document : documents) {
         if (document.getExternalConsignmentId() != null
             && document.getExternalConsignmentId().equals(consignmentId)
             && (document.getClient().toString().equals(from.toString())
@@ -55,7 +56,7 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   @Override
   @Deprecated
   @Loggable
-  public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException {
+  public String receiveDocument(IncomingDhxPackage document, MessageContext context) throws DhxException {
     log.debug("String receiveDocument(DhxDocument document) externalConsignmentId: {}",
         document.getExternalConsignmentId());
     String receiptId = UUID.randomUUID().toString();
@@ -66,20 +67,26 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   @Override
   @Deprecated
   @Loggable
-  public List<InternalRepresentee> getRepresentationList() {
-    return new ArrayList<InternalRepresentee>();
+  public List<DhxRepresentee> getRepresentationList() {
+    return new ArrayList<DhxRepresentee>();
   }
 
   @Override
   @Deprecated
-  public List<XroadMember> getAdresseeList() {
+  public List<InternalXroadMember> getAdresseeList() {
     return members;
   }
 
   @Override
   @Deprecated
-  public void saveAddresseeList(List<XroadMember> members) {
+  public void saveAddresseeList(List<InternalXroadMember> members) {
     this.members = members;
+  }
+  
+  @Override
+  public void resendFailedDocuments() throws DhxException {
+    // no resend logic is implemented in example implementation!
+    
   }
 
 }

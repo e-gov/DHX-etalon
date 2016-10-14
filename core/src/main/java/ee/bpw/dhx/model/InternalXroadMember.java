@@ -8,21 +8,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Internal representation of X-road member.
+ * Internal representation of X-road member. Among X-road data contains also representees data.
  * 
  * @author Aleksei Kokarev
  *
  */
 @Getter
 @Setter
-public class XroadMember {
+public class InternalXroadMember {
 
   /**
    * Create internal XroadMember from XRoadClientIdentifierType(X-road object).
    * 
    * @param xrdClient - x-road client
    */
-  public XroadMember(XRoadClientIdentifierType xrdClient) {
+  public InternalXroadMember(XRoadClientIdentifierType xrdClient) {
     this.xroadInstance = xrdClient.getXRoadInstance();
     this.memberClass = xrdClient.getMemberClass();
     this.memberCode = xrdClient.getMemberCode();
@@ -34,7 +34,7 @@ public class XroadMember {
    * 
    * @param xrdService - x-road service
    */
-  public XroadMember(XRoadServiceIdentifierType xrdService) {
+  public InternalXroadMember(XRoadServiceIdentifierType xrdService) {
     this.xroadInstance = xrdService.getXRoadInstance();
     this.memberClass = xrdService.getMemberClass();
     this.memberCode = xrdService.getMemberCode();
@@ -52,7 +52,7 @@ public class XroadMember {
    * @param subsytemCode - X-road subsystem
    * @param name - X-road members name
    */
-  public XroadMember(String xroadInstance, MemberType member, String subsytemCode, String name) {
+  public InternalXroadMember(String xroadInstance, MemberType member, String subsytemCode, String name) {
     this.xroadInstance = xroadInstance;
     this.memberClass = member.getMemberClass().getCode();
     this.memberCode = member.getMemberCode();
@@ -66,7 +66,7 @@ public class XroadMember {
    * @param member - XroadMember from which nto create new XroadMember
    * @param representee - representee to put to new XroadMember
    */
-  public XroadMember(XroadMember member, InternalRepresentee representee) {
+  public InternalXroadMember(InternalXroadMember member, DhxRepresentee representee) {
     this.xroadInstance = member.getXroadInstance();
     this.memberClass = member.getMemberClass();
     this.memberCode = member.getMemberCode();
@@ -85,8 +85,8 @@ public class XroadMember {
    * @param name - X-road members name
    * @param representee - representee to put to new XroadMember
    */
-  public XroadMember(String xroadInstance, String memberClass, String memberCode,
-      String subsystemCode, String name, InternalRepresentee representee) {
+  public InternalXroadMember(String xroadInstance, String memberClass, String memberCode,
+      String subsystemCode, String name, DhxRepresentee representee) {
     this.xroadInstance = xroadInstance;
     this.memberClass = memberClass;
     this.memberCode = memberCode;
@@ -106,7 +106,7 @@ public class XroadMember {
   private String serviceCode;
   private String serviceVersion;
 
-  private InternalRepresentee representee;
+  private DhxRepresentee representee;
 
 
   @Override

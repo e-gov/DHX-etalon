@@ -11,14 +11,14 @@ import lombok.Setter;
 import java.util.Date;
 
 /**
- * REpresentee object. Contains all information needed for representee.
+ * Representee object. Contains all information needed for representee.
  * 
  * @author Aleksei Kokarev
  *
  */
 @Getter
 @Setter
-public class InternalRepresentee {
+public class DhxRepresentee {
 
   private String memberCode;
   private Date startDate;
@@ -32,7 +32,7 @@ public class InternalRepresentee {
    * 
    * @param representee - member from which to create representee
    */
-  public InternalRepresentee(Representee representee) {
+  public DhxRepresentee(Representee representee) {
     this.memberCode = representee.getMemberCode();
     if (representee.getStartDate() != null) {
       this.startDate = ConversionUtil.toDate(representee.getStartDate());
@@ -57,7 +57,7 @@ public class InternalRepresentee {
    * @param name - representees name
    * @param system - representees internal system
    */
-  public InternalRepresentee(String memberCode, Date startDate, Date endDate, String name,
+  public DhxRepresentee(String memberCode, Date startDate, Date endDate, String name,
       String system) {
     this.memberCode = memberCode;
     this.startDate = startDate;

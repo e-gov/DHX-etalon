@@ -1,7 +1,7 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
 
 import eu.x_road.dhx.producer.SendDocument;
@@ -35,7 +35,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public SendDocumentResponse sendDocument(File capsuleFile, String consignmentId,
-      XroadMember recipient) throws DhxException;
+      InternalXroadMember recipient) throws DhxException;
 
   /**
    * Send document. No capsule parsing is done and document is sent to recipient. X-road sender is
@@ -53,7 +53,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public SendDocumentResponse sendDocument(File capsuleFile, String consignmentId,
-      XroadMember recipient, XroadMember sender) throws DhxException;
+      InternalXroadMember recipient, InternalXroadMember sender) throws DhxException;
 
   /**
    * Send document. No capsule parsing is done and document is sent to recipient. Sender parameter
@@ -71,7 +71,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public SendDocumentResponse sendDocument(InputStream capsuleStream, String consignmentId,
-      XroadMember recipient, XroadMember sender) throws DhxException;
+      InternalXroadMember recipient, InternalXroadMember sender) throws DhxException;
 
   /**
    * Send document. No capsule parsing is done and document is sent to recipient.
@@ -83,7 +83,7 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public SendDocumentResponse sendDocument(InputStream capsuleStream, String consignmentId,
-      XroadMember recipient) throws DhxException;
+      InternalXroadMember recipient) throws DhxException;
 
   /**
    * Send document. No capsule parsing is done and document is sent to recipient.
@@ -224,5 +224,5 @@ public interface DocumentService {
    * @throws DhxException - thrown if error occurs while receiving document
    */
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
-      XroadMember client, XroadMember service, MessageContext context) throws DhxException;
+      InternalXroadMember client, InternalXroadMember service, MessageContext context) throws DhxException;
 }

@@ -1,9 +1,10 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxDocument;
-import ee.bpw.dhx.model.InternalRepresentee;
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.DhxPackage;
+import ee.bpw.dhx.model.IncomingDhxPackage;
+import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.InternalXroadMember;
 
 import org.springframework.ws.context.MessageContext;
 
@@ -30,7 +31,7 @@ public interface DhxImplementationSpecificService {
    * @return - true if document with same sender and consignment id exists, otherwise false
    * @throws DhxException - thrown if error occurs
    */
-  public abstract boolean isDuplicatePackage(XroadMember from, String consignmentId)
+  public abstract boolean isDuplicatePackage(InternalXroadMember from, String consignmentId)
       throws DhxException;
 
   /**
@@ -43,7 +44,8 @@ public interface DhxImplementationSpecificService {
    * @return - unique id of the document that was saved.
    * @throws DhxException - thrown if error occurs while receiving document
    */
-  public String receiveDocument(DhxDocument document, MessageContext context) throws DhxException;
+  public String receiveDocument(IncomingDhxPackage document, MessageContext context)
+      throws DhxException;
 
   /**
    * Method returns list of representees.
@@ -52,7 +54,7 @@ public interface DhxImplementationSpecificService {
    *         are no representees.
    * @throws DhxException - thrown if error occurs
    */
-  public abstract List<InternalRepresentee> getRepresentationList() throws DhxException;
+  public abstract List<DhxRepresentee> getRepresentationList() throws DhxException;
 
   /**
    * Method returns adressees list from local storage(DB for example). Method does not renew
@@ -61,7 +63,7 @@ public interface DhxImplementationSpecificService {
    * @return - adressees list from local storage
    * @throws DhxException - thrown if error occurs
    */
-  public List<XroadMember> getAdresseeList() throws DhxException;
+  public List<InternalXroadMember> getAdresseeList() throws DhxException;
 
 
   /**
@@ -71,6 +73,20 @@ public interface DhxImplementationSpecificService {
    * @param members - list of the adressees to save
    * @throws DhxException - thrown if error occurs
    */
-  public void saveAddresseeList(List<XroadMember> members) throws DhxException;
+  public void saveAddresseeList(List<InternalXroadMember> members) throws DhxException;
+
+
+  /**
+   * DHX protocol requires resend logic of failed sending attempts. There is no good way to
+   * implement resend logic generically inside DHX. Therefore empty method is provided, that will be
+   * called by scheduler. That method must find failed documents and resend them until configured
+   * resend timeout or until attempts count equals to configured maximum attempts count. Document
+   * resending procedure goes frequently, therefore not every time there is a need to try to resend
+   * every document, maybe additional timeout to resend documents(exponential backoff) might be
+   * added.
+   *
+   * @throws DhxException - thrown if error occurs
+   */
+  public void resendFailedDocuments() throws DhxException;
 
 }

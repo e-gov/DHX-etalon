@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.4</version>
+		<version>0.9.5</version>
 	</parent>
 	<!-- <pluginRepositories>
 		<pluginRepository>
@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>core</artifactId>
-			<version>0.9.4</version>
+			<version>0.9.5</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

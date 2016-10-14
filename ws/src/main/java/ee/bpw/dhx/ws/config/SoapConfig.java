@@ -1,6 +1,6 @@
 package ee.bpw.dhx.ws.config;
 
-import ee.bpw.dhx.model.XroadMember;
+import ee.bpw.dhx.model.InternalXroadMember;
 
 import eu.x_road.xsd.identifiers.ObjectFactory;
 import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
@@ -164,9 +164,9 @@ public class SoapConfig {
     return system.toUpperCase();
   }
 
-  public XroadMember getDefaultClient() {
-    XroadMember client =
-        new XroadMember(getXroadInstance(), getMemberClass(), getMemberCode(),
+  public InternalXroadMember getDefaultClient() {
+    InternalXroadMember client =
+        new InternalXroadMember(getXroadInstance(), getMemberClass(), getMemberCode(),
             getDefaultSubsystem(), "", null);
     return client;
   }
