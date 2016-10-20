@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.5</version>
+		<version>0.9.6</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -19,6 +19,7 @@
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
+			 <version>1.6.3</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.axis</groupId>
@@ -81,10 +82,10 @@
 			<artifactId>commons-discovery</artifactId>
 			<version>0.5</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>com.jcabi</groupId>
 			<artifactId>jcabi-aspects</artifactId>

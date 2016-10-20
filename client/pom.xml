@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.5</version>
+		<version>0.9.6</version>
 	</parent>
 	<groupId>ee.bpw.dhx.client</groupId>
 	<artifactId>client</artifactId>
@@ -27,6 +27,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.3.5.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -36,9 +37,14 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+			<version>1.3.5.RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
-			<version>0.9.5</version>
+			<version>0.9.6</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -63,19 +69,27 @@
 				<directory>src/main/resources</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
 				<excludes>
-                    <exclude>conf</exclude>         
-                </excludes>
+					<exclude>conf</exclude>
+				</excludes>
 			</resource>
-		</resources>	
+		</resources>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat6-maven-plugin</artifactId>
-				<version>2.2</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.4.1.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<url></url>
-					<server>TomcatServer</server>
-					<path>/dhx</path>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>

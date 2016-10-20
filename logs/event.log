@@ -1120,3 +1120,162 @@ X-road member ee-dev/GOV/70000004/DHX.subsystem
 X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-19 14:16:53,882 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-19 14:17:15,016 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:225) ~[ws-0.9.5.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.5.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.5.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.5.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.5.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getAdresseeList(AddressServiceImpl.java:86) [ws-0.9.5.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getAdresseesAsSelect(AddressClientServiceImpl.java:65) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getSendDocumentLayout(DhxUi.java:368) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.getActivityAsTab(DhxUi.java:213) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi.init(DhxUi.java:187) [classes/:?]
+	at com.vaadin.ui.UI.doInit(UI.java:646) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.getBrowserDetailsUI(UIInitHandler.java:214) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UIInitHandler.synchronizedHandleRequest(UIInitHandler.java:74) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:720) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:466) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:358) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:318) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.mvc.ServletForwardingController.handleRequestInternal(ServletForwardingController.java:128) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:147) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:961) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:895) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:967) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:869) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:648) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:843) [spring-webmvc-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:205) ~[ws-0.9.5.jar:?]
+	... 73 more
+2016-10-19 14:17:44,504 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-1] ----- Staring renewing local address list
+2016-10-19 14:17:45,673 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-19 14:17:48,254 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 19 14:17:48 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 19 14:17:48 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 19 14:17:48 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-19 14:17:48,257 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-19 14:17:59,191 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: dff33622-9fd6-4734-8369-978b086ad8e8
+2016-10-19 14:18:02,695 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 30000001, system: DHX
+2016-10-19 14:18:12,761 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: d4e3cc92-aa54-4c69-9587-9a15a2e0ae3c
+2016-10-19 14:18:13,118 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: c4c507a7-1d92-40c4-b7ad-f352d32cc390
+2016-10-19 14:18:17,748 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 111939ad-0f6d-492d-af83-58032eabad4b
+2016-10-19 14:18:18,199 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: d58f28b7-f736-47ae-ad35-4e2f41169f90
+2016-10-19 14:18:22,438 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null internalConsignmentId: b2e70ae1-69d4-4c31-b0db-aaa4ba19cf9d
+2016-10-19 14:18:22,825 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 70000003, system: null
+2016-10-19 14:18:31,600 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null internalConsignmentId: bc95d277-921a-4bf9-8fb6-dc6eb0607806
+2016-10-19 14:18:32,088 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 70000002, system: null
+2016-10-19 14:18:45,211 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 7a9c1bf2-71b1-4082-99f2-dcda8869f109
+2016-10-19 14:18:45,616 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 30000001, system: DHX
+2016-10-19 14:18:49,351 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX.subsystem internalConsignmentId: 6ede6120-05ab-42fb-898c-71fdda719692
+2016-10-19 14:18:49,574 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX.subsystem ReceiptId: null faultCode: Server.ServerProxy.UnknownService faultString: SOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/40000001/DHX.subsystem/sendDocument/v1
+2016-10-19 14:18:57,372 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 847ca831-348c-4eac-aa37-0c58d47be265
+2016-10-19 14:18:57,777 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 30000001, system: DHX
+2016-10-19 16:44:56,116 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-19 16:44:57,074 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-19 16:44:58,707 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 19 16:44:59 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 19 16:44:59 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 19 16:44:59 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-19 16:44:58,713 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-19 16:45:05,696 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 6a2eacd5-a0ae-428a-9104-923aaf2c6bd3
+2016-10-19 16:45:06,308 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: ac68ca59-3902-48f1-b9ae-cbe77e09981f
+2016-10-19 16:45:12,638 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 126c8c13-ada6-43a4-9dae-1146eb0b5a7e
+2016-10-19 16:45:12,994 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 30000001, system: DHX
+2016-10-19 16:45:16,788 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: eb3d901f-fd71-48c4-b5d5-2dc604cbf999
+2016-10-19 16:45:17,096 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 5aad332d-ebc4-45ca-a26f-bcf1d835178d
+2016-10-19 16:45:19,341 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null internalConsignmentId: beb77d77-a348-4c9c-a419-d292cb1e46aa
+2016-10-19 16:45:19,835 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 70000002, system: null
+2016-10-19 16:45:29,938 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/GOV/70000004/DHX internalConsignmentId: eeece882-eaf8-4936-9a91-01d637d4a655
+2016-10-19 16:45:30,126 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/GOV/70000004/DHX ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX'
+2016-10-19 16:45:32,869 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Sending document to: X-road member ee-dev/GOV/70000004/DHX.subsystem internalConsignmentId: 4c1b1931-5b89-439c-a5d9-34189a6b0b63
+2016-10-19 16:45:33,059 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Document sent to: X-road member ee-dev/GOV/70000004/DHX.subsystem ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem'
