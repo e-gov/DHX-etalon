@@ -32,6 +32,7 @@ public class IncomingDhxPackage extends DhxPackage {
       SendDocument document, Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion) {
     super(client, service, document, parsedContainer, parsedContainerVersion);
+    this.externalConsignmentId = document.getConsignmentId();
     this.recipient = getRecipient(document, service);
   }
 
