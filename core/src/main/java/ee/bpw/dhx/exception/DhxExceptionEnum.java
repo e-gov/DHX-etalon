@@ -12,6 +12,7 @@ public enum DhxExceptionEnum {
   DUPLICATE_PACKAGE("DHX.Duplicate", true),
   WRONG_RECIPIENT("DHX.InvalidAddressee", true),
   OVER_MAX_SIZE("DHX.SizeLimitExceeded", true),
+  WRONG_SENDER("DHX.InvalidSender", false),
   FILE_ERROR("FILE_ERROR", false),
   WS_ERROR("WS_ERROR", false),
   EXTRACTION_ERROR("EXCTRACTION_ERROR", false),

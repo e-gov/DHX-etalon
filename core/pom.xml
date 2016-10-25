@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.6</version>
+		<version>0.9.7</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -19,77 +19,28 @@
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
-			 <version>1.6.3</version>
+			<version>1.6.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>1.4</version>
+			<groupId>com.jcabi</groupId>
+			<artifactId>jcabi-aspects</artifactId>
+			<version>0.19</version>
 		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.codehaus.woodstox/stax2-api -->
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>stax2-api</artifactId>
-			<version>4.0.0</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.apache.axis/axis-jaxrpc -->
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis-jaxrpc</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/org.codehaus.woodstox/woodstox-core-lgpl -->
-		<dependency>
-			<groupId>org.codehaus.woodstox</groupId>
-			<artifactId>woodstox-core-lgpl</artifactId>
-			<version>4.4.1</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/msv/msv -->
-		<!-- http://mvnrepository.com/artifact/net.java.dev.msv/msv-core -->
-		<dependency>
-			<groupId>net.java.dev.msv</groupId>
-			<artifactId>msv-core</artifactId>
-			<version>2013.6.1</version>
-		</dependency>
-
-		<!-- http://mvnrepository.com/artifact/com.github.relaxng/relaxngDatatype -->
-		<dependency>
-			<groupId>com.github.relaxng</groupId>
-			<artifactId>relaxngDatatype</artifactId>
-			<version>2011.1</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/xsdlib/xsdlib -->
-		<dependency>
-			<groupId>xsdlib</groupId>
-			<artifactId>xsdlib</artifactId>
-			<version>20030225</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/isorelax/isorelax -->
-		<dependency>
-			<groupId>isorelax</groupId>
-			<artifactId>isorelax</artifactId>
-			<version>20030108</version>
-		</dependency>
-		<!-- http://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
-		<dependency>
-			<groupId>commons-discovery</groupId>
-			<artifactId>commons-discovery</artifactId>
-			<version>0.5</version>
-		</dependency>
-		<!-- <dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency> -->
-		<dependency>
-			<groupId>com.jcabi</groupId>
-			<artifactId>jcabi-aspects</artifactId>
-			<version>0.19</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.3.RELEASE</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-autoconfigure</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>

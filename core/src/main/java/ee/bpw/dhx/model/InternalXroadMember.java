@@ -52,7 +52,8 @@ public class InternalXroadMember {
    * @param subsytemCode - X-road subsystem
    * @param name - X-road members name
    */
-  public InternalXroadMember(String xroadInstance, MemberType member, String subsytemCode, String name) {
+  public InternalXroadMember(String xroadInstance, MemberType member, String subsytemCode,
+      String name) {
     this.xroadInstance = xroadInstance;
     this.memberClass = member.getMemberClass().getCode();
     this.memberCode = member.getMemberCode();
@@ -108,12 +109,14 @@ public class InternalXroadMember {
 
   private DhxRepresentee representee;
 
+  private Boolean representor;
+
 
   @Override
   public String toString() {
     return "X-road member " + xroadInstance + "/" + memberClass + "/" + memberCode + "/"
-        + subsystemCode + (representee == null ?"":", representee: "
-        +  representee.getMemberCode() + ", system:" + representee.getSystem());
+        + subsystemCode + (representee == null ? "" : ", representee: "
+            + representee.getMemberCode() + ", system:" + representee.getSystem());
 
     /*
      * "addressee: " + (representee == null ? memberCode : representee.getMemberCode()) +

@@ -1,9 +1,8 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxPackage;
-import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
 
 import org.springframework.ws.context.MessageContext;

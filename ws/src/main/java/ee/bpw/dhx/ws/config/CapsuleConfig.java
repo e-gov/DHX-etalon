@@ -107,4 +107,34 @@ public class CapsuleConfig {
     }
   }
 
+
+  /**
+   * Method to find sender from container. Method returns sender for every existing version of the
+   * container, bacause service which uses that method does not know anything about container and
+   * just needs sender defined in it. Given implementation is able to find sender for capsule
+   * version 2.1
+   * 
+   * @param containerObject - container(capsule) object from which to find adressees
+   * @return - sender object
+   * @throws DhxException - thrown adressees parsing is not defined for given object (capsule
+   *         version)
+   */
+  public CapsuleAdressee getSenderFromContainer(Object containerObject)
+      throws DhxException {
+    CapsuleVersionEnum version = CapsuleVersionEnum.forClass(containerObject.getClass());
+    switch (version) {
+      case V21:
+        DecContainer container = (DecContainer) containerObject;
+        if (container != null && container.getTransport() != null
+            && container.getTransport().getDecSender() != null) {
+          return new CapsuleAdressee(container.getTransport().getDecSender()
+              .getOrganisationCode());
+        }
+        return null;
+      default:
+        throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR,
+            "Unable to find adressees for given verion. version:" + version.toString());
+    }
+  }
+
 }

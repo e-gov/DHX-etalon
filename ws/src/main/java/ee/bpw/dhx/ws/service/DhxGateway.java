@@ -2,10 +2,9 @@ package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
-import ee.bpw.dhx.model.DhxPackage;
 import ee.bpw.dhx.model.DhxRepresentee;
-import ee.bpw.dhx.model.OutgoingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
+import ee.bpw.dhx.model.OutgoingDhxPackage;
 import ee.bpw.dhx.ws.DhxHttpComponentsMessageSender;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
@@ -58,11 +57,9 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.AttachmentPart;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
-import javax.xml.soap.SOAPHeader;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.sax.SAXTransformerFactory;
 
 
 @Slf4j
@@ -118,7 +115,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
     private String serviceName;
     private String serviceVersion;
 
-    public SoapRequestHeaderModifier(InternalXroadMember service, InternalXroadMember client, String serviceName,
+    public SoapRequestHeaderModifier(InternalXroadMember service, InternalXroadMember client,
+        String serviceName,
         String serviceVersion) {
       super();
       this.service = service;
@@ -207,27 +205,31 @@ public class DhxGateway extends WebServiceGatewaySupport {
         transformer.transform(
             marshallObject(factory.createClient(getXRoadClientIdentifierType())),
             header.getResult());
-        if(client.getRepresentee() != null) {
+        if (client.getRepresentee() != null) {
           transformer.transform(
-            marshallObject(getRepresented(client.getRepresentee())),
-            header.getResult());
+              marshallObject(getRepresented(client.getRepresentee())),
+              header.getResult());
         }
         transformer.transform(
             marshallObject(factory.createService(getXRoadServiceIdentifierType())),
             header.getResult());
 
-      } catch (DhxException /*| SOAPException | IOException | SAXException
-          | ParserConfigurationException*/ ex) {
+      } catch (DhxException /*
+                             * | SOAPException | IOException | SAXException |
+                             * ParserConfigurationException
+                             */ex) {
         throw new RuntimeException(ex);
       }
     }
 
-    private JAXBElement<XRoadRepresentedPartyType> getRepresented (DhxRepresentee rpresentee) {
-      eu.x_road.xsd.representation.ObjectFactory factory = new eu.x_road.xsd.representation.ObjectFactory();
+    private JAXBElement<XRoadRepresentedPartyType> getRepresented(DhxRepresentee rpresentee) {
+      eu.x_road.xsd.representation.ObjectFactory factory =
+          new eu.x_road.xsd.representation.ObjectFactory();
       XRoadRepresentedPartyType party = new XRoadRepresentedPartyType();
       party.setPartyCode(rpresentee.getMemberCode());
       return factory.createRepresentedParty(party);
     }
+
     private StringSource marshallObject(Object obejct)
         throws DhxException {
       String result = "";
@@ -254,7 +256,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
       return clientXroad;
     }
 
-    private  XRoadServiceIdentifierType getXRoadServiceIdentifierType() {
+    private XRoadServiceIdentifierType getXRoadServiceIdentifierType() {
       ObjectFactory factory = new ObjectFactory();
       XRoadServiceIdentifierType service = factory.createXRoadServiceIdentifierType();
       service.setXRoadInstance(this.service.getXroadInstance());
@@ -343,7 +345,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * @return - response of the service(list of representees or empty list)
    * @throws DhxException - thrown if error occurs while getting representation list
    */
-  public RepresentationListResponse getRepresentationList(InternalXroadMember member) throws DhxException {
+  public RepresentationListResponse getRepresentationList(InternalXroadMember member)
+      throws DhxException {
     return getRepresentationList(member, soapConfig.getDefaultClient(),
         soapConfig.getRepresentativesServiceVersion());
   }
@@ -356,7 +359,8 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * @return - response of the service(list of representees or empty list)
    * @throws DhxException - thrown if error occurs while getting representation list
    */
-  public RepresentationListResponse getRepresentationList(InternalXroadMember member, InternalXroadMember sender)
+  public RepresentationListResponse getRepresentationList(InternalXroadMember member,
+      InternalXroadMember sender)
       throws DhxException {
     return getRepresentationList(member, sender, soapConfig.getRepresentativesServiceVersion());
   }
@@ -365,13 +369,14 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * Method get representation list using SOAP service.
    * 
    * @param member - X-road member whom representation list to ask
-   * @param member - X-road member who sends representation list query(self)
+   * @param sender - X-road member who sends representation list query(self)
    * @param xroadServiceVersion - version of sendDocument service. might be usefull if there are
    *        several versions of the service
    * @return - response of the service(list of representees or empty list)
    * @throws DhxException - thrown if error occurs while getting representation list
    */
-  public RepresentationListResponse getRepresentationList(InternalXroadMember member, InternalXroadMember sender,
+  public RepresentationListResponse getRepresentationList(InternalXroadMember member,
+      InternalXroadMember sender,
       String xroadServiceVersion) throws DhxException {
     RepresentationListResponse response = null;
     log.info("Getting representation list from: {}", member.toString());
@@ -436,11 +441,12 @@ public class DhxGateway extends WebServiceGatewaySupport {
                 "Unable to find xroad client in header.");
           }
 
-        } else if(ele.getName().getLocalPart().endsWith("representedParty")) {
+        } else if (ele.getName().getLocalPart().endsWith("representedParty")) {
           JAXBElement<XRoadRepresentedPartyType> xrdRepresented =
               (JAXBElement<XRoadRepresentedPartyType>) dhxMarshallerService.unmarshall(ele
                   .getSource());
-          representee = new DhxRepresentee(xrdRepresented.getValue().getPartyCode(), null, null, null, null);
+          representee =
+              new DhxRepresentee(xrdRepresented.getValue().getPartyCode(), null, null, null, null);
         }
         transformer.transform(ele.getSource(), respheader.getResult());
       }

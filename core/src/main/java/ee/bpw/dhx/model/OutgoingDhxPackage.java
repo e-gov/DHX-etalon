@@ -31,7 +31,8 @@ public class OutgoingDhxPackage extends DhxPackage {
    * @param stream - documents stream
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client, InputStream stream,
+  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client,
+      InputStream stream,
       String internalConsignmentId)
       throws DhxException {
     super(service, client, stream);
@@ -50,7 +51,8 @@ public class OutgoingDhxPackage extends DhxPackage {
    * @param internalConsignmentId - consingment id for sending document
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client, Object parsedContainer,
+  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client,
+      Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, File file, String internalConsignmentId)
       throws DhxException {
     super(service, client, parsedContainer, parsedContainerVersion, file);
@@ -67,7 +69,8 @@ public class OutgoingDhxPackage extends DhxPackage {
    * @param internalConsignmentId - consignment id for sending document
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client, InputStream stream,
+  public OutgoingDhxPackage(InternalXroadMember service, InternalXroadMember client,
+      InputStream stream,
       Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, String internalConsignmentId)
       throws DhxException {
@@ -75,12 +78,12 @@ public class OutgoingDhxPackage extends DhxPackage {
     this.internalConsignmentId = internalConsignmentId;
   }
 
-  
+
   /**
    * internal id of the package(for package sending).
    */
   private String internalConsignmentId;
-  
+
   /**
    * internal id of the package(for package sending).
    * 
@@ -98,8 +101,8 @@ public class OutgoingDhxPackage extends DhxPackage {
   public void setInternalConsignmentId(String internalConsignmentId) {
     this.internalConsignmentId = internalConsignmentId;
   }
-  
-  
+
+
   @Override
   public String toString() {
     String objString = super.toString();

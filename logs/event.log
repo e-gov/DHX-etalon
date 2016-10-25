@@ -1279,3 +1279,486 @@ X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
 2016-10-19 16:45:30,126 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/GOV/70000004/DHX ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX'
 2016-10-19 16:45:32,869 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Sending document to: X-road member ee-dev/GOV/70000004/DHX.subsystem internalConsignmentId: 4c1b1931-5b89-439c-a5d9-34189a6b0b63
 2016-10-19 16:45:33,059 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Document sent to: X-road member ee-dev/GOV/70000004/DHX.subsystem ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX.subsystem'
+2016-10-25 13:47:59,078 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-25 13:47:59,784 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 13:48:00,932 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 13:48:00 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 13:48:00 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 13:48:00 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 13:48:00,934 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 13:48:06,826 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 55f9f8c5-a9e3-40ca-a1a8-568ad56306da
+2016-10-25 13:48:07,556 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in representativesList and own member code. recipient:code: 30000001, system: DHX
+2016-10-25 13:48:11,034 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 3ec1a4a9-aa8a-46d3-b35f-7a8898f6e4ed
+2016-10-25 13:48:11,494 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: cabd2b5b-b650-4b86-b3a9-360300727ab6
+2016-10-25 13:48:21,068 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 5ccfcd82-c0de-4bc2-8aa5-8d09a20231d7
+2016-10-25 13:48:21,691 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 3b61b28b-42cb-4027-bbae-efab269f7e4e
+2016-10-25 14:00:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 14:00:01,171 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 14:00:01,679 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 14:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 14:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 14:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 14:00:01,681 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 14:20:00,023 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 14:20:00,471 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 14:20:01,085 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 14:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 14:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 14:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 14:20:01,086 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 14:40:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 14:40:00,356 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 14:40:01,319 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 14:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 14:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 14:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 14:40:01,321 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 14:44:32,574 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-25 14:44:33,153 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 14:44:34,167 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 14:44:34 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 14:44:34 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 14:44:34 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 14:44:34,171 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 14:44:40,086 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: e6cefb43-c7fd-4fea-bc41-bcce276734ca
+2016-10-25 14:44:40,553 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 5b47ea61-6282-484f-9e94-80d8b2bf8240
+2016-10-25 14:44:43,783 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 1ff72209-226b-4d2a-9d6e-1b3256abb4a9
+2016-10-25 14:44:44,339 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 87d29dff-424d-4309-b2c3-ed604535ffde
+2016-10-25 14:44:47,175 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null internalConsignmentId: 21e005c1-e341-4253-84ee-b07ce60f9ee3
+2016-10-25 14:44:47,687 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null ReceiptId: 1c62e369-1afe-45a3-8652-a4fae33c93d9
+2016-10-25 14:44:49,485 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-10] ----- Error occured while sending document. DHXException code: DHX.Validation Error occured while creating object from capsule. null
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.Validation Error occured while creating object from capsule. null
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:162) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure9.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.6.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate_aroundBody6(DhxMarshallerServiceImpl.java:148) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure7.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.6.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate(DhxMarshallerServiceImpl.java:144) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody4(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure5.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.6.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody2(DhxMarshallerServiceImpl.java:107) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure3.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.6.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:106) ~[ws-0.9.6.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:96) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:397) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.EndpointWebMvcAutoConfiguration$ApplicationContextHeaderFilter.doFilterInternal(EndpointWebMvcAutoConfiguration.java:261) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:115) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:103) [spring-boot-actuator-1.3.5.RELEASE.jar:1.3.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: javax.xml.bind.UnmarshalException
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.6.jar:?]
+	... 88 more
+Caused by: org.xml.sax.SAXParseException: Content is not allowed in prolog.
+	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLScanner.reportFatalError(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentScannerImpl$PrologDispatcher.dispatch(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.parsers.AbstractSAXParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source) ~[xercesImpl-2.8.0.jar:?]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.6.jar:?]
+	... 88 more
+2016-10-25 14:45:13,045 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Staring returning representationList
+2016-10-25 14:45:13,046 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:13,388 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-25 14:45:13,388 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:13,802 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-25 14:45:13,802 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:13,868 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-25 14:45:13,868 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:13,989 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Staring returning representationList
+2016-10-25 14:45:13,989 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:14,080 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Staring returning representationList
+2016-10-25 14:45:14,080 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:55,710 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-25 14:45:55,710 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:55,796 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-25 14:45:55,796 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:56,097 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-4] ----- Staring returning representationList
+2016-10-25 14:45:56,098 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-4] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:56,175 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-25 14:45:56,175 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:56,341 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-25 14:45:56,341 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:45:56,401 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-25 14:45:56,401 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:00,645 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Staring returning representationList
+2016-10-25 14:46:00,645 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:12,391 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Staring returning representationList
+2016-10-25 14:46:12,391 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:12,393 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Document received. receipt:0097df32-fe76-475a-b651-b1d72ad63ba1 consignmentId: 04cf9d7d-c2f6-47d1-9d00-84c4e5a59a3f Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 14:46:12,473 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-25 14:46:12,473 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:12,695 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-25 14:46:12,696 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:12,697 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Document received. receipt:29def8cb-92ab-4dd1-9c6d-cc3af95def33 consignmentId: 123 Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 14:46:12,797 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Staring returning representationList
+2016-10-25 14:46:12,797 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:12,844 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Staring returning representationList
+2016-10-25 14:46:12,844 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:17,746 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-25 14:46:17,746 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:46:17,751 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Document received. receipt:f6bf16db-ff1f-4b46-8bdf-c118b4887fec consignmentId: d5efe316-e01e-4b38-8e6d-70a5245e79ee Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 14:58:01,087 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-25 14:58:01,692 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 14:58:02,737 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 14:58:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 14:58:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 14:58:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 14:58:02,740 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 14:58:10,489 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 9601ac4f-c5b2-4d71-b318-598cb38f6dc5
+2016-10-25 14:58:10,939 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 5f511291-992e-4e7c-b0e8-4f8e9e61e57e
+2016-10-25 14:58:15,503 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 46785591-3dc4-4229-b3d6-50734f465d16
+2016-10-25 14:58:16,090 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: efee0a7c-9598-4bef-81f2-e19beb1b280b
+2016-10-25 14:58:18,470 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 76dd418d-01d4-44d1-a5e0-7417a4dc18f5
+2016-10-25 14:58:18,908 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: eedf5b89-363f-4b54-bef5-e53ecfa33c6d
+2016-10-25 14:58:36,845 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-25 14:58:36,845 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:36,922 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-25 14:58:36,922 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:37,334 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Staring returning representationList
+2016-10-25 14:58:37,334 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-6] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:37,409 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-25 14:58:37,409 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:37,479 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-25 14:58:37,479 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:37,583 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Staring returning representationList
+2016-10-25 14:58:37,584 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:51,578 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-25 14:58:51,578 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:51,579 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Document received. receipt:4e0f546e-2312-4e75-9b31-bba30f4046bd consignmentId: f13cf176-5fe0-414e-aaec-d9cceed269bd Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 14:58:51,634 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-25 14:58:51,634 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:51,819 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-25 14:58:51,819 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:51,821 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Document received. receipt:eeaceba2-74ff-4edc-adfd-4120ce567bed consignmentId: 123 Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 14:58:51,941 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Staring returning representationList
+2016-10-25 14:58:51,942 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 14:58:52,009 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-25 14:58:52,009 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:00:00,004 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 15:00:00,329 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:00:00,885 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:00:00 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:00:00 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:00:00 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:00:00,887 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:02:40,607 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Staring returning representationList
+2016-10-25 15:02:40,608 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:02:40,611 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-1] ----- Document received. receipt:7dd30311-a35c-4d5d-b1da-98d7c7121dde consignmentId: 6a510ca1-8573-4e37-b6c1-d948fb6f53ca Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 15:02:40,758 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Staring returning representationList
+2016-10-25 15:02:40,760 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-2] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:02:41,296 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Staring returning representationList
+2016-10-25 15:02:41,296 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:02:41,322 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-5] ----- Document received. receipt:19935be6-a6c8-4798-8c92-9e2edd850c31 consignmentId: 123 Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 15:02:41,483 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-25 15:02:41,483 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:02:41,531 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Staring returning representationList
+2016-10-25 15:02:41,531 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-8] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:02:46,481 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-10] ----- Staring renewing local address list
+2016-10-25 15:02:47,040 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:02:47,605 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:02:47 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:02:47 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:02:47 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:02:47,607 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-10] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:02:52,593 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 02089ab2-be59-41bb-8dca-b17ac9de428d
+2016-10-25 15:02:53,175 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 66fc886e-1d9a-4dbd-a0cc-7296509e3746
+2016-10-25 15:02:55,232 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: ac507014-7f95-4ca4-a7ab-ef2ec5efcc36
+2016-10-25 15:02:55,686 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 71723a8d-6006-4251-891e-1ee6631e11fc
+2016-10-25 15:02:57,941 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 831c2634-3cb4-4433-bf44-9ab975bf7ffd
+2016-10-25 15:02:58,377 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 99824ce7-e3f7-4c5d-8b05-c55042ec624b
+2016-10-25 15:03:09,279 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-25 15:03:09,687 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:03:10,396 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:03:10 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:03:10 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:03:10 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:03:10,399 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:03:16,159 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:03:16,556 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:03:16 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:03:16 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:03:16 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:08:46,171 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Staring returning representationList
+2016-10-25 15:08:46,172 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:08:46,175 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-3] ----- Document received. receipt:16c7dcc4-86a3-4ec3-88f7-742b0a8d617b consignmentId: 15f4bdbf-7fad-4e3b-9929-e5a16afff07d Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 15:08:46,305 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-4] ----- Staring returning representationList
+2016-10-25 15:08:46,305 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-4] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:08:46,573 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Staring returning representationList
+2016-10-25 15:08:46,573 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:08:46,585 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-7] ----- Document received. receipt:882c2ab6-4a41-4990-8de4-2f88325a0480 consignmentId: 123 Document sender: X-road member ee-dev/GOV/40000001/DHX Document reciever: X-road member ee-dev/COM/30000001/DHX Document recipient: code: 40000001, system: null
+2016-10-25 15:08:46,729 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Staring returning representationList
+2016-10-25 15:08:46,729 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-9] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:08:46,774 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Staring returning representationList
+2016-10-25 15:08:46,774 EVENT e.b.d.c.s.DhxClientSpecificService [http-nio-8080-exec-10] ----- Returning representationList. 112221, 2434, 2343223
+2016-10-25 15:08:53,608 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Staring renewing local address list
+2016-10-25 15:08:54,019 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:08:54,979 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:08:55 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:08:55 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:08:55 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:08:54,981 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-3] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:09:00,615 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 40eb8521-01bf-49f1-aa15-695f416ec1a8
+2016-10-25 15:09:01,020 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-10] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: e6dc05a2-c4c5-4b6f-8f0a-e2e718ebf9fc
+2016-10-25 15:20:00,011 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 15:20:00,385 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:20:00,833 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:20:00 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:20:00 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:20:00 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:20:00,834 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:32:33,999 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-2] ----- Staring renewing local address list
+2016-10-25 15:32:35,069 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:32:36,024 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:32:36 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:32:36 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:32:36 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:32:36,027 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-2] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 15:32:40,740 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 3af7ddd9-fb8c-47a0-ad92-1b5fdc085970
+2016-10-25 15:32:41,184 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 02b13d48-e5f2-4d6a-8b71-48bee15f2392
+2016-10-25 15:40:00,008 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 15:40:00,392 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 15:40:01,198 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 15:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 15:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 15:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 15:40:01,199 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 16:13:43,831 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Staring renewing local address list
+2016-10-25 16:13:44,514 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 16:13:45,863 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 16:13:45 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 16:13:45 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 16:13:45 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 16:13:45,867 EVENT e.b.d.c.s.AddressClientServiceImpl [http-nio-8080-exec-5] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 16:13:51,065 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 284f2880-45fd-4f78-ac0d-a32b4c46b2c5
+2016-10-25 16:13:51,577 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-1] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 9e62fbd3-6a33-4ab9-bc04-e9263080738a
+2016-10-25 16:20:00,007 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 16:20:00,346 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 16:20:01,059 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 16:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 16:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 16:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 16:20:01,060 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 16:40:00,023 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 16:40:00,652 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 16:40:01,512 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 16:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 16:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 16:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 16:40:01,513 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null

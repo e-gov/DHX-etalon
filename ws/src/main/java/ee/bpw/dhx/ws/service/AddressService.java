@@ -33,7 +33,8 @@ public interface AddressService {
    * @return - return XroadMember object
    * @throws DhxException - thrown if recipient is not found
    */
-  public InternalXroadMember getClientForMemberCode(String memberCode, String system) throws DhxException;
+  public InternalXroadMember getClientForMemberCode(String memberCode, String system)
+      throws DhxException;
 
   public List<InternalXroadMember> getAdresseeList() throws DhxException;
 

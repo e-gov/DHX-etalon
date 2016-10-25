@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+// import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -20,7 +20,7 @@ import javax.annotation.PostConstruct;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "dhx")
+// @ConfigurationProperties(prefix = "dhx")
 @Configuration
 @PropertySource("classpath:dhx-application.properties")
 @Slf4j

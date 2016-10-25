@@ -1,6 +1,5 @@
 package ee.bpw.dhx.model;
 
-import lombok.Getter;
 import lombok.Setter;
 
 /**
@@ -39,7 +38,7 @@ public class DhxRecipient {
   public String getCodeUpper() {
     return code.toUpperCase();
   }
-  
+
   public String getCode() {
     return code;
   }
@@ -61,13 +60,15 @@ public class DhxRecipient {
    * @param obj - object to compare to
    * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
    *        even if one of them presented without prefix.
-   * @return
+   * @return - returns true if both recipients are equal
    */
   public boolean equals(Object obj, String dhxSubsystemPrefix) {
-    if (!(obj instanceof DhxRecipient))
+    if (!(obj instanceof DhxRecipient)) {
       return false;
-    if (obj == this)
+    }
+    if (obj == this) {
       return true;
+    }
     DhxRecipient recipient = (DhxRecipient) obj;
     if (recipient.getCodeUpper().equals(this.getCodeUpper())
         && recipient.getAdaptedSystem(dhxSubsystemPrefix).equals(
@@ -79,6 +80,7 @@ public class DhxRecipient {
 
   /**
    * add prefix to system if it is not present.
+   * 
    * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
    *        even if one of them presented without prefix.
    * @return - adpted system
@@ -99,10 +101,10 @@ public class DhxRecipient {
    * Function to check capsule recipient. Accepts if capsule recipient equals to code or system or
    * their combination either with or without DHX subsystem prefix.
    * 
-   * @param capsuleRecipient
+   * @param capsuleRecipient - recipient from capsule
    * @param dhxSubsystemPrefix - DHX system default prefix. used to define if two systems are euqal
    *        even if one of them presented without prefix.
-   * @return
+   * @return - true if recipine from capsule equals to recipient defined in object
    */
   public Boolean equalsToCapsuleRecipient(String capsuleRecipient, String dhxSubsystemPrefix) {
     String capsuleRecipientUp = capsuleRecipient.toUpperCase();

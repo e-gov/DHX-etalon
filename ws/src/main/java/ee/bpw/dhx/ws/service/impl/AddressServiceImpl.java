@@ -144,6 +144,10 @@ public class AddressServiceImpl implements AddressService {
             // exclude own representatives
             if (!client.getMemberCode().equals(config.getMemberCode())) {
               InternalXroadMember member = new InternalXroadMember(client);
+              InternalXroadMember parentMember = findMember(client, members);
+              if (parentMember != null) {
+                parentMember.setRepresentor(true);
+              }
               log.debug("getting representatives for member: {}", member.toString());
               try {
                 List<InternalXroadMember> representeeMembers = getRepresentees(member);
@@ -160,8 +164,13 @@ public class AddressServiceImpl implements AddressService {
               InternalXroadMember member = new InternalXroadMember(client);
               List<DhxRepresentee> representees =
                   dhxImplementationSpecificService.getRepresentationList();
-              List<InternalXroadMember> representeesmembers = new ArrayList<InternalXroadMember>();
+              List<InternalXroadMember> representeesmembers =
+                  new ArrayList<InternalXroadMember>();
+              InternalXroadMember parentMember = findMember(client, members);
               for (DhxRepresentee representee : representees) {
+                if (parentMember != null) {
+                  parentMember.setRepresentor(true);
+                }
                 representeesmembers.add(new InternalXroadMember(member, representee));
               }
               members.addAll(representeesmembers);
@@ -173,8 +182,20 @@ public class AddressServiceImpl implements AddressService {
     return members;
   }
 
+  private InternalXroadMember findMember(XRoadClientIdentifierType xroadClient,
+      List<InternalXroadMember> members) {
+    for (InternalXroadMember member : members) {
+      if (member.getMemberCode().equalsIgnoreCase(xroadClient.getMemberCode())
+          && member.getSubsystemCode().equalsIgnoreCase(xroadClient.getSubsystemCode())) {
+        return member;
+      }
+    }
+    return null;
+  }
+
   @Loggable
-  private List<InternalXroadMember> getRepresentees(InternalXroadMember member) throws DhxException {
+  private List<InternalXroadMember> getRepresentees(InternalXroadMember member)
+      throws DhxException {
     RepresentationListResponse response = dhxGateway.getRepresentationList(member);
     if (response == null || response.getRepresentees() == null
         || response.getRepresentees().getRepresentee() == null
@@ -235,7 +256,8 @@ public class AddressServiceImpl implements AddressService {
    * @throws DhxException - thrown if recipient is not found
    */
   @Loggable
-  public InternalXroadMember getClientForMemberCode(String memberCode, String system) throws DhxException {
+  public InternalXroadMember getClientForMemberCode(String memberCode, String system)
+      throws DhxException {
     log.debug("getClientForMemberCode(String memberCode) memberCode: {}", memberCode);
     List<InternalXroadMember> members = getAdresseeList();
     Date curDate = new Date();
@@ -246,8 +268,8 @@ public class AddressServiceImpl implements AddressService {
             && (member.getRepresentee() == null
             || member.getRepresentee().getMemberCode() == null)
             // check if adressees system is also chosen and is right
-            && ((system == null) 
-                || (config.addPrefixIfNeeded(system).equals(config.addPrefixIfNeeded(member
+            && ((system == null)
+            || (config.addPrefixIfNeeded(system).equals(config.addPrefixIfNeeded(member
                 .getSubsystemCode()))))) {
           return member;
         } else if (member.getRepresentee() != null

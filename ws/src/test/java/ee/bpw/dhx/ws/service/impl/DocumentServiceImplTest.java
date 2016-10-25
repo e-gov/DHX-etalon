@@ -1,6 +1,7 @@
 package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
+
 import ee.bpw.dhx.model.CapsuleAdressee;
 import ee.bpw.dhx.model.DhxPackage;
 import ee.bpw.dhx.model.OutgoingDhxPackage;

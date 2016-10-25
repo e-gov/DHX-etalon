@@ -42,7 +42,7 @@ public class FileUtilTest {
           + "hY2/FaOaa1fjQNpmhdcFU6Zg+Xh2dz565wRwZ2qGkvmQKfC7YHILRappM105cZclfGXFgRydxlxV7DCBhdZ03"
           + "RWsGs+ISpYS6wEVAjCFcY/SL0bsE62vIG5lhu8ue40TcFAWbUHTGAdcAlVwyje8nNhADR7VJHe2tR6as88Ro6"
           + "eVOeRg3dxNVZRiJ8jYcwyEWWhl0YWNWMC6q+yrOdlbk8VZTv4ccoDJ6G4sWrMhWJqzjYypu4PxxreE+8KEvf2t"
-          + "CPN9mHWDBHB0I6EUb6YRj9/9dvKFE6854BAAA=";
+          + "CPN9mHWDBHB0I6EUb6YRj9/9dvKFE6854BAAA";
 
   String unzippedString = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
       + "<saveDocumentFileAttachmentV1>\n"
@@ -52,23 +52,11 @@ public class FileUtilTest {
       + "    <description>SaveDocumentFile update osa testimine</description>\n"
       + "    <data>\n"
       + "        Q291cmFnZSBpcyByZXNpc3RhbmNlIHRvIGZlYXIsIG1hc3Rlcnkgb2YgZmVhciAt\n"
-      + "        IG5vdCBhYnNlbmNlIG9mIGZlYXIuDQotLSBNYXJrIFR3YWluDQo=\n"
+      + "        IG5vdCBhYnNlbmNlIG9mIGZlYXIuDQotLSBNYXJrIFR3YWluDQo\n"
       + "    </data>\n"
       + "</file>\n"
       + "</saveDocumentFileAttachmentV1>\n";
 
-  @Test
-  public void extractAndUnpackAttachmentTest() throws Exception {
-
-    DataSource ds = new ByteArrayDataSource(gzippedString, "text/plain; charset=UTF-8");
-    DataHandler handler = new DataHandler(ds);
-    File file = FileUtil.extractAndUnpackAttachment(handler);
-    byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
-    String decodedTest = new String(encoded, "UTF-8");
-    assertTrue(file != null);
-    assertEquals(decodedTest, unzippedString);
-    file.delete();
-  }
 
   @Test
   public void createPipelineFileTest() throws Exception {
@@ -128,16 +116,6 @@ public class FileUtilTest {
     String decodedTest = new String(encoded, "UTF-8");
     assertEquals(streamString, decodedTest);
     file.delete();
-  }
-
-  @Test
-  public void gzipPackXmlTest() throws IOException, DhxException {
-    InputStream stream =
-        new ByteArrayInputStream(unzippedString.getBytes(StandardCharsets.UTF_8));
-    File file = FileUtil.gzipPackXml(stream);
-    byte[] encoded = Files.readAllBytes(Paths.get(file.getAbsolutePath()));
-    String decodedTest = new String(encoded, "UTF-8");
-    assertEquals(gzippedString, decodedTest);
   }
 
   @Test

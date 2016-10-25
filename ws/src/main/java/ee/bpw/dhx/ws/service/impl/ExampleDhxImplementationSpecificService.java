@@ -3,9 +3,8 @@ package ee.bpw.dhx.ws.service.impl;
 import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
-import ee.bpw.dhx.model.DhxPackage;
-import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 
@@ -56,7 +55,8 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   @Override
   @Deprecated
   @Loggable
-  public String receiveDocument(IncomingDhxPackage document, MessageContext context) throws DhxException {
+  public String receiveDocument(IncomingDhxPackage document, MessageContext context)
+      throws DhxException {
     log.debug("String receiveDocument(DhxDocument document) externalConsignmentId: {}",
         document.getExternalConsignmentId());
     String receiptId = UUID.randomUUID().toString();
@@ -82,11 +82,11 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   public void saveAddresseeList(List<InternalXroadMember> members) {
     this.members = members;
   }
-  
+
   @Override
   public void resendFailedDocuments() throws DhxException {
     // no resend logic is implemented in example implementation!
-    
+
   }
 
 }

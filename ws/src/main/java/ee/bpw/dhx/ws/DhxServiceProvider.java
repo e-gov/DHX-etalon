@@ -169,12 +169,12 @@ public class DhxServiceProvider {
         soapConfig.setDhxRepresentationGroupName(configFile
             .getProperty("soap.dhx-representation-group-name"));
       }
-   /*   if (configFile.getProperty("soap.service-xroad-instance") != null) {
-        soapConfig.setServiceXroadInstance(configFile.getProperty("soap.service-xroad-instance"));
-      }
-      if (configFile.getProperty("soap.service-subsystem") != null) {
-        soapConfig.setServiceSubsystem(configFile.getProperty("soap.service-subsystem"));
-      }*/
+      /*
+       * if (configFile.getProperty("soap.service-xroad-instance") != null) {
+       * soapConfig.setServiceXroadInstance(configFile.getProperty("soap.service-xroad-instance"));
+       * } if (configFile.getProperty("soap.service-subsystem") != null) {
+       * soapConfig.setServiceSubsystem(configFile.getProperty("soap.service-subsystem")); }
+       */
       if (configFile.getProperty("soap.send-document-service-code") != null) {
         soapConfig.setSendDocumentServiceCode(configFile
             .getProperty("soap.send-document-service-code"));

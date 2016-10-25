@@ -218,11 +218,12 @@ public interface DocumentService {
    * @param document - service iniput parameters. document to receive
    * @param client - SOAP message client(who sent the request).
    * @param service - SOAP message service(to whom was request sent).
-   * @return service response
    * @param context - SOAP message context. If something is missing in parsed objects, then take
    *        them from context
+   * @return service response
    * @throws DhxException - thrown if error occurs while receiving document
    */
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
-      InternalXroadMember client, InternalXroadMember service, MessageContext context) throws DhxException;
+      InternalXroadMember client, InternalXroadMember service, MessageContext context)
+      throws DhxException;
 }

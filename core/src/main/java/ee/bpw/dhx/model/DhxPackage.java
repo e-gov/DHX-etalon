@@ -3,7 +3,6 @@ package ee.bpw.dhx.model;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
-import ee.bpw.dhx.util.StringUtil;
 
 import eu.x_road.dhx.producer.SendDocument;
 
@@ -19,7 +18,8 @@ import javax.mail.util.ByteArrayDataSource;
 
 /**
  * DHX package object. Contains information needed for sending the document and for receiving the
- * document. Cannot be instantiated by itself. Eiteher outgoing or incoming package must be instantiated
+ * document. Cannot be instantiated by itself. Eiteher outgoing or incoming package must be
+ * instantiated
  * 
  * @author Aleksei Kokarev
  *
@@ -34,7 +34,8 @@ public abstract class DhxPackage {
    * @param file - documents file
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, File file) throws DhxException {
+  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, File file)
+      throws DhxException {
     try {
       InputStream stream = new FileInputStream(file);
       DataSource source = new ByteArrayDataSource(stream, "text/xml; charset=UTF-8");
@@ -82,7 +83,8 @@ public abstract class DhxPackage {
    * @param file - documents file
    * @throws DhxException - thrown if error occurs while sending document
    */
-  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, Object parsedContainer,
+  protected DhxPackage(InternalXroadMember service, InternalXroadMember client,
+      Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, File file)
       throws DhxException {
     this.parsedContainer = parsedContainer;
@@ -98,7 +100,8 @@ public abstract class DhxPackage {
    * @param parsedContainerVersion - version of the container
    * @throws DhxException - thrown if error occurs while sending document
    */
-  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, InputStream stream,
+  protected DhxPackage(InternalXroadMember service, InternalXroadMember client,
+      InputStream stream,
       Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion)
       throws DhxException {
@@ -116,9 +119,10 @@ public abstract class DhxPackage {
    * @param service - XroadMember to whom document is sent(self X-road member for incoming document)
    * @param document - document to send
    */
-  protected DhxPackage(InternalXroadMember client, InternalXroadMember service, SendDocument document) {
+  protected DhxPackage(InternalXroadMember client, InternalXroadMember service,
+      SendDocument document) {
     this.documentFile = document.getDocumentAttachment();
-    //this.externalConsignmentId = document.getConsignmentId();
+    // this.externalConsignmentId = document.getConsignmentId();
     this.client = client;
     this.service = service;
   }
@@ -132,7 +136,8 @@ public abstract class DhxPackage {
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
    */
-  protected DhxPackage(InternalXroadMember client, InternalXroadMember service, SendDocument document, Object parsedContainer,
+  protected DhxPackage(InternalXroadMember client, InternalXroadMember service,
+      SendDocument document, Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion) {
     this(client, service, document);
     this.parsedContainer = parsedContainer;
@@ -143,10 +148,6 @@ public abstract class DhxPackage {
   private DataHandler documentFile;
   private InternalXroadMember client;
   private InternalXroadMember service;
-
-
-
-
 
 
 
@@ -212,9 +213,6 @@ public abstract class DhxPackage {
   public void setService(InternalXroadMember service) {
     this.service = service;
   }
-
-
-
 
 
 

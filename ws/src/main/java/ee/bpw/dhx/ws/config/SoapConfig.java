@@ -2,9 +2,6 @@ package ee.bpw.dhx.ws.config;
 
 import ee.bpw.dhx.model.InternalXroadMember;
 
-import eu.x_road.xsd.identifiers.ObjectFactory;
-import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -66,6 +63,12 @@ public class SoapConfig {
   @Autowired
   Environment env;
 
+  /**
+   * Method returns subsystems list that are accepted. means that DHX documents sent to those
+   * subsystems will be accepted.
+   * 
+   * @return - accepted subsystem list
+   */
   public List<String> getAcceptedSubsystemsAsList() {
     if (acceptedSubsystemsAsList == null) {
       String[] contextArray = acceptedSubsystems.split(separator);
@@ -164,6 +167,11 @@ public class SoapConfig {
     return system.toUpperCase();
   }
 
+  /**
+   * Method returns default xroad client. That client will be used as sender when sending documents.
+   * 
+   * @return - default client
+   */
   public InternalXroadMember getDefaultClient() {
     InternalXroadMember client =
         new InternalXroadMember(getXroadInstance(), getMemberClass(), getMemberCode(),
