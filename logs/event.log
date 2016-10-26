@@ -1762,3 +1762,1242 @@ X-road member ee-dev/GOV/70000004/DHX.subsystem
 X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 17:00:00,024 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 17:00:00,666 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 17:00:01,590 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 17:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 17:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 17:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 17:00:01,594 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 17:20:00,024 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 17:20:00,982 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 17:20:02,186 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 17:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 17:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 17:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 17:20:02,188 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 17:40:00,029 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 17:40:00,522 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 17:40:01,391 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 17:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 17:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 17:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 17:40:01,395 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 17:56:21,554 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 43961bea-d6f4-45ac-8aef-5bd373b24550
+2016-10-25 17:56:22,440 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 3c4c7212-ec9c-453b-81eb-2e884732c224
+2016-10-25 17:56:27,205 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 11
+2016-10-25 17:56:27,751 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-6] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 7fd3c5c7-5a84-425c-94ef-8c0f485ce975
+2016-10-25 17:56:28,856 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 11
+2016-10-25 17:56:29,229 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-8] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:11
+2016-10-25 18:00:00,037 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 18:00:00,403 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 18:00:01,501 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 18:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 18:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 18:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 18:00:01,503 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 18:20:00,025 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 18:20:00,453 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 18:20:01,021 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 18:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 18:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 18:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 18:20:01,022 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 18:40:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 18:40:00,421 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 18:40:01,404 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 18:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 18:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 18:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 18:40:01,405 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 19:00:00,035 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 19:00:00,350 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 19:00:01,054 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 19:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 19:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 19:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 19:00:01,056 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 19:20:00,027 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 19:20:00,196 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 19:20:01,098 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 19:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 19:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 19:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 19:20:01,099 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 19:40:00,041 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 19:40:00,747 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 19:40:02,676 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 19:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 19:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 19:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 19:40:02,677 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 20:00:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 20:00:00,670 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 20:00:01,897 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 20:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 20:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 20:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 20:00:01,898 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 20:20:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 20:20:00,368 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 20:20:01,212 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 20:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 20:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 20:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 20:20:01,225 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 20:40:00,022 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 20:40:00,331 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 20:40:01,322 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 20:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 20:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 20:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 20:40:01,325 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 21:00:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 21:00:21,531 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:243) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.7.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:41) [ws-0.9.7.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:223) ~[ws-0.9.7.jar:?]
+	... 24 more
+2016-10-25 21:20:00,022 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 21:20:00,294 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 21:20:01,141 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 21:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 21:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 21:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 21:20:01,142 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 21:40:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 21:40:00,357 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 21:40:01,022 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 21:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 21:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 21:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 21:40:01,023 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 22:00:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 22:00:00,225 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 22:00:01,066 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 22:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 22:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 22:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 22:00:01,067 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 22:20:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 22:20:00,518 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 22:20:01,597 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 22:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 22:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 22:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 22:20:01,598 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 22:40:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 22:40:00,237 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-25 22:40:01,351 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Tue Oct 25 22:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Tue Oct 25 22:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Tue Oct 25 22:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-25 22:40:01,352 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-25 23:54:52,629 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-25 23:55:08,619 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Network is unreachable: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Network is unreachable: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:243) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.7.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:41) [ws-0.9.7.jar:?]
+	at sun.reflect.GeneratedMethodAccessor68.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.SocketException: Network is unreachable: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:223) ~[ws-0.9.7.jar:?]
+	... 23 more
+2016-10-26 11:07:51,906 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 11:07:53,296 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Network is unreachable: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Network is unreachable: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:243) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.7.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:41) [ws-0.9.7.jar:?]
+	at sun.reflect.GeneratedMethodAccessor68.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.SocketException: Network is unreachable: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:223) ~[ws-0.9.7.jar:?]
+	... 23 more
+2016-10-26 11:20:00,013 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 11:20:21,024 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:243) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.7.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:41) [ws-0.9.7.jar:?]
+	at sun.reflect.GeneratedMethodAccessor68.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:223) ~[ws-0.9.7.jar:?]
+	... 23 more
+2016-10-26 11:40:00,019 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 11:40:21,053 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:243) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:124) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.7.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:123) ~[ws-0.9.7.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:115) [ws-0.9.7.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:41) [ws-0.9.7.jar:?]
+	at sun.reflect.GeneratedMethodAccessor68.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:223) ~[ws-0.9.7.jar:?]
+	... 23 more
+2016-10-26 12:00:00,022 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 12:00:00,536 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 12:00:01,534 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 12:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 12:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 12:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 12:00:01,538 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 12:20:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 12:20:00,530 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 12:20:01,758 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 12:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 12:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 12:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 12:20:01,760 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 12:40:00,017 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 12:40:00,487 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 12:40:01,575 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 12:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 12:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 12:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 12:40:01,576 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 13:00:00,023 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 13:00:00,478 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 13:00:01,217 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 13:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 13:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 13:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 13:00:01,218 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 13:20:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 13:20:00,821 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 13:20:01,538 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 13:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 13:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 13:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 13:20:01,539 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 13:40:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 13:40:00,512 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 13:40:01,479 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 13:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 13:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 13:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 13:40:01,480 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 14:00:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 14:00:00,344 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 14:00:01,911 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 14:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 14:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 14:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 14:00:01,912 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 14:20:00,019 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 14:20:00,395 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 14:20:01,750 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 14:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 14:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 14:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 14:20:01,750 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 14:40:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 14:40:00,563 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 14:40:04,278 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 14:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 14:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 14:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 14:40:04,327 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:00:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 15:00:00,457 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:00:01,919 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:00:01,934 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:27:35,052 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-26 15:27:35,560 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:27:36,578 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:27:37 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:27:37 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:27:37 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:27:36,581 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:27:58,825 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: dcd69fa9-e178-437e-97c0-ca306ea7f203
+2016-10-26 15:27:59,328 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 169dd15a-3303-4083-b0b2-e24f9a120613
+2016-10-26 15:28:02,548 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: c7eed1b1-e28a-44e4-9e0c-7c6f546b2f55
+2016-10-26 15:28:03,119 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 22fa049c-e829-4e3d-98cf-53b0a0867cc8
+2016-10-26 15:28:06,059 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: 874d6cb1-f010-495a-9b71-3b1953e5978b
+2016-10-26 15:28:06,503 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: b07376b0-1e6e-4907-9cc2-68f64443f60b
+2016-10-26 15:28:09,328 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-9] ----- Error occured while sending document. DHXException code: DHX.Validation Error occured while validating capsule. cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns6:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.Validation Error occured while validating capsule. cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns6:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate_aroundBody22(DhxMarshallerServiceImpl.java:307) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure23.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate(DhxMarshallerServiceImpl.java:296) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody4(DhxPackageProviderServiceImpl.java:86) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure5.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:73) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody14(DhxPackageProviderServiceImpl.java:148) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure15.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:142) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody10(DhxPackageProviderServiceImpl.java:126) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure11.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:125) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody8(DhxPackageProviderServiceImpl.java:118) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure9.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:118) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:124) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:398) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: org.xml.sax.SAXParseException: cvc-complex-type.2.4.a: Invalid content was found starting with element 'ns6:DecRecipient'. One of '{"http://www.riik.ee/schemas/deccontainer/vers_2_1/":DecSender}' is expected.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.error(ErrorHandlerWrapper.java:134) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:437) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:325) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(XMLSchemaValidator.java:458) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.reportSchemaError(XMLSchemaValidator.java:3237) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.handleStartElement(XMLSchemaValidator.java:1796) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.xs.XMLSchemaValidator.startElement(XMLSchemaValidator.java:746) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:379) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2786) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:117) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.jaxp.validation.StreamValidatorHelper.validate(StreamValidatorHelper.java:155) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.jaxp.validation.ValidatorImpl.validate(ValidatorImpl.java:116) ~[?:1.8.0_45]
+	at javax.xml.validation.Validator.validate(Validator.java:124) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.validate_aroundBody22(DhxMarshallerServiceImpl.java:303) ~[ws-0.9.8.jar:?]
+	... 83 more
+2016-10-26 15:28:14,711 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-4] ----- Error occured while sending document. DHXException code: DHX.Validation Error occured while creating object from capsule. null
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.Validation Error occured while creating object from capsule. null
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:162) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure9.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate_aroundBody6(DhxMarshallerServiceImpl.java:148) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure7.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallAndValidate(DhxMarshallerServiceImpl.java:144) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody4(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure5.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:126) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall_aroundBody2(DhxMarshallerServiceImpl.java:107) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl$AjcClosure3.run(DhxMarshallerServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshall(DhxMarshallerServiceImpl.java:106) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:100) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:398) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:106) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:522) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1095) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:672) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1502) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1458) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.0.33.jar:8.0.33]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: javax.xml.bind.UnmarshalException
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.createUnmarshalException(AbstractUnmarshallerImpl.java:335) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.createUnmarshalException(UnmarshallerImpl.java:563) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:249) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.8.jar:?]
+	... 76 more
+Caused by: org.xml.sax.SAXParseException: Content is not allowed in prolog.
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1436) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:999) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:117) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213) ~[?:1.8.0_45]
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:649) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal0(UnmarshallerImpl.java:243) ~[?:1.8.0_45]
+	at com.sun.xml.internal.bind.v2.runtime.unmarshaller.UnmarshallerImpl.unmarshal(UnmarshallerImpl.java:214) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:157) ~[?:1.8.0_45]
+	at javax.xml.bind.helpers.AbstractUnmarshallerImpl.unmarshal(AbstractUnmarshallerImpl.java:204) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl.unmarshallNoValidation_aroundBody8(DhxMarshallerServiceImpl.java:158) ~[ws-0.9.8.jar:?]
+	... 76 more
+2016-10-26 15:28:20,523 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: fc78065f-1051-4a5c-998c-d9454335e4f1
+2016-10-26 15:28:20,854 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 4b01286e-f0a5-4595-95e5-b6b2b2e11bbd
+2016-10-26 15:28:25,939 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 72aa0b8e-5759-4600-bb64-34f6e967bed1
+2016-10-26 15:28:26,458 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 69c02ab3-ca9f-4c95-8699-72fe3158001c
+2016-10-26 15:28:29,885 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 7e8c99c9-43e7-45b2-a319-475aef166a86
+2016-10-26 15:28:30,312 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-5] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in capsule recipient list. recipient:code: 40000001, system: DHX
+2016-10-26 15:28:37,786 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX.subsystem internalConsignmentId: 294659c3-88bd-47a7-b2f6-30f72ffd4e5a
+2016-10-26 15:28:38,125 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX.subsystem ReceiptId: null faultCode: Server.ServerProxy.UnknownService faultString: SOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/40000001/DHX.subsystem/sendDocument/v1
+2016-10-26 15:28:40,215 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: d8fb69aa-13c0-45ab-8e79-8ae1f516850c
+2016-10-26 15:28:40,723 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.InvalidAddressee faultString: DHXException code: DHX.InvalidAddressee Recipient not found in capsule recipient list. recipient:code: 40000001, system: DHX
+2016-10-26 15:40:00,013 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 15:40:00,288 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:40:00,870 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:40:00,872 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:43:37,043 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-26 15:43:37,476 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:43:38,380 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:43:39 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:43:39 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:43:39 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:43:38,382 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:43:59,649 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1a6b3bd4-3736-457c-991b-425c296ffd38
+2016-10-26 15:44:00,120 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: d3d37b03-2df6-4f4e-8ccd-69b496cae9a2
+2016-10-26 15:44:00,318 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1a6b3bd4-3736-457c-991b-425c296ffd38
+2016-10-26 15:44:00,686 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-3] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:1a6b3bd4-3736-457c-991b-425c296ffd38
+2016-10-26 15:50:27,326 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-26 15:50:27,880 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:50:28,575 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:50:29 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:50:29 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:50:29 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:50:28,577 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:50:44,154 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 69938ae2-b74f-4f06-9213-c637b56eb262
+2016-10-26 15:50:44,710 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 20e4d10e-4d58-4e54-af2a-38395e2654f9
+2016-10-26 15:50:44,773 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 69938ae2-b74f-4f06-9213-c637b56eb262
+2016-10-26 15:50:45,145 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:69938ae2-b74f-4f06-9213-c637b56eb262
+2016-10-26 15:51:15,147 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: 69938ae2-b74f-4f06-9213-c637b56eb262
+2016-10-26 15:52:15,191 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Error occured while sending document. recipient: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while sending document.I/O error: Read timed out; nested exception is java.net.SocketTimeoutException: Read timed out
+2016-10-26 15:55:18,033 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-26 15:55:18,631 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 15:55:19,390 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 15:55:20 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 15:55:20 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 15:55:20 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 15:55:19,394 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 15:55:36,562 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:55:37,218 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 13fa8871-7479-4648-9d3c-266c32d04f2e
+2016-10-26 15:55:37,342 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:55:37,839 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:56:07,842 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:56:08,190 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:58:08,193 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 15:58:08,640 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 16:00:00,006 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 16:00:00,410 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 16:00:00,970 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 16:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 16:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 16:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 16:00:00,971 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 16:03:08,641 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: 1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 16:03:09,659 EVENT e.b.d.c.s.DhxClientGateWay [SimpleAsyncTaskExecutor-1] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: null faultCode: DHX.Duplicate faultString: DHXException code: DHX.Duplicate Already got package with this consignmentID. from:X-road member ee-dev/GOV/40000001/DHX consignmentId:1abfd594-978d-46d3-9b11-8b31312486f7
+2016-10-26 16:20:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 16:20:00,239 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 16:20:00,745 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 16:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 16:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 16:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 16:20:00,748 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 16:40:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 16:40:00,175 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 16:40:00,563 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 16:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 16:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 16:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 16:40:00,564 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 16:40:00,887 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 16:40:00,890 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 17:00:00,019 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 17:00:00,233 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 17:00:00,617 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 17:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 17:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 17:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 17:00:00,618 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 17:00:00,912 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 17:00:00,922 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 17:20:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 17:20:00,169 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 17:20:00,512 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 17:20:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 17:20:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 17:20:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 17:20:00,516 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 17:20:00,754 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 17:20:00,756 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 17:40:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 17:40:00,198 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 17:40:00,727 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 17:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 17:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 17:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 17:40:00,728 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 17:40:01,139 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 17:40:01,156 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 18:00:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 18:00:00,268 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 18:00:01,042 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 18:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 18:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 18:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 18:00:01,043 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 18:00:01,497 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 18:00:01,508 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 18:20:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 18:20:00,364 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 18:20:00,928 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 18:20:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 18:20:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 18:20:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 18:20:00,929 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 18:20:01,234 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 18:20:01,236 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 18:40:00,021 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 18:40:00,186 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 18:40:00,552 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 18:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 18:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 18:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 18:40:00,553 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 18:40:00,910 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 18:40:00,912 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 19:00:00,020 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 19:00:00,683 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 19:00:01,728 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 19:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 19:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 19:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 19:00:01,729 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 19:00:02,114 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 19:00:02,133 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 19:20:00,054 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 19:20:00,746 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-26 19:20:02,331 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Wed Oct 26 19:20:03 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Wed Oct 26 19:20:03 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Wed Oct 26 19:20:03 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-26 19:20:02,332 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-26 19:20:02,876 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-26 19:20:02,879 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-26 19:40:00,113 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-26 19:40:21,278 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Error occured while renewing local address list.DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+ee.bpw.dhx.exception.DhxException: DHXException code: TECHNICAL_ERROR Error occured while getting global conf. Connection timed out: connect
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:247) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList_aroundBody0(AddressServiceImpl.java:125) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure1.run(AddressServiceImpl.java:1) ~[ws-0.9.8.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getRenewedAdresseesList(AddressServiceImpl.java:124) ~[ws-0.9.8.jar:?]
+	at ee.bpw.dhx.client.service.AddressClientServiceImpl.getRenewedAdresseesList(AddressClientServiceImpl.java:39) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.renewAddressList(AddressServiceImpl.java:119) [ws-0.9.8.jar:?]
+	at ee.bpw.dhx.ws.schedule.DhxScheduler.renewAddressList(DhxScheduler.java:28) [ws-0.9.8.jar:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:65) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:81) [spring-context-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_45]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_45]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method) ~[?:1.8.0_45]
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:345) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[?:1.8.0_45]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[?:1.8.0_45]
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172) ~[?:1.8.0_45]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:589) ~[?:1.8.0_45]
+	at java.net.Socket.connect(Socket.java:538) ~[?:1.8.0_45]
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:432) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:527) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:211) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:308) ~[?:1.8.0_45]
+	at sun.net.www.http.HttpClient.New(HttpClient.java:326) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1168) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1104) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:998) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:932) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1512) ~[?:1.8.0_45]
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1440) ~[?:1.8.0_45]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getGlobalConf(AddressServiceImpl.java:227) ~[ws-0.9.8.jar:?]
+	... 24 more

@@ -14,7 +14,9 @@ import org.springframework.core.env.Environment;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -32,12 +34,13 @@ import javax.annotation.PostConstruct;
 public class DhxConfig {
 
   private final String marshallContextSeparator = ":";
+  private final String separator = ",";
 
   private Boolean capsuleValidate = true;
   private Boolean checkRecipient = true;
   private Boolean checkFilesize = false;
   private Boolean checkDuplicate = true;
-  private Boolean parseCapsule = false;
+  private Boolean parseCapsule = true;
   private String marshallContext =
       "ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers"
           + ":eu.x_road.xsd.representation:eu.x_road.xsd.xroad";
@@ -50,7 +53,11 @@ public class DhxConfig {
   private Jaxb2Marshaller dhxJaxb2Marshaller;
 
   private String[] marshallContextAsList;
-
+  
+  //list of timeout in seconds, delimited by comma.
+  private String documentResendTemplate = "30,120,300";
+  private List<Integer> documentResendTimes;
+  
   @Autowired
   Environment env;
 
@@ -117,6 +124,25 @@ public class DhxConfig {
       marshallContextAsList = contextArray;
     }
     return marshallContextAsList;
+  }
+  
+  /**
+   * Method return marshalling context as list.
+   * 
+   * @return array of package names for marshaller
+   */
+  public List<Integer> getDocumentResendTimes() {
+    if (documentResendTimes == null) {
+      String[] timesArray = documentResendTemplate.split(separator);
+      Integer[] times = new Integer[timesArray.length];
+      for (int i=0; i<timesArray.length; i++){
+        String time = timesArray[i];
+        Integer timeInt = Integer.parseInt(time);
+        times[i]= timeInt;
+      }
+      documentResendTimes = Arrays.asList(times);
+    }
+    return documentResendTimes;
   }
 
   public Integer getMaxFileSizeInBytes() {

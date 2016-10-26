@@ -39,13 +39,15 @@ import ee.bpw.dhx.client.service.DocumentClientServiceImpl;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.DhxSendDocumentResult;
 import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.util.StringUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.AsyncDhxPackageService;
+import ee.bpw.dhx.ws.service.impl.DhxGateway;
 
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.Representee;
@@ -96,6 +98,7 @@ public class DhxUi extends UI {
 
   @Autowired
   DhxGateway dhxGateway;
+  
 
   private class DhxStreamSource implements StreamSource {
 
@@ -393,10 +396,9 @@ public class DhxUi extends UI {
                 if (StringUtil.isNullOrEmpty(consignmentIdStr)) {
                   consignmentIdStr = UUID.randomUUID().toString();
                 }
-                List<SendDocumentResponse> responses =
+                List<DhxSendDocumentResult> responses =
                     documentClientService.sendDocument(capsules.getValue().toString(), adressees
                         .getValue().toString(), consignmentIdStr);
-
                 Boolean success = isSendDocumentSuccess(responses);
                 String statuses = getSendDocumentStatuses(responses, success);
                 showDhxNotification("<span style=\"white-space:normal;\">"
@@ -427,10 +429,10 @@ public class DhxUi extends UI {
     return vertLayout;
   }
 
-  private Boolean isSendDocumentSuccess(List<SendDocumentResponse> responses) {
+  private Boolean isSendDocumentSuccess(List<DhxSendDocumentResult> responses) {
     Boolean success = true;
-    for (SendDocumentResponse response : responses) {
-      if (response.getFault() != null) {
+    for (DhxSendDocumentResult response : responses) {
+      if (response.getResponse().getFault() != null) {
         success = false;
       } else {
         success = true;
@@ -439,9 +441,9 @@ public class DhxUi extends UI {
     return success;
   }
 
-  private String getSendDocumentStatuses(List<SendDocumentResponse> responses, Boolean success) {
+  private String getSendDocumentStatuses(List<DhxSendDocumentResult> responses, Boolean success) {
     String statuses = "";
-    for (SendDocumentResponse response : responses) {
+    for (DhxSendDocumentResult response : responses) {
       statuses +=
           "&nbsp;&nbsp;"
               + (success
@@ -450,14 +452,14 @@ public class DhxUi extends UI {
               + " "
               + getMessage("activity.send-document.receiptid")
               + ": "
-              + response.getReceiptId()
+              + response.getResponse().getReceiptId()
               + "<br/>"
-              + (response.getFault() == null
+              + (response.getResponse().getFault() == null
                   ? ""
                   : "&nbsp;&nbsp;&nbsp;&nbsp;faultCode: "
-                      + response.getFault().getFaultCode()
+                      + response.getResponse().getFault().getFaultCode()
                       + "<br/>&nbsp;&nbsp;&nbsp;&nbsp;faultString: "
-                      + response.getFault().getFaultString() + "\n'");
+                      + response.getResponse().getFault().getFaultString() + "\n'");
     }
     return statuses;
   }
@@ -577,8 +579,8 @@ public class DhxUi extends UI {
             public void buttonClick(ClickEvent event) {
 
               log.debug("renewing address list");
-              addressService.renewAddressList();
               try {
+                addressService.renewAddressList();
                 List<InternalXroadMember> members = addressService.getAdresseeList();
                 adrLabel.setCaption("<span style=\"white-space:normal;\">"
                     + getAdresseeString(members)

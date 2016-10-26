@@ -1,7 +1,9 @@
 package ee.bpw.dhx.ws.service;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.AsyncDhxSendDocumentResult;
 import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.DhxSendDocumentResult;
 import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
 
@@ -76,16 +78,17 @@ public interface DhxImplementationSpecificService {
 
 
   /**
-   * DHX protocol requires resend logic of failed sending attempts. There is no good way to
-   * implement resend logic generically inside DHX. Therefore empty method is provided, that will be
-   * called by scheduler. That method must find failed documents and resend them until configured
-   * resend timeout or until attempts count equals to configured maximum attempts count. Document
-   * resending procedure goes frequently, therefore not every time there is a need to try to resend
-   * every document, maybe additional timeout to resend documents(exponential backoff) might be
-   * added.
-   *
-   * @throws DhxException - thrown if error occurs
+   * If using asynchronous document sending. Then this method is a callback for receiving
+   * sendDocument results. This method is used for both success and fail. 
+   * 
+   * @param finalResult - last result of the package sending. Contains both package that was
+   *        sent(including recipient and other information) and sending result, either success or
+   *        fail. If sending was unsucessfull then final results response parameter will contain
+   *        fault.
+   * @param retryResults - contains information about all retries that were done. Meant for
+   *        debugging or history saving or something like that.
    */
-  public void resendFailedDocuments() throws DhxException;
+  public void saveSendResult(DhxSendDocumentResult finalResult,
+      List<AsyncDhxSendDocumentResult> retryResults);
 
 }

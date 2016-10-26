@@ -1,5 +1,7 @@
 package ee.bpw.dhx.ws.service;
 
+import com.jcabi.aspects.Loggable;
+
 import ee.bpw.dhx.exception.DhxException;
 
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
@@ -132,5 +134,13 @@ public interface DhxMarshallerService {
    */
   public Jaxb2Marshaller getJaxbMarshaller();
 
+  
+  /**
+   * Method checks filesize againts maximum filesize. NOT IMPLEMENTED!
+   * 
+   * @param streamToCheck - stream that needs to be checked
+   * @throws DhxException thrown if filesize is bigger that maximum filesize
+   */
+  public void checkFileSize(InputStream streamToCheck) throws DhxException;
 
 }

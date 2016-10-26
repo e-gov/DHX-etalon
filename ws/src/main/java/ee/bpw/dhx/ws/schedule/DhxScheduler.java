@@ -21,19 +21,6 @@ public class DhxScheduler {
   @Autowired
   AddressService addressService;
 
-  @Autowired
-  DhxImplementationSpecificService dhxImplementationSpecificService;
-
-  /**
-   * Sends documents periodically.
-   * 
-   * @throws DhxException - thrown if error occures while sending document
-   */
-  @Scheduled(cron = "${document-send-timeout}")
-  public void sendDvkDocuments() throws DhxException {
-    log.debug("sending DHX documents automatically");
-    dhxImplementationSpecificService.resendFailedDocuments();
-  }
 
   @Scheduled(cron = "${address-renew-timeout}")
   public void renewAddressList() throws DhxException {

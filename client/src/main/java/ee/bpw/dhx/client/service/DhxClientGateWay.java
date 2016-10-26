@@ -5,7 +5,7 @@ import ee.bpw.dhx.model.DhxPackage;
 import ee.bpw.dhx.model.DhxRepresentee;
 import ee.bpw.dhx.model.OutgoingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
-import ee.bpw.dhx.ws.service.DhxGateway;
+import ee.bpw.dhx.ws.service.impl.DhxGateway;
 
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.dhx.producer.Representee;

@@ -3,7 +3,9 @@ package ee.bpw.dhx.ws.service.impl;
 import com.jcabi.aspects.Loggable;
 
 import ee.bpw.dhx.exception.DhxException;
+import ee.bpw.dhx.model.AsyncDhxSendDocumentResult;
 import ee.bpw.dhx.model.DhxRepresentee;
+import ee.bpw.dhx.model.DhxSendDocumentResult;
 import ee.bpw.dhx.model.IncomingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
@@ -84,9 +86,19 @@ public class ExampleDhxImplementationSpecificService implements DhxImplementatio
   }
 
   @Override
-  public void resendFailedDocuments() throws DhxException {
-    // no resend logic is implemented in example implementation!
-
+  @Deprecated
+  public void saveSendResult(DhxSendDocumentResult finalResult,
+      List<AsyncDhxSendDocumentResult> retryResults) {
+    log.info("Got results for document sending. Recipient: "
+        + finalResult.getSentPackage().getService()
+        + " ConsignmentId:"
+        + finalResult.getSentPackage().getInternalConsignmentId()
+        + " Result: receiptId:"
+        + finalResult.getResponse().getReceiptId()
+        + " fault:"
+        + (finalResult.getResponse().getFault() == null ? "" : "code:"
+            + finalResult.getResponse().getFault().getFaultCode() + " String:"
+            + finalResult.getResponse().getFault().getFaultString()));
   }
 
 }

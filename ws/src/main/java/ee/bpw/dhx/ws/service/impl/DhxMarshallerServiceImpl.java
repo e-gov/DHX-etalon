@@ -307,6 +307,25 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
           "Error occured while validating capsule. " + ex.getMessage(), ex);
     }
   }
+  
+  
+  /**
+   * Method checks filesize againts maximum filesize. NOT IMPLEMENTED!
+   * 
+   * @param streamToCheck - stream that needs to be checked
+   * @throws DhxException thrown if filesize is bigger that maximum filesize
+   */
+  @Loggable
+  public void checkFileSize(InputStream streamToCheck) throws DhxException {
+    if (config.getCheckFilesize()) {
+      log.info("Checking filesize.");
+      log.info("File size check not done because check is not implemented.");
+      throw new DhxException(DhxExceptionEnum.NOT_IMPLEMENTED,
+          "No filesize check is implemented!");
+    } else {
+      log.info("Checking filesize is disabled in configuration.");
+    }
+  }
 
   public void readBig(InputStream fileStream) {
 

@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan(basePackages = "ee.bpw.dhx.client.*,ee.bpw.dhx.ws.config,"
     + "ee.bpw.dhx.ws.endpoint,ee.bpw.dhx.ws.beanconfig,ee.bpw.dhx.ws.schedule")
+@EnableAsync
 public class Application extends SpringBootServletInitializer {
 
   @Override

@@ -9,10 +9,9 @@ import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
-import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.DhxPackageService;
 
 import eu.x_road.dhx.producer.RepresentationListResponse;
 import eu.x_road.xsd.identifiers.XRoadClientIdentifierType;
@@ -58,7 +57,7 @@ public class AddressServiceImpl implements AddressService {
 
   @Autowired
   @Setter
-  private DocumentService documentService;
+  private DhxPackageService documentService;
 
   @Autowired
   @Setter
@@ -99,7 +98,12 @@ public class AddressServiceImpl implements AddressService {
    */
   @PostConstruct
   public void init() {
-    // renewAddressList();
+    try {
+      renewAddressList();
+      //catch throwable not to create exceptions if renew gives error
+    } catch (Throwable ex) {
+      log.error(ex.getMessage(), ex);
+    }
   }
 
   /**
@@ -110,12 +114,9 @@ public class AddressServiceImpl implements AddressService {
    * local addressees list is done from direct addressees and list of all representees found through
    * representationList service requests.
    */
-  public void renewAddressList() {
-    try {
+  @Override
+  public void renewAddressList() throws DhxException{
       setAddresseeList(getRenewedAdresseesList());
-    } catch (DhxException ex) {
-      log.error(ex.getMessage(), ex);
-    }
   }
 
   @Loggable
@@ -283,6 +284,42 @@ public class AddressServiceImpl implements AddressService {
                 .equals(config.addPrefixIfNeeded(system))))) {
           return member;
         }
+      }
+      //as an exception searching by system, using memberCode as system. 
+      //In older DVK packages adresssee might be adressees system, not real adressee
+      InternalXroadMember memberToReturn = null;
+      for (InternalXroadMember member : members) {
+        if (config.addPrefixIfNeeded(memberCode).equals(config.addPrefixIfNeeded(member
+          .getSubsystemCode()))
+            && (member.getRepresentee() == null
+            || member.getRepresentee().getMemberCode() == null)
+         ) {
+          //because we are searching by system, not involving memberCode, then return found member ONLY if single member found.
+          if ( memberToReturn == null) {
+            memberToReturn = member;
+          } else{
+            memberToReturn = null;
+            break;
+          }
+        } else if (member.getRepresentee() != null
+            && (member.getRepresentee().getStartDate().getTime() <= curDate.getTime() && (member
+                .getRepresentee().getEndDate() == null || member.getRepresentee().getEndDate()
+                .getTime() >= curDate.getTime()))
+            && (
+            (member.getRepresentee().getSystem() != null
+            && config.addPrefixIfNeeded(member.getRepresentee().getSystem())
+                .equals(config.addPrefixIfNeeded(memberCode))))) {
+          //because we are searching by system, not involving memberCode, then return found member ONLY if single member found.
+          if ( memberToReturn == null) {
+            memberToReturn = member;
+          } else{
+            memberToReturn = null;
+            break;
+          }
+        }
+      }
+      if (memberToReturn != null) {
+        return memberToReturn;
       }
     }
     log.info("Membercode not found in local adressee list memberCode: {}, system: {}",

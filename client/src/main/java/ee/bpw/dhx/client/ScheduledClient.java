@@ -3,7 +3,8 @@ package ee.bpw.dhx.client;
 import ee.bpw.dhx.client.config.DhxClientConfig;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.util.FileUtil;
-import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.DhxPackageProviderService;
+import ee.bpw.dhx.ws.service.DhxPackageService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,8 +25,11 @@ import java.io.File;
 public class ScheduledClient {
 
   @Autowired
-  DocumentService documentService;
-
+  DhxPackageService documentService;
+  
+  @Autowired
+  DhxPackageProviderService dhxPackageProviderService;
+  
   @Autowired
   DhxClientConfig config;
 
@@ -41,7 +45,7 @@ public class ScheduledClient {
     try {
       file = FileUtil.getFile(config.getCapsuleCorrect());
       log.debug("sending document automatically");
-      documentService.sendDocument(file, null);
+      documentService.sendMultiplePackages(dhxPackageProviderService.getOutgoingPackage(file, null));
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
     }

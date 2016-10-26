@@ -21,7 +21,7 @@ public interface AddressService {
    * Method refreshes local list of addresses. Local list of adresses is refreshed using X-road
    * global conf and represenattionList service if needed
    */
-  public void renewAddressList();
+  public void renewAddressList() throws DhxException;
 
 
 

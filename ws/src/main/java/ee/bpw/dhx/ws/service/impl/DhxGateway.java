@@ -1,4 +1,4 @@
-package ee.bpw.dhx.ws.service;
+package ee.bpw.dhx.ws.service.impl;
 
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
@@ -8,6 +8,7 @@ import ee.bpw.dhx.model.OutgoingDhxPackage;
 import ee.bpw.dhx.ws.DhxHttpComponentsMessageSender;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
+import ee.bpw.dhx.ws.service.DhxMarshallerService;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.RepresentationList;
@@ -277,7 +278,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * @return response of the service
    * @throws DhxException - throws if error occurs while sending document
    */
-  public SendDocumentResponse sendDocument(OutgoingDhxPackage document) throws DhxException {
+  protected SendDocumentResponse sendDocument(OutgoingDhxPackage document) throws DhxException {
     return sendDocument(document, soapConfig.getSendDocumentServiceVersion());
   }
 
@@ -290,7 +291,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
    * @return response of the service (sending id or fault)
    * @throws DhxException - thrown if error occurs while sending document
    */
-  public SendDocumentResponse sendDocument(OutgoingDhxPackage document, String xroadServiceVersion)
+  protected SendDocumentResponse sendDocument(OutgoingDhxPackage document, String xroadServiceVersion)
       throws DhxException {
     SendDocumentResponse response = null;
     log.info("Sending document to recipient: {}", document.getService().toString());

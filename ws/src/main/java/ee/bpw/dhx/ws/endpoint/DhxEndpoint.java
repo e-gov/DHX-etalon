@@ -5,9 +5,9 @@ import com.jcabi.aspects.Loggable;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.model.DhxRepresentee;
 import ee.bpw.dhx.model.InternalXroadMember;
-import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
-import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.DhxPackageService;
+import ee.bpw.dhx.ws.service.impl.DhxGateway;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.RepresentationList;
@@ -40,7 +40,7 @@ public class DhxEndpoint {
 
 
   @Autowired
-  DocumentService documentService;
+  DhxPackageService documentService;
 
   @Autowired
   DhxImplementationSpecificService dhxImplementationSpecificService;

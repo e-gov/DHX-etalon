@@ -9,13 +9,13 @@ import ee.bpw.dhx.ws.config.CapsuleConfig;
 import ee.bpw.dhx.ws.config.DhxConfig;
 import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AddressService;
-import ee.bpw.dhx.ws.service.DhxGateway;
 import ee.bpw.dhx.ws.service.DhxImplementationSpecificService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
-import ee.bpw.dhx.ws.service.DocumentService;
+import ee.bpw.dhx.ws.service.DhxPackageService;
 import ee.bpw.dhx.ws.service.impl.AddressServiceImpl;
+import ee.bpw.dhx.ws.service.impl.DhxGateway;
 import ee.bpw.dhx.ws.service.impl.DhxMarshallerServiceImpl;
-import ee.bpw.dhx.ws.service.impl.DocumentServiceImpl;
+import ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,7 +42,7 @@ public class DhxServiceProvider {
   private static AddressService addressService;
   private static DhxGateway dhxGateway;
   private static DhxMarshallerService dhxMarshallerService;
-  private static DocumentService documentService;
+  private static DhxPackageService documentService;
   private static DhxImplementationSpecificService dhxImplementationSpecificService;
 
   private static Properties configFile;
@@ -259,11 +259,11 @@ public class DhxServiceProvider {
     return dhxMarshallerService;
   }
 
-  public static DocumentService getDocumentService(
+  public static DhxPackageService getDocumentService(
       Class<DhxImplementationSpecificService> dhxSpecificService) throws JAXBException,
       SOAPException, IllegalAccessException, InstantiationException {
     if (documentService == null) {
-      DocumentServiceImpl documentServiceImpl = new DocumentServiceImpl();
+      DhxPackageServiceImpl documentServiceImpl = new DhxPackageServiceImpl();
       documentServiceImpl.setCapsuleConfig(getCapsuleConfig());
       documentServiceImpl.setConfig(getDhxConfig());
       documentServiceImpl
