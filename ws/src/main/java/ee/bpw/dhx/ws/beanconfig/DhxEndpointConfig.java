@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.ws.config.annotation.WsConfigurationSupport;
 import org.springframework.ws.server.endpoint.adapter.DefaultMethodEndpointAdapter;
 import org.springframework.ws.server.endpoint.adapter.method.MarshallingPayloadMethodProcessor;
@@ -32,6 +33,7 @@ import java.util.List;
 // @EnableWs
 // @EnableWebMvc
 @ComponentScan(basePackages = "ee.bpw.dhx.ws.endpoint")
+@EnableAsync
 public class DhxEndpointConfig extends WsConfigurationSupport {
 
   @Autowired

@@ -116,7 +116,10 @@ public class AddressServiceImpl implements AddressService {
    */
   @Override
   public void renewAddressList() throws DhxException{
+    List<InternalXroadMember> members = getRenewedAdresseesList();
+    if( members != null && members.size()>0) {
       setAddresseeList(getRenewedAdresseesList());
+    }
   }
 
   @Loggable

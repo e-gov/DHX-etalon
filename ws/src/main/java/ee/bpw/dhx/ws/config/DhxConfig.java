@@ -110,6 +110,9 @@ public class DhxConfig {
     if (env.getProperty("dhx.wsdl-file") != null) {
       setWsdlFile(env.getProperty("dhx.wsdl-file"));
     }
+    if (env.getProperty("document-resend-template") != null) {
+      setDocumentResendTemplate(env.getProperty("document-resend-template"));
+    }
 
   }
 
