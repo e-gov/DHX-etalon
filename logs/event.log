@@ -4432,3 +4432,1217 @@ X-road member ee-dev/GOV/70000004/DHX.subsystem
 X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
 X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 18:40:00,022 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 18:40:00,437 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 18:40:01,145 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 18:40:01,152 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 18:40:01,463 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 18:40:01,467 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 18:40:01,467 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 18:40:01,870 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 18:40:02,634 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 18:40:02,635 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 18:40:03,256 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 18:40:03,258 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 19:17:29,630 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:17:30,264 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:17:31,289 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 19:17:31,293 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:17:31,623 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:17:31,627 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 19:17:31,628 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:17:31,979 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:17:32,313 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 19:17:32,315 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:17:32,569 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:17:32,572 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 19:20:00,005 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 19:20:00,431 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:20:00,702 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 19:20:00,704 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:20:00,998 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:20:01,006 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 19:20:01,006 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 19:20:01,377 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:20:01,996 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/COM/30000001/DHX. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.ServiceFailed.HttpErrorSOAP fault returned from web service: Server responded with error 404: Not Found
+2016-10-27 19:20:01,998 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:20:02,213 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:20:02,215 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+2016-10-27 19:24:26,750 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:24:27,247 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:24:28,171 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:24:27 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:24:27 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:24:27 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:24:28,173 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:24:28,360 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:24:28,363 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:24:28,363 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:24:28,714 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:24:29,199 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:24:29 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:24:29 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:24:29 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:24:29,200 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:24:29,459 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:24:29,462 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:25:44,756 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:25:45,339 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:25:46,244 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:25:46 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:25:46 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:25:46 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:25:46,248 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:25:46,519 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:25:46,523 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:25:46,524 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:25:47,091 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:25:47,598 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:25:47 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:25:47 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:25:47 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:25:47,599 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:25:47,847 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:25:47,850 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:26:03,194 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-9] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:114) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:26:19,377 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-8] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:114) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:27:12,132 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-1] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:114) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:28:52,314 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-5] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:114) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:29:04,715 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-3] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: DHX.40000001
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:114) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:40:00,016 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 19:40:00,561 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:40:01,620 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:40:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:40:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:40:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:40:01,622 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:40:02,282 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:40:02,284 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:40:02,284 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 19:40:02,547 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:40:03,060 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:40:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:40:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:40:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:40:03,061 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:40:03,583 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:40:03,593 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:44:34,949 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:44:35,467 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:44:36,415 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:44:36 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:44:36 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:44:36 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:44:36,417 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:44:36,662 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:44:36,665 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:44:36,665 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:44:37,037 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:44:37,542 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:44:37 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:44:37 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:44:37 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:44:37,544 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:44:37,735 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:44:37,738 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:45:22,341 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:45:23,004 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:45:23,661 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:45:23 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:45:23 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:45:23 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:45:23,663 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:45:24,054 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:45:24,059 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:45:24,059 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:45:24,347 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:45:24,854 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:45:24 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:45:24 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:45:24 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:45:24,855 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:45:25,061 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:45:25,064 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:45:39,790 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-10] ----- Error occured while sending document. null
+java.lang.NullPointerException
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:42) ~[classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage_aroundBody2(DhxPackageServiceImpl.java:134) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl$AjcClosure3.run(DhxPackageServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage(DhxPackageServiceImpl.java:133) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocumentTry(DocumentClientServiceImpl.java:188) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendMultiplePackages(DhxPackageServiceImpl.java:143) [ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:45:44,351 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-8] ----- Error occured while sending document. null
+java.lang.NullPointerException
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:42) ~[classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage_aroundBody2(DhxPackageServiceImpl.java:134) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl$AjcClosure3.run(DhxPackageServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage(DhxPackageServiceImpl.java:133) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocumentTry(DocumentClientServiceImpl.java:188) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendMultiplePackages(DhxPackageServiceImpl.java:143) [ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:45:49,326 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-3] ----- Error occured while sending document. null
+java.lang.NullPointerException
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:42) ~[classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage_aroundBody2(DhxPackageServiceImpl.java:134) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl$AjcClosure3.run(DhxPackageServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage(DhxPackageServiceImpl.java:133) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocumentTry(DocumentClientServiceImpl.java:188) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendMultiplePackages(DhxPackageServiceImpl.java:143) [ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:48:53,893 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:48:54,421 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:48:55,434 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:48:55 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:48:55 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:48:55 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:48:55,437 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:48:55,739 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:48:55,746 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:48:55,747 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:48:56,263 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:48:56,759 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:48:56 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:48:56 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:48:56 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:48:56,761 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:48:56,955 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:48:56,961 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:49:33,584 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-10] ----- Error occured while sending document. null
+java.lang.NullPointerException
+	at ee.bpw.dhx.client.service.DhxClientGateWay.sendDocument(DhxClientGateWay.java:42) ~[classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage_aroundBody2(DhxPackageServiceImpl.java:134) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl$AjcClosure3.run(DhxPackageServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendPackage(DhxPackageServiceImpl.java:133) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocumentTry(DocumentClientServiceImpl.java:188) [classes/:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl.sendMultiplePackages(DhxPackageServiceImpl.java:143) [ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 19:53:44,294 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:53:44,869 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:53:46,145 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:53:46 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:53:46 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:53:46 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:53:46,147 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:53:46,486 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:53:46,490 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:53:46,490 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 19:53:46,788 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 19:53:47,205 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 19:53:47 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 19:53:47 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 19:53:47 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 19:53:47,206 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 19:53:47,408 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 19:53:47,411 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 19:54:03,752 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX internalConsignmentId: f5f5314e-96b9-4439-b2c1-bff7fcd96b3c
+2016-10-27 19:54:04,202 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX ReceiptId: 681a6613-7b40-4429-a08d-4e6500824994
+2016-10-27 19:54:07,729 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Sending document to: X-road member ee-dev/GOV/70006317/DHX.dvk internalConsignmentId: 43c138b5-ca84-4aa8-9e20-78914607ef0a
+2016-10-27 19:54:07,960 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-7] ----- Document sent to: X-road member ee-dev/GOV/70006317/DHX.dvk ReceiptId: null faultCode: Server.ServerProxy.UnknownService faultString: SOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/sendDocument/v1
+2016-10-27 19:54:14,611 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Sending document to: X-road member ee-dev/GOV/40000001/DHX internalConsignmentId: a465dde7-7327-4c96-973e-137f1babc4b4
+2016-10-27 19:54:15,090 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-4] ----- Document sent to: X-road member ee-dev/GOV/40000001/DHX ReceiptId: 42a7c3bc-57f4-489b-9890-4d8edac35b27
+2016-10-27 19:54:21,220 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Sending document to: X-road member ee-dev/GOV/70000004/DHX internalConsignmentId: d7ee0f75-6595-4e52-9965-5b33a85436b1
+2016-10-27 19:54:21,393 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-2] ----- Document sent to: X-road member ee-dev/GOV/70000004/DHX ReceiptId: null faultCode: Server.ServerProxy.ServiceFailed.CannotCreateSignature faultString: SOAP fault returned from web service: Failed to get signing info for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX': Signer.UnknownMember: Could not find any certificates for member 'SUBSYSTEM:ee-dev/GOV/70000004/DHX'
+2016-10-27 19:54:23,864 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Sending document to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null internalConsignmentId: de2b46dd-0e90-440f-a834-1be917674455
+2016-10-27 19:54:24,350 EVENT e.b.d.c.s.DhxClientGateWay [http-nio-8080-exec-9] ----- Document sent to: X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null ReceiptId: 512ac76f-e32a-4ef9-a05c-7e6f8e7f4f83
+2016-10-27 20:00:00,006 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 20:00:00,612 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 20:00:01,429 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 20:00:01 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 20:00:01 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 20:00:01 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 20:00:01,430 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 20:00:01,994 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 20:00:01,999 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 20:00:01,999 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Staring renewing local address list
+2016-10-27 20:00:02,340 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 20:00:02,868 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 20:00:02 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 20:00:02 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 20:00:02 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 20:00:02,868 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 20:00:03,070 EVENT e.b.d.c.s.DhxClientGateWay [pool-2-thread-1] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 20:00:03,072 EVENT e.b.d.c.s.AddressClientServiceImpl [pool-2-thread-1] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 20:01:37,333 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-7] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: subsystem
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: subsystem
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]
+2016-10-27 20:02:36,113 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 20:02:36,593 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 20:02:37,955 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 20:02:37 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 20:02:37 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 20:02:37 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 20:02:37,958 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 20:02:38,222 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 20:02:38,227 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 20:02:38,227 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Staring renewing local address list
+2016-10-27 20:02:38,589 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/COM/30000001/DHX
+2016-10-27 20:02:39,113 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Representation list received: 
+memberCode: 70000001 startDate: Thu Oct 27 20:02:39 EEST 2016 endDate: nullname: Vallavalitsus A system: null
+memberCode: 70000002 startDate: Thu Oct 27 20:02:39 EEST 2016 endDate: nullname: Muuseum B system: null
+memberCode: 70000003 startDate: Thu Oct 27 20:02:39 EEST 2016 endDate: nullname: Põhikool C system: null
+2016-10-27 20:02:39,114 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Getting representation list from: X-road member ee-dev/GOV/70006317/DHX.dvk
+2016-10-27 20:02:39,310 EVENT e.b.d.c.s.DhxClientGateWay [main] ----- Error occured while getting representation list for: X-road member ee-dev/GOV/70006317/DHX.dvk. DHXException code: WS_ERROR Error occured while getting representation list. SOAP-fault:Server.ServerProxy.UnknownServiceSOAP fault returned from web service: Unknown service: SERVICE:ee-dev/GOV/70006317/DHX.dvk/representationList/v1
+2016-10-27 20:02:39,322 EVENT e.b.d.c.s.AddressClientServiceImpl [main] ----- Local address list is renewed. List: 
+X-road member ee-dev/GOV/70006317/DHX.dvk
+X-road member ee-dev/COM/30000001/DHX
+X-road member ee-dev/GOV/40000001/DHX
+X-road member ee-dev/GOV/40000001/DHX.subsystem
+X-road member ee-dev/GOV/70000004/DHX
+X-road member ee-dev/GOV/70000004/DHX.subsystem
+X-road member ee-dev/COM/30000001/DHX, representee: 70000001, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000002, system:null
+X-road member ee-dev/COM/30000001/DHX, representee: 70000003, system:null
+2016-10-27 20:04:05,184 EVENT e.b.d.c.s.DocumentClientServiceImpl [http-nio-8080-exec-6] ----- Error occured while sending document. DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: subsystem
+ee.bpw.dhx.exception.DhxException: DHXException code: DHX.InvalidAddressee Recipient is not found in address list. memberCode: subsystem
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode_aroundBody4(AddressServiceImpl.java:330) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl$AjcClosure5.run(AddressServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.AddressServiceImpl.getClientForMemberCode(AddressServiceImpl.java:265) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody22(DhxPackageProviderServiceImpl.java:195) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure23.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:177) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody18(DhxPackageProviderServiceImpl.java:163) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure19.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:162) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage_aroundBody16(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl$AjcClosure17.run(DhxPackageProviderServiceImpl.java:1) ~[ws-0.9.9.jar:?]
+	at org.aspectj.runtime.reflect.JoinPointImpl.proceed(JoinPointImpl.java:149) ~[aspectjrt-1.8.2.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrap(MethodLogger.java:208) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.ajc$inlineAccessMethod$com_jcabi_aspects_aj_MethodLogger$com_jcabi_aspects_aj_MethodLogger$wrap(MethodLogger.java:1) ~[jcabi-aspects-0.19.jar:?]
+	at com.jcabi.aspects.aj.MethodLogger.wrapMethod(MethodLogger.java:164) ~[jcabi-aspects-0.19.jar:?]
+	at ee.bpw.dhx.ws.service.impl.DhxPackageProviderServiceImpl.getOutgoingPackage(DhxPackageProviderServiceImpl.java:155) ~[ws-0.9.9.jar:?]
+	at ee.bpw.dhx.client.service.DocumentClientServiceImpl.sendDocument(DocumentClientServiceImpl.java:136) [classes/:?]
+	at ee.bpw.dhx.client.ui.DhxUi$4.buttonClick(DhxUi.java:400) [classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.event.ListenerMethod.receiveEvent(ListenerMethod.java:508) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:198) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.event.EventRouter.fireEvent(EventRouter.java:161) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.AbstractClientConnector.fireEvent(AbstractClientConnector.java:977) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button.fireClick(Button.java:393) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.ui.Button$1.click(Button.java:61) [vaadin-server-7.4.4.jar:7.4.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_45]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_45]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_45]
+	at java.lang.reflect.Method.invoke(Method.java:497) ~[?:1.8.0_45]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:168) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.ServerRpcManager.applyInvocation(ServerRpcManager.java:118) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleInvocations(ServerRpcHandler.java:291) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.ServerRpcHandler.handleRpc(ServerRpcHandler.java:184) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.communication.UidlRequestHandler.synchronizedHandleRequest(UidlRequestHandler.java:92) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.SynchronizedRequestHandler.handleRequest(SynchronizedRequestHandler.java:41) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinService.handleRequest(VaadinService.java:1408) [vaadin-server-7.4.4.jar:7.4.4]
+	at com.vaadin.server.VaadinServlet.service(VaadinServlet.java:350) [vaadin-server-7.4.4.jar:7.4.4]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:230) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-embed-websocket-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:121) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) [spring-web-4.2.6.RELEASE.jar:4.2.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:192) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:165) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:108) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:472) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:349) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:784) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:802) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1410) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_45]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_45]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.5.jar:8.5.5]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_45]

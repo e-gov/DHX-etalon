@@ -3,6 +3,7 @@ package ee.bpw.dhx.model;
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.util.CapsuleVersionEnum;
+import ee.bpw.dhx.util.FileUtil;
 
 import eu.x_road.dhx.producer.SendDocument;
 
@@ -87,6 +88,7 @@ public abstract class DhxPackage {
       Object parsedContainer,
       CapsuleVersionEnum parsedContainerVersion, File file)
       throws DhxException {
+    this(service, client, FileUtil.getFileAsStream(file));
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
   }

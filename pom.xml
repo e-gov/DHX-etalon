@@ -118,7 +118,7 @@
 			</activation>
 			<properties>
 				<conf>arendus-tomcat</conf>
-				<tomcat.manager>http://localhost:8086/manager/text</tomcat.manager>
+				<tomcat.manager>http://localhost:8084/manager/text</tomcat.manager>
 				<tomcat.manager.username>admin</tomcat.manager.username>
 				<tomcat.manager.password>admin</tomcat.manager.password>
 			</properties>

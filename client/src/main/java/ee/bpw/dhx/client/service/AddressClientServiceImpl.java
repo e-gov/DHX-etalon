@@ -76,14 +76,14 @@ public class AddressClientServiceImpl extends AddressServiceImpl {
                     + member.getRepresentee().getSystem() : "")
                 + " Asutuse " + member.getMemberCode() + " vahendatav" + ")";
         value =
-            (member.getRepresentee().getSystem() != null ? "."
-                + member.getRepresentee().getSystem() : "")
+            (member.getRepresentee().getSystem() != null ? 
+                member.getRepresentee().getSystem() + ":" : "")
                 + member.getRepresentee().getMemberCode();
       } else {
         name =
             member.getName() + " (" + member.getMemberCode() + ", süsteem: "
                 + member.getSubsystemCode() + ")";
-        value = member.getSubsystemCode() + "." + member.getMemberCode();
+        value = member.getSubsystemCode() + ":" + member.getMemberCode();
       }
       row.put("name", name);
       row.put("value", value);

@@ -1,7 +1,6 @@
 package ee.bpw.dhx.client.service;
 
 import ee.bpw.dhx.client.config.DhxClientConfig;
-
 import ee.bpw.dhx.exception.DhxException;
 import ee.bpw.dhx.exception.DhxExceptionEnum;
 import ee.bpw.dhx.model.DhxSendDocumentResult;
@@ -10,6 +9,7 @@ import ee.bpw.dhx.model.OutgoingDhxPackage;
 import ee.bpw.dhx.model.InternalXroadMember;
 import ee.bpw.dhx.util.FileUtil;
 import ee.bpw.dhx.ws.config.DhxConfig;
+import ee.bpw.dhx.ws.config.SoapConfig;
 import ee.bpw.dhx.ws.service.AsyncDhxPackageService;
 import ee.bpw.dhx.ws.service.DhxMarshallerService;
 import ee.bpw.dhx.ws.service.DhxPackageProviderService;
@@ -54,6 +54,9 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
 
   @Autowired
   DhxConfig config;
+  
+  @Autowired
+  SoapConfig soapConfig;
 
   @Autowired
   DhxMarshallerService dhxMarshallerService;
@@ -66,6 +69,25 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
 
   // get log4j logger to log events on custom level.
   final Logger logger = LogManager.getLogger();
+  
+  private String getMemberCodeForCapsule(String recipientString) {
+    String memberCode;
+    if (recipientString.startsWith(soapConfig.getDhxSubsystemPrefix() + ".")) {
+      recipientString = recipientString.substring((soapConfig.getDhxSubsystemPrefix() + ".").length());
+    }
+    
+    String [] split = recipientString.split(":");
+    if(split.length == 2) {
+      if(!split[0].equals(soapConfig.getDhxSubsystemPrefix())) {
+        memberCode = split[0];
+      } else {
+        memberCode = split[1];
+      }
+    } else {
+      memberCode = recipientString;
+    }
+    return memberCode;
+  }
 
   /**
    * Method to serve UI needs. It replaces capsule adressees if needed.
@@ -106,7 +128,7 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
         container.getTransport().getDecRecipient()
             .removeAll(container.getTransport().getDecRecipient());
         DecRecipient recipient = new DecRecipient();
-        recipient.setOrganisationCode(recipientString);
+        recipient.setOrganisationCode(getMemberCodeForCapsule(recipientString));
         container.getTransport().getDecRecipient().add(recipient);
         capsuleFile = dhxMarshallerService.marshall(container);
       }
@@ -115,13 +137,10 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
       } else {
         String recipientCode = null;
         String recipientSystem = null;
-        String[] parts = recipientString.split("\\.");
+        String[] parts = recipientString.split(":");
         if (parts.length == 2) {
           recipientCode = parts[1];
           recipientSystem = parts[0];
-        } else if (parts.length == 3) { // system with DHX. prefix example(DHX.south.10560025)
-          recipientCode = parts[2];
-          recipientSystem = parts[0] + "." + parts[1];
         } else {
           recipientCode = recipientString;
         }
