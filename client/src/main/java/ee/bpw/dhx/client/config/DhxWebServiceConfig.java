@@ -25,7 +25,7 @@ import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 public class DhxWebServiceConfig {
 
   @Autowired
-  DhxConfig config;
+  DhxClientConfig config;
 
   /**
    * Sets servlet registration bean. Registers web services on configured path

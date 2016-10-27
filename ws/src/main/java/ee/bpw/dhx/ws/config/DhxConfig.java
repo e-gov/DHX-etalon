@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 // import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,10 +23,7 @@ import javax.annotation.PostConstruct;
 
 @Getter
 @Setter
-// @ConfigurationProperties(prefix = "dhx")
 @Configuration
-@PropertySource("classpath:dhx-application.properties")
-@Slf4j
 /**
  * Main configuration of DHX webservice application
  * @author Aleksei Kokarev
@@ -36,85 +34,38 @@ public class DhxConfig {
   private final String marshallContextSeparator = ":";
   private final String separator = ",";
 
+  @Value("${dhx.capsule-validate:true}")
   private Boolean capsuleValidate = true;
+  
+  @Value("${dhx.check-recipient:true}")
   private Boolean checkRecipient = true;
+  
+  @Value("${dhx.check-filesize:false}")
   private Boolean checkFilesize = false;
+  
+  @Value("${dhx.check-duplicate:true}")
   private Boolean checkDuplicate = true;
+  
+  @Value("${dhx.parse-capsule:true}")
   private Boolean parseCapsule = true;
+  
+  //list of timeout in seconds, delimited by comma.
+  @Value("${dhx.document-resend-template:30,120,1200}")
+  private String documentResendTemplate;
+  
+    
   private String marshallContext =
       "ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers"
           + ":eu.x_road.xsd.representation:eu.x_road.xsd.xroad";
-  private Integer maxFileSize = 100; // in MB
-  private String dateFormat;
-
-  private String wsdlFile = "dhx.wsdl";
-  private String endpointPath = "ws";
-
+  
   private Jaxb2Marshaller dhxJaxb2Marshaller;
 
   private String[] marshallContextAsList;
   
-  //list of timeout in seconds, delimited by comma.
-  private String documentResendTemplate = "30,120,300";
+
   private List<Integer> documentResendTimes;
   
-  @Autowired
-  Environment env;
 
-  /**
-   * Automatically initialize properties.
-   */
-  @PostConstruct
-  public void init() {
-    if (env.getProperty("casule-validate") != null) {
-      setCapsuleValidate(Boolean
-          .parseBoolean(env.getProperty(env.getProperty("casule-validate"))));
-    }
-
-    if (env.getProperty("dhx.capsule-validate") != null) {
-      setCapsuleValidate(Boolean.parseBoolean(env.getProperty("dhx.capsule-validate")));
-    }
-    if (env.getProperty("dhx.check-recipient") != null) {
-      setCheckRecipient(Boolean.parseBoolean(env.getProperty("dhx.check-recipient")));
-    }
-    if (env.getProperty("dhx.check-filesize") != null) {
-      setCheckFilesize(Boolean.parseBoolean(env.getProperty("dhx.check-filesize")));
-    }
-    if (env.getProperty("dhx.check-duplicate") != null) {
-      setCheckDuplicate(Boolean.parseBoolean(env.getProperty("dhx.check-duplicate")));
-    }
-
-    if (env.getProperty("dhx.parse-capsule") != null) {
-      setParseCapsule(Boolean.parseBoolean(env.getProperty("dhx.parse-capsule")));
-    }
-    if (env.getProperty("dhx.marshall-context") != null) {
-      setMarshallContext(env.getProperty("dhx.marshall-context"));
-    }
-
-    if (env.getProperty("dhx.marshall-context") != null) {
-      setMarshallContext(env.getProperty("dhx.marshall-context"));
-    }
-
-    if (env.getProperty("dhx.max-file-size") != null) {
-      setMaxFileSize(Integer.parseInt(env.getProperty("dhx.max-file-size")));
-    }
-
-    if (env.getProperty("dhx.date-format") != null) {
-      setDateFormat(env.getProperty("dhx.date-format"));
-    }
-
-    if (env.getProperty("dhx.endpoint-path") != null) {
-      setEndpointPath(env.getProperty("dhx.endpoint-path"));
-    }
-
-    if (env.getProperty("dhx.wsdl-file") != null) {
-      setWsdlFile(env.getProperty("dhx.wsdl-file"));
-    }
-    if (env.getProperty("document-resend-template") != null) {
-      setDocumentResendTemplate(env.getProperty("document-resend-template"));
-    }
-
-  }
 
   /**
    * Method return marshalling context as list.
@@ -148,14 +99,6 @@ public class DhxConfig {
     return documentResendTimes;
   }
 
-  public Integer getMaxFileSizeInBytes() {
-    return maxFileSize * 1024 * 1024;
-  }
-
-  public String format(Date date) {
-    SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
-    return sdf.format(date);
-  }
 
   /**
    * Sets marshaller bean.

@@ -110,6 +110,8 @@ public class InternalXroadMember {
   private DhxRepresentee representee;
 
   private Boolean representor;
+  
+  private String userId;
 
 
   @Override

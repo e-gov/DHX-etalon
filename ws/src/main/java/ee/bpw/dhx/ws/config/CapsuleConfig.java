@@ -11,6 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -24,11 +25,16 @@ import javax.annotation.PostConstruct;
 @Setter
 // @ConfigurationProperties(prefix = "dhx.xsd")
 @Configuration
-@PropertySource("classpath:dhx-application.properties")
+//@PropertySource("classpath:dhx-application.properties")
 public class CapsuleConfig {
 
-  private String capsuleXsdFile21 = "jar://Dvk_kapsel_vers_2_1_eng_est.xsd";
-  private CapsuleVersionEnum currentCapsuleVersion = CapsuleVersionEnum.V21;
+  @Value("${dhx.xsd.capsule-xsd-file21:jar://Dvk_kapsel_vers_2_1_eng_est.xsd}")
+  private String capsuleXsdFile21;
+  
+  @Value("${dhx.xsd.capsule-xsd-file21:V21}")
+  private String currentCapsuleVersionStr;
+  
+  private CapsuleVersionEnum currentCapsuleVersion;
 
   @Autowired
   Environment env;
@@ -38,12 +44,8 @@ public class CapsuleConfig {
    */
   @PostConstruct
   public void init() {
-    if (env.getProperty("dhx.xsd.capsule-xsd-file21") != null) {
-      setCapsuleXsdFile21(env.getProperty("dhx.xsd.capsule-xsd-file21"));
-    }
-    if (env.getProperty("dhx.xsd.current-capsule-version") != null) {
-      setCurrentCapsuleVersion(CapsuleVersionEnum.valueOf(env
-          .getProperty("dhx.xsd.current-capsule-version")));
+    if (currentCapsuleVersionStr != null) {
+      setCurrentCapsuleVersion(CapsuleVersionEnum.valueOf(currentCapsuleVersionStr));
     }
   }
 
