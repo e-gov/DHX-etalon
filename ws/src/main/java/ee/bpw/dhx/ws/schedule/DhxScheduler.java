@@ -23,9 +23,13 @@ public class DhxScheduler {
 
 
   @Scheduled(cron = "${address-renew-timeout}")
-  public void renewAddressList() throws DhxException {
-    log.debug("updating address DHX list automatically");
-    addressService.renewAddressList();
+  public void renewAddressList() {
+    try {
+      log.debug("updating address DHX list automatically");
+      addressService.renewAddressList();
+    } catch(DhxException ex) {
+      log.error("Error occured while renewing addresslist. " + ex.getMessage(), ex);
+    }
   }
 
 }
