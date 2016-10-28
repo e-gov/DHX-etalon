@@ -146,7 +146,8 @@ public class AddressServiceImpl implements AddressService {
           log.debug("Found representation group");
           for (XRoadClientIdentifierType client : group.getGroupMember()) {
             // exclude own representatives
-            if (!client.getMemberCode().equals(config.getMemberCode())) {
+            if (!(client.getMemberCode().equals(config.getMemberCode())
+                && client.getSubsystemCode().equals(config.getDefaultSubsystem()))) {
               InternalXroadMember member = new InternalXroadMember(client);
               InternalXroadMember parentMember = findMember(client, members);
               if (parentMember != null) {
