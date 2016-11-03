@@ -53,10 +53,11 @@ public class DhxConfig {
   @Value("${dhx.document-resend-template:30,120,1200}")
   private String documentResendTemplate;
   
-    
-  private String marshallContext =
-      "ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers"
-          + ":eu.x_road.xsd.representation:eu.x_road.xsd.xroad";
+  @Value("${dhx.wsdl-file:dhx.wsdl}")
+  private String wsdlFile;
+  
+  @Value("${dhx.marshall-context:ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.representation:eu.x_road.xsd.xroad}")  
+  private String marshallContext;
   
   private Jaxb2Marshaller dhxJaxb2Marshaller;
 

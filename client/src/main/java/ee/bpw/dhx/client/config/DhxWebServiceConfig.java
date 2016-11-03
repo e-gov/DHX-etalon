@@ -42,17 +42,5 @@ public class DhxWebServiceConfig {
     return new ServletRegistrationBean(servlet, "/" + config.getEndpointPath() + "/*");
   }
 
-  /**
-   * Defines WSDL.
-   * 
-   * @return SimpleWsdl11Definition
-   */
-  @Bean(name = "dhx")
-  public SimpleWsdl11Definition defaultWsdl11Definition() {
-    Resource wsdlResource = new ClassPathResource(config.getWsdlFile());
-    SimpleWsdl11Definition wsdlDef = new SimpleWsdl11Definition(wsdlResource);
-    return wsdlDef;
-  }
-
 
 }

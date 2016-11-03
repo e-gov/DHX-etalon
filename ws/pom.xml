@@ -8,7 +8,7 @@
 		<artifactId>DHX</artifactId>
 		<version>0.9.9</version>
 	</parent>
-	<version>0.9.9</version>
+	<version>0.9.9.1</version>
 	<artifactId>ws</artifactId>
 	<name>Web services</name>
 	<packaging>jar</packaging>

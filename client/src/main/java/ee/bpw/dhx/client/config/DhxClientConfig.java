@@ -59,9 +59,7 @@ public class DhxClientConfig {
 
   List<String> representeesList = null;
   List<String> representeesNamesList = null;
-  
 
-  private String wsdlFile = "dhx.wsdl";
   
   private String endpointPath = "ws";
 
@@ -126,22 +124,6 @@ public class DhxClientConfig {
   DhxMarshallerService dhxMarshallerService() {
     return new DhxMarshallerServiceImpl();
   }
-
-  /*
-   * @Bean DocumentClientServiceImpl documentClientServiceImpl() { DocumentClientServiceImpl service
-   * = new DocumentClientServiceImpl(); return service; }
-   * 
-   * @Bean AddressService addressService() { AddressService service = new
-   * AddressClientServiceImpl(); return service; }
-   * 
-   * @Bean DhxMarshallerService dhxMarshallerService() { return new DhxMarshallerServiceImpl(); }
-   * 
-   * @Bean DhxGateway dhxGateway() { return new DhxClientGateWay(); }
-   * 
-   * @Bean DhxConfig dhxConfig() { return new DhxConfig(); }
-   * 
-   * @Bean SoapConfig soapConfig() { return new SoapConfig(); }
-   */
 
   @Bean
   LocaleResolver localeResolver() {
