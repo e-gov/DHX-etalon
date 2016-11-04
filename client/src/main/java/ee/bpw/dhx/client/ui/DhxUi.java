@@ -11,6 +11,7 @@ import com.vaadin.server.Page;
 import com.vaadin.server.StreamResource;
 import com.vaadin.server.StreamResource.StreamSource;
 import com.vaadin.server.VaadinRequest;
+import com.vaadin.shared.ui.combobox.FilteringMode;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -478,6 +479,8 @@ public class DhxUi extends UI {
 
   private ComboBox getSelect(List<Map<String, String>> selectString, String caption) {
     ComboBox select = new ComboBox(caption);
+    select.setFilteringMode(FilteringMode.CONTAINS);
+    select.setPageLength(0);
     for (Map<String, String> row : selectString) {
       select.addItem(row.get("value"));
       select.setItemCaption(row.get("value"), row.get("name"));

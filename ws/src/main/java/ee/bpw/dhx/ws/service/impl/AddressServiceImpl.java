@@ -263,7 +263,7 @@ public class AddressServiceImpl implements AddressService {
   @Loggable
   public InternalXroadMember getClientForMemberCode(String memberCode, String system)
       throws DhxException {
-    log.debug("getClientForMemberCode(String memberCode) memberCode: {}", memberCode);
+    log.debug("getClientForMemberCode(String memberCode) memberCode: {}, system: {}", memberCode, system);
     List<InternalXroadMember> members = getAdresseeList();
     Date curDate = new Date();
     if (members != null && members.size() > 0) {
@@ -273,7 +273,7 @@ public class AddressServiceImpl implements AddressService {
             && (member.getRepresentee() == null
             || member.getRepresentee().getMemberCode() == null)
             // check if adressees system is also chosen and is right
-            && ((system == null)
+            && ((system == null && config.addPrefixIfNeeded(member.getSubsystemCode()).equals(config.getDhxSubsystemPrefix()))
             || (config.addPrefixIfNeeded(system).equals(config.addPrefixIfNeeded(member
                 .getSubsystemCode()))))) {
           return member;

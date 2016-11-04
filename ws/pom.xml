@@ -6,9 +6,9 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.9</version>
+		<version>0.9.9.2</version>
 	</parent>
-	<version>0.9.9.1</version>
+	<version>0.9.9.2</version>
 	<artifactId>ws</artifactId>
 	<name>Web services</name>
 	<packaging>jar</packaging>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>core</artifactId>
-			<version>0.9.9</version>
+			<version>0.9.9.2</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.StringWriter;
 
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 
@@ -132,7 +134,14 @@ public interface DhxMarshallerService {
    * 
    * @return marshaller
    */
-  public Jaxb2Marshaller getJaxbMarshaller();
+  public Marshaller getMarshaller() throws DhxException;
+  
+  /**
+   * Method returns unmarshaller.
+   * 
+   * @return marshaller
+   */
+  public Unmarshaller getUnmarshaller() throws DhxException;
 
   
   /**

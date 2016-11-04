@@ -17,6 +17,7 @@ import ee.bpw.dhx.ws.service.impl.DhxGateway;
 import ee.bpw.dhx.ws.service.impl.DhxPackageServiceImpl;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
 import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
+import ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecSender;
 
 import eu.x_road.dhx.producer.Fault;
 import eu.x_road.dhx.producer.SendDocument;
@@ -130,11 +131,14 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
         DecRecipient recipient = new DecRecipient();
         recipient.setOrganisationCode(getMemberCodeForCapsule(recipientString));
         container.getTransport().getDecRecipient().add(recipient);
+        DecSender sender = new DecSender();
+        sender.setOrganisationCode(soapConfig.getMemberCode());
+        container.getTransport().setDecSender(sender);
         capsuleFile = dhxMarshallerService.marshall(container);
       }
-      if (config.getParseCapsule() && !capsuleType.equals("wrongAdressee")) {  
+     /* if (config.getParseCapsule() && !capsuleType.equals("wrongAdressee")) {  
         return sendMultiplePackages(dhxPackageProviderService.getOutgoingPackage(capsuleFile, consignmentId));
-      } else {
+      } else {*/
         String recipientCode = null;
         String recipientSystem = null;
         String[] parts = recipientString.split(":");
@@ -146,10 +150,10 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
         }
         List<DhxSendDocumentResult> responses = new ArrayList<DhxSendDocumentResult>();
         responses.add(sendPackage(dhxPackageProviderService.getOutgoingPackage(capsuleFile, consignmentId, recipientCode, recipientSystem)));
-        asyncDhxPackageService.sendPackage(dhxPackageProviderService.getOutgoingPackage(capsuleFile, consignmentId, recipientCode, recipientSystem));
+      // asyncDhxPackageService.sendPackage(dhxPackageProviderService.getOutgoingPackage(capsuleFile, consignmentId, recipientCode, recipientSystem));
         
         return responses;
-      }
+     // }
 
     } catch (DhxException ex) {
       logger.log(Level.getLevel("EVENT"),

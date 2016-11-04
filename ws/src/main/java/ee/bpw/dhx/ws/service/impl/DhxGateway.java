@@ -25,6 +25,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.WebServiceMessage;
 import org.springframework.ws.client.WebServiceFaultException;
@@ -83,14 +84,17 @@ public class DhxGateway extends WebServiceGatewaySupport {
   @Autowired
   @Setter
   DhxMarshallerService dhxMarshallerService;
+  
+  @Autowired
+  Jaxb2Marshaller dhxJaxb2Marshaller;
 
   /**
    * Postconstruct method which sets marshaller and unmarshaller.
    */
   @PostConstruct
   public void init() {
-    setMarshaller(dhxMarshallerService.getJaxbMarshaller());
-    setUnmarshaller(dhxMarshallerService.getJaxbMarshaller());
+    setMarshaller(dhxJaxb2Marshaller);
+    setUnmarshaller(dhxJaxb2Marshaller);
     DhxHttpComponentsMessageSender messageSender = new DhxHttpComponentsMessageSender();
     messageSender.setConnectionTimeout(soapConfig.getConnectionTimeout());
     messageSender.setReadTimeout(soapConfig.getReadTimeout());

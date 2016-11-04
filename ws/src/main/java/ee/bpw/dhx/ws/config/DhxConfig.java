@@ -20,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 
 @Getter
 @Setter
@@ -59,7 +61,11 @@ public class DhxConfig {
   @Value("${dhx.marshall-context:ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.representation:eu.x_road.xsd.xroad}")  
   private String marshallContext;
   
+  private JAXBContext jaxbContext;
+  
   private Jaxb2Marshaller dhxJaxb2Marshaller;
+  
+  //private Jaxb2Marshaller dhxJaxb2Marshaller;
 
   private String[] marshallContextAsList;
   
@@ -106,6 +112,14 @@ public class DhxConfig {
    * 
    * @return marshaller
    */
+  @Bean
+  public JAXBContext getJaxbContext() throws JAXBException{
+    if (this.jaxbContext == null) {
+      this.jaxbContext = JAXBContext.newInstance(marshallContext);
+    }
+    return jaxbContext;
+  }
+  
   @Bean
   public Jaxb2Marshaller getDhxJaxb2Marshaller() {
     if (this.dhxJaxb2Marshaller == null) {

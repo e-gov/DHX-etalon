@@ -27,6 +27,7 @@ import java.io.StringWriter;
 
 import javax.annotation.PostConstruct;
 import javax.xml.XMLConstants;
+import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -42,7 +43,7 @@ import javax.xml.validation.Validator;
 public class DhxMarshallerServiceImpl implements DhxMarshallerService {
 
 
-  @Getter
+  /*@Getter
   @Setter
   Unmarshaller unmarshaller;
 
@@ -51,11 +52,30 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
   Marshaller marshaller;
 
   @Getter
-  Jaxb2Marshaller jaxbMarshaller;
+  Jaxb2Marshaller jaxbMarshaller;*/
+  
+  @Getter
+  JAXBContext jaxbContext;
 
   @Autowired
   @Setter
   DhxConfig config;
+  
+  public Unmarshaller getUnmarshaller () throws DhxException{
+    try {
+      return jaxbContext.createUnmarshaller();
+    } catch(JAXBException ex) {
+      throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR, "Error occured while creating unmarshaller. " + ex.getMessage(), ex);
+    }
+  }
+  
+  public Marshaller getMarshaller () throws DhxException{
+    try {
+      return jaxbContext.createMarshaller();
+    } catch(JAXBException ex) {
+      throw new DhxException(DhxExceptionEnum.TECHNICAL_ERROR, "Error occured while creating marshaller. " + ex.getMessage(), ex);
+    }
+  }
 
   /**
    * Postconstruct init method. Sets marshallers needed for that service.
@@ -64,9 +84,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
    */
   @PostConstruct
   public void init() throws JAXBException {
-    jaxbMarshaller = config.getDhxJaxb2Marshaller();
-    marshaller = jaxbMarshaller.getJaxbContext().createMarshaller();
-    unmarshaller = jaxbMarshaller.getJaxbContext().createUnmarshaller();
+    jaxbContext = config.getJaxbContext();
+   // marshaller = jaxbMarshaller.getJaxbContext().createMarshaller();
+   // unmarshaller = jaxbMarshaller.getJaxbContext().createUnmarshaller();
   }
 
   /**
@@ -82,7 +102,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
       }
-      Object obj = (Object) unmarshaller.unmarshal(source);
+      Object obj = (Object) getUnmarshaller().unmarshal(source);
       return (T) obj;
     } catch (JAXBException ex) {
       log.error(ex.getMessage(), ex);
@@ -148,14 +168,14 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       return unmarshallNoValidation(capsuleStream);
     } finally {
       // wont set single schema for unmarshaller
-      unmarshaller.setSchema(null);
+     // unmarshaller.setSchema(null);
     }
   }
 
   @Loggable
   protected <T> T unmarshallNoValidation(final InputStream capsuleStream) throws DhxException {
     try {
-      Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
+      Object obj = (Object) getUnmarshaller().unmarshal(capsuleStream);
       return (T) obj;
     } catch (JAXBException ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -171,7 +191,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
         SchemaFactory schemaFactory =
             SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = schemaFactory.newSchema(schemaSource);
-        unmarshaller.setSchema(schema);
+        getUnmarshaller().setSchema(schema);
       }
     } catch (SAXException ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -193,7 +213,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
         log.debug("marshalling container");
       }
       File outputFile = FileUtil.createPipelineFile();
-      marshaller.marshal(container, outputFile);
+      getMarshaller().marshal(container, outputFile);
 
       return outputFile;
     } catch (IOException | JAXBException ex) {
@@ -217,7 +237,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       if (log.isDebugEnabled()) {
         log.debug("marshalling object");
       }
-      marshaller.marshal(obj, result);
+      getMarshaller().marshal(obj, result);
     } catch (JAXBException ex) {
       log.error(ex.getMessage(), ex);
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -238,7 +258,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       if (log.isDebugEnabled()) {
         log.debug("marshalling object");
       }
-      marshaller.marshal(obj, node);
+      getMarshaller().marshal(obj, node);
     } catch (JAXBException ex) {
       log.error(ex.getMessage(), ex);
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -261,7 +281,7 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
         log.debug("marshalling container");
       }
       StringWriter writer = new StringWriter();
-      marshaller.marshal(container, writer);
+      getMarshaller().marshal(container, writer);
       return writer;
     } catch (JAXBException ex) {
       log.error(ex.getMessage(), ex);
