@@ -291,7 +291,7 @@ public class AddressServiceImpl implements AddressService {
       }
       //as an exception searching by system, using memberCode as system. 
       //In older DVK packages adresssee might be adressees system, not real adressee
-      InternalXroadMember memberToReturn = null;
+     /* InternalXroadMember memberToReturn = null;
       for (InternalXroadMember member : members) {
         if (config.addPrefixIfNeeded(memberCode).equals(config.addPrefixIfNeeded(member
           .getSubsystemCode()))
@@ -324,7 +324,7 @@ public class AddressServiceImpl implements AddressService {
       }
       if (memberToReturn != null) {
         return memberToReturn;
-      }
+      }*/
     }
     log.info("Membercode not found in local adressee list memberCode: {}, system: {}",
         memberCode, system);

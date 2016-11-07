@@ -79,11 +79,11 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
     
     String [] split = recipientString.split(":");
     if(split.length == 2) {
-      if(!split[0].equals(soapConfig.getDhxSubsystemPrefix())) {
+     /* if(!split[0].equals(soapConfig.getDhxSubsystemPrefix())) {
         memberCode = split[0];
-      } else {
+      } else {*/
         memberCode = split[1];
-      }
+      //}
     } else {
       memberCode = recipientString;
     }
