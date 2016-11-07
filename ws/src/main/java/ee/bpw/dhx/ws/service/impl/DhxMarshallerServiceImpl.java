@@ -164,8 +164,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
       if (log.isDebugEnabled()) {
         log.debug("unmarshalling file");
       }
-      setSchemaForUnmarshaller(schemaStream);
-      return unmarshallNoValidation(capsuleStream);
+      Unmarshaller unmarshaller = getUnmarshaller();
+      setSchemaForUnmarshaller(schemaStream, unmarshaller);
+      return unmarshallNoValidation(capsuleStream, unmarshaller);
     } finally {
       // wont set single schema for unmarshaller
      // unmarshaller.setSchema(null);
@@ -173,9 +174,9 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
   }
 
   @Loggable
-  protected <T> T unmarshallNoValidation(final InputStream capsuleStream) throws DhxException {
+  protected <T> T unmarshallNoValidation(final InputStream capsuleStream, Unmarshaller unmarshaller) throws DhxException {
     try {
-      Object obj = (Object) getUnmarshaller().unmarshal(capsuleStream);
+      Object obj = (Object) unmarshaller.unmarshal(capsuleStream);
       return (T) obj;
     } catch (JAXBException ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
@@ -184,14 +185,14 @@ public class DhxMarshallerServiceImpl implements DhxMarshallerService {
   }
 
   @Loggable
-  private void setSchemaForUnmarshaller(InputStream schemaStream) throws DhxException {
+  private void setSchemaForUnmarshaller(InputStream schemaStream, Unmarshaller unmarshaller) throws DhxException {
     try {
       if (schemaStream != null) {
         Source schemaSource = new StreamSource(schemaStream);
         SchemaFactory schemaFactory =
             SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = schemaFactory.newSchema(schemaSource);
-        getUnmarshaller().setSchema(schema);
+        unmarshaller.setSchema(schema);
       }
     } catch (SAXException ex) {
       throw new DhxException(DhxExceptionEnum.CAPSULE_VALIDATION_ERROR,
