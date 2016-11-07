@@ -123,7 +123,7 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
       }
       File capsuleFile = FileUtil.getFile(capsuleFilePath);
       // if we want to send to wrong adressee , then wont change the capsule
-      if (!capsuleType.equals("wrongAdressee")) {
+      if (capsuleType.equals("correct")) {
         DecContainer container =
             (DecContainer) dhxMarshallerService.unmarshall(capsuleFile);
         container.getTransport().getDecRecipient()
