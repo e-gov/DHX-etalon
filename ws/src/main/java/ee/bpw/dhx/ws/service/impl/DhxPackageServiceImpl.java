@@ -85,6 +85,12 @@ public class DhxPackageServiceImpl implements DhxPackageService {
   @Autowired
   @Setter
   DhxImplementationSpecificService dhxImplementationSpecificService;
+  
+  private void checkProtocolVersion(String protocolVersion) throws DhxException{
+    if(protocolVersion == null) {
+      throw new DhxException(DhxExceptionEnum.PROTOCOL_VERSION_ERROR, "DHXVersion in empty.");
+    }
+  }
 
   /**
    * Method is used by endpoint. Is called when document arrives to endpoint Does capsule pasring if
@@ -100,6 +106,7 @@ public class DhxPackageServiceImpl implements DhxPackageService {
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
       InternalXroadMember client, InternalXroadMember service, MessageContext context)
       throws DhxException {
+    checkProtocolVersion(document.getDHXVersion());
     if (config.getCheckDuplicate()
         && dhxImplementationSpecificService.isDuplicatePackage(client,
             document.getConsignmentId())) {

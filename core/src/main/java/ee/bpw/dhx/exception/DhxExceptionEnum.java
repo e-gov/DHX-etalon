@@ -19,7 +19,8 @@ public enum DhxExceptionEnum {
   TECHNICAL_ERROR("TECHNICAL_ERROR", false),
   DATA_ERROR("DATA_ERROR", false),
   NOT_IMPLEMENTED("NOT_IMPLEMENTED", false),
-  XSD_VERSION_ERROR("XSD_VERSION_ERROR", false);
+  XSD_VERSION_ERROR("XSD_VERSION_ERROR", false),
+  PROTOCOL_VERSION_ERROR("DHX.InvalidProtocolVersion", false);
 
   // error code which is returned in SOAP services(custom fault element)
   private String codeForService;

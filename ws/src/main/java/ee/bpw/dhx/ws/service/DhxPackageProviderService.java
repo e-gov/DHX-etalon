@@ -34,10 +34,9 @@ public interface DhxPackageProviderService {
       InternalXroadMember recipient) throws DhxException;
 
   /**
-   * Get outgoing package. Package recipient is defined in input.
-   * X-road sender is put from sender input parameter. Use this method if sender differs from the one
-   * configured as default(for example if sending from non default subsystem or if representee is
-   * sending the document).
+   * Get outgoing package. Package recipient is defined in input. X-road sender is put from sender
+   * input parameter. Use this method if sender differs from the one configured as default(for
+   * example if sending from non default subsystem or if representee is sending the document).
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
@@ -52,10 +51,9 @@ public interface DhxPackageProviderService {
       InternalXroadMember recipient, InternalXroadMember sender) throws DhxException;
 
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
-   * Sender parameter will be put as X-road sender. Use this method if sender differs from the one
-   * configured as default(for example if sending from non default subsystem or if representee is
-   * sending the document).
+   * Get outgoing package. Package recipient is defined in input. Sender parameter will be put as
+   * X-road sender. Use this method if sender differs from the one configured as default(for example
+   * if sending from non default subsystem or if representee is sending the document).
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
@@ -70,7 +68,7 @@ public interface DhxPackageProviderService {
       InternalXroadMember recipient, InternalXroadMember sender) throws DhxException;
 
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
+   * Get outgoing package. Package recipient is defined in input.
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
@@ -82,7 +80,7 @@ public interface DhxPackageProviderService {
       InternalXroadMember recipient) throws DhxException;
 
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
+   * Get outgoing package. Package recipient is defined in input.
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
@@ -96,9 +94,9 @@ public interface DhxPackageProviderService {
       String recipientCode, String recipientSystem) throws DhxException;
 
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
-   * senderSubsystem represents X-road subSystem which will used to send the document. Use this
-   * method if sending from same X-road member as configured but from non default subsystem.
+   * Get outgoing package. Package recipient is defined in input. senderSubsystem represents X-road
+   * subSystem which will used to send the document. Use this method if sending from same X-road
+   * member as configured but from non default subsystem.
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
@@ -111,11 +109,11 @@ public interface DhxPackageProviderService {
    */
   public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
       String recipientCode, String recipientSystem, String senderSubsystem) throws DhxException;
-  
+
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
-   * senderSubsystem represents X-road subSystem which will used to send the document. Use this
-   * method if sending from same X-road member as configured but from non default subsystem.
+   * Get outgoing package. Package recipient is defined in input. Sender is defined in input by
+   * senderMemberCode and senderSubsystem. Use this method if sender differs from the configuder
+   * default. For example if sending from behalf of representee.
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document
@@ -128,12 +126,13 @@ public interface DhxPackageProviderService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
-      String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException;
-  
+      String recipientCode, String recipientSystem, String senderMemberCode,
+      String senderSubsystem) throws DhxException;
+
   /**
    * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
-   * senderSubsystem represents X-road subSystem which will used to send the document. Use this
-   * method if sending from same X-road member as configured but from non default subsystem.
+   * Sender is defined in input by senderMemberCode and senderSubsystem. Use this method if sender
+   * differs from the configuder default. For example if sending from behalf of representee.
    * 
    * @param capsuleStream - stream to send
    * @param consignmentId - consignment id of the document
@@ -146,7 +145,8 @@ public interface DhxPackageProviderService {
    * @throws DhxException - thrown if error occurs while sending document
    */
   public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
-      String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException;
+      String recipientCode, String recipientSystem, String senderMemberCode,
+      String senderSubsystem) throws DhxException;
 
   /**
    * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
