@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.9.2</version>
+		<version>0.9.9.4</version>
 	</parent>
 	<groupId>ee.bpw.dhx</groupId>
 	<artifactId>adapter-server</artifactId>
-	<version>0.9.9.2</version>
+	<version>0.1</version>
 	<name>adapter-server</name>
 	<url>http://maven.apache.org</url>
 	<packaging>jar</packaging>

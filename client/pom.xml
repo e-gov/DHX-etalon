@@ -6,9 +6,9 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.9.2</version>
+		<version>0.9.9.4</version>
 	</parent>
-	<version>0.9.9.2</version>
+	<version>0.9.9.4</version>
 	<groupId>ee.bpw.dhx.client</groupId>
 	<artifactId>client</artifactId>
 	<name>client</name>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
-			<version>0.9.9.3</version>
+			<version>0.9.9.4</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

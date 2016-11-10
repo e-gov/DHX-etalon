@@ -147,6 +147,27 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
     }
     return getOutgoingPackage(capsuleStream, consignmentId, adressee, sender);
   }
+  
+  @Loggable
+  @Override
+  public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
+                                               String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException {
+    InternalXroadMember adressee =
+        addressService.getClientForMemberCode(recipientCode, recipientSystem);
+    InternalXroadMember sender = addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
+    InputStream stream = FileUtil.getFileAsStream(capsuleFile);
+    return getOutgoingPackage(stream, consignmentId, adressee, sender);
+  }
+  
+  @Loggable
+  @Override
+  public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
+                                               String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException {
+    InternalXroadMember adressee =
+        addressService.getClientForMemberCode(recipientCode, recipientSystem);
+    InternalXroadMember sender = addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
+    return getOutgoingPackage(capsuleStream, consignmentId, adressee, sender);
+  }
 
   @Loggable
   @Override
