@@ -21,7 +21,7 @@ import java.util.List;
 public interface DhxPackageProviderService {
 
   /**
-   * Get outgoing package. No capsule parsing is done and package recipient is defined in input.
+   * Get outgoing package. Package recipient is defined in input. Default sender from configuration will be set as X-road sender.
    * 
    * @param capsuleFile - file to send
    * @param consignmentId - consignment id of the document

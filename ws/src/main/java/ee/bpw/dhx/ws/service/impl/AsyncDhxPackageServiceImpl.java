@@ -75,6 +75,13 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService{
         log.info("Trying to send package in async mode");
         result = sendPackageTry(outgoingPackage);
         results.add(new AsyncDhxSendDocumentResult(result));
+        if(result.getOccuredException() != null 
+            && result.getOccuredException() instanceof DhxException
+            && ((DhxException)result.getOccuredException()).getExceptionCode().isBusinessException()) {
+          log.info("Business exception occured while doing asynchronous sending. No need to continue retries, doing callback.");
+          dhxImplementationSpecificService.saveSendResult(result, results);
+          return;
+        }
         if (result.getResponse().getFault() == null) {
           log.info("Calling callback method. Total retry count: " + currentRetry);
           dhxImplementationSpecificService.saveSendResult(result, results);
@@ -98,6 +105,7 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService{
       response.setFault(fault);
       result = new DhxSendDocumentResult(outgoingPackage, response);
       results.add(new AsyncDhxSendDocumentResult(result));
+      result.setOccuredException(ex);
       dhxImplementationSpecificService.saveSendResult(result, results);
     }
   }
@@ -121,6 +129,7 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService{
       fault.setFaultCode(faultCode.getCodeForService());
       fault.setFaultString(ex.getMessage());
       response.setFault(fault);
+      result.setOccuredException(ex);
       result = new DhxSendDocumentResult(outgoingPackage, response);
     }
     return result;

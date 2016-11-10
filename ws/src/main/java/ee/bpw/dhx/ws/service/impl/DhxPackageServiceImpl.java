@@ -220,6 +220,9 @@ public class DhxPackageServiceImpl implements DhxPackageService {
       if (config.getCheckRecipient()) {
         checkRecipient(dhxDocument.getRecipient(), adressees);
       }
+      if(config.getCheckSender()) {
+        checkSender(dhxDocument.getClient(), capsuleConfig.getSenderFromContainer(container));
+      }
       log.debug("Recipients from capsule checked and found in representative list "
           + "or own member code. ");
       return dhxDocument;

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://producers.dhl.xrd.riik.ee/producer/dhl"
+	xmlns:xrd="http://x-road.eu/xsd/xroad.xsd"
+	xmlns:dhlma="http://www.riik.ee/schemas/dhl-meta-automatic"
+	xmlns:tns="http://producers.dhl.xrd.riik.ee/producer/dhl"
+	xmlns:dec="http://www.riik.ee/schemas/deccontainer/vers_2_1/"
+	xmlns:dhl="http://www.riik.ee/schemas/dhl"
+	xmlns:ref="http://ws-i.org/profiles/basic/1.1/xsd">
+	<import namespace="http://ws-i.org/profiles/basic/1.1/xsd"
+		schemaLocation="http://ws-i.org/profiles/basic/1.1/swaref.xsd" />
+	<import namespace="http://www.riik.ee/schemas/dhl-meta-automatic"
+		schemaLocation="http://www.riik.ee/schemas/dhl/dhl-meta-automatic.xsd" />
+	<import namespace="http://x-road.eu/xsd/xroad.xsd"
+		schemaLocation="http://x-road.eu/xsd/xroad.xsd" />
+	<import namespace="http://www.riik.ee/schemas/deccontainer/vers_2_1/"
+		schemaLocation="http://xmlr.eesti.ee/xml/schemas/Elektroonilise%20andmevahetuse%20metaandmete%20loend/2013/2.1/Dvk_kapsel_vers_2_1_eng_est.xsd" />
+	<complexType name="base64BinaryType">
+		<attribute name="href" type="ref:swaRef" />
+	</complexType>
+	<complexType name="sendingOptionArrayType">
+		<sequence>
+			<element name="saatmisviis" type="string" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<xrd:title>Saatmisviis</xrd:title>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="documentRefsArrayType">
+		<sequence>
+			<element name="dhl_id" type="dhlma:dhlDokIDType" maxOccurs="unbounded">
+				<annotation>
+					<appinfo>
+						<xrd:title>Dokumendi dhl_id</xrd:title>
+					</appinfo>
+				</annotation>
+			</element>
+		</sequence>
+	</complexType>
+	<element name="sendDocuments">
+		<complexType>
+			<sequence>
+				<element name="keha" type="tns:sendDocumentsV4RequestType" />
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="sendDocumentsV4RequestType">
+		<annotation>
+			<documentation>
+				Päring erineb versioonist 3 selle poolest, et teenus
+				võtab vastu kapsli
+				versiooni 2.1.
+			</documentation>
+		</annotation>
+		<sequence>
+			<element name="dokumendid" type="tns:base64BinaryType" />
+			<element name="kaust" type="dhlma:dhlDokTaisnimiType"
+				minOccurs="0" />
+			<element name="sailitustahtaeg" type="date" minOccurs="0" />
+			<element name="edastus_id" type="string" minOccurs="0" />
+			<element name="fragment_nr" type="integer" minOccurs="0" />
+			<element name="fragmente_kokku" type="integer" minOccurs="0" />
+		</sequence>
+	</complexType>
+	<complexType name="sendDocumentsV4RequestTypeUnencoded">
+		<sequence>
+			<element name="dokumendid">
+				<complexType>
+					<sequence>
+						<element ref="dec:DecContainer" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="kaust" type="dhlma:dhlDokTaisnimiType"
+				minOccurs="0" />
+			<element name="sailitustahtaeg" type="date" minOccurs="0" />
+			<element name="edastus_id" type="string" minOccurs="0" />
+			<element name="fragment_nr" type="integer" minOccurs="0" />
+			<element name="fragmente_kokku" type="integer" minOccurs="0" />
+		</sequence>
+	</complexType>
+	<element name="sendDocumentsResponse">
+		<complexType>
+			<sequence>
+				<element name="keha" type="tns:base64BinaryType" />
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="sendDocumentsV4ResponseTypeUnencoded">
+		<sequence>
+			<element name="keha">
+				<complexType>
+					<complexContent>
+						<extension base="tns:documentRefsArrayType" />
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<element name="receiveDocuments">
+		<complexType>
+			<sequence>
+				<element name="keha" type="tns:receiveDocumentsV4RequestType" />
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="receiveDocumentsV4RequestType">
+		<sequence>
+			<element name="arv" type="integer" minOccurs="0">
+				<annotation>
+					<appinfo>
+						<xrd:title>Maksimaalne tagastatav kirjete arv, vaikimisi 10
+						</xrd:title>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="allyksuse_lyhinimetus" type="string"
+				minOccurs="0">
+				<annotation>
+					<appinfo>
+						<xrd:title>
+							Millisele allüksusele adresseeritud dokumente
+							soovitakse vastu võtta.
+						</xrd:title>
+					</appinfo>
+					<documentation>
+						Element "allyksuse_lyhinimetus" määrab ära,
+						millisele allüksusele
+						adresseeritud dokumente soovitakse vastu
+						võtta. Parameetri
+						väärtuseks saavad olla teksti kujul allüksuste
+						lühinimetused.
+					</documentation>
+				</annotation>
+			</element>
+			<element name="ametikoha_lyhinimetus" type="string"
+				minOccurs="0">
+				<annotation>
+					<appinfo>
+						<xrd:title>
+							Millisele ametikohale adresseeritud dokumente
+							soovitakse vastu võtta.
+						</xrd:title>
+					</appinfo>
+					<documentation>
+						Element "ametikoha_lyhinimetus" määrab ära,
+						millisele ametikohale
+						adresseeritud dokumente soovitakse vastu
+						võtta. Parameetri
+						väärtuseks saavad olla teksti kujul ametikohtade
+						lühinimetused.
+					</documentation>
+				</annotation>
+			</element>
+			<element name="kaust" type="dhlma:dhlDokTaisnimiType"
+				minOccurs="0">
+				<annotation>
+					<appinfo>
+						<xrd:title>Kaust, kust dokumentid loetakse</xrd:title>
+					</appinfo>
+				</annotation>
+			</element>
+			<element name="edastus_id" type="string" minOccurs="0" />
+			<element name="fragment_nr" type="integer" minOccurs="0" />
+			<element name="fragmendi_suurus_baitides" type="long"
+				minOccurs="0" />
+		</sequence>
+	</complexType>
+	<element name="receiveDocumentsResponse">
+		<complexType>
+			<sequence>
+				<element name="keha" type="tns:base64BinaryType" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

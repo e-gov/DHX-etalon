@@ -135,6 +135,7 @@ public class DocumentClientServiceImpl extends DhxPackageServiceImpl {
         sender.setOrganisationCode(soapConfig.getMemberCode());
         container.getTransport().setDecSender(sender);
         capsuleFile = dhxMarshallerService.marshall(container);
+       // container.getDecMetadata().setDecId(null);
       }
      /* if (config.getParseCapsule() && !capsuleType.equals("wrongAdressee")) {  
         return sendMultiplePackages(dhxPackageProviderService.getOutgoingPackage(capsuleFile, consignmentId));

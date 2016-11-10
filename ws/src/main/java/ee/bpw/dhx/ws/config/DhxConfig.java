@@ -26,6 +26,7 @@ import javax.xml.bind.JAXBException;
 @Getter
 @Setter
 @Configuration
+@Slf4j
 /**
  * Main configuration of DHX webservice application
  * @author Aleksei Kokarev
@@ -42,6 +43,9 @@ public class DhxConfig {
   @Value("${dhx.check-recipient:true}")
   private Boolean checkRecipient = true;
   
+  @Value("${dhx.check-sernder:true}")
+  private Boolean checkSender = true;
+  
   @Value("${dhx.check-filesize:false}")
   private Boolean checkFilesize = false;
   
@@ -57,6 +61,9 @@ public class DhxConfig {
   
   @Value("${dhx.wsdl-file:dhx.wsdl}")
   private String wsdlFile;
+  
+  @Value("${dhx.protocol-version:1.0}")
+  private String protocolVersion;
   
   @Value("${dhx.marshall-context:ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.representation:eu.x_road.xsd.xroad}")  
   private String marshallContext;
@@ -125,6 +132,7 @@ public class DhxConfig {
     if (this.dhxJaxb2Marshaller == null) {
       dhxJaxb2Marshaller = new Jaxb2Marshaller();
       dhxJaxb2Marshaller.setMtomEnabled(true);
+      log.debug("Creating marshaller for folowing paths: " + getMarshallContext());
       dhxJaxb2Marshaller.setContextPaths(getMarshallContextAsList());
     }
     return dhxJaxb2Marshaller;
