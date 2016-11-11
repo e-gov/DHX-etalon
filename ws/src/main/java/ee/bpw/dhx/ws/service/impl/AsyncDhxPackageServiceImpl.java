@@ -129,8 +129,8 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService{
       fault.setFaultCode(faultCode.getCodeForService());
       fault.setFaultString(ex.getMessage());
       response.setFault(fault);
-      result.setOccuredException(ex);
       result = new DhxSendDocumentResult(outgoingPackage, response);
+      result.setOccuredException(ex);
     }
     return result;
   }
