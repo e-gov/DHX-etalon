@@ -117,7 +117,7 @@ public class AsyncDhxPackageServiceImpl implements AsyncDhxPackageService{
     try {
       result = dhxPackageService.sendPackage(outgoingPackage);
     } catch (Exception ex) {
-      log.info("Package sending ended with error");
+      log.info("Package sending ended with error" + ex.getMessage(), ex);
       DhxExceptionEnum faultCode = DhxExceptionEnum.TECHNICAL_ERROR;
       if (ex instanceof DhxException) {
         if (((DhxException) ex).getExceptionCode() != null) {
