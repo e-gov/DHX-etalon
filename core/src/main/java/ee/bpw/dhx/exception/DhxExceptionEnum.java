@@ -12,7 +12,7 @@ public enum DhxExceptionEnum {
   DUPLICATE_PACKAGE("DHX.Duplicate", true),
   WRONG_RECIPIENT("DHX.InvalidAddressee", true),
   OVER_MAX_SIZE("DHX.SizeLimitExceeded", true),
-  WRONG_SENDER("DHX.InvalidSender", true),
+  WRONG_SENDER("DHX.SenderDoesNotMatch", true),
   FILE_ERROR("FILE_ERROR", false),
   WS_ERROR("WS_ERROR", false),
   EXTRACTION_ERROR("EXCTRACTION_ERROR", false),
@@ -20,7 +20,7 @@ public enum DhxExceptionEnum {
   DATA_ERROR("DATA_ERROR", false),
   NOT_IMPLEMENTED("NOT_IMPLEMENTED", false),
   XSD_VERSION_ERROR("XSD_VERSION_ERROR", false),
-  PROTOCOL_VERSION_ERROR("DHX.InvalidProtocolVersion", false);
+  PROTOCOL_VERSION_ERROR("DHX.UnsupportedVersion", true);
 
   // error code which is returned in SOAP services(custom fault element)
   private String codeForService;

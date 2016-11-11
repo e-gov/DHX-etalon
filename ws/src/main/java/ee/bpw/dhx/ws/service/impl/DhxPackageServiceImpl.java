@@ -90,6 +90,9 @@ public class DhxPackageServiceImpl implements DhxPackageService {
     if(protocolVersion == null) {
       throw new DhxException(DhxExceptionEnum.PROTOCOL_VERSION_ERROR, "DHXVersion in empty.");
     }
+    if(!config.getAcceptedDhxProtocolVersions().contains("," + protocolVersion + ",")) {
+      throw new DhxException(DhxExceptionEnum.PROTOCOL_VERSION_ERROR, "Version not supported.");
+    }
   }
 
   /**
@@ -106,7 +109,9 @@ public class DhxPackageServiceImpl implements DhxPackageService {
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
       InternalXroadMember client, InternalXroadMember service, MessageContext context)
       throws DhxException {
-    checkProtocolVersion(document.getDHXVersion());
+    if(config.getCheckDhxVersion()) {
+      checkProtocolVersion(document.getDHXVersion());
+    }
     if (config.getCheckDuplicate()
         && dhxImplementationSpecificService.isDuplicatePackage(client,
             document.getConsignmentId())) {

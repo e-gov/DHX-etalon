@@ -311,6 +311,7 @@ public class DhxGateway extends WebServiceGatewaySupport {
       } else {
         throw new DhxException(DhxExceptionEnum.DATA_ERROR, "Consignment id is empty!");
       }
+      request.setDHXVersion(document.getDhxProtocolVersion());
       log.info("Sending document for {} sec server: {} with consignmentId: {}", document
           .getService().toString(), soapConfig.getSecurityServer(), request.getConsignmentId());
       getWebServiceTemplate().setCheckConnectionForFault(false);

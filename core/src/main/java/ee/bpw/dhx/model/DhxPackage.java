@@ -33,9 +33,12 @@ public abstract class DhxPackage {
    * @param service - XroadMember to whom document is sent(self X-road member for incoming document)
    * @param client - XroadMember who sends the document(self X-road member for outgoing document)
    * @param file - documents file
+   * @param dhxProtocolVersion - version of the DHX protocol which corresponds to that package. If
+   *        package is being recieved, then dhxProtocolVersion is taken from request.
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, File file)
+  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, File file,
+      String dhxProtocolVersion)
       throws DhxException {
     try {
       InputStream stream = new FileInputStream(file);
@@ -43,6 +46,7 @@ public abstract class DhxPackage {
       documentFile = new DataHandler(source);
       this.service = service;
       this.client = client;
+      this.dhxProtocolVersion = dhxProtocolVersion;
     } catch (FileNotFoundException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
     } catch (IOException ex) {
@@ -57,9 +61,12 @@ public abstract class DhxPackage {
    * @param service - XroadMember to whom document is sent(self X-road member for incoming document)
    * @param client - XroadMember who sends the document(self X-road member for outgoing document)
    * @param stream - documents stream
+   * @param dhxProtocolVersion - version of the DHX protocol which corresponds to that package. If
+   *        package is being recieved, then dhxProtocolVersion is taken from request.
    * @throws DhxException - thrown if error occurs while creating dhxdocument
    */
-  protected DhxPackage(InternalXroadMember service, InternalXroadMember client, InputStream stream)
+  protected DhxPackage(InternalXroadMember service, InternalXroadMember client,
+      InputStream stream, String dhxProtocolVersion)
       throws DhxException {
     try {
       InputStream realStream;
@@ -68,6 +75,7 @@ public abstract class DhxPackage {
       documentFile = new DataHandler(source);
       this.service = service;
       this.client = client;
+      this.dhxProtocolVersion = dhxProtocolVersion;
     } catch (IOException ex) {
       throw new DhxException(DhxExceptionEnum.FILE_ERROR, ex.getMessage(), ex);
     }
@@ -82,13 +90,15 @@ public abstract class DhxPackage {
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
    * @param file - documents file
+   * @param dhxProtocolVersion - version of the DHX protocol which corresponds to that package. If
+   *        package is being recieved, then dhxProtocolVersion is taken from request.
    * @throws DhxException - thrown if error occurs while sending document
    */
   protected DhxPackage(InternalXroadMember service, InternalXroadMember client,
       Object parsedContainer,
-      CapsuleVersionEnum parsedContainerVersion, File file)
+      CapsuleVersionEnum parsedContainerVersion, File file, String dhxProtocolVersion)
       throws DhxException {
-    this(service, client, FileUtil.getFileAsStream(file));
+    this(service, client, FileUtil.getFileAsStream(file), dhxProtocolVersion);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
   }
@@ -98,16 +108,19 @@ public abstract class DhxPackage {
    * 
    * @param service - XroadMember to whom document is sent(self X-road member for incoming document)
    * @param client - XroadMember who sends the document(self X-road member for outgoing document)
+   * @param stream  - stream of the document
    * @param parsedContainer - document Object. Object type bacause different version might be sent
    * @param parsedContainerVersion - version of the container
+   * @param dhxProtocolVersion - version of the DHX protocol which corresponds to that package. If
+   *        package is being recieved, then dhxProtocolVersion is taken from request.
    * @throws DhxException - thrown if error occurs while sending document
    */
   protected DhxPackage(InternalXroadMember service, InternalXroadMember client,
       InputStream stream,
       Object parsedContainer,
-      CapsuleVersionEnum parsedContainerVersion)
+      CapsuleVersionEnum parsedContainerVersion, String dhxProtocolVersion)
       throws DhxException {
-    this(service, client, stream);
+    this(service, client, stream, dhxProtocolVersion);
     this.parsedContainer = parsedContainer;
     this.parsedContainerVersion = parsedContainerVersion;
   }
@@ -127,6 +140,7 @@ public abstract class DhxPackage {
     // this.externalConsignmentId = document.getConsignmentId();
     this.client = client;
     this.service = service;
+    this.dhxProtocolVersion = document.getDHXVersion();
   }
 
   /**
@@ -150,12 +164,29 @@ public abstract class DhxPackage {
   private DataHandler documentFile;
   private InternalXroadMember client;
   private InternalXroadMember service;
+  private String dhxProtocolVersion;
 
 
 
   private Object parsedContainer;
 
   private CapsuleVersionEnum parsedContainerVersion;
+
+  /**
+   * 
+   * @return dhxProtocolVersion of the package being sent or received
+   */
+  public String getDhxProtocolVersion() {
+    return dhxProtocolVersion;
+  }
+
+  /**
+   * 
+   * @param dhxProtocolVersion - version of the DHX protocol which corresponds to the package
+   */
+  public void setDhxProtocolVersion(String dhxProtocolVersion) {
+    this.dhxProtocolVersion = dhxProtocolVersion;
+  }
 
   /**
    * getDocumentFile.
@@ -268,11 +299,13 @@ public abstract class DhxPackage {
       objString += "client: " + getClient().toString();
     }
     if (getService() != null) {
-      objString += "service: " + getClient().toString();
+      objString += " service: " + getClient().toString();
     }
-
+    if(dhxProtocolVersion != null) {
+      objString += " dhxProtocolVersion: " + dhxProtocolVersion;
+    }
     if (getParsedContainerVersion() != null) {
-      objString += "parsedContainerVersion: " + getParsedContainerVersion().toString();
+      objString += " parsedContainerVersion: " + getParsedContainerVersion().toString();
     }
     return objString;
   }

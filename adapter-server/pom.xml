@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ee.bpw.dhx</groupId>
 		<artifactId>DHX</artifactId>
-		<version>0.9.9.4</version>
+		<version>0.9.9.5</version>
 	</parent>
 	<groupId>ee.bpw.dhx</groupId>
 	<artifactId>adapter-server</artifactId>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>ee.bpw.dhx</groupId>
 			<artifactId>ws</artifactId>
-			<version>0.9.9.4</version>
+			<version>0.9.9.5</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

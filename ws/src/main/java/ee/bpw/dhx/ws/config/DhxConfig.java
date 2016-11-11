@@ -65,6 +65,12 @@ public class DhxConfig {
   @Value("${dhx.protocol-version:1.0}")
   private String protocolVersion;
   
+  @Value("${dhx.check-dhx-version:true}")
+  private Boolean checkDhxVersion;
+  
+  @Value("${dhx.accepted-dhx-protocol-versions:1.0}")
+  private String acceptedDhxProtocolVersions;
+  
   @Value("${dhx.marshall-context:ee.riik.schemas.deccontainer.vers_2_1:eu.x_road.dhx.producer:eu.x_road.xsd.identifiers:eu.x_road.xsd.representation:eu.x_road.xsd.xroad}")  
   private String marshallContext;
   
@@ -111,6 +117,10 @@ public class DhxConfig {
       documentResendTimes = Arrays.asList(times);
     }
     return documentResendTimes;
+  }
+  
+  public String getAcceptedDhxProtocolVersions () {
+    return "," + acceptedDhxProtocolVersions + ",";
   }
 
 

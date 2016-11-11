@@ -27,6 +27,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,25 +38,26 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
 
   @Autowired
   SoapConfig soapConfig;
-  
+
   @Autowired
   AddressService addressService;
-  
+
   @Autowired
   CapsuleConfig capsuleConfig;
-  
+
   @Autowired
   DhxConfig dhxConfig;
-  
+
   @Autowired
   DhxMarshallerService dhxMarshallerService;
 
-  
+
   @Loggable
   @Override
   public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
       InternalXroadMember recipient) throws DhxException {
-    return getOutgoingPackage(capsuleFile, consignmentId, recipient, soapConfig.getDefaultClient());
+    return getOutgoingPackage(capsuleFile, consignmentId, recipient,
+        soapConfig.getDefaultClient());
   }
 
   @Loggable
@@ -72,34 +74,15 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
       InternalXroadMember recipient, InternalXroadMember sender) throws DhxException {
     dhxMarshallerService.checkFileSize(capsuleStream);
     InputStream schemaStream = null;
-    FileInputStream fisValidate = null;
-    File file = null;
     OutgoingDhxPackage document = null;
     try {
-      if (dhxConfig.getCapsuleValidate()) {
-        log.debug("Validating capsule is enabled");
-        file = FileUtil.createFileAndWrite(capsuleStream);
-        schemaStream =
-            FileUtil.getFileAsStream(capsuleConfig.getXsdForVersion(capsuleConfig
-                .getCurrentCapsuleVersion()));
-        fisValidate = new FileInputStream(file);
-        dhxMarshallerService.validate(fisValidate, schemaStream);
-        capsuleStream = new FileInputStream(file);
-      } else {
-        log.debug("Validating capsule is disabled");
-      }
-      document =
-          new OutgoingDhxPackage(recipient, sender, capsuleStream, consignmentId);    
-    } catch (FileNotFoundException ex) {
-      throw new DhxException(DhxExceptionEnum.WS_ERROR,
-          "Error occured while reading or writing casule file.", ex);
+      schemaStream =
+          FileUtil.getFileAsStream(capsuleConfig.getXsdForVersion(capsuleConfig
+              .getCurrentCapsuleVersion()));
+      document = getOutgoingPackage(capsuleStream, consignmentId, recipient, sender, schemaStream,
+          dhxConfig.getProtocolVersion());
     } finally {
-      FileUtil.safeCloseStream(capsuleStream);
-      FileUtil.safeCloseStream(fisValidate);
       FileUtil.safeCloseStream(schemaStream);
-      if (file != null) {
-        file.delete();
-      }
     }
     return document;
   }
@@ -107,8 +90,45 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
   @Loggable
   @Override
   public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
+      InternalXroadMember recipient, InternalXroadMember sender,
+      InputStream schemaStream, String dhxProtocolVersion) throws DhxException {
+    OutgoingDhxPackage document =
+        new OutgoingDhxPackage(recipient, sender, capsuleStream, consignmentId,
+            dhxProtocolVersion);
+    try {
+      if (dhxConfig.getCapsuleValidate()) {
+        log.debug("Validating capsule is enabled");
+        dhxMarshallerService.validate(document.getDocumentFile().getInputStream(), schemaStream);
+      } else {
+        log.debug("Validating capsule is disabled");
+      }
+    } catch (IOException ex) {
+      throw new DhxException(DhxExceptionEnum.WS_ERROR,
+          "Error occured while reading or writing capsule file.", ex);
+    } finally {}
+    return document;
+  }
+
+  @Loggable
+  @Override
+  public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
+      String recipientCode, String recipientSystem, String senderMemberCode,
+      String senderSubsystem, InputStream schemaStream, String dhxProtocolVersion)
+      throws DhxException {
+    InternalXroadMember recipient =
+        addressService.getClientForMemberCode(recipientCode, recipientSystem);
+    InternalXroadMember sender =
+        addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
+    return getOutgoingPackage(capsuleStream, consignmentId, recipient, sender, schemaStream,
+      dhxConfig.getProtocolVersion());
+  }
+
+  @Loggable
+  @Override
+  public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
       InternalXroadMember recipient) throws DhxException {
-    return getOutgoingPackage(capsuleStream, consignmentId, recipient, soapConfig.getDefaultClient());
+    return getOutgoingPackage(capsuleStream, consignmentId, recipient,
+        soapConfig.getDefaultClient());
   }
 
   @Loggable
@@ -123,15 +143,16 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
   public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
       String recipientCode, String recipientSystem, String senderSubsystem) throws DhxException {
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
-    return getOutgoingPackage(stream, consignmentId, recipientCode, recipientSystem, senderSubsystem);
-  } 
-  
+    return getOutgoingPackage(stream, consignmentId, recipientCode, recipientSystem,
+        senderSubsystem);
+  }
+
   @Loggable
   @Override
   public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream,
       String consignmentId, String recipientCode, String recipientSystem) throws DhxException {
     return getOutgoingPackage(capsuleStream, consignmentId, recipientCode, recipientSystem, null);
-    
+
   }
 
   @Loggable
@@ -147,25 +168,29 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
     }
     return getOutgoingPackage(capsuleStream, consignmentId, adressee, sender);
   }
-  
+
   @Loggable
   @Override
   public OutgoingDhxPackage getOutgoingPackage(File capsuleFile, String consignmentId,
-                                               String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException {
+      String recipientCode, String recipientSystem, String senderMemberCode,
+      String senderSubsystem) throws DhxException {
     InternalXroadMember adressee =
         addressService.getClientForMemberCode(recipientCode, recipientSystem);
-    InternalXroadMember sender = addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
+    InternalXroadMember sender =
+        addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
     InputStream stream = FileUtil.getFileAsStream(capsuleFile);
     return getOutgoingPackage(stream, consignmentId, adressee, sender);
   }
-  
+
   @Loggable
   @Override
   public OutgoingDhxPackage getOutgoingPackage(InputStream capsuleStream, String consignmentId,
-                                               String recipientCode, String recipientSystem, String senderMemberCode, String senderSubsystem) throws DhxException {
+      String recipientCode, String recipientSystem, String senderMemberCode,
+      String senderSubsystem) throws DhxException {
     InternalXroadMember adressee =
         addressService.getClientForMemberCode(recipientCode, recipientSystem);
-    InternalXroadMember sender = addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
+    InternalXroadMember sender =
+        addressService.getClientForMemberCode(senderMemberCode, senderSubsystem);
     return getOutgoingPackage(capsuleStream, consignmentId, adressee, sender);
   }
 
@@ -173,7 +198,8 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
   @Override
   public List<OutgoingDhxPackage> getOutgoingPackage(File capsuleFile, String consignmentId)
       throws DhxException {
-    return getOutgoingPackage(capsuleFile, consignmentId, capsuleConfig.getCurrentCapsuleVersion());
+    return getOutgoingPackage(capsuleFile, consignmentId,
+        capsuleConfig.getCurrentCapsuleVersion());
   }
 
   @Loggable
@@ -188,14 +214,15 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
   @Override
   public List<OutgoingDhxPackage> getOutgoingPackage(InputStream capsuleStream,
       String consignmentId) throws DhxException {
-    return getOutgoingPackage(capsuleStream, consignmentId, capsuleConfig.getCurrentCapsuleVersion());
+    return getOutgoingPackage(capsuleStream, consignmentId,
+        capsuleConfig.getCurrentCapsuleVersion());
   }
 
   @Loggable
   @Override
   public List<OutgoingDhxPackage> getOutgoingPackage(InputStream capsuleStream,
       String consignmentId, CapsuleVersionEnum version) throws DhxException {
-    List<OutgoingDhxPackage> packages = new ArrayList<OutgoingDhxPackage>(); 
+    List<OutgoingDhxPackage> packages = new ArrayList<OutgoingDhxPackage>();
     if (version == null) {
       throw new DhxException(DhxExceptionEnum.XSD_VERSION_ERROR,
           "Unable to send document using NULL xsd version");
@@ -206,7 +233,7 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
         schemaStream = FileUtil.getFileAsStream(capsuleConfig.getXsdForVersion(version));
       }
       Object container =
-          dhxMarshallerService.unmarshallAndValidate(capsuleStream, schemaStream);   
+          dhxMarshallerService.unmarshallAndValidate(capsuleStream, schemaStream);
       List<CapsuleAdressee> adressees = capsuleConfig.getAdresseesFromContainer(container);
       if (adressees != null && adressees.size() > 0) {
         File capsuleFile = null;
@@ -217,7 +244,8 @@ public class DhxPackageProviderServiceImpl implements DhxPackageProviderService 
           OutgoingDhxPackage document =
               new OutgoingDhxPackage(adresseeXroad, soapConfig.getDefaultClient(), container,
                   CapsuleVersionEnum.forClass(container
-                      .getClass()), capsuleFile/* capsuleStream */, consignmentId);
+                      .getClass()), capsuleFile/* capsuleStream */, consignmentId,
+                  dhxConfig.getProtocolVersion());
           packages.add(document);
         }
         return packages;
