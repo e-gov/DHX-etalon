@@ -109,9 +109,6 @@ public class DhxPackageServiceImpl implements DhxPackageService {
   public SendDocumentResponse receiveDocumentFromEndpoint(SendDocument document,
       InternalXroadMember client, InternalXroadMember service, MessageContext context)
       throws DhxException {
-    if(config.getCheckDhxVersion()) {
-      checkProtocolVersion(document.getDHXVersion());
-    }
     if (config.getCheckDuplicate()
         && dhxImplementationSpecificService.isDuplicatePackage(client,
             document.getConsignmentId())) {
@@ -207,7 +204,9 @@ public class DhxPackageServiceImpl implements DhxPackageService {
       Object container = null;
       InputStream fileStream = document.getDocumentAttachment().getInputStream();
       dhxMarshallerService.checkFileSize(fileStream);
-
+      if(config.getCheckDhxVersion()) {
+        checkProtocolVersion(document.getDHXVersion());
+      }
       if (config.getCapsuleValidate()) {
         log.debug("Validating capsule is enabled");
         schemaStream =
@@ -270,6 +269,9 @@ public class DhxPackageServiceImpl implements DhxPackageService {
     InputStream schemaStream = null;
     try {
       log.info("Receiving document. for representative: {}", document.getRecipient());
+      if(config.getCheckDhxVersion()) {
+        checkProtocolVersion(document.getDHXVersion());
+      }
       if (config.getCapsuleValidate()) {
         log.debug("Validating capsule is enabled");
         schemaStream =
