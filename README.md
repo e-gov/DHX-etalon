@@ -38,7 +38,7 @@ Projektis on 3 eeldefineeritud maven profiili pom.xml failis(põhierinevused pro
   * rakenduse ehitamine(war fail on väljund):
   `mvn clean package`
   * rakenduse käivitamine(rakendus käivitatakse embedded(sisse ehitatud) tomcat serveris):
- `spring-boot:run -pl client`
+ `spring-boot:run -pl dhx-adapter-client`
  
 * **etalon1** - Profiil etalon1 keskkona jaoks.     
   Maveni käsud selle profiili kasutamiseks(käivitada juur kataloogis):     
@@ -88,7 +88,7 @@ There are 3 predefined profiles provided in projects pom.xml(main differences be
   `mvn clean package`
   
   - run application(application will be deployed in embedded tomcat server):
- `spring-boot:run -pl client`
+ `spring-boot:run -pl dhx-adapter-client`
  
 * **etalon1** - Profile for etalon1 environment.     
   Maven commands to use with that profile(run from projects root folder):
