@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" packages="ee.bpw.dhx">
+<Configuration status="WARN" packages="ee.ria.dhx">
 <CustomLevels>
     <CustomLevel name="EVENT" intLevel="0" />
   </CustomLevels>
@@ -22,7 +22,7 @@
     </RollingFile>
   </Appenders>
   <Loggers>
-    <Logger name="ee.bpw" level="debug" additivity="false">
+    <Logger name="ee.ria" level="debug" additivity="false">
       <AppenderRef ref="RollingFile"/>
       <AppenderRef ref="CUSTOM"/>
     </Logger>
