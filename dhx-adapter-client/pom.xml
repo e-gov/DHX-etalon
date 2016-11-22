@@ -8,7 +8,6 @@
 		<artifactId>DHX-client</artifactId>
 		<version>0.10.0</version>
 	</parent>
-	<groupId>ee.ria.dhx.client</groupId>
 	<artifactId>dhx-adapter-client</artifactId>
 	<name>DHX adapter client</name>
 	<packaging>war</packaging>
@@ -72,6 +71,10 @@
 		<resources>
 			<resource>
 				<directory>../src/main/resources/${resourceDir}/client</directory>
+				<targetPath>${basedir}/target/classes</targetPath>
+			</resource>
+			<resource>
+				<directory>../src/main/resources/${resourceDir}/ws</directory>
 				<targetPath>${basedir}/target/classes</targetPath>
 			</resource>
 			<resource>
