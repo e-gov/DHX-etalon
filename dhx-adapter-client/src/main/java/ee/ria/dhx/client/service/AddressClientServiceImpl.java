@@ -2,6 +2,7 @@ package ee.ria.dhx.client.service;
 
 
 import ee.ria.dhx.exception.DhxException;
+
 import ee.ria.dhx.types.InternalXroadMember;
 import ee.ria.dhx.ws.config.SoapConfig;
 import ee.ria.dhx.ws.service.impl.AddressServiceImpl;
@@ -69,17 +70,17 @@ public class AddressClientServiceImpl extends AddressServiceImpl {
       String value = null;
       if (member.getRepresentee() != null) {
         name =
-            member.getRepresentee().getName()
+            member.getRepresentee().getRepresenteeName()
                 + " ("
-                + member.getRepresentee().getMemberCode()
+                + member.getRepresentee().getRepresenteeCode()
                 +
-                (member.getRepresentee().getSystem() != null ? "."
-                    + member.getRepresentee().getSystem() : "")
+                (member.getRepresentee().getRepresenteeSystem() != null ? "."
+                    + member.getRepresentee().getRepresenteeSystem() : "")
                 + " Asutuse " + member.getMemberCode() + " vahendatav" + ")";
         value =
-            (member.getRepresentee().getSystem() != null ?
-                member.getRepresentee().getSystem() + ":" : "")
-                + member.getRepresentee().getMemberCode();
+            (member.getRepresentee().getRepresenteeSystem() != null ?
+                member.getRepresentee().getRepresenteeSystem() + ":" : "")
+                + member.getRepresentee().getRepresenteeCode();
       } else {
         name =
             member.getName() + " (" + member.getMemberCode() + ", süsteem: "
