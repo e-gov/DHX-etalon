@@ -46,17 +46,17 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
             + " DecFolder: " + container.getDecMetadata().getDecFolder();
       }
       if(container.getTransport().getDecRecipient() != null && container.getTransport().getDecRecipient().size()>0) {
-        addition = addition + "DecRecipients: \n";
+        addition = addition + "\nDecRecipients: \n";
         for(DecRecipient recipient : container.getTransport().getDecRecipient()) {
           addition = addition + " DecRecipient organisationCode:"
-              + recipient.getOrganisationCode();             
+              + recipient.getOrganisationCode() + "\n";             
         }
         addition = addition + "\n DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode();
       }
       if(container.getRecipient() != null && container.getRecipient().size()>0) {
         for(Recipient recipient : container.getRecipient()) {
           if(recipient.getOrganisation() != null) {
-          addition = addition + " Recipient oragnisation organisationCode: "
+          addition = addition + "\n Recipient oragnisation organisationCode: "
               + recipient.getOrganisation().getOrganisationCode();  
           }
         }
