@@ -43,20 +43,20 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
       String addition = "";
       if (container.getDecMetadata() != null) {
         addition = " DecId: " + container.getDecMetadata().getDecId()
-            + " DecFolder: " + container.getDecMetadata().getDecFolder();
+            + " DecFolder: " + container.getDecMetadata().getDecFolder() + "\n";
       }
       if(container.getTransport().getDecRecipient() != null && container.getTransport().getDecRecipient().size()>0) {
-        addition = addition + "\nDecRecipients: \n";
+        addition = addition + "DecRecipients: \n";
         for(DecRecipient recipient : container.getTransport().getDecRecipient()) {
           addition = addition + " DecRecipient organisationCode:"
               + recipient.getOrganisationCode() + "\n";             
         }
-        addition = addition + "\n DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode();
+        addition = addition + "DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode();
       }
       if(container.getRecipient() != null && container.getRecipient().size()>0) {
         for(Recipient recipient : container.getRecipient()) {
           if(recipient.getOrganisation() != null) {
-          addition = addition + "\n Recipient oragnisation organisationCode: "
+          addition = addition + " Recipient oragnisation organisationCode: "
               + recipient.getOrganisation().getOrganisationCode();  
           }
         }
