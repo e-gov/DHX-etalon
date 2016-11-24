@@ -8,6 +8,8 @@ import ee.ria.dhx.types.IncomingDhxPackage;
 import ee.ria.dhx.types.InternalXroadMember;
 import ee.ria.dhx.types.OutgoingDhxPackage;
 import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.OrganisationType;
+import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Recipient;
 import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecSender;
 import ee.ria.dhx.types.eu.x_road.dhx.producer.Fault;
@@ -128,12 +130,19 @@ public class DhxClientPackageServiceImpl extends DhxPackageServiceImpl {
             (DecContainer) dhxMarshallerService.unmarshall(capsuleFile);
         container.getTransport().getDecRecipient()
             .removeAll(container.getTransport().getDecRecipient());
-        DecRecipient recipient = new DecRecipient();
-        recipient.setOrganisationCode(getMemberCodeForCapsule(recipientString));
-        container.getTransport().getDecRecipient().add(recipient);
+        DecRecipient decRecipient = new DecRecipient();
+        decRecipient.setOrganisationCode(getMemberCodeForCapsule(recipientString));
+        container.getTransport().getDecRecipient().add(decRecipient);
         DecSender sender = new DecSender();
         sender.setOrganisationCode(soapConfig.getMemberCode());
         container.getTransport().setDecSender(sender);
+        container.getRecipient().removeAll(container.getRecipient());
+        Recipient recipient = new Recipient();
+        OrganisationType org  = new OrganisationType();
+        org.setName("Ettevõtte nimi");
+        org.setOrganisationCode(getMemberCodeForCapsule(recipientString));
+        recipient.setOrganisation(org);
+        container.getRecipient().add(recipient);
         capsuleFile = dhxMarshallerService.marshall(container);
         // container.getDecMetadata().setDecId(null);
       }

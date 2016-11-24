@@ -5,6 +5,8 @@ import ee.ria.dhx.exception.DhxException;
 import ee.ria.dhx.types.DhxRepresentee;
 import ee.ria.dhx.types.IncomingDhxPackage;
 import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer;
+import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Recipient;
+import ee.ria.dhx.types.ee.riik.schemas.deccontainer.vers_2_1.DecContainer.Transport.DecRecipient;
 import ee.ria.dhx.ws.service.impl.ExampleDhxImplementationSpecificService;
 
 import org.apache.logging.log4j.Level;
@@ -43,11 +45,24 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
         addition = " DecId: " + container.getDecMetadata().getDecId()
             + " DecFolder: " + container.getDecMetadata().getDecFolder();
       }
+      if(container.getTransport().getDecRecipient() != null && container.getTransport().getDecRecipient().size()>0) {
+        addition = addition + "DecRecipients: \n";
+        for(DecRecipient recipient : container.getTransport().getDecRecipient()) {
+          addition = addition + " DecRecipient organisationCode:"
+              + recipient.getOrganisationCode();             
+        }
+        addition = addition + "\n DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode();
+      }
+      if(container.getRecipient() != null && container.getRecipient().size()>0) {
+        for(Recipient recipient : container.getRecipient()) {
+          if(recipient.getOrganisation() != null) {
+          addition = addition + " Recipient oragnisation organisationCode: "
+              + recipient.getOrganisation().getOrganisationCode();  
+          }
+        }
+      }
       logger.log(Level.getLevel("EVENT"),
-          "Document data from capsule: recipient organisationCode:"
-              + container.getTransport().getDecRecipient().get(0).getOrganisationCode()
-              + " sender organisationCode:"
-              + container.getTransport().getDecSender().getOrganisationCode() + addition);
+          "Document data from capsule: " + addition);
 
     }
     return receiptId;
