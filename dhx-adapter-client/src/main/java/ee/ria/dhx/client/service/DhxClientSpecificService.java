@@ -51,7 +51,7 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
           addition = addition + " DecRecipient organisationCode:"
               + recipient.getOrganisationCode() + "\n";             
         }
-        addition = addition + "DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode();
+        addition = addition + "DecSender: organisationCode: " + container.getTransport().getDecSender().getOrganisationCode() + "\n";
       }
       if(container.getRecipient() != null && container.getRecipient().size()>0) {
         for(Recipient recipient : container.getRecipient()) {
