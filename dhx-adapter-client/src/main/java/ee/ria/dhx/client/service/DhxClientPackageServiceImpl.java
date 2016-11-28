@@ -161,8 +161,9 @@ public class DhxClientPackageServiceImpl extends DhxPackageServiceImpl {
         recipientCode = recipientString;
       }
       List<DhxSendDocumentResult> responses = new ArrayList<DhxSendDocumentResult>();
-      responses.add(sendPackage(dhxPackageProviderService.getOutgoingPackage(capsuleFile,
-          consignmentId, recipientCode, recipientSystem)));
+      OutgoingDhxPackage pck = dhxPackageProviderService.getOutgoingPackage(capsuleFile,
+        consignmentId, recipientCode, recipientSystem);
+      responses.add(sendPackage(pck));
       // asyncDhxPackageService.sendPackage(dhxPackageProviderService.getOutgoingPackage(capsuleFile,
       // consignmentId, recipientCode, recipientSystem));
 
