@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ee.ria.dhx.client</groupId>
 	<artifactId>DHX-client</artifactId>
-	<version>0.10.1</version>
+	<version>0.11.0</version>
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -135,6 +135,21 @@
 			<properties>
 				<conf>etalon2</conf>
 				<tomcat.manager>http://10.0.13.52:8080/manager/text</tomcat.manager>
+				<tomcat.manager.username>admin</tomcat.manager.username>
+				<tomcat.manager.password>admin</tomcat.manager.password>
+			</properties>
+		</profile>
+		<profile>
+			<id>etalon3</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>etalon3</value>
+				</property>
+			</activation>
+			<properties>
+				<conf>etalon3</conf>
+				<tomcat.manager>http://10.0.13.54:8080/manager/text</tomcat.manager>
 				<tomcat.manager.username>admin</tomcat.manager.username>
 				<tomcat.manager.password>admin</tomcat.manager.password>
 			</properties>

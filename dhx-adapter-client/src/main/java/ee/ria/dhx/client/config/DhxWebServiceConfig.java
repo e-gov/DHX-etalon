@@ -1,6 +1,7 @@
 package ee.ria.dhx.client.config;
 
-import ee.ria.dhx.ws.beanconfig.DhxEndpointConfig;
+import ee.ria.dhx.ws.config.endpoint.DhxEndpointConfig;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -41,7 +42,7 @@ public class DhxWebServiceConfig {
     applicationAnnotationContext.register(DhxEndpointConfig.class);
     servlet.setApplicationContext(applicationAnnotationContext);
     servlet.setTransformWsdlLocations(true);
-    servlet.setContextConfigLocation("ee.bpw.dhx.ws.beanconfig.DhxEndpointConfig");
+    servlet.setContextConfigLocation("ee.ria.dhx.ws.config.endpoint.DhxEndpointConfig");
     ServletRegistrationBean servletBean = new ServletRegistrationBean(servlet, "/" + "ws" + "/*");
     servletBean.setName("dhx");
     return servletBean;
