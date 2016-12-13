@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableScheduling
 @EnableAutoConfiguration
 @EnableWebMvc
-@ComponentScan(basePackages = "ee.ria.dhx.client.*,ee.ria.dhx.ws.config*,"
+@ComponentScan(basePackages = "ee.ria.dhx.ws.context,ee.ria.dhx.client.*,ee.ria.dhx.ws.config*,"
     + "ee.ria.dhx.ws.endpoint,ee.ria.dhx.ws.schedule")
 @EnableAsync
 @PropertySource("classpath:dhx-application.properties")
