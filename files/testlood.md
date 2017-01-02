@@ -10,8 +10,8 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 ## Testilood
 
 ##### Tähistused:
-* korrektselt kapseldatud fail - Elektroonilise andmevahetuse metaandmete loendile 2.1 vastavalt korrektselt kapseldatud fail. (Varasema toetus?)
-* DHS 1 - DHS makett 1; DHS 2 - DHS makett 2.
+* korrektselt kapseldatud fail - Elektroonilise andmevahetuse metaandmete loendile 2.1 vastavalt korrektselt kapseldatud fail.
+* DHS 1 - DHS makett 1; DHS 2 - DHS makett 2; DHS 3 - DHS makett 3.
 
 ### 1. PÕHIJUHT: Õige kapsli saatmine, adressaadil on DHX otsevõimekus
 
@@ -209,3 +209,52 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 * dokument on vastu võetud
 * saatvale süsteemile on saadetud õige vastuskood
 * kajastatud sündmuste logis
+
+### 9. Õige kapsli saatmine, adressaadil on DHX prefiksiga alamsüsteem
+
+&nbsp;&nbsp;**Saatev süsteem**: DHS 1
+
+&nbsp;&nbsp;**Saatja**: Ministeerium X
+
+&nbsp;&nbsp;**Vastuvõttev süsteem**: DHS 3
+
+&nbsp;&nbsp;**Adressaat**: Hõbekuuli OÜ, süsteem DHX.raamatupidamine
+
+&nbsp;&nbsp;**Saadetis**: korrektselt kapseldatud fail
+
+&nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
+
+* Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
+* Valib rippmenüüst Vali dokument väärtuse korrektselt kapseldatud
+* Valib rippmenüüst Vali adressaat väärtuse Hõbekuuli OÜ, registrikood 30000001, süsteem DHX.raamatupidamine
+* Vajutab nupule Saada dokument
+
+&nbsp;&nbsp;**Oodatav väljund**:
+* dokument on vastu võetud
+* saatvale süsteemile on saadetud õige vastuskood
+* kajastatud nii saatva süsteemi kui ka vastuvõtva süsteemi sündmuste logis
+
+
+### 9. Õige kapsli saatmine, saatja on DHX prefiksiga alamsüsteem
+
+&nbsp;&nbsp;**Saatev süsteem**: DHS 3
+
+&nbsp;&nbsp;**Saatja**: Hõbekuuli OÜ, süsteem DHX.raamatupidamine
+
+&nbsp;&nbsp;**Vastuvõttev süsteem**: DHS 1
+
+&nbsp;&nbsp;**Adressaat**: Ministeerium X
+
+&nbsp;&nbsp;**Saadetis**: korrektselt kapseldatud fail
+
+&nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
+
+* Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
+* Valib rippmenüüst Vali dokument väärtuse korrektselt kapseldatud
+* Valib rippmenüüst Vali adressaat väärtuse Ministeerium X, registrikood 40000001
+* Vajutab nupule Saada dokument
+
+&nbsp;&nbsp;**Oodatav väljund**:
+* dokument on vastu võetud
+* saatvale süsteemile on saadetud õige vastuskood
+* kajastatud nii saatva süsteemi kui ka vastuvõtva süsteemi sündmuste logis
