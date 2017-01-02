@@ -235,7 +235,7 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 * kajastatud nii saatva süsteemi kui ka vastuvõtva süsteemi sündmuste logis
 
 
-### 9. Õige kapsli saatmine, saatja on DHX prefiksiga alamsüsteem
+### 9. Õige kapsli saatmine DHX prefiksiga alamsüsteemi poolt.
 
 &nbsp;&nbsp;**Saatev süsteem**: DHS 3
 
