@@ -2,7 +2,7 @@
 
 ET / EN
 
-### DHX protokolli etalonteostus 
+### DHX protokolli etalonteostus
 
 DHX on uus, X-tee v6 omadustele rajatud dokumendivahetusprotokoll, mis võimaldab Eesti avaliku sektori dokumendihaldussüsteemidel vahetada dokumente hajus- e detsentraliseeritud põhimõttel.
 
@@ -22,14 +22,15 @@ DHX protokolliga tutvujatele, kes soovivad DHX demonstratsiooni, soovitame „l�
 
 Arendajatele, kes soovivad DHX teenuse arendamisel kasutada etaloni testimiseks, soovitame kasutada järgmisi abimaterjale: https://github.com/e-gov/DHX/blob/master/docs/Standardtestid.md
 
-Kasutamiseks on saadaval kaks etalonteostuse rakendust. Mõlemad rakendused on samaväärsed ja on võimelised dokumente saatma ja vastu võtma DHX dokumendivahetusprotokolli järgi. (NB! järgmised lingid nõuavad id kaardiga autentimist!): 
-Etalonteostuse rakendus 1 
+Kasutamiseks on saadaval kolm etalonteostuse rakendust. Kõik rakendused on samaväärsed ja on võimelised dokumente saatma ja vastu võtma DHX dokumendivahetusprotokolli järgi. (NB! järgmised lingid nõuavad id kaardiga autentimist!):
+Etalonteostuse rakendus 1
 Etalonteostuse rakendus 2 
+Etalonteostuse rakendus 3
 
 
 #### Org vaade
 
-![](../img/Etalonteostus-Org01.PNG)
+![](../img/testimisteenus.png)
 
 #### Tehn vaade
 
