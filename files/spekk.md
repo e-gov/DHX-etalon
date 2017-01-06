@@ -1,4 +1,4 @@
-![](../img/EL_struktuuri-_ja_investeerimisfondid_horisontaalne.jpg)
+![](../img/EL_Regionaalarengu_Fond_horisontaalne.jpg)
 
 # Etalonteostuse spetsifikatsioon
 Vt ka [Etalonteostuse testiplaan](https://github.com/e-gov/DHX-etalon/blob/master/files/testlood.md).
