@@ -172,7 +172,7 @@ public class DhxUi extends UI {
     mainLabel.setStyleName("h1");
     StreamResource source =
         new StreamResource(new DhxStreamSource(
-            "jar://images/EL_struktuuri-_ja_investeerimisfondid_horisontaalne.jpg"), "help.png");
+            "jar://images/EL_Regionaalarengu_Fond_horisontaalne.jpg"), "help.png");
     Image image = new Image("", source);
     image.setStyleName("v-table-footer-container");
     GridLayout headerLayout = new GridLayout(2, 2);
