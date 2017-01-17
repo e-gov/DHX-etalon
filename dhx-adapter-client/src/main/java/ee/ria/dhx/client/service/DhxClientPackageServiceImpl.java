@@ -31,6 +31,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ws.context.MessageContext;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -177,17 +178,19 @@ public class DhxClientPackageServiceImpl extends DhxPackageServiceImpl {
     }
   }
 
+  
   /**
    * overriden just to log events.
    */
   @Override
-  public IncomingDhxPackage extractAndValidateDocument(SendDocument document,
-      InternalXroadMember client, InternalXroadMember service)
-      throws DhxException {
+  public SendDocumentResponse receiveDocumentFromEndpoint(
+                                                          SendDocument document, InternalXroadMember client,
+                                                          InternalXroadMember service, MessageContext context)
+                                                          throws DhxException  {
     try {
       logger.log(Level.getLevel("EVENT"), "Starting to receive document. for representative: "
           + document.getRecipient() + " consignmentId: " + document.getConsignmentId());
-      return super.extractAndValidateDocument(document, client, service);
+      return super.receiveDocumentFromEndpoint(document, client, service, context);
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);
       logger.log(

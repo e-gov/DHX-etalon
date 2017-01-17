@@ -1,6 +1,7 @@
 package ee.ria.dhx.client.config;
 
 import ee.ria.dhx.client.service.DhxClientSpecificService;
+
 import ee.ria.dhx.util.StringUtil;
 import ee.ria.dhx.ws.service.DhxImplementationSpecificService;
 import ee.ria.dhx.ws.service.DhxMarshallerService;
