@@ -151,7 +151,7 @@
 				<conf>etalon3</conf>
 				<tomcat.manager>http://10.0.13.54:8080/manager/text</tomcat.manager>
 				<tomcat.manager.username>admin</tomcat.manager.username>
-				<tomcat.manager.password>admin</tomcat.manager.password>
+				<tomcat.manager.password>AQ22kprYHPwV2H4Vxcsb</tomcat.manager.password>
 			</properties>
 		</profile>
 	</profiles>
