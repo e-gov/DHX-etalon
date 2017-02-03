@@ -25,7 +25,7 @@ import java.io.File;
 public class ScheduledClient {
 
   @Autowired
-  DhxPackageService documentService;
+  DhxPackageService dhxPackageService;
 
   @Autowired
   DhxPackageProviderService dhxPackageProviderService;
@@ -45,7 +45,7 @@ public class ScheduledClient {
     try {
       file = FileUtil.getFile(config.getCapsuleCorrect());
       log.debug("sending document automatically");
-      documentService.sendMultiplePackages(dhxPackageProviderService.getOutgoingPackage(file,
+      dhxPackageService.sendMultiplePackages(dhxPackageProviderService.getOutgoingPackage(file,
           null));
     } catch (DhxException ex) {
       log.error(ex.getMessage(), ex);

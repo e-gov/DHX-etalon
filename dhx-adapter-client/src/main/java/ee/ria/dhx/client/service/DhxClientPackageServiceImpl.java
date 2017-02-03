@@ -39,7 +39,7 @@ import java.util.List;
 
 
 /**
- * Extension of DocumentServiceImpl. Contains changes needed for client application. e.g. event
+ * Extension of DhxPackageServiceImpl. Contains changes needed for client application. e.g. event
  * logging and abstract method implementations.
  * 
  * @author Aleksei Kokarev
