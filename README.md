@@ -1,6 +1,6 @@
-![](img/EL_Regionaalarengu_Fond_horisontaalne.jpg)
-# DHX etalonteostus / DHX reference implementation
+﻿![Riigi Infosüsteemi Ameti](https://avatars3.githubusercontent.com/u/7447915 "Riigi Infosüsteemi Amet") ![](img/EL_Regionaalarengu_Fond_horisontaalne.jpg)
 
+# DHX etalonteostus / DHX reference implementation
 
 ## ET
 
