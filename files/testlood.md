@@ -11,7 +11,7 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 
 ##### Tähistused:
 * korrektselt kapseldatud fail - Elektroonilise andmevahetuse metaandmete loendile 2.1 vastavalt korrektselt kapseldatud fail.
-* DHS 1 - DHS makett 1; DHS 2 - DHS makett 2; DHS 3 - DHS makett 3.
+* DHS 1 - DHS makett 1; DHS 2 - DHS makett 2; DHS 3 - DHS makett 3; DHS 4 - maketti ei ole(rakendus on alati maas).
 
 ### 1. PÕHIJUHT: Õige kapsli saatmine, adressaadil on DHX otsevõimekus
 
@@ -121,7 +121,7 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 
 &nbsp;&nbsp;**Saatja**: Ministeerium X
 
-&nbsp;&nbsp;**Vastuvõttev süsteem**: DHS 3
+&nbsp;&nbsp;**Vastuvõttev süsteem**: DHS 4
 
 &nbsp;&nbsp;**Adressaat**: Asutus Y
 
