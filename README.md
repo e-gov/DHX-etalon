@@ -6,6 +6,8 @@
 
 Demonstraator (töötav mudel, näidisimplementatsioon) dokumendivahetusprotokolli [DHX](https://github.com/e-gov/DHX) headuse tõestamiseks.
 
+Protokolli omal käel teostajad leiavad siit ka [standardse komplekti teste](files/Standardtestid.md), mis on abil konkrollimisel, kas teostus (implementatsioon) vastab protokolli nõuetele. 
+
 #### Viited
 
 * [DHX protokolli etalonteostuse avaleht](https://dhxdemo.eesti.ee/)
@@ -13,7 +15,7 @@ Demonstraator (töötav mudel, näidisimplementatsioon) dokumendivahetusprotokol
 * [DHX protokolli etalonteostuse testilood ](https://github.com/e-gov/DHX-etalon/blob/master/files/testlood.md)
 * [DHX protokolli etalonteostuse spetsifikatsioon ](https://github.com/e-gov/DHX-etalon/blob/master/files/spekk.md)
 
-####Projketi konfigureerimine
+####Projekti konfigureerimine
 * Selleks et projekti ehitada ja käivitada on esiteks vaja üle vaadata ja vajadusel muuta failid **/src/main/resources/conf/#profile-name#** kaustas(kus #profile-name on maven profiili nimi mida kasutate projekti ehitamiseks ja käivitamiseks).
 * Erilist tähelepanu vajab konfiguratsiooni fail mis asub siin:
 **/src/main/resources/conf/#profile-name#/ws/application.properties**.
