@@ -6,7 +6,7 @@
 
 Demonstraator (töötav mudel, näidisimplementatsioon) dokumendivahetusprotokolli [DHX](https://github.com/e-gov/DHX) headuse tõestamiseks.
 
-Protokolli omal käel teostajad leiavad siit ka [standardse komplekti teste](files/Standardtestid.md), mis on abil konkrollimisel, kas teostus (implementatsioon) vastab protokolli nõuetele. 
+Protokolli omal käel teostajad leiavad siit ka [standardse komplekti teste](files/Standardtestid.md), mis on abiks kontrollimisel, kas teostus (implementatsioon) vastab protokolli nõuetele. 
 
 #### Viited
 
