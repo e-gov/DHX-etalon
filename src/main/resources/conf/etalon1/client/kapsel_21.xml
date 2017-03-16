@@ -1,11 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <DecContainer xmlns="http://www.riik.ee/schemas/deccontainer/vers_2_1/">
   <Transport>
     <DecSender>
-      <OrganisationCode>adit</OrganisationCode>
+      <OrganisationCode>10560025</OrganisationCode>
       <PersonalIdCode>EE38806190294</PersonalIdCode>
     </DecSender>
-    <DecRecipient>
+	 <DecRecipient>
       <OrganisationCode>30000001</OrganisationCode>
+	  <PersonalIdCode>EE38605150320</PersonalIdCode>
     </DecRecipient>
   </Transport>
   <RecordCreator>
@@ -17,7 +19,7 @@
       <Residency>EE</Residency>
     </Person>
     <ContactData>
-      <Adit>1</Adit>
+      <Adit>true</Adit>
       <Phone>3726630276</Phone>
       <Email>lauri.tammemae@ria.ee</Email>
       <WebPage>www.hot.ee/lauri</WebPage>
@@ -45,7 +47,7 @@
       <Residency>EE</Residency>
     </Person>
     <ContactData>
-      <Adit>1</Adit>
+      <Adit>false</Adit>
       <Phone>3726630276</Phone>
       <Email>lauri.tammemae@ria.ee</Email>
       <WebPage>www.hot.ee/lauri</WebPage>
@@ -65,11 +67,13 @@
     </ContactData>
   </RecordSenderToDec>
   <Recipient>
-    <Organisation>
-      <Name>Riigi Infosüsteemi Amet</Name>
-      <OrganisationCode>70006317</OrganisationCode>
+	 <Person>
+      <Name>Lauri Tammemäe</Name>
+      <GivenName>Lauri</GivenName>
+      <Surname>Tammemäe</Surname>
+      <PersonalIdCode>EE38605150320</PersonalIdCode> 
       <Residency>EE</Residency>
-    </Organisation>
+    </Person>
   </Recipient>
   <RecordMetadata>
     <RecordGuid>25892e17-80f6-415f-9c65-7395632f0234</RecordGuid>
@@ -84,7 +88,7 @@
   </Access>
   <File>
     <FileGuid>25892e17-80f6-415f-9c65-7395632f0001</FileGuid>
-    <RecordMainComponent>1</RecordMainComponent>
+    <RecordMainComponent>0</RecordMainComponent>
     <FileName>Ettepanek.doc</FileName>
     <MimeType>application/msword</MimeType>
     <FileSize>211543</FileSize>
