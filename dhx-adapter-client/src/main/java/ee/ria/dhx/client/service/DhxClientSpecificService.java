@@ -31,13 +31,6 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
   @Override
   public String receiveDocument(IncomingDhxPackage document, MessageContext context)
       throws DhxException {
-    String receiptId = super.receiveDocument(document, context);
-    logger.log(Level.getLevel("EVENT"), "Document received." + " receipt:" + receiptId
-        + " consignmentId: "
-        + document.getExternalConsignmentId() + " Document sender: "
-        + document.getClient().toString() + " Document reciever: "
-        + document.getService().toString() + " Document recipient: "
-        + document.getRecipient().toString());
     if (document.getParsedContainer() != null) {
       DecContainer container = (DecContainer) document.getParsedContainer();
       String addition = "";
@@ -62,9 +55,16 @@ public class DhxClientSpecificService extends ExampleDhxImplementationSpecificSe
         }
       }
       logger.log(Level.getLevel("EVENT"),
-          "Document data from capsule: " + addition);
+          "Receiving document. Document data from capsule: " + addition);
 
     }
+    String receiptId = super.receiveDocument(document, context);
+    logger.log(Level.getLevel("EVENT"), "Document received." + " receipt:" + receiptId
+        + " consignmentId: "
+        + document.getExternalConsignmentId() + " Document sender: "
+        + document.getClient().toString() + " Document reciever: "
+        + document.getService().toString() + " Document recipient: "
+        + document.getRecipient().toString());
     return receiptId;
   }
 
