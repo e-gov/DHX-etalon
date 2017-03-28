@@ -13,7 +13,7 @@ Demonstraator (töötav mudel, näidisimplementatsioon) dokumendivahetusprotokol
 * [DHX protokolli etalonteostuse testilood ](https://github.com/e-gov/DHX-etalon/blob/master/files/testlood.md)
 * [DHX protokolli etalonteostuse spetsifikatsioon ](https://github.com/e-gov/DHX-etalon/blob/master/files/spekk.md)
 
-####Projketi konfigureerimine
+#### Projekti konfigureerimine
 * Selleks et projekti ehitada ja käivitada on esiteks vaja üle vaadata ja vajadusel muuta failid **/src/main/resources/conf/#profile-name#** kaustas(kus #profile-name on maven profiili nimi mida kasutate projekti ehitamiseks ja käivitamiseks).
 * Erilist tähelepanu vajab konfiguratsiooni fail mis asub siin:
 **/src/main/resources/conf/#profile-name#/ws/application.properties**.
@@ -30,7 +30,7 @@ Järgmised application.properties faili parameetrid on keskkonnast sõltuvad ja 
   *soap.member-code=40000001*
 
 
-####Projekti ehitamine
+#### Projekti ehitamine
 Projektis on 3 eeldefineeritud maven profiili pom.xml failis(põhierinevused profiilide vahel on konfiguratsiooni failide kausta asukoht ja tomcat serveri parameetrid):
 
 * **development**(default) - Profiil arendamiseks. Tomcati parameetrid on puudu.     
@@ -62,7 +62,7 @@ Projektis on 3 eeldefineeritud maven profiili pom.xml failis(põhierinevused pro
 
 A reference implementation of [DHX document exchange protocol](https://github.com/e-gov/DHX). Reference implementation is used to verify integrity and feasibility of the DHX protocol and to demonstrate protocol operation. Code can also be useful for implementation
 
-####Configuring the project
+#### Configuring the project
 * In order to build and run DHX application all files located in **/src/main/resources/conf/#profile-name#** folder need to be reviewed and changed if needed(where #profile-name# is the name of the profile you are willing to use to build and run application).
 * Special attention needs to be turned to configuration file that is located here: **/src/main/resources/conf/#profile-name#/ws/application.properties**.
 Following parameters of the application.properties file are environment dependent and most likely need to be changed to build and run application: 
@@ -79,7 +79,7 @@ Following parameters of the application.properties file are environment dependen
   
 
 
-####Building the project
+#### Building the project
 There are 3 predefined profiles provided in projects pom.xml(main differences between profiles are folder where configuration files are stored and tomcat options):
 
 * **development**(default) - Profile for development. No tomcat options are provided.      
