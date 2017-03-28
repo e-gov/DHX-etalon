@@ -2,9 +2,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<style type="text/css">html, body {height:100%;margin:0;}
-		.role {
-			display: inline-block;
-		    width: 49%;
+			.role {
+			display: block;
+			margin: 50px auto 0;
+		    width: 490px;
 		    text-align: center;
 		    border: 1px solid #f2f2f2;
 		    padding: 50px 0;
@@ -17,12 +18,12 @@
 			background: rgb(252, 252, 252);
 			border: 1px solid #e2e2e2;
 		}
-		.role:visited{
+		.role:visited {
 			color:#000;
 			font-style: none;
 		}
 		</style>
-		<title>DHX testteenus</title>
+		<title>DHX testteenus asutusele</title>
 	</head>
 	<body scroll="auto" style="background: rgb(252, 252, 252);">
 		<div style="
@@ -43,18 +44,24 @@
 
 			<h3>DHX protokolli etalonteostus</h3>
 
-			<p>DHX on uus, X-tee v6 omadustele rajatud dokumendivahetusprotokoll, mis võimaldab Eesti avaliku sektori dokumendihaldussüsteemidel vahetada dokumente hajus- e detsentraliseeritud põhimõttel.</p>
+			<p>Sellel leheküljel on asutustel võimalik testida DHX teenuseid X-tee testkeskkonnas</p>
 
-			<p>Protokolli on välja töötanud Riigi Infosüsteemi Amet.</p>
+			<h4>Testimiseks on vajalik:</h4>
+			<ul>
+			<li>Asutus/infosüsteem ja selle DHXi teenused on kättesaadavad x-tee testkeskkonnas</li>
+			<li>ID-kaarti</li>
+			</ul>
 
-			<p>Etalonteostus demonstreerib DHX protokolli töötamist. Ühtlasi on etalonteostust võimalik kasutada DHX-i võimekusega infosüsteemi testimiseks.</p>
+			<h4>Testimine</h4>
 
-			<p>Etalonteostus on loodud projekti
-				<a href="https://github.com/e-gov/DHX/blob/master/README.md#projekt-dokumendivahetustaristu-hajusarhitektuurile-%C3%BCleviimise-v%C3%A4ljat%C3%B6%C3%B6tamine" target="_blank">"Dokumendivahetustaristu hajusarhitektuurile üleviimise väljatöötamine"</a> raames.
+			<p>DHX protokolliga tutvujatele, kes soovivad DHX demonstratsiooni, soovitame „läbi mängida“ järgmised kasutuslood:</p>
+			<ul>
+			<li>Dokumendi saatmine enda DHSist RIA DHX testteenusele (alamsüsteem ee-test/GOV/70006317/DHX.RIA.Test)</li>
+			<li>Dokumendi saatmine testteenusest enda DHSi</li>
+			</ul>
+			<p>Abiks on ka <a href="https://github.com/e-gov/DHX-etalon/blob/master/files/kasutusjuhend.md" target="_blank">etalonteostuse kasutusjuhend</a>
 			</p>
-			<h4>Valige roll testimisel</h4>
-			<a class="role" href="asutusele.html" target="_blank">Asutus</a>
-			<a class="role" href="arendajale.html" target="_blank">Arendaja</a>
+			<a class="role" href="/etalon1/" target="_blank">Sisene testteenusesse (nõuab ID-kaarti) </a>
 		</div>
 	</body>
 </html>
