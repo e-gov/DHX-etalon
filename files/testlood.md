@@ -1,4 +1,4 @@
-![](../img/EL_Regionaalarengu_Fond_horisontaalne.jpg)
+![Dokumendivahetuskiht](../img/DVK.png "Dokumendivahetuskiht") ![Euroopa Regionaalarengu Fond](../img/EL.png "Euroopa Regionaalarengu Fond")
 
 # Etalonteostuse testilood
 ## Ülevaade

@@ -1,4 +1,4 @@
-![](../img/EL_Regionaalarengu_Fond_horisontaalne.jpg)
+![Dokumendivahetuskiht](../img/DVK.png "Dokumendivahetuskiht") ![Euroopa Regionaalarengu Fond](../img/EL.png "Euroopa Regionaalarengu Fond")
 
 # Etalonteostuse spetsifikatsioon
 Vt ka [Etalonteostuse testiplaan](https://github.com/e-gov/DHX-etalon/blob/master/files/testlood.md).
