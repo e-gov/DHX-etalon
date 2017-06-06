@@ -235,7 +235,7 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 * kajastatud nii saatva süsteemi kui ka vastuvõtva süsteemi sündmuste logis
 
 
-### 9. Õige kapsli saatmine DHX prefiksiga alamsüsteemi poolt.
+### 10. Õige kapsli saatmine DHX prefiksiga alamsüsteemi poolt.
 
 &nbsp;&nbsp;**Saatev süsteem**: DHS 3
 
@@ -252,6 +252,31 @@ Testandmed on määratletud eraldi dokumendis:  ["Etalonteostuse testandmed"](ht
 * Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
 * Valib rippmenüüst Vali dokument väärtuse korrektselt kapseldatud
 * Valib rippmenüüst Vali adressaat väärtuse Ministeerium X, registrikood 40000001
+* Vajutab nupule Saada dokument
+
+&nbsp;&nbsp;**Oodatav väljund**:
+* dokument on vastu võetud
+* saatvale süsteemile on saadetud õige vastuskood
+* kajastatud nii saatva süsteemi kui ka vastuvõtva süsteemi sündmuste logis
+
+
+### 11. Mahuka kapsli saatmine, adressaadil on DHX otsevõimekus
+
+&nbsp;&nbsp;**Saatev süsteem**: DHS 1
+
+&nbsp;&nbsp;**Saatja**: Ministeerium X
+
+&nbsp;&nbsp;**Vastuvõttev süsteem**: DHS 2
+
+&nbsp;&nbsp;**Adressaat**: Hõbekuuli OÜ
+
+&nbsp;&nbsp;**Saadetis**: korrektselt kapseldatud fail (~137mb etalon1-s)
+
+&nbsp;&nbsp;**Verifitseerija toimimine (samm-sammuline)**:
+
+* Inimene valib Dokumendi saatmine tab-i Tegevused regioonis
+* Valib rippmenüüst Vali dokument väärtuse korrektselt kapseldatud
+* Valib rippmenüüst Vali adressaat väärtuse Hõbekuuli OÜ, registrikood 30000001
 * Vajutab nupule Saada dokument
 
 &nbsp;&nbsp;**Oodatav väljund**:
